@@ -1,4 +1,6 @@
 import Link from "next/link";
+import remarkMath from "remark-math";
+import rehypeKatex from "rehype-katex";
 import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { highlight } from "sugar-high";
@@ -103,6 +105,12 @@ export function CustomMDX(props) {
   return (
     <MDXRemote
       {...props}
+      options={{
+        mdxOptions: {
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
+        },
+      }}
       components={{ ...components, ...(props.components || {}) }}
     />
   );

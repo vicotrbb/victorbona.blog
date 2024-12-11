@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import { CustomMDX } from "app/components/mdx";
 import { formatDate, getBlogPosts, getReadingTime } from "app/blog/utils";
 import { baseUrl } from "app/sitemap";
+import { ShareButton } from "app/components/ShareButton";
+import type { Metadata } from "next";
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -9,6 +11,59 @@ export async function generateStaticParams() {
   return posts.map((post) => ({
     slug: post.slug,
   }));
+}
+
+export async function generateMetadata({ params }): Promise<Metadata> {
+  const post = getBlogPosts().find((post) => post.slug === params.slug);
+  if (!post) {
+    return {};
+  }
+
+  const readingTime = getReadingTime(post.content);
+
+  return {
+    title: post.metadata.title,
+    description: post.metadata.summary,
+    authors: [{ name: "Victor Bona", url: baseUrl }],
+    openGraph: {
+      title: post.metadata.title,
+      description: post.metadata.summary,
+      type: "article",
+      url: `${baseUrl}/blog/${post.slug}`,
+      publishedTime: post.metadata.publishedAt,
+      authors: ["Victor Bona"],
+      images: [
+        {
+          url: post.metadata.image
+            ? `${baseUrl}${post.metadata.image}`
+            : `${baseUrl}/og?${new URLSearchParams({
+                title: post.metadata.title,
+                publishedAt: post.metadata.publishedAt,
+                readingTime: readingTime.toString(),
+                summary: post.metadata.summary,
+              }).toString()}`,
+          width: 1200,
+          height: 630,
+          alt: post.metadata.title,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: post.metadata.title,
+      description: post.metadata.summary,
+      creator: "@BonaVictor",
+      images: [
+        post.metadata.image ||
+          `${baseUrl}/og?${new URLSearchParams({
+            title: post.metadata.title,
+            publishedAt: post.metadata.publishedAt,
+            readingTime: readingTime.toString(),
+            summary: post.metadata.summary,
+          }).toString()}`,
+      ],
+    },
+  };
 }
 
 export default function Blog({ params }) {
@@ -19,6 +74,7 @@ export default function Blog({ params }) {
   }
 
   let readingTime = getReadingTime(post.content);
+
   return (
     <section>
       <script
@@ -34,15 +90,32 @@ export default function Blog({ params }) {
             description: post.metadata.summary,
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
-              : `${baseUrl}/og?title=${encodeURIComponent(
-                  post.metadata.title
-                )}`,
+              : `${baseUrl}/og?${new URLSearchParams({
+                  title: post.metadata.title,
+                  publishedAt: post.metadata.publishedAt,
+                  readingTime: readingTime.toString(),
+                  summary: post.metadata.summary,
+                }).toString()}`,
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
               "@type": "Person",
               name: "Victor Bona",
               url: baseUrl,
               image: `${baseUrl}/avatar.jpg`,
+            },
+            twitter: {
+              card: "summary_large_image",
+              title: post.metadata.title,
+              description: post.metadata.summary,
+              creator: "@BonaVictor",
+              images: [
+                `${baseUrl}/og?${new URLSearchParams({
+                  title: post.metadata.title,
+                  publishedAt: post.metadata.publishedAt,
+                  readingTime: readingTime.toString(),
+                  summary: post.metadata.summary,
+                }).toString()}`,
+              ],
             },
             publisher: {
               "@type": "Organization",
@@ -68,6 +141,10 @@ export default function Blog({ params }) {
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
           {formatDate(post.metadata.publishedAt)} • {readingTime} min read
         </p>
+        <ShareButton
+          url={`${baseUrl}/blog/${post.slug}`}
+          title={post.metadata.title}
+        />
       </div>
       <article className="prose">
         <CustomMDX source={post.content} />

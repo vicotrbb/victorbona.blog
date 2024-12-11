@@ -1,10 +1,10 @@
+import "katex/dist/katex.min.css";
 import "./global.css";
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Navbar } from "./components/nav";
 import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
 import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
 
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${baseUrl}/og-image.png`,
+        url: `${baseUrl}/og`,
         width: 1200,
         height: 630,
         alt: "Victor Bona Blog",
@@ -56,7 +56,7 @@ export const metadata: Metadata = {
     description:
       "A blog about software engineering, software development, software architecture, tech, software, and more.",
     creator: "@BonaVictor",
-    images: [`${baseUrl}/og-image.png`],
+    images: [`${baseUrl}/og`],
   },
   robots: {
     index: true,
@@ -108,7 +108,6 @@ export default function RootLayout({
           {children}
           <Footer />
           <Analytics />
-          <SpeedInsights />
         </main>
       </body>
     </html>
