@@ -4,6 +4,8 @@ import { formatDate, getBlogPosts, getReadingTime } from "app/blog/utils";
 import { baseUrl } from "app/sitemap";
 import { ShareButton } from "app/components/ShareButton";
 import type { Metadata } from "next";
+import { PlusOneButton } from "app/components/PlusOneButton";
+import { PlusOneCount } from "app/components/PlusOneCount";
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -20,6 +22,13 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   }
 
   const readingTime = getReadingTime(post.content);
+  const ogImageUrl = new URLSearchParams({
+    title: post.metadata.title,
+    publishedAt: post.metadata.publishedAt,
+    readingTime: readingTime.toString(),
+    summary: post.metadata.summary,
+    slug: params.slug,
+  }).toString();
 
   return {
     title: post.metadata.title,
@@ -36,12 +45,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
         {
           url: post.metadata.image
             ? `${baseUrl}${post.metadata.image}`
-            : `${baseUrl}/og?${new URLSearchParams({
-                title: post.metadata.title,
-                publishedAt: post.metadata.publishedAt,
-                readingTime: readingTime.toString(),
-                summary: post.metadata.summary,
-              }).toString()}`,
+            : `${baseUrl}/og?${ogImageUrl}`,
           width: 1200,
           height: 630,
           alt: post.metadata.title,
@@ -53,15 +57,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
       title: post.metadata.title,
       description: post.metadata.summary,
       creator: "@BonaVictor",
-      images: [
-        post.metadata.image ||
-          `${baseUrl}/og?${new URLSearchParams({
-            title: post.metadata.title,
-            publishedAt: post.metadata.publishedAt,
-            readingTime: readingTime.toString(),
-            summary: post.metadata.summary,
-          }).toString()}`,
-      ],
+      images: [post.metadata.image || `${baseUrl}/og?${ogImageUrl}`],
     },
   };
 }
@@ -138,13 +134,19 @@ export default function Blog({ params }) {
         {post.metadata.title}
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(post.metadata.publishedAt)} • {readingTime} min read
+        <p className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center space-x-2">
+          <span>{formatDate(post.metadata.publishedAt)}</span>
+          <span className="text-neutral-600 dark:text-neutral-400">•</span>
+          <span>{readingTime} min read</span>
+          <PlusOneCount postSlug={params.slug} />
         </p>
-        <ShareButton
-          url={`${baseUrl}/blog/${post.slug}`}
-          title={post.metadata.title}
-        />
+        <div className="flex items-center space-x-4">
+          <PlusOneButton postSlug={params.slug} />
+          <ShareButton
+            url={`${baseUrl}/blog/${post.slug}`}
+            title={post.metadata.title}
+          />
+        </div>
       </div>
       <article className="prose">
         <CustomMDX source={post.content} />
