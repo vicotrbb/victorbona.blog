@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Spinner } from "./Spinner";
+import { track } from "@vercel/analytics/react";
 
 export function PlusOneButton({ postSlug }: { postSlug: string }) {
   const [plusOned, setPlusOned] = useState(false);
@@ -19,6 +20,7 @@ export function PlusOneButton({ postSlug }: { postSlug: string }) {
       });
 
       if (response.ok) {
+        track("Plus_One", { slug: postSlug });
         setPlusOned(true);
       }
     } catch (err) {

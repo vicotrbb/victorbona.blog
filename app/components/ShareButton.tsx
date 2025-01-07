@@ -1,8 +1,17 @@
 "use client";
 
+import { track } from "@vercel/analytics/react";
 import { useState } from "react";
 
-export function ShareButton({ url, title }: { url: string; title: string }) {
+export function ShareButton({
+  url,
+  title,
+  slug,
+}: {
+  url: string;
+  title: string;
+  slug: string;
+}) {
   const [copied, setCopied] = useState(false);
 
   const share = async () => {
@@ -26,6 +35,8 @@ export function ShareButton({ url, title }: { url: string; title: string }) {
         console.error("Copy failed:", err);
       }
     }
+
+    track("Share", { slug });
   };
 
   return (

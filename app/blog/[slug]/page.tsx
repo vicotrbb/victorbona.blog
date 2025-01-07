@@ -145,6 +145,7 @@ export default function Blog({ params }) {
           <ShareButton
             url={`${baseUrl}/blog/${post.slug}`}
             title={post.metadata.title}
+            slug={params.slug}
           />
         </div>
       </div>
