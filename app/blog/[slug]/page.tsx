@@ -1,11 +1,12 @@
 import { notFound } from "next/navigation";
-import { CustomMDX } from "app/components/mdx";
 import { formatDate, getBlogPosts, getReadingTime } from "app/blog/utils";
 import { baseUrl } from "app/sitemap";
 import { ShareButton } from "app/components/ShareButton";
 import type { Metadata } from "next";
 import { PlusOneButton } from "app/components/PlusOneButton";
 import { PlusOneCount } from "app/components/PlusOneCount";
+import { ArticleWrapper } from "app/components/ArticleWrapper";
+import { CustomMDX } from "app/components/mdx";
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -149,9 +150,9 @@ export default function Blog({ params }) {
           />
         </div>
       </div>
-      <article className="prose">
+      <ArticleWrapper>
         <CustomMDX source={post.content} />
-      </article>
+      </ArticleWrapper>
     </section>
   );
 }

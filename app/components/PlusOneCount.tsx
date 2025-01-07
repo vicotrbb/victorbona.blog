@@ -25,7 +25,7 @@ export function PlusOneCount({ postSlug }: { postSlug: string }) {
     <>
       <span className="text-neutral-600 dark:text-neutral-400">•</span>
       <span className="text-neutral-600 dark:text-neutral-400">
-        {count ?? "Loading"} {count === 1 ? "like" : "likes"}
+        {count ?? 0} {count === 1 ? "like" : "likes"}
       </span>
     </>
   );
