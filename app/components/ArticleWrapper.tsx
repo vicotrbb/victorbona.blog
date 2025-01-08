@@ -3,15 +3,16 @@
 import React, { useState, useEffect } from "react";
 import { useReadingProgress } from "app/hooks/useReadingProgress";
 import { Toast } from "./Toast";
-import { CustomMDX } from "./mdx";
 
 export function ArticleWrapper({ children }: { children: React.ReactNode }) {
   const [showToast, setShowToast] = useState(false);
+  const [toastShown, setToastShown] = useState(false);
   const isReadingComplete = useReadingProgress();
 
   useEffect(() => {
-    if (isReadingComplete && !showToast) {
+    if (isReadingComplete && !showToast && !toastShown) {
       setShowToast(true);
+      setToastShown(true);
     }
   }, [isReadingComplete]);
 
