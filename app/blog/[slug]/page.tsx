@@ -29,6 +29,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     readingTime: readingTime.toString(),
     summary: post.metadata.summary,
     slug: params.slug,
+    tags: post.metadata.tags,
   }).toString();
 
   return {
@@ -134,7 +135,7 @@ export default function Blog({ params }) {
       <h1 className="title font-semibold text-2xl tracking-tighter">
         {post.metadata.title}
       </h1>
-      <div className="flex justify-between items-center mt-2 mb-8 text-sm">
+      <div className="flex justify-between items-center mt-2 mb-4 text-sm">
         <p className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center space-x-2">
           <span>{formatDate(post.metadata.publishedAt)}</span>
           <span className="text-neutral-600 dark:text-neutral-400">•</span>
@@ -150,6 +151,18 @@ export default function Blog({ params }) {
           />
         </div>
       </div>
+      {!!post.metadata.tags && (
+        <div className="flex flex-wrap gap-1.5 mb-8">
+          {post.metadata.tags.split(",").map((tag) => (
+            <span
+              key={tag}
+              className="text-xs px-2 py-0.5 rounded-md bg-neutral-50 dark:bg-neutral-900 text-neutral-500 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800"
+            >
+              {tag}
+            </span>
+          ))}
+        </div>
+      )}
       <ArticleWrapper>
         <CustomMDX source={post.content} />
       </ArticleWrapper>

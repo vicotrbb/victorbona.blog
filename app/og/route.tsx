@@ -8,6 +8,7 @@ export async function GET(request: Request) {
   const readingTime = url.searchParams.get("readingTime");
   const summary = url.searchParams.get("summary");
   const slug = url.searchParams.get("slug");
+  const tags = url.searchParams.get("tags")?.split(",") || [];
 
   // Fetch like count if slug is provided
   let likeCount = null;
@@ -44,6 +45,20 @@ export async function GET(request: Request) {
 
             {summary && (
               <p tw="text-lg text-zinc-400 max-w-4xl line-clamp-2">{summary}</p>
+            )}
+
+            {/* Tags */}
+            {tags.length > 0 && (
+              <div tw="flex flex-row flex-wrap gap-2">
+                {tags.map((tag) => (
+                  <span
+                    key={tag}
+                    tw="text-sm px-2 py-0.5 rounded-md bg-zinc-800 text-zinc-400 border border-zinc-700"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             )}
 
             {/* Metadata row */}
