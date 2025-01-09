@@ -1,0 +1,116 @@
+---
+title: "What I run on my homelab"
+publishedAt: "2025-01-09"
+summary: "What I run on my personal homelab. My own server running at home."
+tags: "homelab,proxmox,technology"
+---
+
+Let's take a quick look at what I'm currently running on my homelab. If you've ever been curious about setting up your own servers at home but felt a bit intimidated, I'm hoping this post will give you some inspiration—and maybe a dose of courage.
+
+## What's a Homelab?
+
+A **homelab** is basically a personal playground for tech enthusiasts. Instead of experimenting on cloud services or corporate infrastructure, you do it right at home. This usually involves:
+
+- **Servers** or old desktops you turn into servers
+- **Networking gear** like routers, switches, or even Wi-Fi access points
+- **Services and apps** to play around with (like media servers or code testing environments)
+
+## Why I Chose Proxmox
+
+I’m using **Proxmox** as my virtualization platform. Proxmox is an open-source solution that lets you create and manage VMs (virtual machines) and containers on the same host. Some of the big wins here:
+
+- It’s **free and open-source**.
+- The user interface is **straightforward** for managing multiple VMs.
+- Great for tinkering with **Linux containers** or running random OSes.
+- Great community support.
+- Easy LXC container creation and management.
+
+## LXC vs Docker
+
+I've been using LXC containers for a while now and I've found them to be a great way to run applications in a isolated environment. They are lightweight and easy to manage, but they are not as flexible as Docker containers.
+
+## Common Challenges
+
+- **Learning curve**: It’s not exactly plug-and-play, so you’ll need some research to avoid messing up your networking.
+- **Resource needs**: Each VM requires CPU, RAM, and storage. Gotta balance performance across everything.
+- **Backups**: You’re in charge of protecting your own data—no fancy cloud backups by default.
+
+## What have I built?
+
+Personally, I made the choice to build my own home server from scratch with pieces I bought from different vendors. I've been using this setup for a few months now and it's been working great.
+
+Currently, my setup has the following:
+
+- A 10A power cord, with local web dashboard for monitoring and controlling the power consumption.
+- A server with a Xeon running Proxmox.
+- A TP-Link router.
+- A patch panel for network management.
+- 2 Asus routers for Wi-Fi 6 and connectivity.
+- My ISP router.
+- A gaming server running windows and steam.
+- A server for my NAS with 4tb of storage (for now).
+
+## The Services I’m Running
+
+Below is a quick rundown of the fun stuff I’ve spun up inside my Proxmox cluster, as shown in the screenshot:
+
+1. **homepage**  
+   My custom homepage dashboard, giving me quick links to all my internal apps and services.
+
+2. **pihole**  
+   Blocks ads and trackers at the network level. Super easy to set up and a must-have for an ad-free life.
+
+3. **jellyfin**  
+   My media server of choice. Stream movies, shows, and music from anywhere in my house (or the internet, if I open it up).
+
+4. **qbittorrent**  
+   My torrent client. Perfect for downloading Linux ISOs—or so they say. It's web-based, so I can manage downloads anywhere.
+
+5. **prowlarr**  
+   An indexer manager that keeps all my torrent/newsgroup indexers in one place for apps like Radarr, Sonarr, etc.
+
+6. **radarr**  
+   Automated movie library management. It fetches movies, organizes them, and sends them to **qBittorrent** for me.
+
+7. **sonarr**  
+   TV show counterpart to Radarr. Keeps track of episodes and automatically fetches them. Life-changing if you're a series junkie.
+
+8. **jellyseerr**  
+   Requests management tool for Jellyfin (similar to Overseerr for Plex). Friends or family can request shows and movies, and it's all automated.
+
+9. **bazarr**  
+   Handles subtitles. Great if you watch content in multiple languages or just prefer to have subtitles available.
+
+10. **postgresql**  
+    My relational database. Used by some of my other apps for data storage.
+
+11. **redis**  
+    A blazing-fast in-memory data store. Handy for caching or queue systems if I want to speed up services.
+
+12. **myspeed**  
+    A quick test environment to measure local network or internet speeds.
+
+13. **Samba**  
+    My Samba-based Network-Attached Storage. Central file storage that's easily accessible across devices.
+
+14. **flaresolverr**  
+    Solves Cloudflare's anti-bot challenges automatically for certain apps.
+
+15. **alpine-lab**  
+    A small Alpine Linux LXC container for experimentation and messing around with container images or new software.
+
+16. **Home Assistant OS**  
+    A Home Assistant OS VM. It's my go-to for home automation, controlling lights, temperature, and other smart devices around the house.
+
+17. **truenas**  
+    My storage solution of choice for my NAS, providing reliable data storage with ZFS, snapshots, and easy-to-use sharing capabilities.
+
+## Quick Tips for Getting Started
+
+- **Start small**: It’s tempting to spin up a million services, but begin with one or two critical services (like Pi-hole).
+- **Backups**: Make sure you have snapshots or backups of your VMs. It saves you from heartbreak if something breaks.
+- **Learn by doing**: Homelabs are all about experimentation. It’s fine to break things if you can learn from it!
+
+## Conclusion
+
+There you have it—my personal homelab lineup using Proxmox. If this interest you, don’t be afraid to dive in. Homelabs can be as simple or as complex as you want.
