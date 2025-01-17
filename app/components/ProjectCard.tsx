@@ -8,14 +8,16 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-medium text-lg">{project.name}</h2>
         <div className="flex items-center space-x-3">
-          <a
-            href={project.repository}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
-          >
-            <GitHubIcon />
-          </a>
+          {project.website && (
+            <a
+              href={project.repository}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100"
+            >
+              <GitHubIcon />
+            </a>
+          )}
           {project.website && (
             <a
               href={project.website}

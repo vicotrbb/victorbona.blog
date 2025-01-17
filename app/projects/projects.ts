@@ -1,7 +1,7 @@
 export interface Project {
   name: string;
   description: string;
-  repository: string;
+  repository?: string;
   website?: string;
   tags: string[];
   status: "completed" | "in-progress" | "maintained" | "stopped";
@@ -25,6 +25,14 @@ export const projects: Project[] = [
     website: "https://newsatlas.daedalusorg.com/",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Serper", "Postgres"],
     status: "maintained",
+  },
+  {
+    name: "Cardinal",
+    description: "A technical learning endeavour of building my own OS.",
+    repository: "https://github.com/vicotrbb/cardinal",
+    website: undefined,
+    tags: ["C", "ASM", "GRUB", "QEMU"],
+    status: "in-progress",
   },
   {
     name: "Pylexitext",
