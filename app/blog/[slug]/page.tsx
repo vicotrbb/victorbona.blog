@@ -7,6 +7,7 @@ import { PlusOneButton } from "app/components/PlusOneButton";
 import { PlusOneCount } from "app/components/PlusOneCount";
 import { ArticleWrapper } from "app/components/ArticleWrapper";
 import { CustomMDX } from "app/components/mdx";
+import { Tag } from "app/components/Tag";
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -65,13 +66,13 @@ export async function generateMetadata({ params }): Promise<Metadata> {
 }
 
 export default function Blog({ params }) {
-  let post = getBlogPosts().find((post) => post.slug === params.slug);
+  const post = getBlogPosts().find((post) => post.slug === params.slug);
 
   if (!post) {
     notFound();
   }
 
-  let readingTime = getReadingTime(post.content);
+  const readingTime = getReadingTime(post.content);
 
   return (
     <section>
@@ -88,84 +89,60 @@ export default function Blog({ params }) {
             description: post.metadata.summary,
             image: post.metadata.image
               ? `${baseUrl}${post.metadata.image}`
-              : `${baseUrl}/og?${new URLSearchParams({
-                  title: post.metadata.title,
-                  publishedAt: post.metadata.publishedAt,
-                  readingTime: readingTime.toString(),
-                  summary: post.metadata.summary,
-                }).toString()}`,
+              : `${baseUrl}/og?title=${encodeURIComponent(
+                  post.metadata.title
+                )}&date=${post.metadata.publishedAt}`,
             url: `${baseUrl}/blog/${post.slug}`,
             author: {
               "@type": "Person",
               name: "Victor Bona",
-              url: baseUrl,
-              image: `${baseUrl}/avatar.jpg`,
             },
-            twitter: {
-              card: "summary_large_image",
-              title: post.metadata.title,
-              description: post.metadata.summary,
-              creator: "@BonaVictor",
-              images: [
-                `${baseUrl}/og?${new URLSearchParams({
-                  title: post.metadata.title,
-                  publishedAt: post.metadata.publishedAt,
-                  readingTime: readingTime.toString(),
-                  summary: post.metadata.summary,
-                }).toString()}`,
-              ],
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "Victor Bona Blog",
-              logo: {
-                "@type": "ImageObject",
-                url: `${baseUrl}/logo.png`,
-              },
-            },
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": `${baseUrl}/blog/${post.slug}`,
-            },
-            keywords: ["software engineering", "web development", "technology"],
-            timeRequired: `PT${readingTime}M`,
           }),
         }}
       />
-      <h1 className="title font-semibold text-2xl tracking-tighter">
-        {post.metadata.title}
-      </h1>
-      <div className="flex justify-between items-center mt-2 mb-4 text-sm">
-        <p className="text-sm text-neutral-600 dark:text-neutral-400 flex items-center space-x-2">
-          <span>{formatDate(post.metadata.publishedAt)}</span>
-          <span className="text-neutral-600 dark:text-neutral-400">•</span>
-          <span>{readingTime} min read</span>
-          <PlusOneCount postSlug={params.slug} />
-        </p>
-        <div className="flex items-center space-x-4">
-          <PlusOneButton postSlug={params.slug} />
-          <ShareButton
-            url={`${baseUrl}/blog/${post.slug}`}
-            title={post.metadata.title}
-            slug={params.slug}
-          />
-        </div>
+
+      <div className="flex flex-col md:flex-row md:gap-16">
+        <article className="flex-1 max-w-2xl">
+          <div className="flex flex-col gap-2">
+            <h1 className="font-semibold text-2xl tracking-tighter">
+              {post.metadata.title}
+            </h1>
+            <div className="flex items-center justify-between text-sm text-neutral-600 dark:text-neutral-400">
+              <div className="flex items-center gap-3">
+                <time dateTime={post.metadata.publishedAt}>
+                  {formatDate(post.metadata.publishedAt, true)}
+                </time>
+                <span>•</span>
+                <span>{readingTime} min read</span>
+                <span>•</span>
+                <div className="flex items-center gap-1.5 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+                  <PlusOneButton postSlug={post.slug} />
+                  <PlusOneCount postSlug={post.slug} />
+                </div>
+              </div>
+              <ShareButton
+                url={`${baseUrl}/blog/${post.slug}`}
+                title={post.metadata.title}
+                slug={post.slug}
+              />
+            </div>
+          </div>
+
+          <div className="prose prose-neutral dark:prose-invert max-w-none">
+            <ArticleWrapper>
+              <CustomMDX source={post.content} />
+            </ArticleWrapper>
+          </div>
+
+          {post.metadata.tags && (
+            <div className="flex flex-wrap gap-2 mt-8">
+              {post.metadata.tags.split(",").map((tag) => (
+                <Tag key={tag} name={tag} />
+              ))}
+            </div>
+          )}
+        </article>
       </div>
-      {!!post.metadata.tags && (
-        <div className="flex flex-wrap gap-1.5 mb-8">
-          {post.metadata.tags.split(",").map((tag) => (
-            <span
-              key={tag}
-              className="text-xs px-2 py-0.5 rounded-md bg-neutral-50 dark:bg-neutral-900 text-neutral-500 dark:text-neutral-400 border border-neutral-200 dark:border-neutral-800"
-            >
-              {tag}
-            </span>
-          ))}
-        </div>
-      )}
-      <ArticleWrapper>
-        <CustomMDX source={post.content} />
-      </ArticleWrapper>
     </section>
   );
 }

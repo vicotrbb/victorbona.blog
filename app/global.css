@@ -61,7 +61,8 @@ html {
 }
 
 .prose pre {
-  @apply bg-neutral-50 dark:bg-neutral-900 rounded-lg overflow-x-auto border border-neutral-200 dark:border-neutral-900 py-2 px-3 text-sm;
+  @apply my-6 rounded-xl bg-neutral-50 dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800;
+  padding: 1.25rem !important;
 }
 
 .prose code {
@@ -84,15 +85,19 @@ html {
 }
 
 .prose p {
-  @apply my-4 text-neutral-800 dark:text-neutral-200;
+  @apply my-6 text-base leading-7 text-neutral-800 dark:text-neutral-200;
+  font-feature-settings: "kern" 1;
+  text-rendering: optimizeLegibility;
 }
 
 .prose h1 {
-  @apply text-4xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-4xl font-bold tracking-tight mt-8 mb-4;
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
 .prose h2 {
-  @apply text-xl font-medium tracking-tight mt-6 mb-2;
+  @apply text-2xl font-semibold tracking-tight mt-10 mb-4;
+  font-feature-settings: "liga" 1, "kern" 1;
 }
 
 .prose h3 {
@@ -147,4 +152,17 @@ table {
 
 .title {
   text-wrap: balance;
+}
+
+/* Add smooth transitions for dark mode */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+    transition: background-color 0.3s ease;
+  }
+}
+
+/* Add a max-width for better readability on large screens */
+.prose {
+  @apply max-w-[65ch] mx-auto;
 }
