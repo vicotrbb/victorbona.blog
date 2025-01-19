@@ -107,14 +107,14 @@ export default function Blog({ params }) {
             <h1 className="font-semibold text-2xl tracking-tighter">
               {post.metadata.title}
             </h1>
-            <div className="flex items-center justify-between text-sm text-neutral-600 dark:text-neutral-400">
-              <div className="flex items-center gap-3">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-neutral-600 dark:text-neutral-400 gap-2 sm:gap-0">
+              <div className="flex items-center flex-wrap gap-3">
                 <time dateTime={post.metadata.publishedAt}>
                   {formatDate(post.metadata.publishedAt, true)}
                 </time>
-                <span>•</span>
-                <span>{readingTime} min read</span>
-                <span>•</span>
+                <span className="hidden sm:inline">•</span>
+                <span className="hidden sm:inline">{readingTime} min read</span>
+                <span className="hidden sm:inline">•</span>
                 <div className="flex items-center gap-1.5 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
                   <PlusOneButton postSlug={post.slug} />
                   <PlusOneCount postSlug={post.slug} />
