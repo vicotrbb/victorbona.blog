@@ -8,7 +8,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <div className="flex items-center justify-between mb-4">
         <h2 className="font-medium text-lg">{project.name}</h2>
         <div className="flex items-center space-x-3">
-          {project.website && (
+          {project.repository && (
             <a
               href={project.repository}
               target="_blank"
