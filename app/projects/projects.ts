@@ -35,6 +35,15 @@ export const projects: Project[] = [
     status: "in-progress",
   },
   {
+    name: "DataTide",
+    description:
+      "DataTide is a high-performance Node.js library for processing large datasets using worker threads.",
+    repository: "https://github.com/vicotrbb/data-tide-js",
+    website: undefined,
+    tags: ["typescript", "nodejs", "multi-threading"],
+    status: "in-progress",
+  },
+  {
     name: "Pylexitext",
     description:
       "A python library that aggregates a series of NLP methods, text analysis, content converters and other usefull stuff.",
