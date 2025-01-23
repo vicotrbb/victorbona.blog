@@ -39,7 +39,7 @@ export const projects: Project[] = [
     description:
       "DataTide is a high-performance Node.js library for processing large datasets using worker threads.",
     repository: "https://github.com/vicotrbb/data-tide-js",
-    website: undefined,
+    website: "https://www.npmjs.com/package/data-tide-js",
     tags: ["typescript", "nodejs", "multi-threading"],
     status: "in-progress",
   },
