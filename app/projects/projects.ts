@@ -18,6 +18,38 @@ export const projects: Project[] = [
     status: "maintained",
   },
   {
+    name: "Code Commons",
+    description:
+      "Code commons is a OSS database, created to allow creators and developers to find the right open source project/software that fit their needs.",
+    repository: undefined,
+    website: "https://codecommons.io",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn",
+      "Supabase",
+      "Stripe",
+    ],
+    status: "in-progress",
+  },
+  {
+    name: "Reorganiza",
+    description:
+      "Reorganiza.org is a free to use tool powered by AI that helps people to reorganize their financials and debts.",
+    repository: undefined,
+    website: "https://reorganiza.org",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn",
+      "Supabase",
+      "ChatGPT",
+    ],
+    status: "in-progress",
+  },
+  {
     name: "Newsatlas.io",
     description:
       "A news aggregator that allows you to explore the latest news from every country through an interactive world map.",
