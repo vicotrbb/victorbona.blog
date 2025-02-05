@@ -1,0 +1,149 @@
+# Project Overview
+project_type: "Next.js Blog"
+project_description: "A personal blog and portfolio website built with Next.js, TypeScript, and MDX"
+
+# Core Technologies
+technologies:
+  - Next.js
+  - TypeScript
+  - Tailwind CSS
+  - MDX
+  - Vercel Analytics
+
+# File Type Rules
+file_type_rules:
+  - extension: ".tsx"
+    rules:
+      - "Use TypeScript strict mode"
+      - "Follow React functional component patterns"
+      - "Implement proper type definitions"
+      - "Use Next.js best practices for pages and components"
+  
+  - extension: ".mdx"
+    rules:
+      - "Include required frontmatter metadata"
+      - "Follow consistent heading hierarchy"
+      - "Use proper markdown syntax"
+      - "Include tags for categorization"
+
+# Component Patterns
+component_patterns:
+  - name: "Page Components"
+    location: "app/**/page.tsx"
+    rules:
+      - "Export metadata object for SEO"
+      - "Use semantic HTML elements"
+      - "Implement responsive design patterns"
+  
+  - name: "Layout Components"
+    location: "app/components/*.tsx"
+    rules:
+      - "Follow atomic design principles"
+      - "Implement proper prop typing"
+      - "Use Tailwind CSS for styling"
+
+# Style Guidelines
+style_rules:
+  tailwind:
+    - "Use custom color scheme defined in global.css"
+    - "Follow dark mode patterns with dark: prefix"
+    - "Use responsive design utilities"
+  
+  typescript:
+    - "Define explicit return types for functions"
+    - "Use interface for object types"
+    - "Implement proper error handling"
+
+# MDX Content Rules
+mdx_rules:
+  frontmatter:
+    required_fields:
+      - "title"
+      - "publishedAt"
+      - "summary"
+      - "tags"
+    date_format: "YYYY-MM-DD"
+  
+  content:
+    - "Use proper heading hierarchy (h1 -> h2 -> h3)"
+    - "Include code blocks with proper language tags"
+    - "Optimize images with next/image"
+    - "Use proper link formatting"
+
+# Project Structure
+reference_structure:
+  app:
+    - "blog/posts/: MDX blog posts"
+    - "components/: Reusable React components"
+    - "projects/: Project showcase components"
+    - "global.css: Global styles and Tailwind config"
+
+# Code Patterns
+code_patterns:
+  - pattern: "Project Card"
+    reference: 
+      file: "app/components/ProjectCard.tsx"
+      description: "Component for displaying project information"
+  
+  - pattern: "Blog Post Layout"
+    reference:
+      file: "app/blog/[slug]/page.tsx"
+      description: "Template for blog post pages"
+
+# Testing Guidelines
+testing_rules:
+  - "Implement unit tests for utility functions"
+  - "Test component rendering and interactions"
+  - "Ensure proper error handling coverage"
+
+# Performance Guidelines
+performance_rules:
+  - "Use proper image optimization"
+  - "Implement proper code splitting"
+  - "Follow Next.js performance best practices"
+  - "Optimize MDX content rendering"
+
+# SEO Guidelines
+seo_rules:
+  - "Include proper meta tags"
+  - "Implement OpenGraph metadata"
+  - "Use semantic HTML structure"
+  - "Include proper alt text for images"
+
+# Accessibility Rules
+accessibility_rules:
+  - "Use proper ARIA labels"
+  - "Implement keyboard navigation"
+  - "Ensure proper color contrast"
+  - "Use semantic HTML elements"
+
+# Documentation Requirements
+documentation_rules:
+  - "Include component documentation"
+  - "Document utility functions"
+  - "Maintain README.md"
+  - "Document environment variables"
+
+# Reference Examples
+examples:
+  project_card:
+    file: "app/components/ProjectCard.tsx"
+    description: "Reference implementation for project cards"
+  
+  blog_post:
+    file: "app/blog/posts/welcome.mdx"
+    description: "Reference implementation for blog posts"
+
+# Environment Variables
+env_variables:
+  required:
+    - "NEXT_PUBLIC_BASE_URL"
+    - "DATABASE_URL"
+    - "ANALYTICS_ID"
+
+# Deployment Guidelines
+deployment_rules:
+  - "Use Vercel for hosting"
+  - "Implement proper environment variables"
+  - "Configure proper build settings"
+  - "Set up proper analytics" 
