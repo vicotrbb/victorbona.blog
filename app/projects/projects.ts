@@ -18,45 +18,21 @@ export const projects: Project[] = [
     status: "maintained",
   },
   {
-    name: "Code Commons",
+    name: "Threadrize",
     description:
-      "Code commons is a OSS database, created to allow creators and developers to find the right open source project/software that fit their needs.",
+      "Threadrize is a web-based platform designed specifically for X users who want to save time and improve their social media presence.",
     repository: undefined,
-    website: "https://codecommons.io",
+    website: "https://threadrize.com",
     tags: [
       "Next.js",
       "TypeScript",
       "Tailwind CSS",
       "Shadcn",
       "Supabase",
-      "Stripe",
+      "OpenAI",
+      "X",
     ],
     status: "in-progress",
-  },
-  {
-    name: "Reorganiza",
-    description:
-      "Reorganiza.org is a free to use tool powered by AI that helps people to reorganize their financials and debts.",
-    repository: undefined,
-    website: "https://reorganiza.org",
-    tags: [
-      "Next.js",
-      "TypeScript",
-      "Tailwind CSS",
-      "Shadcn",
-      "Supabase",
-      "ChatGPT",
-    ],
-    status: "in-progress",
-  },
-  {
-    name: "Newsatlas.io",
-    description:
-      "A news aggregator that allows you to explore the latest news from every country through an interactive world map.",
-    repository: "https://github.com/vicotrbb/newsatlas.io",
-    website: "https://newsatlas.daedalusorg.com/",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Serper", "Postgres"],
-    status: "maintained",
   },
   {
     name: "Cardinal",
@@ -74,6 +50,31 @@ export const projects: Project[] = [
     website: "https://www.npmjs.com/package/data-tide-js",
     tags: ["typescript", "nodejs", "multi-threading"],
     status: "in-progress",
+  },
+  {
+    name: "Code Commons",
+    description:
+      "Code commons is a OSS database, created to allow creators and developers to find the right open source project/software that fit their needs.",
+    repository: undefined,
+    website: "https://codecommons.io",
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Tailwind CSS",
+      "Shadcn",
+      "Supabase",
+      "Stripe",
+    ],
+    status: "stopped",
+  },
+  {
+    name: "Newsatlas.io",
+    description:
+      "A news aggregator that allows you to explore the latest news from every country through an interactive world map.",
+    repository: "https://github.com/vicotrbb/newsatlas.io",
+    website: "https://newsatlas.daedalusorg.com/",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Serper", "Postgres"],
+    status: "stopped",
   },
   {
     name: "Pylexitext",
