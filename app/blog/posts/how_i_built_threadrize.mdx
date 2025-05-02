@@ -1,0 +1,101 @@
+---
+title: "How I Built Threadrize"
+publishedAt: "2025-02-05"
+summary: "The journey of building Threadrize, an AI-powered platform for X (Twitter) users that helps create, plan, analyze, and grow their X social media presence."
+tags: "Next.js,AI,SaaS,Startup"
+---
+
+# How I Built Threadrize
+
+Building [Threadrize](https://threadrize.com) has been quite the journey. What started as a simple tool to help me create better Twitter threads quickly evolved into a platform for content creators and X hackers.
+
+## The Problem
+
+Like many people building an audience on X, I faced a common set of challenges:
+
+1. **Content Creation**: Writing engaging threads that follow platform best practices is time-consuming
+2. **Consistency**: Maintaining a regular posting schedule while juggling other responsibilities
+3. **Strategy**: Understanding what content actually resonates with my audience
+4. **Growth**: Turning insights into actionable strategies to grow my following
+
+I found myself without much success, none of the methods I used were producing results. There had to be a better way.
+
+## The Tech Stack
+
+I decided to build Threadrize using technologies that would provide both performance and flexibility, and at the same time, confortably for myself:
+
+- **Frontend**: Next.js 14 with the App Router
+- **UI**: Tailwind CSS + Shadcn UI components
+- **Authentication/Database**: Supabase
+- **Payments**: Stripe
+- **AI**: OpenAI's ChatGPT for content generation and analysis
+- **Analytics**: Custom-built metrics system using PostgreSQL and Chart.js
+
+This stack gave me the perfect balance between developer experience, performance, and scalability.
+
+## Building the Core Features
+
+### Thread Generation & Transformation
+
+The first feature I built was the thread transformer. The goal was to take any long-form content and automatically convert it into an engaging, properly formatted X thread.
+
+The challenge wasn't just splitting text by character count – it was maintaining narrative flow, identifying natural break points, and optimizing each segment for engagement.
+
+I spent weeks fine-tuning the prompts for GPT-4o to ensure the transformed content maintained the author's voice while adding platform-native elements that perform well on X.
+
+### Content Scheduling & Calendar
+
+Next came the scheduling system. This wasn't just about posting at a specific time, it was about strategic content planning.
+
+I built a visual calendar interface that allows users to:
+
+- Schedule threads for optimal posting times
+- Visualize their content pipeline
+- Maintain posting consistency
+- Analyze performance by time and day
+
+The system uses a combination of user-specific data and platform-wide trends to suggest optimal posting times.
+
+### Profile Analysis System
+
+The profile analysis feature was perhaps the most complex to build. It pulls data from a user's X profile (with their permission) and runs it through several analysis algorithms and AIs:
+
+1. **Engagement Analysis**: Which content types perform best
+2. **Growth Patterns**: When follower growth accelerates or slows
+3. **Audience Insights**: What resonates with their specific audience
+4. **Competitive Benchmarking**: How they compare to similar accounts
+
+Building this required working closely with X's API and implementing several data processing pipelines.
+
+## Technical Challenges
+
+Building Threadrize wasn't without its challenges:
+
+### API Rate Limits
+
+Working with X's API meant dealing with strict rate limits. I had to implement caching and queuing systems to ensure we didn't overwhelm the API while still providing timely data.
+
+### Scaling AI Costs
+
+AI-powered features are incredible but can get expensive quickly. I implemented a tiered credit system and optimized our prompts to reduce token usage without sacrificing quality.
+
+## Lessons Learned
+
+If I were to build Threadrize again, here's what I'd do differently:
+
+1. **Start with a tighter MVP**: I probably built too many features before launching
+2. **User testing earlier**: Getting real user feedback earlier would have helped prioritize features better
+3. **More focus on analytics**: Users have consistently interacted more with analytics features
+
+## What's Next
+
+The future of Threadrize includes several exciting developments:
+
+- **Advanced AI personalization**: Training on user-specific content styles
+- **More features**: More and better features will be launched in the future.
+
+## Try Threadrize
+
+If you're trying to build an audience on X, you can try [Threadrize](https://threadrize.com) for free. The basic plan includes enough credits to transform and schedule several threads per month, and our paid plans offer almost unlimited access to all features.
+
+I'd love to hear your feedback and continue improving the platform to meet the needs of content creators everywhere.
