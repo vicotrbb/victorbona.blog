@@ -32,6 +32,24 @@ export const projects: Project[] = [
       "OpenAI",
       "X",
     ],
+    status: "maintained",
+  },
+  {
+    name: "Saas Starter Template",
+    description:
+      "A feature-rich, opinionated Next.js 15 (App Router) + Supabase SaaS starter template designed to accelerate the development of modern web applications.",
+    repository: "https://github.com/vicotrbb/saas-starter-template",
+    website: undefined,
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn", "Supabase"],
+    status: "maintained",
+  },
+  {
+    name: "Toolharbor",
+    description:
+      "Build More, Boilerplate Less. All-in-One Developer Tools Suite.",
+    repository: undefined,
+    website: "https://toolharbor.io",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Shadcn", "Supabase"],
     status: "in-progress",
   },
   {
