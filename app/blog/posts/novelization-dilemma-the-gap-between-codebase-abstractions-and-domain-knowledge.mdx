@@ -1,0 +1,303 @@
+---
+title: "The Novelization Dilemma: The Gap Between Codebase Abstractions and Domain Knowledge on the AI era"
+publishedAt: 2025-05-30
+summary: If the code is the novelization of the business, much can be lost in translation.
+tags: "AI,Coding,technology,software"
+---
+
+## Introduction
+
+_“If the code is the novelization of the business, much can be lost in translation.”_ Software engineers recognizes that the language of code should mirror the language of the business domain. In an ideal scenario, class names, variables, modules, and methods read like characters and scenes straight out of the business requirements. This is the essence of Domain-Driven Design (DDD), which stresses a _“ubiquitous language”_ shared by developers and domain experts. When the structure and terminology of software match the business domain, understanding flows easily between stakeholders, humans and even AI tools benefit from the clarity.
+
+In practice, however, many codebases drift away from this ideal. Business terms get buried under layers of technical abstraction, design patterns, and idiosyncratic naming. A financial application might refer to a “Customer” as `ClientRecord` in code, or a retail system might implement an “Inventory check” in a method called `verifyStockLevels`. Over time, the code develops its own dialect, far from the plain language a business person would use. The **Novelization Dilemma** refers to this gap between a codebase’s abstractions and the domain knowledge they intend to capture. Just as a novelization of a film might omit subtle details due to the change in medium, a codebase can deviate from the strict and understandable vocabulary of the problem domain. The result is a disconnection that forces anyone working with the code to “translate” ideas back and forth between _business-speak_ and _code-speak_.
+
+This disconnect becomes especially problematic with the rise of AI-powered coding assistants. Tools like GitHub Copilot, Cursor, and Windsurf are increasingly acting as _AI pair programmers_, capable of generating code or editing existing code in response to natural language prompts. Ideally, a product manager could say, “\*Every time an **order** is placed, add a **credit check\***,” and the AI assistant would modify the code to implement this feature. But in reality, if the code doesn’t literally contain understandable terms like “order” or “credit check”, the AI might struggle, hallucinating or performing unintended modifications. Today’s state-of-the-art code assistants excel at generic programming tasks, yet they _“fall short when it comes to translating specific organizational requirements into code”_. They lack awareness of an organization’s unique domain terminology and context, making it challenging to bridge the gap between high-level requests and actual code changes.
+
+The implications are profound. An AI without domain grounding is like a developer parachuted into a foreign codebase with no glossary, a lot of time is spent guessing and searching to properly understand the abstractions in place. Even a few lines of code can hide hours of discussions and a big amount of domain knowledge. Those implicit stories are invisible to the AI, which leads to suggestions that might be naive. Developers then must refactor or correct AI-generated changes to fit the business reality. In essence, the AI is _blindfolded_ with respect to domain context, something that is backed by reports that many AI systems fail not due to poor algorithms, but because they _lack essential domain expertise_.
+
+Experienced practitioners share that both AI and humans benefit from constant reminders of context, going so far as to create files like `developer_context.md` and manually injecting each session with that information. This ad-hoc solution highlights a key insight: **context is everything**. Machines cannot yet switch contexts or infer the correct one from a single vague cue the way a human can. If we want AI tools to understand which “order” or what kind of “credit” we mean, we must give them the contextual boundaries explicitly. In Eric Evans’ DDD terminology, we must define the **bounded context** for our terms, _“explicitly set boundaries in terms of team organization, usage within specific parts of the application, and physical manifestations such as code bases”_. By doing so, we avoid ambiguity and confusion when the same word has different meanings in different subsystems.
+
+## The Novelization Dilemma
+
+The **Novelization Dilemma** is an analogy for what happens when domain knowledge is translated into code and back again. In literature, a _novelization_ might adapt a film into a book, often losing some cinematic details or adding interpretative details. In software, the source material is the rich language of the domain, the business’s concepts, rules, and intentions. The code is the novelized version: it captures the plot (the functionality) but often changes the phrasing and presentation. The “gap” refers to all the nuances and context that get lost or hidden in this translation.
+
+**Definition:** _Novelization Dilemma_ – _the disconnect that arises when a codebase’s abstractions (classes, modules, functions, variables, file names, tests) no longer directly reflect the domain concepts they implement, making it difficult for stakeholders (and AI tools) to map high-level intents to concrete code changes._
+
+In such a scenario, the code works, it’s functionally correct, but it speaks a different language than the domain experts. For example, consider a healthcare system domain where the concept is “Patient Visit”. In the code, due to legacy reasons, this might be split into an `EncounterRecord` class and a `BillingEvent` object. A domain expert or product owner might say, “Each patient visit should generate a follow-up task.” An AI agent taking this instruction at face value might scan the repository for a `Patient` or `Visit` class and find nothing obvious. The relevant logic might reside in an `EncounterRecordService` that the AI overlooks. This is the dilemma: the intent (“patient visit”) is novelized in code in such a way that even a smart agent can miss the connection.
+
+One reason this gap emerges is the evolution of codebases and the distributive nature of engineers collaboration work. Projects often start with domain-aligned naming (especially if following DDD principles). But as they scale, teams introduce technical patterns, optimizations, or mergers of subsystems that distort naming and conceptuality. Perhaps “Order” became “Transaction” to generalize across invoices and purchases, or “User” became “Actor” in a security refactor. New developers, shifting requirements, and technical constraints can each add a layer of abstraction away from the pure domain language. Over years, a codebase can accumulate a complete new dictionary of terms that require insider knowledge to decode.
+
+The impact of this gap on human communication has been documented in software engineering literature. Domain-Driven Design was conceived in part to combat this drift by continuously aligning the software model with the business vocabulary. DDD’s **Ubiquitous Language** concept means the team agrees on terms and uses them consistently in code and conversation. When this practice fails, misunderstandings arise. A single word like “Policy” could mean a pricing policy in one context, a security policy in another, and an insurance policy in yet another or even a government wide public policy in others. Without explicit context, even human team members can get confused, let alone an AI. _“Context is everything,”_ as Boldt quips; we must _“set a boundary on the terms and concepts (the Ubiquitous Language) we are modeling to avoid ambiguity”_. The bounded context principle in DDD encourages splitting the system by domains (sales, billing, inventory, etc.), each with its own lexicon. Within each context, a term has one meaning, and code within that boundary binds to that meaning strictly.
+
+Despite such guidelines, the **Novelization Dilemma** persists in real-world systems and scenarios. It’s often a byproduct of practical trade-offs. For instance, using generic frameworks or libraries can impose terminology, a framework might dictate using terms like “Controller” or “Entity” which, while not domain terms, become part of the codebase vocabulary. Teams also consciously abstract concepts to maximize code reuse, which can dilute the domain specificity (e.g., a generic `MessageProcessor` class might handle emails, SMS, and internal notifications, even if the domain language distinguishes them clearly). Over time, the code tells the _story of the domain_ in its own format. The “novel” (codebase) and the “original story” (domain knowledge) diverge.
+
+An unfortunate side effect is that outsiders or newcomers must _reconstruct the history_. They read the code and infer the domain, much like interpreting a novel without having seen the original story. As one developer insightfully noted, a few terse lines of code can encapsulate enormous backstories: _“Three lines of code can encapsulate hours of whiteboard discussions and a tremendous amount of domain knowledge”_. Those discussions, the motivations behind why the code is written a certain way, are usually not visible on the surface. The code becomes an exercise in reading between the lines.
+
+## Implications for AI-Based Code Editing
+
+AI-based code editing tools, whether integrated development environment (IDE) extensions like Cursor and Windsurf, or cloud-based services like GitHub Copilot or v0, rely on a combination of the code context they can see and the natural language instruction given by the user. These tools use large language models (LLMs) trained on vast amounts of code. They find it's way at common patterns and can even infer the intent behind code changes in simple scenarios. However, when an instruction involves domain-specific language that doesn’t literally appear in the code, the AI is operating with a blind spot, which often happens when describing an user history for example.
+
+Consider the earlier example: “Add a credit check when an order is placed.” If the repository’s code uses none of those words explicitly (maybe `performRiskAssessment()` instead of “credit check”, and `SubmitPurchaseTxn` instead of “place order”), a vanilla AI code assistant might either:
+
+1. **Search for Literal Terms:** The AI might try to find occurrences of “order” or “credit” in the code. Failing to find meaningful matches, it could resort to a guess, perhaps adding a new function called `creditCheck()` somewhere arbitrary, which might not integrate with the actual workflow at all. This kind of misaligned insertion is not uncommon when LLMs operate on partial understanding and can lead to _hallucinated_ code that doesn’t fit the codebase.
+2. **Provide a Generic Answer:** The AI might give a high-level suggestion that doesn’t actually solve the problem. For example, it might respond with pseudo-code or an explanation: “To add a credit check, you should verify the customer’s credit score before finalizing the order.” While logically correct, such an answer is too abstract to be a concrete code change in the specific system at hand.
+
+These failure modes happens because, as the StackSpot AI team observed, _“tools like Copilot offer valuable insights into general programming concepts, but they fall short when it comes to translating specific organizational requirements into code”_. The LLM lacks _“awareness of an organization’s unique domain”_. High-level project specifications, essentially the intent behind that natural language prompt, don’t cleanly map to the code without additional context. Often, _developers using these tools find themselves needing to extensively refactor the generated code to align it with project requirements and coding standards_. In other words, the AI can produce something, but integrating that output into a real codebase becomes another task in itself.
+
+Another implication is the heavy burden of prompt engineering that falls on the user. Knowing the AI might not catch the right context, users have to craft elaborate prompts, including as much detail as possible: e.g. _“Open the `PurchaseService` class and in the method handling transactions (likely something like `SubmitPurchaseTxn`), insert a call to a credit verification function (which might be in `RiskAssessmentService` or similar).”_ Essentially, the user ends up doing the context mapping that the AI misses, which reduces the benefit of using the AI in the first place. Recent research notes that _“substantial reliance on prompt engineering”_ and how sensitive the outputs are to slight prompt changes. Developers can spend a lot of time iterating on the prompt to guide the AI toward the correct understanding, which is time not spent actually improving the code.
+
+When domain context _is_ provided, the effectiveness of AI assistance improves dramatically. A striking parallel can be drawn with human onboarding: new developers perform best when given good documentation and project orientation. Similarly, AI models can be guided. A developer on a forum compared working with AI to working with a junior developer, emphasizing that _“documentation of the architecture and code guidelines is incredibly important if you want predictable outputs”_. They describe creating a `developer_context.md` file with all the necessary background and even using features like Cursor’s `.cursorrules` to feed this to the AI at the start of each session. This aligns with the general observation that _AI assistants benefit tremendously from comments and documentation that explain domain-specific concepts not obvious from code itself_. When such context is available, the AI is not guessing in the dark; it has a map.
+
+The need for constant reminders (for both AI and human team members) reveals that domain knowledge in code is a dynamic, often external, asset. If it’s not baked into the code, it must live in documents, wikis, or the minds of senior developers. AI agents don’t have minds or intuition – they only have data. Therefore, the logical solution is to give them data that represents that missing knowledge. Some advanced AI coding assistant frameworks already hint at this approach. For example, open-source assistant platforms like _Continue.dev_ allow developers to index external documentation or link knowledge sources into the assistant’s context. In a described setup, the user indexed the official Go language docs so the AI could reference them when writing Go code. The concept extends to any knowledge: why not index _our project’s domain knowledge_ in a similar way?
+
+This is precisely the gap we aim to fill with the Domain Manifest solution.
+
+## Proposed Solution: Domain Manifest via In-Code Metadata
+
+To resolve the **Novelization Dilemma**, we propose an approach that treats domain knowledge as part of the codebase’s metadata. The core idea is to capture the _bounded contexts_ and _domain concepts_ (keys) of the application in a structured form that an AI can directly consume. We call this artifact the **Domain Manifest**, a YAML file that serves as an index of the domain. Crucially, the manifest is generated automatically from annotations or tags embedded in the code, ensuring it stays up-to-date as the code evolves.
+
+The strategy is both **language-agnostic** and **framework-agnostic** in principle. Whether you’re using Java with Spring, Python with Django, or JavaScript/TypeScript, the approach can be applied because all these languages support comments or annotation mechanisms. The only requirement is deciding on a consistent tag format and writing a small parser to extract them into the manifest. Our examples will use TypeScript with the NestJS framework to illustrate how it might work in practice.
+
+### Design Goals and Considerations
+
+1. **Accuracy and Specificity:** The manifest should list domain concepts in the terms that domain experts use (their _canonical names_). For each, it should identify where in the code that concept is implemented or handled. This mapping might include file paths, class names, function names, or even database schema references, whatever anchors the concept in code.
+2. **Maintainability:** Writing and updating the manifest by hand would be a tedious task prone to becoming outdated. Instead, developers insert metadata directly in the relevant code sections. These are ideally close to the implementation of the concept, so it’s natural to update if the code changes or if the concept’s role changes. The manifest is then generated from these sources, perhaps as part of the build process or a CI documentation job.
+3. **Minimal Intrusiveness:** The tags should not clutter the code or affect runtime. In languages like TypeScript or Python, we can use comments (JSDoc-style or special block comments). Some languages might allow attributes or decorators purely used at compile-time for reflection (e.g., Java’s annotations or C# attributes). The idea is to rely on existing comment/documentation structures.
+4. **Structured Format:** YAML is a convenient choice for the manifest because it’s human-readable and easy for tools to parse. A snippet of YAML could represent a context or a concept with nested fields, which is much easier for an AI to interpret than free-form prose.
+5. **Completeness:** The manifest should cover all major bounded contexts and key domain terms in the system. It doesn’t have to map every single class (that would be overkill), but if a concept is important enough that a user might mention it in a prompt, it should probably appear in the manifest.
+
+### Metadata Annotations in Code
+
+We introduce two primary metadata tags for code comments:
+
+- `@domainContext <ContextName>` – marks a section of code as belonging to a specific bounded context.
+- `@domainKey <DomainTerm>` – identifies a specific domain concept/key that the code element represents or deals with. Optionally, this can include a brief description or synonyms if the code uses a different term.
+
+For example, using a TypeScript class in a NestJS project:
+
+```ts
+/**
+ * @domainContext Sales
+ * @domainKey OrderPlacement
+ * @domainDesc Handles creation of a purchase order and related processes.
+ */
+@Injectable()
+export class OrderService {
+  constructor(
+    private inventoryService: InventoryService,
+    private billingService: BillingService
+  ) {}
+
+  /**
+   * @domainKey InventoryCheck
+   * Checks if items are in stock before finalizing the order.
+   */
+  private verifyInventory(itemList: Item[]): boolean {
+    return this.inventoryService.checkStockLevels(itemList);
+  }
+
+  /**
+   * @domainKey PaymentAuthorization
+   * Ensures payment is authorized before order completion.
+   */
+  private processPayment(order: Order): void {
+    this.billingService.authorizePayment(order.id, order.total);
+  }
+
+  // ... other methods ...
+}
+```
+
+In this snippet:
+
+- The `OrderService` class is annotated with `@domainContext Sales` and `@domainKey OrderPlacement`. This indicates that this class is part of the “Sales” bounded context, and it primarily deals with the domain concept of placing an order (which is a canonical concept we might also call “Purchase Order Creation” in business terms).
+- Within the class, two methods are tagged with `@domainKey` as well. `verifyInventory` is linked to the domain concept “InventoryCheck” (within the Sales context, this is part of fulfilling an order but it touches the Inventory concept). `processPayment` is linked to “PaymentAuthorization”. We might consider those secondary domain keys or cross-context interactions (Sales context touching Billing context).
+
+We could similarly tag an `InventoryService` in the Inventory bounded context:
+
+```ts
+/**
+ * @domainContext Inventory
+ * @domainKey StockMaintenance
+ * @domainDesc Manages stock levels and availability checks.
+ */
+export class InventoryService {
+  /**
+   * Checks stock levels for a list of items.
+   * @domainKey InventoryCheck (Inventory context)
+   */
+  checkStockLevels(items: Item[]): boolean {
+    // ... implementation ...
+  }
+}
+```
+
+Here, `InventoryService` is in the “Inventory” context, and we tag its method with `InventoryCheck` as well. Note that _InventoryCheck_ appears in both Sales and Inventory contexts, which is fine, as it could be a point of integration between contexts. The manifest will capture that and note the context for each occurrence.
+
+### Generating the manifest
+
+A simple parsing tool can scan the code for these annotations. For instance, a script could use regex or a TS parser library to find all `@domainContext` and `@domainKey` occurrences and collate information. The output would be structured like:
+
+```yaml
+contexts:
+  - name: Sales
+    keys:
+      - name: OrderPlacement
+        description: Handles creation of a purchase order and related processes.
+        code_references:
+          - file: src/sales/order.service.ts
+            symbol: OrderService
+      - name: InventoryCheck
+        description: Checks if items are in stock before finalizing the order.
+        code_references:
+          - file: src/sales/order.service.ts
+            symbol: OrderService.verifyInventory()
+  - name: Inventory
+    keys:
+      - name: StockMaintenance
+        description: Manages stock levels and availability checks.
+        code_references:
+          - file: src/inventory/inventory.service.ts
+            symbol: InventoryService
+      - name: InventoryCheck
+        description: Checks stock levels for a list of items.
+        code_references:
+          - file: src/inventory/inventory.service.ts
+            symbol: InventoryService.checkStockLevels()
+  - name: Billing
+    keys:
+      - name: PaymentAuthorization
+        description: Ensures payment is authorized before order completion.
+        code_references:
+          - file: src/sales/order.service.ts
+            symbol: OrderService.processPayment()
+          - file: src/billing/payment.service.ts
+            symbol: PaymentService.authorizePayment()
+```
+
+Let’s understand this YAML:
+
+- Under `contexts`, we list each bounded context by name. Here we have **Sales**, **Inventory**, and **Billing**.
+- Each context lists domain keys relevant to that context.
+- For each **domain key**, we provide:
+  - `name`: the canonical name of the domain concept.
+  - `description`: (optional) a human-friendly description from the `@domainDesc` or from a default if not provided.
+  - `code_references`: one or more places in code that implement or use this concept. This typically includes at least a file path and optionally a specific class or function name.
+
+In the manifest above:
+
+- “OrderPlacement” is a concept in Sales context, implemented by `OrderService` (in `order.service.ts`).
+- “InventoryCheck” appears in both Sales and Inventory contexts. The manifest doesn’t try to resolve that conflict; rather, it documents that in Sales, `OrderService.verifyInventory()` relates to it, and in Inventory, `InventoryService.checkStockLevels()` relates to it. An AI reading this might infer that these two are connected (perhaps the former calls the latter). In future iterations, we could make that linkage explicit, but even this level of detail is useful.
+- “PaymentAuthorization” is listed under Billing (since authorizing payment is primarily a billing concern). It shows that `OrderService.processPayment()` and `PaymentService.authorizePayment()` both involve that concept. This effectively ties the Sales context to the Billing context via the Payment concept.
+
+It’s worth noting that **one code element can reference multiple domain keys**, and **one domain key can have multiple code references**. The manifest is not necessarily a one-to-one mapping, it’s an index that captures relationships.
+
+### Tooling and Integration
+
+How would this fit into a development workflow? There are a few variations:
+
+- **Manual Generation:** As a starting point, a developer runs a CLI tool (like `generate-domain-manifest`) which scans the code and produces/updates `DOMAIN_MANIFEST.yml`. This could be run whenever major domain changes are made.
+- **CI Integration:** A CI pipeline can have a job that scans for the tags and ensures the manifest is updated (and possibly fails the build if an annotation is inconsistent or the manifest wasn’t regenerated). The manifest could then be published to an internal developer portal or simply committed in the repo for reference.
+- **IDE Integration:** One could imagine an IDE plugin that highlights these annotations or even auto-suggests adding them when creating new classes or modules (perhaps based on file names or content).
+- **Runtime Use by AI:** The most important integration is with the AI assistant itself. This manifest should be provided to the AI in some form when it’s performing tasks. We will discuss this in detail in the next section, but essentially the manifest can be loaded as a knowledge base. For example, an AI agent could have a retrieval step where it looks up relevant domain info from the manifest given a user’s prompt.
+
+Because the manifest is language-neutral (just a YAML file), it doesn’t matter whether the AI agent is the one embedded in Cursor, or a standalone script using the OpenAI API, or part of a custom VS Code extension. As long as it knows where to find `DOMAIN_MANIFEST.yml` (maybe at the root of the project) and how to parse it, it can use the content.
+
+### Example: NestJS Bounded Contexts
+
+NestJS is a TypeScript framework that encourages a modular architecture. It isn’t explicitly a DDD framework, but teams often structure NestJS apps in domain-oriented modules (e.g., a module for “Sales” containing controllers, services, entities related to sales). This aligns well with bounded contexts. In our example:
+
+- We might have a `SalesModule`, an `InventoryModule`, and a `BillingModule`. Each encapsulates services and possibly database entities for that domain.
+- By annotating the main components of each module with `@domainContext <Name>`, we effectively mark those module boundaries in the code.
+- Domain keys then mark the specifics within each module.
+
+For instance, the `BillingModule` might have a `PaymentService` class:
+
+```ts
+/**
+ * @domainContext Billing
+ * @domainKey PaymentAuthorization
+ * @domainDesc Handles payment approvals and charging transactions.
+ */
+@Injectable()
+export class PaymentService {
+  authorizePayment(orderId: string, amount: number): boolean {
+    // ... implementation ...
+  }
+}
+```
+
+This complements the earlier `OrderService.processPayment()` example. Now the manifest generator will pick up that `PaymentService` covers `PaymentAuthorization` in the Billing context, and add that to the YAML (as shown in the manifest snippet).
+
+From these examples, we see how a combination of top-level context tags and fine-grained key tags provides a rich map of the domain. The context tag gives broad alignment (like “this belongs to Inventory domain”), and the key tags give details specifics (“this method deals with InventoryCheck”).
+
+### Balancing Granularity
+
+Someone might ask, how detailed should these annotations be? Do we tag every function? Likely not. We should focus on concept bearing parts of code. In an object-oriented domain model, that often means:
+
+- Key domain **classes** or modules (e.g., Order, Customer, Invoice, Inventory, Payment).
+- Core **methods** that correspond to use cases or lifecycle events (e.g., `placeOrder`, `cancelOrder`, `calculateLateFee`).
+- **Integration points** where one context touches another (e.g., one service calling another in a different module, like Sales calling Inventory – tagging both sides as “InventoryCheck” in our example).
+
+The goal isn’t to describe every line of code, but to have a sufficient scaffold of knowledge such that if someone says a domain term, the manifest likely contains it and points to the relevant part of the code. It acts like an index in a book: you don’t list every word, just the important topics and where to find them. It's important to remember that the AI can still understand the track the code structure by itself, we are just giving it meaningful hints to avoid errors.
+
+## Agent Behavior with Domain Knowledge Integration
+
+How does our AI assistant’s behavior change once it has access to the Domain Manifest? In essence, we are turning the AI into a more context aware agent that can reason about the codebase more like a domain expert developer. We describe this transformation using a conceptual _architectural diagram_.
+
+**Without Domain Manifest (Baseline):** The AI agent operates in a loop where it:
+
+1. Reads the user’s prompt (e.g., “Add a credit check to order placement”).
+2. Reads relevant portions of the code (depending on how the assistant is set up, it might have the entire project indexed or may open a couple of files heuristically).
+3. Attempts to identify where to make the change purely from code structure and learned patterns.
+4. Proposes a change.
+
+In this baseline scenario, the agent might scan for an `OrderController` or `OrderService` class by name (it might find `OrderService` luckily, as in our example). But the instruction “credit check” is alien to the code. The agent might then either search through files for keywords like “credit” or “payment” or try to recall common e-commerce logic. Without a clear mapping, it could by mistake:
+
+- Insert a call to a non-existent function `checkCredit()` in `OrderService`, essentially guessing.
+- Or it might open `PaymentService` and insert some kind of credit verification there, disconnected from order placement flow.
+- Or worst, it might do nothing meaningful, returning a generic answer or making a minimal change (like adding a comment that says “// TODO: credit check”).
+
+**With Domain Manifest:** Now imagine the AI’s loop is augmented with a retrieval step:
+
+1. The agent reads the user’s prompt and recognizes domain terms (“credit check”, “order placement”).
+2. **Manifest Lookup:** The agent queries `DOMAIN_MANIFEST.yml` for those terms. This can be done via a simply loading the entire context into the prompt or a more sophisticated semantic match if needed. In our manifest, it finds:
+
+   - “OrderPlacement” in Sales context (which likely correlates with the idea of order placement).
+   - “PaymentAuthorization” in Billing context, which, while not exactly “credit check”, is related to payment approval. It also sees “InventoryCheck” under Sales, but “credit check” is closer to payment/creditworthiness, which might map to PaymentAuthorization.
+   - If our manifest had an entry for “CreditCheck” explicitly (maybe if we had named it so), it would find that. But let’s say it doesn’t, and the agent infers that verifying credit is part of authorizing payment.
+
+3. The manifest provides concrete code references. From “OrderPlacement”, it knows to look at `OrderService` in the Sales context. From “PaymentAuthorization”, it is pointed to `PaymentService.authorizePayment` in Billing.
+4. The agent can now open those files (OrderService, PaymentService) and see how they currently function.
+5. It then devises a plan: Perhaps the manifest shows that OrderService has a method dealing with payment and inventory. The AI might decide to integrate a credit check step there. It also might realize, via the PaymentService reference, that there is already a mechanism for payment authorization. If a credit check is a new concept not implemented, it might plan to add a new method in PaymentService or a new service entirely, but now it will do so within the correct context module (Billing) rather than sprinkling it randomly.
+
+Effectively, the manifest acts like a knowledgeable colleague whispering in the AI’s “ear”: _“FYI, ‘order placement’ is handled in OrderService, and anything to do with credit or payment is in PaymentService under Billing. Also, the concept of checking things about an order’s validity might be analogous to how we do PaymentAuthorization or InventoryCheck.”_ Armed with that, the AI’s code modification is far more grounded:
+
+- It may add a call in `OrderService.processPayment()` to a new function like `PaymentService.checkCreditWorthiness(customerId)` (since it knows PaymentService is the place to put credit-related logic).
+- It can create that `checkCreditWorthiness` method in `PaymentService` appropriately, perhaps even noting via a comment that it’s part of PaymentAuthorization domain concept.
+- It ensures naming consistency: if the manifest shows the canonical term “PaymentAuthorization”, the AI might decide to name things in code consistently (maybe it will name the new method `authorizeCredit` or similar, aligning with existing patterns).
+
+From a **cognitive perspective**, we’ve transformed the problem for the AI. Initially, it was a pure text completion task with incomplete information. After adding the manifest, it becomes a _retrieval-augmented task_. This is akin to the Retrieval-Augmented Generation (RAG) paradigm that has been successful in question answering systems. In RAG, the model first fetches relevant knowledge and then generates an answer using that knowledge, which _“ensures the generated content is based on reliable information”_. In our case, the manifest is part of the knowledge base. The AI’s changes is now tied in actual project specific details, not just general coding knowledge.
+
+An additional benefit is **transparency and justification**. Since the manifest is accessible, the AI can explain its changes in domain terms if prompted. For example, after making the change, the user might ask “Why did you put the credit check in the Billing module?” The AI could answer: “According to the domain manifest, credit checks pertain to PaymentAuthorization in the Billing context, so the logic was placed in the PaymentService which handles billing concerns.” This kind of rationale can increases trust, the AI is not a mysterious black box, but one that can point to a shared knowledge source (the manifest) for its decisions, very much like a human developer citing the architecture documentation. In systems like StackSpot’s AI assistant, the selected knowledge source for each answer is even shown to the user for verification. We could envision a similar UI feature here: when the AI suggests code, it could list which domain context or manifest entries it relied on, giving the developer confidence that it aligned with the intended design.
+
+Let’s conduct a brief **thought experiment** comparing outcomes:
+
+- _Scenario:_ The product owner asks for a new feature: “Whenever a **VIP customer** places an order, apply a **loyalty discount**.”
+- _Without Manifest:_ The term “VIP customer” might not appear in code at all (maybe VIP status is just a flag or a type of `CustomerTier`), and “loyalty discount” might be conceptually related to pricing rules scattered across an `OrderCalculator` or similar. The AI might struggle. It could add an `if` check in `OrderService` for a `isVip` field (if it finds something like that), and then apply some discount inline. But it might miss that there’s a PricingService that encapsulates discounts. Or it might not realize that “loyalty discount” correlates with an existing concept called, say, `Promotion` in the domain.
+- _With Manifest:_ The manifest could have entries like **CustomerTier** (with VIP as a key value) under a context, and **DiscountPolicy** under a Pricing context. Seeing these, the AI knows: VIP is part of Customer context, and discounts are handled in Pricing context by, say, `PricingService.applyDiscount()`. So the AI would likely:
+  - Adjust `OrderService` (Sales context) to call `PricingService.applyDiscount(order, customer)` during order finalization.
+  - Ensure that `applyDiscount` looks at the customer’s tier (VIP) and applies the correct percentage.
+  - It might even update the manifest if we allow AI to round-trip improvements – e.g., add a note that loyalty discounts are part of the sales flow, but that’s a future idea.
+
+The difference is clear: with the manifest, the AI behaves more like a developer who has read the project documentation before coding. Without it, the AI is like an intern jumping in with no context, it might write code that works in isolated sense but ignores established design, or duplicates functionality, or places logic in wrong locations.
+
+## Conclusion
+
+The **Novelization Dilemma** showcases a possibly raising friction in modern software development powered by AI: the translation of rich domain knowledge into abstract code can leave AI tools, and even fellow humans, having a hard time when trying to interpret or modify that code later. As AI assistants become more ingrained in our development process, the cost of this gap is no longer theoretical; it’s felt in misaligned feature implementations, time wasted on prompt engineering, and a general hesitance to trust AI with anything but trivial suggestions.
+
+Our proposed solution, the Domain Manifest, is an attempt to write that guide and keep it in sync with the story. By infusing code with lightweight annotations that generate a living knowledge base, we give AI assistants the missing glossary and index they need to truly understand our code’s narrative. This approach doesn’t rely on breakthroughs in machine learning or giant models; it uses simple engineering and documentation principles to achieve outsized gains. It leverages the concept of retrieval augmentation, proven in other AI domains, to bring specific domain knowledge to empower coding tasks. Doing so, it aligns with long-established software design wisdom (like DDD’s ubiquitous language) and makes it actionable in the AI era.
+
+Looking forward, we imagine a future where domain manifests or similar constructs become a standard part of software projects. Perhaps IDEs will auto-generate them, or frameworks will encourage their use. In that future, the Novelization Dilemma might cease to be a dilemma at all, because the gap between code and domain will be continuously monitored and reconciled by feedback loop of human insight and AI reinforcement.
+
+In conclusion, closing codebase abstractions and domain knowledge through a structured, maintainable strategy, we not only help AI help us better, but we also improve the fundamental communicability of our software. The story our code tells will no longer be a convoluted novel that only old dogs can understand, but a clear narrative that even our automated collaborators can follow. With domain manifests guiding AI, we turn the page on the Novelization Dilemma and move toward a chapter of software engineering where human and artificial minds share a common understanding of the plot.
