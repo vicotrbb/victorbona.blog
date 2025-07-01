@@ -18,6 +18,15 @@ export const projects: Project[] = [
     status: "maintained",
   },
   {
+    name: "Agent-buddy",
+    description:
+      "A simple CLI-based AI agent for zsh that uses the ReAct methodology to help users with tasks in their current directory. Built with TypeScript and OpenAI's function calling capabilities.",
+    repository: "https://github.com/vicotrbb/agent-buddy",
+    website: undefined,
+    tags: ["zsh", "ChatGPT", "OpenAI", "terminal", "ReAct"],
+    status: "maintained",
+  },
+  {
     name: "Threadrize",
     description:
       "Threadrize is a web-based platform designed specifically for X users who want to save time and improve their social media presence.",
