@@ -15,6 +15,9 @@ export const metadata: Metadata = {
     default: "Victor Bona Blog",
     template: "%s | Victor Bona Blog",
   },
+  icons: {
+    icon: "/logo.ico",
+  },
   description:
     "A blog about software engineering, software development, software architecture, tech, software, and more.",
   keywords: [

@@ -25,7 +25,7 @@ function GifCarousel({ gifs }: { gifs: string[] }) {
           src={gifs[currentIndex]}
           alt="Project demo"
           fill
-          className="object-cover"
+          className="object-contain"
           unoptimized // For GIFs
         />
       </div>
