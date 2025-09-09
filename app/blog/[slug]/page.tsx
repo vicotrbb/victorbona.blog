@@ -133,33 +133,35 @@ export default function Blog({ params }) {
         }}
       />
 
-      <div className="flex flex-col md:flex-row md:gap-16">
+      <div className="flex flex-col lg:flex-row lg:gap-16 max-w-6xl mx-auto">
         <article
-          className="flex-1 max-w-2xl"
+          className="flex-1 max-w-4xl mx-auto lg:mx-0"
           itemScope
           itemType="https://schema.org/BlogPosting"
         >
           <ReadingProgress />
 
-          <div className="flex flex-col gap-2">
+          <header className="mb-12">
             <h1
-              className="font-semibold text-2xl tracking-tighter"
+              className="font-bold text-3xl md:text-4xl lg:text-5xl tracking-tight mb-6 text-neutral-900 dark:text-neutral-100 leading-tight"
               itemProp="headline"
             >
               {post.metadata.title}
             </h1>
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-neutral-600 dark:text-neutral-400 gap-2 sm:gap-0">
-              <div className="flex items-center flex-wrap gap-3">
+            
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-neutral-600 dark:text-neutral-400 gap-4 sm:gap-0 mb-8">
+              <div className="flex items-center flex-wrap gap-4">
                 <time
                   dateTime={post.metadata.publishedAt}
                   itemProp="datePublished"
+                  className="font-medium"
                 >
                   {formatDate(post.metadata.publishedAt, true)}
                 </time>
                 <span className="hidden sm:inline">•</span>
-                <span className="hidden sm:inline">{readingTime} min read</span>
+                <span className="hidden sm:inline font-medium">{readingTime} min read</span>
                 <span className="hidden sm:inline">•</span>
-                <div className="flex items-center gap-1.5 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
+                <div className="flex items-center gap-2 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
                   <PlusOneButton postSlug={post.slug} />
                   <PlusOneCount postSlug={post.slug} />
                 </div>
@@ -170,10 +172,18 @@ export default function Blog({ params }) {
                 slug={post.slug}
               />
             </div>
-          </div>
+
+            {post.metadata.summary && (
+              <div className="border-l-4 border-neutral-300 dark:border-neutral-700 pl-6 mb-8">
+                <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed italic">
+                  {post.metadata.summary}
+                </p>
+              </div>
+            )}
+          </header>
 
           <div
-            className="prose prose-neutral dark:prose-invert max-w-none"
+            className="prose prose-neutral dark:prose-invert prose-lg max-w-none"
             itemProp="articleBody"
           >
             <ArticleWrapper>
@@ -182,14 +192,19 @@ export default function Blog({ params }) {
           </div>
 
           {post.metadata.tags && (
-            <div className="flex flex-wrap gap-2 mt-8">
-              {tags.map((tag) => (
-                <Tag key={tag} name={tag} />
-              ))}
-            </div>
+            <footer className="border-t border-neutral-200 dark:border-neutral-800 pt-8 mt-12">
+              <h3 className="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-4">
+                Tagged with:
+              </h3>
+              <div className="flex flex-wrap gap-2 mb-8">
+                {tags.map((tag) => (
+                  <Tag key={tag} name={tag} />
+                ))}
+              </div>
+              
+              <RelatedPosts currentSlug={post.slug} tags={tags} />
+            </footer>
           )}
-
-          <RelatedPosts currentSlug={post.slug} tags={tags} />
         </article>
       </div>
     </section>
