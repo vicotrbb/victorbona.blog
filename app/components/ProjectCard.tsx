@@ -29,7 +29,7 @@ function GifCarousel({ gifs }: { gifs: string[] }) {
           unoptimized // For GIFs
         />
       </div>
-      
+
       {gifs.length > 1 && (
         <>
           <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
@@ -45,14 +45,18 @@ function GifCarousel({ gifs }: { gifs: string[] }) {
               />
             ))}
           </div>
-          
+
           <button
-            onClick={() => setCurrentIndex(currentIndex === 0 ? gifs.length - 1 : currentIndex - 1)}
+            onClick={() =>
+              setCurrentIndex(
+                currentIndex === 0 ? gifs.length - 1 : currentIndex - 1
+              )
+            }
             className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1 rounded-full transition-colors"
           >
             ←
           </button>
-          
+
           <button
             onClick={() => setCurrentIndex((currentIndex + 1) % gifs.length)}
             className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/50 hover:bg-black/70 text-white p-1 rounded-full transition-colors"
@@ -69,25 +73,21 @@ export function ProjectCard({ project }: { project: Project }) {
   const [showDetails, setShowDetails] = useState(false);
 
   return (
-    <div className="flex flex-col h-full border border-neutral-200 dark:border-neutral-800 rounded-lg hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors p-4"
-    >
-
+    <div className="flex flex-col h-full border border-neutral-200 dark:border-neutral-800 rounded-lg hover:border-neutral-400 dark:hover:border-neutral-600 transition-colors p-4">
       {project.gifs && project.gifs.length > 0 && (
         <GifCarousel gifs={project.gifs} />
       )}
 
       <div className="flex items-start justify-between mb-4">
         <div className="flex-1">
-          <h2 className={`font-medium ${project.featured ? 'text-xl' : 'text-lg'} mb-1`}>
-            {project.name}
-          </h2>
+          <h2 className={`font-medium text-lg mb-1`}>{project.name}</h2>
           {project.startDate && (
             <p className="text-xs text-neutral-500 dark:text-neutral-400">
               Started {formatDate(project.startDate)}
             </p>
           )}
         </div>
-        
+
         <div className="flex items-center space-x-3">
           {project.repository && (
             <a
@@ -124,41 +124,59 @@ export function ProjectCard({ project }: { project: Project }) {
             onClick={() => setShowDetails(!showDetails)}
             className="text-sm text-neutral-700 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors font-medium"
           >
-            {showDetails ? 'Hide details' : 'Show details'} →
+            {showDetails ? "Hide details" : "Show details"} →
           </button>
-          
+
           {showDetails && (
             <div className="mt-3 p-4 bg-neutral-50 dark:bg-neutral-900 rounded-lg border border-neutral-200 dark:border-neutral-800">
               <p className="text-sm text-neutral-700 dark:text-neutral-300 leading-relaxed mb-4">
                 {project.longDescription}
               </p>
-              
+
               {project.tech && (
                 <div className="space-y-2">
-                  <h4 className="text-sm font-medium text-neutral-800 dark:text-neutral-200">Tech Stack</h4>
+                  <h4 className="text-sm font-medium text-neutral-800 dark:text-neutral-200">
+                    Tech Stack
+                  </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
                     {project.tech.frontend && (
                       <div>
-                        <span className="font-medium text-neutral-600 dark:text-neutral-400">Frontend:</span>
-                        <p className="text-neutral-500 dark:text-neutral-500">{project.tech.frontend.join(", ")}</p>
+                        <span className="font-medium text-neutral-600 dark:text-neutral-400">
+                          Frontend:
+                        </span>
+                        <p className="text-neutral-500 dark:text-neutral-500">
+                          {project.tech.frontend.join(", ")}
+                        </p>
                       </div>
                     )}
                     {project.tech.backend && (
                       <div>
-                        <span className="font-medium text-neutral-600 dark:text-neutral-400">Backend:</span>
-                        <p className="text-neutral-500 dark:text-neutral-500">{project.tech.backend.join(", ")}</p>
+                        <span className="font-medium text-neutral-600 dark:text-neutral-400">
+                          Backend:
+                        </span>
+                        <p className="text-neutral-500 dark:text-neutral-500">
+                          {project.tech.backend.join(", ")}
+                        </p>
                       </div>
                     )}
                     {project.tech.database && (
                       <div>
-                        <span className="font-medium text-neutral-600 dark:text-neutral-400">Database:</span>
-                        <p className="text-neutral-500 dark:text-neutral-500">{project.tech.database.join(", ")}</p>
+                        <span className="font-medium text-neutral-600 dark:text-neutral-400">
+                          Database:
+                        </span>
+                        <p className="text-neutral-500 dark:text-neutral-500">
+                          {project.tech.database.join(", ")}
+                        </p>
                       </div>
                     )}
                     {project.tech.deployment && (
                       <div>
-                        <span className="font-medium text-neutral-600 dark:text-neutral-400">Deployment:</span>
-                        <p className="text-neutral-500 dark:text-neutral-500">{project.tech.deployment.join(", ")}</p>
+                        <span className="font-medium text-neutral-600 dark:text-neutral-400">
+                          Deployment:
+                        </span>
+                        <p className="text-neutral-500 dark:text-neutral-500">
+                          {project.tech.deployment.join(", ")}
+                        </p>
                       </div>
                     )}
                   </div>
@@ -200,7 +218,7 @@ export function ProjectCard({ project }: { project: Project }) {
               {project.status.replace("-", " ")}
             </span>
           </div>
-          
+
           <div className="flex items-center gap-2 text-xs text-neutral-500 dark:text-neutral-500">
             <span>{project.license}</span>
             {!project.publiclyShared && (
