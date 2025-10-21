@@ -9,7 +9,6 @@ import { ArticleWrapper } from "app/components/ArticleWrapper";
 import { CustomMDX } from "app/components/mdx";
 import { Tag } from "app/components/Tag";
 import { RelatedPosts } from "app/components/RelatedPosts";
-import { TableOfContents } from "app/components/TableOfContents";
 import { ReadingProgress } from "app/components/ReadingProgress";
 
 export async function generateStaticParams() {
@@ -148,7 +147,7 @@ export default function Blog({ params }) {
             >
               {post.metadata.title}
             </h1>
-            
+
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-neutral-600 dark:text-neutral-400 gap-4 sm:gap-0 mb-8">
               <div className="flex items-center flex-wrap gap-4">
                 <time
@@ -159,7 +158,9 @@ export default function Blog({ params }) {
                   {formatDate(post.metadata.publishedAt, true)}
                 </time>
                 <span className="hidden sm:inline">•</span>
-                <span className="hidden sm:inline font-medium">{readingTime} min read</span>
+                <span className="hidden sm:inline font-medium">
+                  {readingTime} min read
+                </span>
                 <span className="hidden sm:inline">•</span>
                 <div className="flex items-center gap-2 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
                   <PlusOneButton postSlug={post.slug} />
@@ -201,7 +202,7 @@ export default function Blog({ params }) {
                   <Tag key={tag} name={tag} />
                 ))}
               </div>
-              
+
               <RelatedPosts currentSlug={post.slug} tags={tags} />
             </footer>
           )}
