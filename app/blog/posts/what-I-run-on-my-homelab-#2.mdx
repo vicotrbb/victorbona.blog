@@ -1,0 +1,338 @@
+---
+title: "What I run on my homelab #2"
+publishedAt: "2025-11-27"
+summary: "A tour of my current homelab: pfSense, Proxmox cluster, HA stacks, media services, observability, AI experiments, and how this all fits into my house network."
+tags: "homelab,proxmox,technology,networking,infrastructure"
+---
+
+You know that feeling when a “temporary” setup somehow becomes a whole ecosystem?  
+That’s what happened to my homelab.
+
+Earlier this year I wrote about my first proper homelab setup: a single Proxmox node, a handful of LXCs, a NAS, and a wish to expand. Since then things escalated pretty well. I now have a pfSense firewall/router now, a managed TP-Link switch, two Proxmox nodes, a dedicated backup server, a TrueNAS NAS, and a small set of LXC containers where I run my self-hosted services. You can read more on this article <https://blog.victorbona.dev/blog/what-i-run-on-my-homelab>
+
+The diagram attached to this article is the current snapshot of the madness I built. Let me walk you through it, house, network, servers, and all the nice little choices that turned into a proper home infrastructure.
+
+## From “one box” to “mini data center”
+
+The first version of my homelab was classic:
+
+- ISP modem in router mode
+- Consumer router doing everything
+- A switch just serving as a fancy cable dongle
+- One Proxmox node running _all_ the things
+
+It worked, but I wanted more.
+
+Some issues, bad network performance, random router behavior, and the classic "why is Jellyfin buffering now?" moments like this pushed my hobby into something greater.
+
+So I made four big moves:
+
+1. Completely re-configured the ISP modem and put a **pfSense** machine in front of everything.
+2. Properly configured my **TP-Link managed switch**.
+3. Properly configured my original proxmox host into what it is today: **PVE #1 – the compute powerhouse**.
+4. Brought in **PVE #2 – a warm node/VM Farm**, plus a separate **TrueNAS** and **Proxmox Backup Server (PBS)** machines running into some scrap hardware and some china findings.
+
+Now the homelab is not just “a server in a corner.” It’s a small, reasonably structured network that behaves like a cut-down version of what I work with professionally, only noisier and closer to my work place. Thankfully, I'm used to it nowadays. **I can't live without fan noise anymore.**
+
+So, my current setup looks like this today:
+![My Homelab](/what-I-run-on-my-homelab-#2/my-homelab.webp)
+
+## The house network: internet hits everything
+
+Let’s start at the top of the diagram.
+
+### pfSense as the gatekeeper
+
+The flow goes like this:
+
+`ISP Modem (Bridge Mode)` → `pfSense Router/Firewall` → `TP-Link TL-SG3428 Managed Switch` → **everything else**
+
+pfSense is where I:
+
+- Terminate the WAN connection
+- Run firewall rules
+- Do DNS tweaks
+- Configure my VPN tunnels
+
+It replaces the ISP router completely. The modem is just a dumb bridge, which means fewer surprises and more control. Also: no more random firmware “upgrades” and duplicated NAT and COGN.
+
+### Wi-Fi: ASUS mesh and a miriad of smart stuff
+
+From pfSense and the switch, I feed an **ASUS RT-AX82U** as my main Wi-Fi/AP and a second AX82U as a **mesh node**.
+
+On top of that Wi-Fi layer I have all the **Wi-Fi Clients (ASUS Wi-Fi Network)**. Which usually means:
+
+- Cameras
+- Smart switches
+- Amazon Alexa devices
+- Phones, tablets, laptops, and other gadgets
+
+Nothing exotic, but the important part is: Wi-Fi is just another “edge network” behind pfSense, not the core of the infrastructure.
+
+I also run a few devices wired thru my APs for better connection:
+
+- A TV on the main router
+- A TV wired to the mesh node
+- And a **PlayStation** and **Nintendo Switch**
+
+### Wired stuff: PCs, servers, consoles, and TVs
+
+Hanging off the managed switch I’ve got:
+
+- My **work PC**
+- My **personal notebook**
+- My wife’s **gaming PC**
+- A **smart LAN power strip** (because I’ve learned to respect my electricity bill)
+
+And then, of course, the serious stuff:
+
+- **Proxmox PVE #1** – the big green bar in the diagram
+- **Proxmox PVE #2** – the warm node
+- **NAS Server (TrueNAS)**
+- **Proxmox Backup Server (PBS)**
+
+The switch is the silent hero here. I get proper VLAN support, link speeds I can trust, and clean wiring into the rack instead of a bundle of sadness hanging off the router.
+
+## Proxmox PVE #1 – the container farm
+
+PVE #1 is labelled in the diagram as:
+
+> **“Compute powerhouse, Container farm, Core node”**
+
+That’s not an exaggeration. This node runs almost everything that feels “core” to my homelab life. And because my brain likes structure, I grouped the LXCs into three stacks:
+
+- **Media Stack**
+- **Observability Stack**
+- **Infrastructure Services**
+
+Let’s walk through them.
+
+### Media Stack (LXC) – everything I watch and forget to finish
+
+The **Media Stack** is all the orange boxes:
+
+- **102 – Jellyfin**: the central media server.
+- **103 – qBittorrent**: the download workhorse.
+- **104 – Prowlarr**, **105 – Radarr**, **106 – Sonarr**, **107 – Jellyseerr**: the automation gang, indexers, movies, TV shows, and request front-end.
+- **108 – Bazarr**: subtitles, because switching audio tracks every time gets old.
+- **112 – SMB NAS (Old NAS)**: a legacy share that refuses to die; still holds old media and backups.
+- **126 – Scraparr**: because observability is key.
+
+This entire stack lives in containers, sits on top of the TrueNAS for storage.
+
+If you’re starting a homelab, this is usually where the fun begins. You set up Jellyfin or Plex “just to test,” and suddenly you have a bunch of stuff.
+
+### Observability Stack (LXC) – because even homelabs deserve graphs
+
+The yellow block is where my inner SRE wakes up:
+
+- **113 – Prometheus**
+- **116 – Prometheus PVE Exporter**
+- **117 – Grafana**
+- **111 – MySpeed**: for continuous speed tests, damn you ISP.
+- **124 – myIP**: my IP watcher and cool tools.
+
+Prometheus scrapes everything: PVE nodes, Kubernetes stuff, some services in HAAT, even the Nobara gaming VM. Grafana then turns it into pretty dashboards that I stare at while pretending this is normal home behavior.
+
+Is it overkill for a house? Absolutely.  
+Is it satisfying to see the latency spike when someone starts streaming 4K? Very.
+
+### Infrastructure Services (LXC) – the glue of the homelab
+
+The green block is my **“infra shelf”**:
+
+- **100 – Homepage**: a simple internal dashboard with links to everything.
+- **101 – Pi-hole**: network-wide ad blocking and DNS control.
+- **109 – PostgreSQL** and **110 – Redis**: shared database/cache for some of my apps and experiments.
+- **118 – Ubuntu Sandbox**: I break things here first.
+- **119 – Gitea** and **120 – Gitea Mirror**: my self-hosted git and a mirror for external repos.
+- **121 – OpenWebUI**: for playing with local models and my AI farm.
+- **122 – Jenkins**: old friend for CI jobs and random automations - This is responsible for HAAT deploy.
+- **123 – Nginx Proxy Manager**: reverse proxy with a nice UI.
+- **125 – WatchYourLAN**: small network scanner that warns me when new stuff appears.
+- **128 – ntfy**: push notifications for my phone (backups done, disks sad, etc.).
+- **129 – cloudflared**: tunnel agent linking my services to the outside when needed.
+- **130 – Netvisor**: my network visualization helper.
+
+This is the “if this node explodes, I actually notice” tier.  
+Pi-hole and Homepage are probably the two things that make the network feel “mine” every single day.
+
+## HAAT – my own nerdy platform, in purple
+
+If you scroll down in the diagram you’ll see a long purple bar:
+
+> **127 – HAAT (VM – k8s)**
+
+HAAT is my **High Availability Agent Toolkit** project, a personal platform for playing with AI agents, research workflows, and multi-service orchestration. Instead of keeping it as one big monolith, I run it as a small Kubernetes cluster inside a VM. HAAT ended by being way more than just an agent power house, it is where I automate and improve my life using my SWE skills.
+
+Inside that HAAT world, I have:
+
+- **Postgres**, **Redis**, **Redis Exporter**
+- **Backend** and **Frontend**
+- **Cortex Streams**: This is cool, it r eceives events, interprets with AI and take actions if required.
+- **Celery Worker** and **Celery Beat**: For async thingies.
+- **MinIO** for object storage
+- **Tempo** and **Tempo Bucket Init** for tracing
+- **OTEL Collector**
+- **HAAT Sandbox**: My safe space for my custom coding agents.
+- **HAAT Tor Proxy**: For when I need privacy.
+- **Prometheus (HAAT)**
+- A couple of helper services like **Portainer** and **Nginx**
+
+The idea is simple: treat HAAT like a real product:
+
+- It has its **own observability** stack.
+- It has both **ephemeral compute** and **persistent state**.
+
+Which leads to the little sibling on the right side of the diagram:
+
+> **127 #2 – HAAT (persistent node)**
+
+That node keeps the durable pieces: Postgres, Redis, and others somewhere slightly safer. It’s not real multi-region HA, of course, but it adds separation between “things that can be blown away” and “things I really don’t want to lose.”
+
+I also run **Celery Worker** and **Celery Beat** on HA, since protocols can never die, they run everytime, and needs to be safe.
+
+This piece runs on my Proxmox PVE #2, which you will read below.
+
+## Proxmox PVE #2 – the warm HA, gaming box and AI farm
+
+Scroll further down and you’ll spot **Proxmox PVE #2**:
+
+> **“High Availability warm node, Non-critical VM farm”**
+
+This node has two personalities.
+
+### Part 1 – Nobara OS VM
+
+First, it runs a **Nobara OS VM**, which is my:
+
+- **Development tooling** box
+- **Gaming Station (Proton)** for Steam and friends
+- **Node Exporter** for metrics
+- **AI Farm (vLLM)** for local model experimentation
+
+Yes, the gaming VM is monitored like a server.  
+Yes, I have Grafana panels showing GPU usage while I play.  
+No, I’m not saying that’s healthy behavior, but it’s fun.
+
+> This entire VM is powered by a GPU RTX 5070TI passthru.
+
+### Part 2 – Warm HA zone
+
+Second, PVE #2 acts as a **warm HA zone**:
+
+> _“\<Any node requiring HA\>”_
+
+Basically, any VM that I want somewhat redundant or easily movable can live here. If I need to offload a service from PVE #1 for maintenance or experiments, PVE #2 is ready to host it. Or even if PVE #1 blows up, PVE #2 can take the lead.
+
+For HAAT, this node also runs that **persistent stack** I mentioned:
+
+- Postgres
+- Redis
+- Redis Exporter
+- Cortex Streams
+- Celery Worker
+- Celery Beat
+
+So the picture looks like this:
+
+- PVE #1: main container farm, media, infra, and one HAAT k8s node
+- PVE #2: warm node, gaming/AI VM, and HA HAAT services
+
+Is it true high availability? Not really.  
+Is it “my house is down but at least I know why” availability? Very much.
+
+> A serious note: This setup has flaws, since I run a cluster of only 2 nodes, sometimes I can lose quorum. I intend to add a qdevice in the near future.
+
+## Storage and backups
+
+On the right side of the diagram there are two blue/green boxes:
+
+- **NAS Server (TrueNAS)**
+- **Proxmox Backup Server (PBS)**
+
+### TrueNAS – the serious storage
+
+TrueNAS holds:
+
+- Media libraries
+- Important documents
+- VM images and templates
+- Random archives
+
+It speaks SMB to the old NAS share container, NFS to some of the hosts, and behaves like the grown-up of the group.
+
+### PBS – the “please don’t make me restore from scratch” server
+
+PBS does **scheduled backups** of:
+
+- Proxmox VMs and LXCs
+- Some critical datasets via client-side backup
+- Important configurations
+
+When I first set this up, I underestimated how comforting it is to get a notification from PBS saying “backup finished” instead of silently hoping nothing breaks.
+
+Homelabs are great for learning backup strategies the hard way. I’d rather not repeat that part.
+
+## Daily life on this homelab
+
+So what does this all give me, in practice?
+
+- The **media stack** keeps movies and shows flowing to every screen in the house.
+- **Pi-hole** and **WatchYourLAN** keep the network clean and help me see when devices misbehave.
+- **Grafana** dashboards show CPU, RAM, disk, GPU, and even network throughput—yes, I look at them way more than necessary.
+- **HAAT** runs research flows, AI experiments, important automations and silly ideas that sometimes turn into serious tools.
+- **Nobara VM** lets me jump from coding to gaming to AI benchmarks, AI coding, all without switching machines.
+
+It also taught me a lot about:
+
+- Network design at home scale
+- Power and UPS planning (shout-out to the Intelbras no-breaks)
+- How quickly “I’ll just add one container” turns into a full blown service catalog
+
+## Tips if you’re thinking “I want this, but smaller”
+
+You don’t need two Proxmox nodes and a firewall box to start. Honestly, most people shouldn’t start that way.
+
+If you’re at the “curious” stage, here’s a softer path:
+
+1. **Start with one machine**  
+   Old desktop, mini-PC, whatever. Install Proxmox or even just plain Linux with Docker.
+
+2. **Pick two or three services that make your life better**  
+   My short list would be Pi-hole, Jellyfin, and some sort of backup.
+
+3. **Monitor something, even if it’s small**  
+   A simple Prometheus + Grafana pair can teach you a lot about resource usage and “why is this slow?”
+
+4. **Add structure slowly**  
+   Group services logically like I did with Media, Observability, and Infra. It makes growth less chaotic.
+
+5. **Treat your homelab as a playground, not just a mini-production**  
+   Break things, rebuild, try other stacks. The whole point is to learn and have fun, not to recreate a Tier-4 data center next to your sofa.
+
+6. **Play with network**  
+   Create and separate VLANS, understand important concepts, play with firewalls. You decide, but do.
+
+## Where this homelab goes next
+
+The current setup feels surprisingly stable:
+
+- pfSense keeps the front door under control.
+- PVE #1 runs the daily-use services.
+- PVE #2 handles gaming, AI, and “if this crashes it’s fine” experiments.
+- TrueNAS and PBS keep my future self from swearing too much.
+
+Next steps will probably be:
+
+- Add a qdevice for my proxmox cluster, or simply a new big node.
+- Playing more with GPU workloads on the AI Farm
+- Making HAAT smarter and more self-observing
+  - I got a huge backlog for it.
+- Maybe adding more automation around on/off schedules to save power
+- Upgrading my network stack. I'm really looking forward for some ubiquiti devices.
+
+For now, though, this is my homelab.
+It’s chaotic in my own way, overbuilt for a house, and exactly the kind of environment where I can test ideas without begging a cloud bill for mercy.
+
+If you’re a software engineer, a homelaber, or just someone who enjoys cables a little too much, I hope this gave you a few ideas—and maybe the tiny push to sketch your own version of that diagram and start building.
