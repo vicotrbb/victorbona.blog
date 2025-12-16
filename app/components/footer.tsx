@@ -49,9 +49,16 @@ export default function Footer() {
           </a>
         </li>
       </ul>
-      <p className="mt-8 text-neutral-600 dark:text-neutral-300">
-        © Victor Bona {new Date().getFullYear()} MIT Licensed
-      </p>
+      <div className="mt-8 space-y-2 text-neutral-600 dark:text-neutral-300">
+        <p>© Victor Bona {new Date().getFullYear()} MIT Licensed</p>
+        <a
+          href="/llms.txt"
+          className="text-xs text-neutral-500 hover:text-neutral-800 dark:text-neutral-400 dark:hover:text-neutral-100"
+          aria-label="LLM-friendly site index"
+        >
+          llms.txt
+        </a>
+      </div>
     </footer>
   );
 }
