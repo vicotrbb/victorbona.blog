@@ -7,23 +7,7 @@ export async function GET(request: Request) {
   const publishedAt = url.searchParams.get("publishedAt");
   const readingTime = url.searchParams.get("readingTime");
   const summary = url.searchParams.get("summary");
-  const slug = url.searchParams.get("slug");
   const tags = url.searchParams.get("tags")?.split(",") || [];
-
-  // Fetch like count if slug is provided
-  let likeCount = null;
-  if (slug) {
-    try {
-      const response = await fetch(`${url.origin}/api/plusone/${slug}`);
-
-      if (response.ok) {
-        const data = await response.json();
-        likeCount = data.count;
-      }
-    } catch (err) {
-      console.error("Failed to fetch like count for OG image:", err);
-    }
-  }
 
   return new ImageResponse(
     (
@@ -68,14 +52,6 @@ export async function GET(request: Request) {
                 <>
                   <span tw="text-lg">•</span>
                   <p tw="text-lg">{readingTime} min read</p>
-                </>
-              )}
-              {likeCount !== null && (
-                <>
-                  <span tw="text-lg">•</span>
-                  <p tw="text-lg">
-                    {likeCount} {likeCount === 1 ? "like" : "likes"}
-                  </p>
                 </>
               )}
             </div>

@@ -3,8 +3,6 @@ import { formatDate, getBlogPosts, getReadingTime } from "app/blog/utils";
 import { baseUrl } from "app/sitemap";
 import { ShareButton } from "app/components/ShareButton";
 import type { Metadata } from "next";
-import { PlusOneButton } from "app/components/PlusOneButton";
-import { PlusOneCount } from "app/components/PlusOneCount";
 import { ArticleWrapper } from "app/components/ArticleWrapper";
 import { CustomMDX } from "app/components/mdx";
 import { Tag } from "app/components/Tag";
@@ -31,7 +29,6 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     publishedAt: post.metadata.publishedAt,
     readingTime: readingTime.toString(),
     summary: post.metadata.summary,
-    slug: params.slug,
     tags: post.metadata.tags,
   }).toString();
 
@@ -162,10 +159,6 @@ export default function Blog({ params }) {
                   {readingTime} min read
                 </span>
                 <span className="hidden sm:inline">•</span>
-                <div className="flex items-center gap-2 hover:text-neutral-900 dark:hover:text-neutral-100 transition-colors">
-                  <PlusOneButton postSlug={post.slug} />
-                  <PlusOneCount postSlug={post.slug} />
-                </div>
               </div>
               <ShareButton
                 url={`${baseUrl}/blog/${post.slug}`}
