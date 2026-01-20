@@ -5,10 +5,8 @@ This is my personal blog, feel free to use it as a template for your own just li
 ## How to start
 
 1. Clone the repository
-2. cp .env.local.example .env
-3. Fill the .env file with your own values
-4. Run `npm install`
-5. Run `npm run dev`
+2. Run `npm install`
+3. Run `npm run dev`
 
 ## How to add a new post
 
