@@ -1,0 +1,278 @@
+---
+title: "Why I Decided to Go Baremetal"
+publishedAt: "2025-01-20"
+summary: "Building my own Kubernetes cluster on bare metal. Not because I reject the cloud, but because I want to prove I don't need it."
+tags: "kubernetes,homelab,technology,networking,infrastructure"
+---
+
+There's a moment in every software engineer's career when you realize something uncomfortable: you've been building on top of abstractions you don't fully understand. You deploy to Vercel, spin up a managed Kubernetes cluster, provision a database on AWS RDS, and everything just works. Until it doesn't. And when it breaks, you find yourself staring at logs, documentation, and support tickets, hoping someone else can fix what you don't understand.
+
+I decided I didn't want to be that engineer anymore.
+
+This is the story of why I'm building my own bare-metal Kubernetes cluster at home, not because I hate the cloud, not because I'm trying to save money, but because I want to own every layer of my infrastructure and prove to myself that I can.
+
+## The Uncomfortable Truth About Abstractions
+
+Let me be clear about something: I'm not anti-cloud. I use cloud services. I deploy SaaS applications to managed Kubernetes when my clients need the reliability guarantees that come with enterprise infrastructure. The cloud is a tool, and like any tool, it has its place.
+
+But here's the uncomfortable truth I had to face: when you rely exclusively on managed services, you're not really an a complete engineer. You're at some level of a consumer. You're paying someone else to handle some of the hard problems while you focus on the parts that feel comfortable.
+
+There's nothing inherently wrong with that. Division of labor is how modern software gets built. But I started asking myself: what happens when I need to debug a networking issue at 2 AM and the cloud provider's support ticket won't be answered until Monday? What happens when I want to optimize costs but don't understand what I'm actually paying for? What happens when a client asks me to explain how their data flows through the system internally, and I have to admit that I don't really know what happens after I push to main?
+
+I didn't like those answers. You see, it's not that I don't know, but some black-boxes simply make me nervous, I want visibility, total visibility.
+
+## The Real Motivation: Becoming Complete
+
+I've spent years learning how to write good software. Clean code, solid architecture, test-driven development, continuous integration, Cloud Architecture, Infrastructure. I've studied and practiced these disciplines because I believe they matter. But writing good code and applying terraform states is only half the equation. The other half is getting that code into production, keeping it running, scaling it when needed, and monitoring it when things go wrong. Serving software is just as vital as writing it.
+
+I want to be a complete software engineer. Not a "full-stack developer" in the marketing sense of the term, where you know a bit of React and can spin up an Express server. I mean truly complete, the kind of engineer who can take an idea from a blank text file to a production system serving real users, understanding **every single** layer in between.
+
+I want to be a one-person team when I need to be. Not because I want to work alone, but because I want the confidence that comes from knowing I could.
+
+The bare-metal path is how I'm getting there.
+
+## Ownership as a Philosophy
+
+My core philosophy can be summarized simply: **remove the middlemen and own everything**.
+
+This isn't about cost savings, although those exist. This isn't about privacy paranoia, although that's a valid concern. This is about ownership in the deepest sense, owning the hardware, owning the software, owning the data, owning the knowledge.
+
+When you use a managed Kubernetes service, an ECS service or a simple VM, you're renting someone else's expertise. When you build your own cluster, you're forced to develop that expertise yourself. The rental model is faster in the short term, but the ownership model pays compound interest. Every problem you solve becomes knowledge you keep forever.
+
+I want to own:
+
+- **The hardware** - knowing exactly what compute resources I have, how they perform, and what their limits are
+- **The software** - from the operating system to the container runtime to the orchestration layer
+- **The data** - stored on disks I control, backed up to locations I choose, encrypted with keys I manage
+- **The costs** - a transparent understanding of what I'm paying for electricity, hardware amortization, and my own time
+- **The knowledge** - deep understanding of every layer, not just the APIs exposed by cloud providers
+
+When I eventually choose to use managed services, and I do, for the right use cases, it's a conscious decision based on real tradeoffs. I'm not choosing managed Kubernetes or a VM because I don't know how to run my own. I'm choosing it because, for this particular workload, the benefits outweigh the costs. That's a fundamentally different position to be in.
+
+## The Technical Foundation
+
+Let me walk you through what I'm actually building. This isn't a theoretical exercise, it's a real cluster running real workloads.
+
+### Hardware: Efficiency Over Power
+
+For compute, I'm using Beelink mini PCs equipped with Intel N150 processors and 32GB of RAM each. These aren't powerful machines by data center standards, but that's intentional. I optimized for:
+
+- **Low power consumption** - these machines sip electricity, which matters when they're running 24/7
+- **Small form factor** - they fit on a shelf without requiring a dedicated server room. Although I kinda have one.
+- **Cost efficiency** - commodity hardware at commodity prices
+- **Sufficient performance** - more than enough for my workloads, and if I need more, I can just throw more hardware.
+
+The Intel N150 is a fascinating chip for this use case. It's designed for efficiency, not raw performance, which makes it perfect for always-on infrastructure that doesn't need to handle massive compute bursts. My workloads are primarily web services, databases, and observability tools, none of which require serious CPU power most of the time. It uses 25 watts idle and up to 40 watts on load, it's perfect for my electricity bill.
+
+For networking, I went with a full Unifi stack: Cloud Gateway Fiber handling routing and firewall duties, managed switches providing the backbone, all running on 2.5 Gigabit wired connections. Home networking has come a long way, and modern prosumer equipment can handle serious workloads without breaking a sweat.
+
+The 2.5GbE networking might seem like overkill for a homelab, but it matters for storage replication. When Longhorn is synchronizing data across three nodes, that extra bandwidth translates directly into better performance and faster recovery from failures.
+
+### Operating System: Declarative Everything
+
+Each node runs NixOS, and this choice deserves its own explanation.
+
+NixOS is a Linux distribution built around the concept of declarative configuration. Instead of manually installing packages and editing config files, you describe your desired system state in a configuration file, and NixOS makes it so. This has profound implications for infrastructure:
+
+- **Reproducibility** - I can rebuild any node from scratch in minutes, guaranteed to be identical to the others
+- **Version control** - my entire OS configuration lives in Git, with full history and the ability to roll back
+- **Atomic updates** - system updates are transactional; if something breaks, I can boot into the previous generation
+- **No configuration drift** - the system always matches the declared state, eliminating "works on my machine" problems
+
+My NixOS configuration handles everything from disk partitioning (using BTRFS with compression and proper subvolume layout) to K3s installation to user management. When I need to add a new node to the cluster, I don't follow a runbook, I apply a configuration file.
+
+```nix
+# Sample excerpt from my K3s configuration
+services.k3s = {
+  enable = true;
+  role = "server";
+  extraFlags = toString [
+    "--disable servicelb"
+    "--disable traefik"
+    "--disable local-storage"
+    "--disable-network-policy"
+    "--flannel-backend=none"
+  ];
+};
+```
+
+I disable the default K3s components because I want to understand and control each layer myself. ServiceLB gets replaced with MetalLB, Traefik gets replaced with Ingress-Nginx, local-storage gets replaced with Longhorn, and Flannel is disabled so I can use Calico for networking. Each replacement is a learning opportunity.
+
+### Kubernetes: The Orchestration Layer
+
+I chose K3s as my Kubernetes distribution for its lightweight footprint and production readiness. K3s is Kubernetes, fully conformant, but packaged for resource-constrained environments. It's perfect for bare-metal homelabs where you don't want the overhead of a full kubeadm cluster.
+
+The cluster architecture follows GitOps principles using ArgoCD. Everything is defined in Git, and ArgoCD continuously reconciles the cluster state with the repository. This gives me:
+
+- **Audit trail** - every change is a commit with a message and timestamp
+- **Easy rollbacks** - reverting a bad deployment is a `git revert` away
+- **Self-documenting infrastructure** - the repository is the documentation
+- **Multi-cluster potential** - the same patterns scale to multiple clusters
+
+I use the App of Apps pattern, where a single root ArgoCD Application spawns all other applications. This creates a clean hierarchy:
+
+```text
+root-app
+├── Wave 0: Infrastructure (Calico, Longhorn, MetalLB, CNPG)
+├── Wave 1: Platform (Ingress, Cert-Manager, PostgreSQL, Redis)
+├── Wave 2: Applications (Pi-hole, ExternalDNS)
+├── Wave 3: Apps & Monitoring (Glance, MinIO, Prometheus, SaaS's, blog, websites)
+├── Wave 4-5: Observability (Loki, Tempo, Alloy)
+└── Wave 10: Management (ArgoCD self-management)
+```
+
+The wave system controls deployment order, infrastructure comes before platform, platform before applications. ArgoCD handles the dependencies automatically.
+
+### Storage: Distributed and Resilient
+
+Longhorn provides distributed block storage across the cluster. It's conceptually similar to cloud block storage (EBS, Persistent Disks), but running on my own hardware with my own replication settings.
+
+Every persistent volume gets replicated three (or more if I add) times across different nodes. If a node dies, the data survives on the others, and Longhorn automatically rebalances once the node recovers or is replaced. This is the same pattern used by cloud providers, implemented on commodity hardware.
+
+I configured Longhorn to use dedicated storage partitions formatted with BTRFS, taking advantage of its copy-on-write semantics and transparent compression. The storage layer is now:
+
+- **Redundant** - three copies of every block
+- **Self-healing** - automatic rebalancing and recovery
+- **Compressed** - BTRFS zstd compression saves space without CPU overhead
+- **Snapshotable** - point-in-time recovery is trivial
+
+For object storage (S3-compatible), I run MinIO. This handles everything from backup storage to application assets to Loki's log chunks. Again, the same APIs you'd use with AWS S3, but on infrastructure I control.
+
+### Databases: High Availability Without Compromise
+
+Managed databases are one of the cloud's most compelling offerings. Running your own PostgreSQL with proper high availability is genuinely difficult. But "difficult" is exactly why I wanted to learn it.
+
+I run PostgreSQL using CloudNative-PG (CNPG), an operator that manages PostgreSQL clusters as Kubernetes-native resources. My configuration:
+
+- **Three-instance cluster** with synchronous replication
+- **Automatic failover** in under 30 seconds if the primary dies
+- **PgBouncer connection pooling** to handle connection management efficiently
+- **Continuous backups** to object storage
+
+```yaml
+spec:
+  instances: 3
+  postgresql:
+    parameters:
+      synchronous_commit: "on"
+  bootstrap:
+    initdb:
+      database: app
+      owner: app
+```
+
+Redis follows a similar pattern, with Sentinel available for high availability when needed. For my current workloads, a single Redis instance with persistence is sufficient, but the architecture is ready to scale.
+
+### Observability: Seeing Everything
+
+You can't operate what you can't observe. My observability stack is built to give me visibility across every layer, covering all three pillars—and more:
+
+**Metrics** with Prometheus and Grafana. Every component exposes metrics, Prometheus scrapes them, and Grafana visualizes them. I have dashboards for cluster health, PostgreSQL performance, application latency, and resource utilization.
+
+**Logs** with Loki. Structured logs from every container flow into Loki, and I can query everything through Grafana using LogQL. When something breaks at 2 AM, I can trace exactly what happened.
+
+**Traces** with Tempo. Distributed tracing shows how requests flow through the system, where time is spent, and where bottlenecks occur. This is essential for understanding microservices behavior.
+
+**Real User Monitoring (RUM)** with Grafana Faro. Faro runs on my frontends, capturing real browser and interaction telemetry—things like page load times, frontend errors, and user navigation patterns. RUM offers direct insight into how real users experience the system, bridging the gap between backend signals and actual user-perceived performance.
+
+Grafana Alloy ties everything together as a unified telemetry collector, gathering metrics, logs, and traces from across the cluster and routing them to the appropriate backends, including supporting Faro's RUM data.
+
+With these integrated tools, my observability stack covers everything from low-level system resource graphs to real user actions in the browser.
+
+### Networking: Internal and External
+
+MetalLB provides LoadBalancer services on bare metal. In cloud Kubernetes, requesting a LoadBalancer automatically provisions cloud infrastructure. On bare metal, you need something to answer those requests. MetalLB assigns IP addresses from a configured pool and announces them via ARP or BGP.
+
+My configuration allocates IPs for my LoadBalancer, giving me N addresses for services that need direct access.
+
+For ingress, I run Nginx Ingress Controller with one class:
+
+- **nginx-internal** - for services that should only be accessible on the local network (*.home domains)
+
+Cloudflare Tunnels deserve special mention. They allow me to expose services to the internet without opening any ports on my firewall. The tunnel client runs inside the cluster, establishes an outbound connection to Cloudflare, and Cloudflare routes traffic back through that tunnel. I get:
+
+- **No exposed ports** - nothing listening on my public IP
+- **DDoS protection** - Cloudflare absorbs attacks before they reach me
+- **Free TLS** - certificates managed automatically
+- **Access controls** - Cloudflare Access for additional authentication if needed
+
+This is how I serve public applications from my home infrastructure without the security risks of traditional port forwarding. Simply set an ingress with the Cloudflare ingress class, and that's it, simple, reproducible, easy and elegant.
+
+### Secrets: Zero Trust
+
+Hardcoded secrets are a security nightmare. Even secrets in environment variables or ConfigMaps are risky if the cluster is compromised.
+
+I run Infisical for secrets management with Kubernetes-native authentication. Applications authenticate using their Kubernetes service account, no credentials to manage, rotate, or accidentally commit to Git. Infisical injects secrets directly into pods at runtime.
+
+The flow is:
+
+1. Application pod starts with a service account
+2. Kubernetes authenticates the pod to Infisical
+3. Infisical verifies the identity and returns the requested secrets
+4. Secrets are mounted as environment variables or files
+
+This is the same pattern used by HashiCorp Vault, AWS Secrets Manager, and other enterprise solutions, but running on my own hardware with my own data.
+
+## The Workload Split
+
+Not everything runs on bare metal, and that's intentional.
+
+My cluster hosts this blog, personal projects, local applications like Pi-hole and media servers, development environments, and early-stage SaaS experiments. Everything where I'm the one accepting the risk runs on my hardware.
+
+But when paying clients expect reliability, the calculus changes. Production SaaS with real users goes to cloud Kubernetes with proper SLAs, geographic distribution, and burst capacity I can't match at home.
+
+The decision framework is simple: **who bears the cost of downtime?** If it's me, it runs on my metal. If it's a client, it runs on infrastructure with guarantees.
+
+This isn't compromise, it's leverage. I get deep infrastructure knowledge from running my own cluster, and I get reliability guarantees from cloud providers when the stakes demand it. Each approach makes me better at the other.
+
+## What I've Learned So Far
+
+Building this infrastructure has already taught me things I wouldn't have learned from managed services:
+
+**Networking is hard.** When your pod can't reach another pod, you need to understand CNI plugins, iptables rules, network policies, and DNS resolution. There's no "it just works", you need to make it work.
+
+**Storage is harder.** Distributed storage systems have failure modes that are genuinely difficult to reason about. What happens when a node loses power during a write? What happens when the network partitions? Understanding these scenarios makes you a better engineer.
+
+**Observability is essential.** You cannot operate blind. Every hour spent building dashboards and configuring alerts pays for itself the first time something breaks and you can see exactly what happened.
+
+**GitOps is transformative.** Once you experience infrastructure as code with automatic reconciliation, you can't go back. The confidence of knowing that the cluster matches the repository is profound.
+
+**Declarative beats imperative.** Whether it's NixOS for the OS layer or Kubernetes for the application layer, describing desired state is fundamentally better than scripting manual steps.
+
+## The Hybrid Philosophy
+
+I want to be explicit about something: this isn't a rejection of cloud computing. This is about building a foundation of knowledge that makes me a better engineer regardless of where I deploy.
+
+When I choose to use AWS, GCP, or Azure, I want that choice to be informed. I want to know what I'm paying for. I want to understand what the managed service is actually doing. I want the ability to leave if the economics or features stop making sense.
+
+Running bare metal isn't about proving the cloud is bad. It's about proving I don't need it. And paradoxically, that makes me better at using it when I do.
+
+The engineers I admire most are the ones who understand the entire stack. They can write clean application code, design robust architectures, debug production issues, optimize database queries, and configure networking rules. They're not limited to one layer of abstraction.
+
+That's the engineer I'm working to become.
+
+## Getting Started Yourself
+
+If this resonates with you, here's my advice for getting started:
+
+**Start small.** You don't need a three-node cluster on day one. A single machine running K3s will teach you more than you expect. Add complexity only when you need it.
+
+**Embrace the failures.** Things will break. That's the point. Every failure is a learning opportunity that you wouldn't get from a managed service.
+
+**Document everything.** Your future self will thank you. I keep detailed notes in my repository about why I made each decision and how I solved each problem.
+
+**Use declarative tools.** NixOS, Kubernetes, ArgoCD, these tools force you to be explicit about your infrastructure. That explicitness is what enables understanding.
+
+**Don't be dogmatic.** Use cloud services when they make sense. The goal is capability, not ideology.
+
+## The Road Ahead
+
+My infrastructure is never finished. There's always another component to add, another failure mode to handle, another optimization to make.
+
+The bare-metal path isn't the easy path. Managed services exist because operating infrastructure is genuinely difficult. But difficulty is the teacher. The struggle is the lesson.
+
+I'm building my own infrastructure because I want to be the kind of engineer who can build anything, deploy anywhere, and understand everything. The cluster is the curriculum, the problems are the tests, and the knowledge is the reward.
+
+The middlemen are optional. The understanding is not.
+
+Happy building.
