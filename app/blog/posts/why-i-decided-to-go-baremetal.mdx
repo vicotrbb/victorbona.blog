@@ -213,18 +213,6 @@ The flow is:
 
 This is the same pattern used by HashiCorp Vault, AWS Secrets Manager, and other enterprise solutions, but running on my own hardware with my own data.
 
-## The Workload Split
-
-Not everything runs on bare metal, and that's intentional.
-
-My cluster hosts this blog, personal projects, local applications like Pi-hole and media servers, development environments, and early-stage SaaS experiments. Everything where I'm the one accepting the risk runs on my hardware.
-
-But when paying clients expect reliability, the calculus changes. Production SaaS with real users goes to cloud Kubernetes with proper SLAs, geographic distribution, and burst capacity I can't match at home.
-
-The decision framework is simple: **who bears the cost of downtime?** If it's me, it runs on my metal. If it's a client, it runs on infrastructure with guarantees.
-
-This isn't compromise, it's leverage. I get deep infrastructure knowledge from running my own cluster, and I get reliability guarantees from cloud providers when the stakes demand it. Each approach makes me better at the other.
-
 ## What I've Learned So Far
 
 Building this infrastructure has already taught me things I wouldn't have learned from managed services:
