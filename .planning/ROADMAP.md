@@ -86,6 +86,13 @@ Plans:
 
 **Goal:** Configure Helm chart for ArgoCD deployment
 
+**Plans:** 1 plan
+
+Plans:
+- [ ] 03-01-PLAN.md — Configure Helm chart for blog deployment
+
+**Status:** Ready for execution
+
 **Delivers:**
 - Customized values.yaml for blog deployment
 - ClusterIP service configuration
@@ -98,9 +105,8 @@ Plans:
 - REQ-INF-005: Cloudflare Tunnel Ingress
 
 **Key Files:**
+- `chart/Chart.yaml` (modify)
 - `chart/values.yaml` (modify)
-- `chart/templates/deployment.yaml` (verify/modify)
-- `chart/templates/service.yaml` (verify/modify)
 
 **Critical Pitfalls:**
 - Ensure HOSTNAME env var is set in deployment
