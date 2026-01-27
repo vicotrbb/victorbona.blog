@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@grafana/faro-web-sdk": "^2.2.0",
     "@opentelemetry/api-logs": "^0.211.0",
     "@opentelemetry/exporter-trace-otlp-http": "^0.211.0",
     "@opentelemetry/instrumentation": "^0.211.0",
