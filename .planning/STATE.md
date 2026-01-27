@@ -8,12 +8,12 @@
 
 ## Current Status
 
-**Active Phase:** 4 of 7 (Server-Side Tracing)
+**Active Phase:** 5 of 7 (Prometheus Metrics)
 **Plan:** 1 of 1 complete
-**Status:** Phase 4 complete
-**Last activity:** 2026-01-27 - Completed 04-01-PLAN.md (OpenTelemetry instrumentation)
+**Status:** Phase 5 complete
+**Last activity:** 2026-01-27 - Completed 05-01-PLAN.md (Prometheus metrics endpoint)
 
-**Progress:** [===========-----------] 71% (5/7 plans complete)
+**Progress:** [=============---------] 86% (6/7 plans complete)
 
 ---
 
@@ -25,7 +25,7 @@
 | 2 | CI/CD Pipeline | complete | 1/1 plans done |
 | 3 | Helm & Deployment | complete | 1/1 plans done |
 | 4 | Server-Side Tracing | complete | 1/1 plans done |
-| 5 | Prometheus Metrics | ready | Unblocked, ready to start |
+| 5 | Prometheus Metrics | complete | 1/1 plans done |
 | 6 | Browser RUM | ready | Unblocked, ready to start |
 | 7 | Renovate | ready | Unblocked, ready to start |
 
@@ -33,6 +33,7 @@
 
 ## Recent Activity
 
+- 2026-01-27: Completed 05-01 - prom-client metrics at /metrics with ServiceMonitor enabled
 - 2026-01-27: Completed 04-01 - OpenTelemetry with @vercel/otel, HTTP export to Alloy
 - 2026-01-27: Completed 03-01 - Helm chart with HPA, PDB, health probes for ArgoCD
 - 2026-01-27: Completed 02-01 - GitHub Actions multi-arch Docker builds with GHCR push
@@ -67,6 +68,10 @@
 | 04-01 | HTTP/protobuf to port 4318 | gRPC causes Next.js bundling errors with @grpc/grpc-js |
 | 04-01 | Skip OTEL when endpoint not set | Enables local dev without tracing infrastructure |
 | 04-01 | 10% sampling with parentbased_traceidratio | Balance between observability and storage costs |
+| 05-01 | globalThis singleton for metrics registry | Survives HMR cycles, prevents duplicate registration |
+| 05-01 | Standard nodejs_* metric names | No custom prefix, compatible with existing dashboards |
+| 05-01 | app=victorbona-blog default label | Easy filtering in Prometheus queries |
+| 05-01 | /metrics path (not /api/metrics) | Matches values.yaml configuration and convention |
 
 ---
 
@@ -79,8 +84,8 @@ None currently.
 ## Session Continuity
 
 **Last session:** 2026-01-27
-**Stopped at:** Completed 04-01-PLAN.md (Phase 4 complete)
-**Resume file:** None - ready for Phase 5 planning
+**Stopped at:** Completed 05-01-PLAN.md (Phase 5 complete)
+**Resume file:** None - ready for Phase 6 planning
 
 ---
 
@@ -88,8 +93,8 @@ None currently.
 
 If resuming work:
 1. Run `/gsd:progress` to see current state
-2. Phases 1-4 complete (Container, CI/CD, Helm, Tracing)
-3. Next: Plan and execute Phase 5 (Prometheus Metrics)
+2. Phases 1-5 complete (Container, CI/CD, Helm, Tracing, Metrics)
+3. Next: Plan and execute Phase 6 (Browser RUM)
 4. Key artifacts ready:
    - Dockerfile at project root
    - Health probes at /api/health and /api/ready
@@ -99,6 +104,8 @@ If resuming work:
    - Helm chart at chart/ with values.yaml configured
    - OpenTelemetry instrumentation at instrumentation.ts
    - OTEL environment variables configured in Helm values
+   - Prometheus metrics at /metrics with prom-client
+   - ServiceMonitor enabled for automatic scraping
 
 ---
 
