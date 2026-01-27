@@ -121,10 +121,18 @@ Plans:
 
 **Goal:** Enable OpenTelemetry traces to Tempo via Alloy
 
+**Plans:** 1 plan
+
+Plans:
+- [ ] 04-01-PLAN.md — Configure OTEL instrumentation and Helm values
+
+**Status:** Planned
+
 **Delivers:**
 - instrumentation.ts with OTEL SDK configuration
-- OTLP gRPC exporter to Alloy
+- OTLP HTTP exporter to Alloy (port 4318)
 - Service name and version in spans
+- 10% head-based sampling
 - Helm values for OTEL configuration
 
 **Requirements Addressed:**
@@ -137,8 +145,8 @@ Plans:
 
 **Critical Pitfalls:**
 - instrumentation.ts must be in project root (not app/)
-- Use conditional imports for Edge runtime compatibility
-- gRPC port is 4317 (not 4318)
+- Use HTTP/protobuf exporter (port 4318), NOT gRPC — gRPC has Next.js bundling issues
+- Skip tracing gracefully when OTEL_EXPORTER_OTLP_ENDPOINT not set
 
 **Dependencies:** Phase 3 (need running deployment to verify)
 
