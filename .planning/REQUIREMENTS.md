@@ -47,6 +47,7 @@ Automated build pipeline:
 ### REQ-INF-004: Helm Chart Customization
 **Priority:** Must Have
 **Category:** Deployment
+**Status:** Complete (Phase 3)
 
 Customize existing Helm chart at `/chart`:
 - Single-service blog deployment
@@ -57,6 +58,7 @@ Customize existing Helm chart at `/chart`:
 ### REQ-INF-005: Cloudflare Tunnel Ingress
 **Priority:** Must Have
 **Category:** Deployment
+**Status:** Complete (Phase 3)
 
 Ingress configuration for Cloudflare Tunnel:
 - Support both `victorbona.dev` and `blog.victorbona.dev` domains
