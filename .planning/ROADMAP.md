@@ -156,21 +156,30 @@ Plans:
 
 **Goal:** Expose metrics endpoint for Prometheus scraping
 
+**Plans:** 1 plan
+
+Plans:
+- [ ] 05-01-PLAN.md — Create metrics endpoint and enable ServiceMonitor
+
+**Status:** Planned
+
 **Delivers:**
-- /api/metrics route with prom-client
-- Default Node.js runtime metrics
+- /metrics route with prom-client
+- Default Node.js runtime metrics (heap, event loop, GC)
 - ServiceMonitor enabled in Helm chart
 
 **Requirements Addressed:**
 - REQ-OBS-003: Prometheus Metrics
 
 **Key Files:**
-- `app/api/metrics/route.ts` (new)
+- `app/lib/metrics.ts` (new)
+- `app/metrics/route.ts` (new)
 - `package.json` (add prom-client)
 - `chart/values.yaml` (enable ServiceMonitor)
 
 **Critical Pitfalls:**
-- Use singleton pattern for metrics registry
+- Use globalThis singleton pattern for metrics registry (HMR resilience)
+- Use `/metrics` path not `/api/metrics` (matches values.yaml)
 - Ensure ServiceMonitor selector matches service labels
 
 **Dependencies:** Phase 3 (need running deployment)
