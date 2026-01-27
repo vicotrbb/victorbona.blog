@@ -170,9 +170,9 @@ components:
       enabled: true
       minAvailable: 1
 
-    # Metrics placeholder for Phase 5 (Prometheus)
+    # Metrics for Phase 5 (Prometheus)
     metrics:
-      enabled: false
+      enabled: true
       portName: http
       path: /metrics
       interval: 30s
@@ -206,8 +206,8 @@ observability:
     resourceAttributes: {}
 
   serviceMonitor:
-    # Enable in Phase 5 (Prometheus Metrics)
-    enabled: false
+    # Enabled in Phase 5 (Prometheus Metrics)
+    enabled: true
     labels: {}
     namespace: ""
 
