@@ -1,0 +1,17 @@
+Thank you for installing {{ .Chart.Name }}.
+
+Release:
+  Name:     {{ .Release.Name }}
+  Namespace: {{ .Release.Namespace }}
+
+Deployed components:
+{{- range $name, $component := .Values.components }}
+{{- if $component.enabled }}
+  - {{ $name }} (Deployment)
+{{- end }}
+{{- end }}
+
+If you enabled ingress, check your ingress controller for routes:
+  kubectl get ingress -n {{ .Release.Namespace }}
+
+If you enabled ServiceMonitor or PodMonitor, make sure Prometheus Operator is installed.

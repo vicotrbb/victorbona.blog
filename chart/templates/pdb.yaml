@@ -1,0 +1,22 @@
+{{- range $name, $component := .Values.components }}
+{{- if and $component.enabled $component.pdb.enabled }}
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: {{ include "app-template.componentFullname" (list $ $name) }}
+  labels:
+    {{- include "app-template.commonLabels" $ | nindent 4 }}
+    app.kubernetes.io/component: {{ $name }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "app-template.selectorLabels" (list $ $name) | nindent 6 }}
+  {{- if $component.pdb.minAvailable }}
+  minAvailable: {{ $component.pdb.minAvailable }}
+  {{- end }}
+  {{- if $component.pdb.maxUnavailable }}
+  maxUnavailable: {{ $component.pdb.maxUnavailable }}
+  {{- end }}
+{{- end }}
+{{- end }}

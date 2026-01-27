@@ -1,0 +1,44 @@
+{{- range $name, $component := .Values.components }}
+{{- if and $component.enabled $component.ingress.enabled }}
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ include "app-template.componentFullname" (list $ $name) }}
+  labels:
+    {{- include "app-template.commonLabels" $ | nindent 4 }}
+    app.kubernetes.io/component: {{ $name }}
+  {{- with $component.ingress.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  {{- if $component.ingress.className }}
+  ingressClassName: {{ $component.ingress.className }}
+  {{- end }}
+  {{- with $component.ingress.tls }}
+  tls:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  rules:
+    {{- range $host := $component.ingress.hosts }}
+    - host: {{ $host.host }}
+      http:
+        paths:
+          {{- range $path := $host.paths }}
+          - path: {{ $path.path }}
+            pathType: {{ $path.pathType | default "Prefix" }}
+            backend:
+              service:
+                name: {{ include "app-template.componentFullname" (list $ $name) }}
+                port:
+                  {{- $svcPort := $path.servicePort | default "http" -}}
+                  {{- if or (kindIs "int" $svcPort) (kindIs "float64" $svcPort) }}
+                  number: {{ $svcPort | int }}
+                  {{- else }}
+                  name: {{ $svcPort | quote }}
+                  {{- end }}
+          {{- end }}
+    {{- end }}
+{{- end }}
+{{- end }}

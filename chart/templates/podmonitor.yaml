@@ -1,0 +1,32 @@
+{{- if .Values.observability.podMonitor.enabled }}
+{{- range $name, $component := .Values.components }}
+{{- if and $component.enabled $component.metrics.enabled }}
+---
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: {{ include "app-template.componentFullname" (list $ $name) }}
+  namespace: {{ default $.Release.Namespace $.Values.observability.podMonitor.namespace }}
+  labels:
+    {{- include "app-template.commonLabels" $ | nindent 4 }}
+    app.kubernetes.io/component: {{ $name }}
+    {{- with $.Values.observability.podMonitor.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "app-template.selectorLabels" (list $ $name) | nindent 6 }}
+  namespaceSelector:
+    matchNames:
+      - {{ $.Release.Namespace }}
+  podMetricsEndpoints:
+    - port: {{ $component.metrics.portName | default "http" }}
+      path: {{ $component.metrics.path | default "/metrics" }}
+      interval: {{ $component.metrics.interval | default "30s" }}
+      scrapeTimeout: {{ $component.metrics.scrapeTimeout | default "10s" }}
+      scheme: {{ $component.metrics.scheme | default "http" }}
+      honorLabels: {{ $component.metrics.honorLabels | default false }}
+{{- end }}
+{{- end }}
+{{- end }}

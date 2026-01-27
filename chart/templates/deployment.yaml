@@ -1,0 +1,159 @@
+{{- range $name, $component := .Values.components }}
+{{- if $component.enabled }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "app-template.componentFullname" (list $ $name) }}
+  labels:
+    {{- include "app-template.commonLabels" $ | nindent 4 }}
+    app.kubernetes.io/component: {{ $name }}
+    {{- with $.Values.global.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+    {{- with $component.labels }}
+    {{- toYaml . | nindent 4 }}
+    {{- end }}
+  {{- with $.Values.global.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  replicas: {{ $component.replicaCount | default 1 }}
+  selector:
+    matchLabels:
+      {{- include "app-template.selectorLabels" (list $ $name) | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "app-template.selectorLabels" (list $ $name) | nindent 8 }}
+        {{- with $.Values.global.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+        {{- with $component.podLabels }}
+        {{- toYaml . | nindent 8 }}
+        {{- end }}
+      {{- $podAnnotations := merge (dict) (default (dict) $.Values.global.podAnnotations) (default (dict) $component.podAnnotations) }}
+      {{- if $podAnnotations }}
+      annotations:
+        {{- toYaml $podAnnotations | nindent 8 }}
+      {{- end }}
+    spec:
+      serviceAccountName: {{ include "app-template.serviceAccountName" $ }}
+      automountServiceAccountToken: {{ $.Values.serviceAccount.automountServiceAccountToken | default true }}
+
+      {{- $pullSecrets := concat (default (list) $.Values.global.imagePullSecrets) (default (list) $component.imagePullSecrets) }}
+      {{- if $pullSecrets }}
+      imagePullSecrets:
+        {{- toYaml $pullSecrets | nindent 8 }}
+      {{- end }}
+
+      {{- $nodeSelector := default $.Values.global.nodeSelector $component.nodeSelector }}
+      {{- if $nodeSelector }}
+      nodeSelector:
+        {{- toYaml $nodeSelector | nindent 8 }}
+      {{- end }}
+
+      {{- $tolerations := default $.Values.global.tolerations $component.tolerations }}
+      {{- if $tolerations }}
+      tolerations:
+        {{- toYaml $tolerations | nindent 8 }}
+      {{- end }}
+
+      {{- $affinity := default $.Values.global.affinity $component.affinity }}
+      {{- if $affinity }}
+      affinity:
+        {{- toYaml $affinity | nindent 8 }}
+      {{- end }}
+
+      {{- $podSecurityContext := default $.Values.global.podSecurityContext $component.podSecurityContext }}
+      {{- if $podSecurityContext }}
+      securityContext:
+        {{- toYaml $podSecurityContext | nindent 8 }}
+      {{- end }}
+
+      containers:
+        - name: {{ $name }}
+          image: "{{ $component.image.repository }}:{{ default $.Chart.AppVersion $component.image.tag }}"
+          imagePullPolicy: {{ $component.image.pullPolicy | default "IfNotPresent" }}
+
+          {{- with $component.command }}
+          command:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          {{- with $component.args }}
+          args:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          {{- with $component.ports }}
+          ports:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          {{- $envGlobal := default (list) $.Values.global.env }}
+          {{- $envComponent := default (list) $component.env }}
+          {{- $externalEnv := include "app-template.externalEnv" $ | trim }}
+          {{- $otelEnv := include "app-template.otelEnv" $ | trim }}
+          {{- if or $envGlobal $envComponent $externalEnv $otelEnv }}
+          env:
+            {{- if $envGlobal }}
+            {{- toYaml $envGlobal | nindent 12 }}
+            {{- end }}
+            {{- if $envComponent }}
+            {{- toYaml $envComponent | nindent 12 }}
+            {{- end }}
+            {{- if $externalEnv }}
+            {{- $externalEnv | nindent 12 }}
+            {{- end }}
+            {{- if $otelEnv }}
+            {{- $otelEnv | nindent 12 }}
+            {{- end }}
+          {{- end }}
+
+          {{- $envFrom := concat (default (list) $.Values.global.envFrom) (default (list) $component.envFrom) }}
+          {{- if $envFrom }}
+          envFrom:
+            {{- toYaml $envFrom | nindent 12 }}
+          {{- end }}
+
+          {{- $securityContext := default $.Values.global.securityContext $component.securityContext }}
+          {{- if $securityContext }}
+          securityContext:
+            {{- toYaml $securityContext | nindent 12 }}
+          {{- end }}
+
+          {{- with $component.resources }}
+          resources:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          {{- with $component.livenessProbe }}
+          livenessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          {{- with $component.readinessProbe }}
+          readinessProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          {{- with $component.startupProbe }}
+          startupProbe:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
+
+          {{- $mounts := concat (default (list) $.Values.global.volumeMounts) (default (list) $component.volumeMounts) }}
+          {{- if $mounts }}
+          volumeMounts:
+            {{- toYaml $mounts | nindent 12 }}
+          {{- end }}
+
+      {{- $volumes := concat (default (list) $.Values.global.volumes) (default (list) $component.volumes) }}
+      {{- if $volumes }}
+      volumes:
+        {{- toYaml $volumes | nindent 8 }}
+      {{- end }}
+{{- end }}
+{{- end }}
