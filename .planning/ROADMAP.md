@@ -159,9 +159,9 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 05-01-PLAN.md — Create metrics endpoint and enable ServiceMonitor
+- [x] 05-01-PLAN.md — Create metrics endpoint and enable ServiceMonitor
 
-**Status:** Planned
+**Status:** Complete (2026-01-27)
 
 **Delivers:**
 - /metrics route with prom-client

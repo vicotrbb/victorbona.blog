@@ -94,12 +94,15 @@ OpenTelemetry traces to Tempo:
 ### REQ-OBS-003: Prometheus Metrics
 **Priority:** Must Have
 **Category:** Observability
+**Status:** Complete (Phase 5)
 
 Metrics endpoint for Prometheus scraping:
-- `/api/metrics` route exposing prom-client metrics
-- Default Node.js runtime metrics (memory, event loop)
+- `/metrics` route exposing prom-client metrics
+- Default Node.js runtime metrics (memory, event loop, GC)
 - ServiceMonitor enabled in Helm chart
 - Configurable scrape interval
+
+**Deviation (2026-01-27):** Originally specified `/api/metrics` path, implemented as `/metrics` to match existing values.yaml configuration and Prometheus conventions.
 
 ### REQ-OBS-004: Browser RUM (Faro)
 **Priority:** Should Have
