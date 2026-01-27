@@ -8,12 +8,12 @@
 
 ## Current Status
 
-**Active Phase:** 1 of 7 (Container Foundation)
-**Plan:** 1 of 2 complete
-**Status:** In progress
-**Last activity:** 2026-01-27 - Completed 01-01-PLAN.md
+**Active Phase:** 2 of 7 (CI/CD Pipeline)
+**Plan:** 0 of ? complete
+**Status:** Ready to start
+**Last activity:** 2026-01-27 - Completed 01-02-PLAN.md (Phase 1 complete)
 
-**Progress:** [==========----------] 14% (1/7 plans complete)
+**Progress:** [====----------------] 29% (2/7 plans complete)
 
 ---
 
@@ -21,8 +21,8 @@
 
 | Phase | Name | Status | Notes |
 |-------|------|--------|-------|
-| 1 | Container Foundation | in-progress | Plan 1/2 complete |
-| 2 | CI/CD Pipeline | pending | Blocked by Phase 1 |
+| 1 | Container Foundation | complete | 2/2 plans done |
+| 2 | CI/CD Pipeline | ready | Unblocked, ready to start |
 | 3 | Helm & Deployment | pending | Blocked by Phase 2 |
 | 4 | Server-Side Tracing | pending | Blocked by Phase 3 |
 | 5 | Prometheus Metrics | pending | Blocked by Phase 3 |
@@ -33,6 +33,7 @@
 
 ## Recent Activity
 
+- 2026-01-27: Completed 01-02 - Multi-stage Dockerfile with non-root execution
 - 2026-01-27: Completed 01-01 - Next.js standalone config and health probes
 - 2026-01-26: Project initialized with `/gsd:new-project`
 - 2026-01-26: Codebase mapped (7 documents in `.planning/codebase/`)
@@ -48,6 +49,10 @@
 |-------|----------|-----------|
 | 01-01 | Health probes return simple {status: ok} | No internal details exposed for security |
 | 01-01 | Liveness and readiness probes identical | No external dependencies to check for frontend app |
+| 01-02 | node:22-alpine as base image | Smaller footprint and security |
+| 01-02 | Direct node server.js execution | Proper SIGTERM handling for graceful shutdown |
+| 01-02 | Non-root user with UID 1001 | Kubernetes security context compatibility |
+| 01-02 | HOSTNAME=0.0.0.0 | Kubernetes pod networking compatibility |
 
 ---
 
@@ -60,8 +65,8 @@ None currently.
 ## Session Continuity
 
 **Last session:** 2026-01-27
-**Stopped at:** Completed 01-01-PLAN.md
-**Resume file:** None - ready for 01-02-PLAN.md
+**Stopped at:** Completed 01-02-PLAN.md (Phase 1 complete)
+**Resume file:** None - ready for Phase 2 planning
 
 ---
 
@@ -69,8 +74,12 @@ None currently.
 
 If resuming work:
 1. Run `/gsd:progress` to see current state
-2. Execute 01-02-PLAN.md (Dockerfile creation)
-3. Continue with remaining Phase 1 plans
+2. Phase 1 (Container Foundation) is complete
+3. Next: Plan and execute Phase 2 (CI/CD Pipeline)
+4. Key artifacts ready:
+   - Dockerfile at project root
+   - Health probes at /api/health and /api/ready
+   - Standalone output configured in next.config.mjs
 
 ---
 
