@@ -19,8 +19,10 @@ Migrate the Next.js blog from Vercel to a self-hosted Kubernetes cluster with fu
 **Plans:** 2 plans
 
 Plans:
-- [ ] 01-01-PLAN.md — Configure standalone output and health endpoints
-- [ ] 01-02-PLAN.md — Create Dockerfile and verify build
+- [x] 01-01-PLAN.md — Configure standalone output and health endpoints
+- [x] 01-02-PLAN.md — Create Dockerfile and verify build
+
+**Status:** Complete (2026-01-27)
 
 **Delivers:**
 - Multi-stage Dockerfile with standalone output

@@ -15,6 +15,7 @@ This document captures scoped requirements for migrating the blog from Vercel to
 ### REQ-INF-001: Docker Image
 **Priority:** Must Have
 **Category:** Container Foundation
+**Status:** Complete (Phase 1)
 
 The blog must be containerized using an optimized multi-stage Docker build:
 - Base: `node:22-alpine` for build stage
@@ -26,6 +27,7 @@ The blog must be containerized using an optimized multi-stage Docker build:
 ### REQ-INF-002: Health Endpoints
 **Priority:** Must Have
 **Category:** Container Foundation
+**Status:** Complete (Phase 1)
 
 Kubernetes-compatible health endpoints:
 - `/api/health` — Liveness probe (returns 200 if process running)
