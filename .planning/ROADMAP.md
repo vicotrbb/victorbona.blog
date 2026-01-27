@@ -124,9 +124,9 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 04-01-PLAN.md — Configure OTEL instrumentation and Helm values
+- [x] 04-01-PLAN.md — Configure OTEL instrumentation and Helm values
 
-**Status:** Planned
+**Status:** Complete (2026-01-27)
 
 **Delivers:**
 - instrumentation.ts with OTEL SDK configuration

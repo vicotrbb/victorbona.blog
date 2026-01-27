@@ -81,6 +81,7 @@ JSON-formatted logs for Loki ingestion:
 ### REQ-OBS-002: Server-Side Tracing
 **Priority:** Must Have
 **Category:** Observability
+**Status:** Complete (Phase 4)
 
 OpenTelemetry traces to Tempo:
 - Use `@vercel/otel` for Next.js integration
