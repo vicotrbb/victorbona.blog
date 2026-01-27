@@ -98,6 +98,11 @@ components:
         value: "parentbased_traceidratio"
       - name: OTEL_TRACES_SAMPLER_ARG
         value: "0.1"
+      # Faro RUM configuration (Phase 6)
+      - name: NEXT_PUBLIC_FARO_URL
+        value: "https://faro.bonalab.org/collect"
+      - name: NEXT_PUBLIC_APP_VERSION
+        value: "1.0.0"  # Overridden by ArgoCD image tag parameter
 
     envFrom: []
 
