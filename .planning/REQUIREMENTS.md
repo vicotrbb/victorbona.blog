@@ -107,6 +107,7 @@ Metrics endpoint for Prometheus scraping:
 ### REQ-OBS-004: Browser RUM (Faro)
 **Priority:** Should Have
 **Category:** Observability
+**Status:** Complete (Phase 6)
 
 Grafana Faro for Real User Monitoring:
 - Core Web Vitals (LCP, CLS, INP)
