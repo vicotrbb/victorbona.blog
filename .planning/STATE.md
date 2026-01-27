@@ -8,12 +8,12 @@
 
 ## Current Status
 
-**Active Phase:** 6 of 7 (Browser RUM)
+**Active Phase:** 6 of 6 (Browser RUM)
 **Plan:** 1 of 1 complete
-**Status:** Phase 6 complete
+**Status:** Phase 6 complete — Milestone complete
 **Last activity:** 2026-01-27 - Completed 06-01-PLAN.md (Grafana Faro RUM integration)
 
-**Progress:** [================------] 100% (7/7 plans complete)
+**Progress:** [====================] 100% (7/7 plans complete)
 
 ---
 
@@ -27,7 +27,6 @@
 | 4 | Server-Side Tracing | complete | 1/1 plans done |
 | 5 | Prometheus Metrics | complete | 1/1 plans done |
 | 6 | Browser RUM | complete | 1/1 plans done |
-| 7 | Renovate | ready | Unblocked, ready to start |
 
 ---
 
@@ -89,8 +88,8 @@ None currently.
 ## Session Continuity
 
 **Last session:** 2026-01-27
-**Stopped at:** Completed 06-01-PLAN.md (Phase 6 complete)
-**Resume file:** None - ready for Phase 7 planning
+**Stopped at:** Milestone complete (Phase 7 removed)
+**Resume file:** None - milestone complete
 
 ---
 
@@ -98,8 +97,8 @@ None currently.
 
 If resuming work:
 1. Run `/gsd:progress` to see current state
-2. Phases 1-6 complete (Container, CI/CD, Helm, Tracing, Metrics, Browser RUM)
-3. Next: Plan and execute Phase 7 (Renovate)
+2. All 6 phases complete (Container, CI/CD, Helm, Tracing, Metrics, Browser RUM)
+3. Milestone v1.0 complete — ready for `/gsd:complete-milestone`
 4. Key artifacts ready:
    - Dockerfile at project root
    - Health probes at /api/health and /api/ready
@@ -117,3 +116,4 @@ If resuming work:
 ---
 
 *State updated: 2026-01-27*
+*Phase 7 (Renovate) removed from roadmap*

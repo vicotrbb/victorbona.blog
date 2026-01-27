@@ -221,30 +221,6 @@ Plans:
 
 ---
 
-## Phase 7: Renovate Configuration
-
-**Goal:** Automate dependency updates with ArgoCD awareness
-
-**Delivers:**
-- renovate.json with ArgoCD file patterns
-- Dependency grouping rules
-- Auto-merge configuration for patches
-
-**Requirements Addressed:**
-- REQ-AUTO-001: Renovate Configuration
-
-**Key Files:**
-- `renovate.json` (new)
-
-**Critical Pitfalls:**
-- Add managerFilePatterns for ArgoCD detection
-- Pin canary dependencies to prevent auto-merge issues
-- Test with dry-run before enabling
-
-**Dependencies:** Phase 3 (stable deployment before automation)
-
----
-
 ## Phase Summary
 
 | Phase | Goal | Requirements | Dependencies |
@@ -255,12 +231,10 @@ Plans:
 | 4 | Server-Side Tracing | REQ-OBS-002 | Phase 3 |
 | 5 | Prometheus Metrics | REQ-OBS-003 | Phase 3 |
 | 6 | Browser RUM | REQ-OBS-004 | Phase 3 |
-| 7 | Renovate | REQ-AUTO-001 | Phase 3 |
 
 **Execution Order:**
 - Phases 1-3: Sequential (strict dependencies)
 - Phases 4-6: Can run in parallel after Phase 3
-- Phase 7: After deployment is stable
 
 ---
 
@@ -272,7 +246,6 @@ Plans:
 3. Logs visible in Grafana Loki
 4. Metrics scraped by Prometheus
 5. Faro RUM data in Grafana
-6. Renovate creating dependency update PRs
 
 ---
 
