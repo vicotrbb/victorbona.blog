@@ -16,6 +16,12 @@ Migrate the Next.js blog from Vercel to a self-hosted Kubernetes cluster with fu
 
 **Goal:** Create a production-ready Docker image for the Next.js blog
 
+**Plans:** 2 plans
+
+Plans:
+- [ ] 01-01-PLAN.md — Configure standalone output and health endpoints
+- [ ] 01-02-PLAN.md — Create Dockerfile and verify build
+
 **Delivers:**
 - Multi-stage Dockerfile with standalone output
 - next.config.mjs with `output: 'standalone'`
