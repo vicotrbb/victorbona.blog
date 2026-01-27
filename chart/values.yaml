@@ -90,6 +90,14 @@ components:
         value: "3000"
       - name: NODE_ENV
         value: "production"
+      # OTEL configuration (Phase 4) - additional vars not in otelEnv helper
+      # Core OTEL vars (SERVICE_NAME, ENDPOINT, PROTOCOL) come from observability.otel via helper
+      - name: OTEL_SERVICE_VERSION
+        value: "latest"  # Overridden by ArgoCD image tag parameter
+      - name: OTEL_TRACES_SAMPLER
+        value: "parentbased_traceidratio"
+      - name: OTEL_TRACES_SAMPLER_ARG
+        value: "0.1"
 
     envFrom: []
 
@@ -185,14 +193,15 @@ externalServices:
   minio:
     enabled: false
 
-# Observability placeholders for Phase 4-5
+# Observability configuration for Phase 4-5
 observability:
   otel:
-    # Enable in Phase 4 (Server-Side Tracing)
-    enabled: false
+    # Enabled in Phase 4 (Server-Side Tracing)
+    enabled: true
     serviceName: "victorbona-blog"
-    endpoint: ""  # Set to alloy endpoint when enabled
+    endpoint: "http://alloy.observability-system.svc.cluster.local:4318"
     protocol: "http/protobuf"
+    samplingRatio: "0.1"
     headers: ""
     resourceAttributes: {}
 
