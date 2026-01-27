@@ -84,9 +84,11 @@ JSON-formatted logs for Loki ingestion:
 
 OpenTelemetry traces to Tempo:
 - Use `@vercel/otel` for Next.js integration
-- Export via OTLP gRPC to `alloy.observability-system.svc.cluster.local:4317`
+- Export via OTLP HTTP/protobuf to `alloy.observability-system.svc.cluster.local:4318`
 - Service name and version in all spans
 - Configurable endpoint via Helm values
+
+**Deviation (2026-01-27):** Originally specified gRPC port 4317, changed to HTTP/protobuf port 4318 due to `@grpc/grpc-js` module resolution errors in Next.js bundling. HTTP/protobuf is the standard choice for Next.js OTEL integration. See 04-RESEARCH.md for details.
 
 ### REQ-OBS-003: Prometheus Metrics
 **Priority:** Must Have
