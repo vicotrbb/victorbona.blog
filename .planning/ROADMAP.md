@@ -54,6 +54,13 @@ Plans:
 
 **Goal:** Automate Docker image builds and push to GHCR
 
+**Plans:** 1 plan
+
+Plans:
+- [ ] 02-01-PLAN.md — Create GitHub Actions workflow for multi-arch Docker builds
+
+**Status:** Planned (2026-01-27)
+
 **Delivers:**
 - GitHub Actions workflow for Docker builds
 - Multi-architecture support (amd64, arm64)
