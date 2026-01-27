@@ -8,12 +8,12 @@
 
 ## Current Status
 
-**Active Phase:** 5 of 7 (Prometheus Metrics)
+**Active Phase:** 6 of 7 (Browser RUM)
 **Plan:** 1 of 1 complete
-**Status:** Phase 5 complete
-**Last activity:** 2026-01-27 - Completed 05-01-PLAN.md (Prometheus metrics endpoint)
+**Status:** Phase 6 complete
+**Last activity:** 2026-01-27 - Completed 06-01-PLAN.md (Grafana Faro RUM integration)
 
-**Progress:** [=============---------] 86% (6/7 plans complete)
+**Progress:** [================------] 100% (7/7 plans complete)
 
 ---
 
@@ -26,13 +26,14 @@
 | 3 | Helm & Deployment | complete | 1/1 plans done |
 | 4 | Server-Side Tracing | complete | 1/1 plans done |
 | 5 | Prometheus Metrics | complete | 1/1 plans done |
-| 6 | Browser RUM | ready | Unblocked, ready to start |
+| 6 | Browser RUM | complete | 1/1 plans done |
 | 7 | Renovate | ready | Unblocked, ready to start |
 
 ---
 
 ## Recent Activity
 
+- 2026-01-27: Completed 06-01 - Grafana Faro RUM with FaroInit component and privacy guards
 - 2026-01-27: Completed 05-01 - prom-client metrics at /metrics with ServiceMonitor enabled
 - 2026-01-27: Completed 04-01 - OpenTelemetry with @vercel/otel, HTTP export to Alloy
 - 2026-01-27: Completed 03-01 - Helm chart with HPA, PDB, health probes for ArgoCD
@@ -72,6 +73,10 @@
 | 05-01 | Standard nodejs_* metric names | No custom prefix, compatible with existing dashboards |
 | 05-01 | app=victorbona-blog default label | Easy filtering in Prometheus queries |
 | 05-01 | /metrics path (not /api/metrics) | Matches values.yaml configuration and convention |
+| 06-01 | DNT guard respects Do Not Track | Privacy compliance for browser RUM |
+| 06-01 | Production guard via NEXT_PUBLIC_FARO_URL | Prevents Faro init in local development |
+| 06-01 | HMR guard via faro.api check | Prevents duplicate initialization during HMR |
+| 06-01 | FaroInit first child of body | Earliest possible initialization in render tree |
 
 ---
 
@@ -84,8 +89,8 @@ None currently.
 ## Session Continuity
 
 **Last session:** 2026-01-27
-**Stopped at:** Completed 05-01-PLAN.md (Phase 5 complete)
-**Resume file:** None - ready for Phase 6 planning
+**Stopped at:** Completed 06-01-PLAN.md (Phase 6 complete)
+**Resume file:** None - ready for Phase 7 planning
 
 ---
 
@@ -93,8 +98,8 @@ None currently.
 
 If resuming work:
 1. Run `/gsd:progress` to see current state
-2. Phases 1-5 complete (Container, CI/CD, Helm, Tracing, Metrics)
-3. Next: Plan and execute Phase 6 (Browser RUM)
+2. Phases 1-6 complete (Container, CI/CD, Helm, Tracing, Metrics, Browser RUM)
+3. Next: Plan and execute Phase 7 (Renovate)
 4. Key artifacts ready:
    - Dockerfile at project root
    - Health probes at /api/health and /api/ready
@@ -106,6 +111,8 @@ If resuming work:
    - OTEL environment variables configured in Helm values
    - Prometheus metrics at /metrics with prom-client
    - ServiceMonitor enabled for automatic scraping
+   - Grafana Faro RUM at app/components/faro-init.tsx
+   - NEXT_PUBLIC_FARO_URL configured in Helm values
 
 ---
 
