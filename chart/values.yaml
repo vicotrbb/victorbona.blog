@@ -1,0 +1,221 @@
+# victorbona.blog Helm values configuration
+# Configured for ArgoCD deployment with Cloudflare Tunnel routing
+
+global:
+  nameOverride: "victorbona-blog"
+  fullnameOverride: ""
+
+  labels: {}
+  annotations: {}
+  podLabels: {}
+  podAnnotations: {}
+
+  imagePullSecrets: []
+  nodeSelector: {}
+  tolerations: []
+  affinity: {}
+
+  # Security: Run as non-root user matching Dockerfile UID 1001
+  podSecurityContext:
+    runAsUser: 1001
+    runAsGroup: 1001
+    runAsNonRoot: true
+    fsGroup: 1001
+
+  securityContext:
+    allowPrivilegeEscalation: false
+    # Note: readOnlyRootFilesystem is false because Next.js needs .next/cache write access
+    readOnlyRootFilesystem: false
+    capabilities:
+      drop:
+        - ALL
+
+  # Common env and envFrom applied to all components
+  env: []
+  envFrom: []
+
+  # Common volumes and mounts applied to all components
+  volumes: []
+  volumeMounts: []
+
+serviceAccount:
+  create: true
+  name: ""
+  annotations: {}
+  # Blog doesn't need Kubernetes API access
+  automountServiceAccountToken: false
+
+# Main web component for the Next.js blog
+components:
+  web:
+    enabled: true
+    replicaCount: 2
+
+    image:
+      repository: ghcr.io/vicotrbb/victorbona.blog
+      tag: "latest"  # Override at deploy time via ArgoCD
+      pullPolicy: IfNotPresent
+
+    command: []
+    args: []
+
+    ports:
+      - name: http
+        containerPort: 3000
+        protocol: TCP
+
+    service:
+      enabled: true
+      # ClusterIP - Cloudflare Tunnel connects directly, no LoadBalancer needed
+      type: ClusterIP
+      ports:
+        - name: http
+          port: 80
+          targetPort: http
+
+    ingress:
+      # Disabled - Cloudflare Tunnel handles external routing
+      enabled: false
+      className: ""
+      annotations: {}
+      hosts: []
+      tls: []
+
+    # Environment variables for Next.js
+    env:
+      - name: HOSTNAME
+        # Critical for Kubernetes networking - must bind to all interfaces
+        value: "0.0.0.0"
+      - name: PORT
+        value: "3000"
+      - name: NODE_ENV
+        value: "production"
+
+    envFrom: []
+
+    # Resource limits per CONTEXT.md decisions
+    resources:
+      requests:
+        memory: "128Mi"
+        cpu: "100m"
+      limits:
+        memory: "256Mi"
+        cpu: "200m"
+
+    # Liveness probe: Is the process alive?
+    # Higher failure tolerance - restart is expensive
+    livenessProbe:
+      httpGet:
+        path: /api/health
+        port: 3000
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      timeoutSeconds: 5
+      failureThreshold: 3
+      successThreshold: 1
+
+    # Readiness probe: Can it serve traffic?
+    # Quick to detect issues, quick to recover
+    readinessProbe:
+      httpGet:
+        path: /api/ready
+        port: 3000
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 3
+      failureThreshold: 3
+      successThreshold: 1
+
+    # Startup probe: Delays liveness until app is ready
+    # failureThreshold: 30 * periodSeconds: 5 = 150s max startup time
+    startupProbe:
+      httpGet:
+        path: /api/health
+        port: 3000
+      initialDelaySeconds: 0
+      periodSeconds: 5
+      timeoutSeconds: 3
+      failureThreshold: 30
+      successThreshold: 1
+
+    podSecurityContext: {}
+    securityContext: {}
+
+    nodeSelector: {}
+    tolerations: []
+    affinity: {}
+
+    volumes: []
+    volumeMounts: []
+
+    # HPA: Scale 2-4 pods based on CPU utilization
+    # CPU-based scaling is safer than memory (memory OOMKills are abrupt)
+    autoscaling:
+      enabled: true
+      minReplicas: 2
+      maxReplicas: 4
+      targetCPUUtilizationPercentage: 70
+
+    # PDB: Ensure at least 1 pod available during disruptions
+    # With replicaCount: 2, this allows draining 1 pod at a time
+    pdb:
+      enabled: true
+      minAvailable: 1
+
+    # Metrics placeholder for Phase 5 (Prometheus)
+    metrics:
+      enabled: false
+      portName: http
+      path: /metrics
+      interval: 30s
+      scrapeTimeout: 10s
+      scheme: http
+      honorLabels: false
+
+  # Worker component disabled - blog has no background jobs
+  worker:
+    enabled: false
+
+# External services disabled - blog has no dependencies
+externalServices:
+  postgres:
+    enabled: false
+  redis:
+    enabled: false
+  minio:
+    enabled: false
+
+# Observability placeholders for Phase 4-5
+observability:
+  otel:
+    # Enable in Phase 4 (Server-Side Tracing)
+    enabled: false
+    serviceName: "victorbona-blog"
+    endpoint: ""  # Set to alloy endpoint when enabled
+    protocol: "http/protobuf"
+    headers: ""
+    resourceAttributes: {}
+
+  serviceMonitor:
+    # Enable in Phase 5 (Prometheus Metrics)
+    enabled: false
+    labels: {}
+    namespace: ""
+
+  podMonitor:
+    enabled: false
+    labels: {}
+    namespace: ""
+
+networkPolicy:
+  enabled: false
+
+# In-cluster dependencies disabled - blog is stateless
+postgresql:
+  enabled: false
+
+redis:
+  enabled: false
+
+minio:
+  enabled: false
