@@ -190,6 +190,13 @@ Plans:
 
 **Goal:** Enable client-side observability with Grafana Faro
 
+**Plans:** 1 plan
+
+Plans:
+- [ ] 06-01-PLAN.md — Integrate Faro SDK for browser RUM
+
+**Status:** Planned (2026-01-27)
+
 **Delivers:**
 - FaroInit client component
 - Core Web Vitals collection (LCP, CLS, INP)
