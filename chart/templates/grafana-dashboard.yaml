@@ -1,0 +1,17 @@
+{{- if .Values.observability.dashboard.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "app-template.fullname" . }}-grafana-dashboard
+  namespace: {{ .Values.observability.dashboard.namespace | default .Release.Namespace }}
+  labels:
+    {{- include "app-template.commonLabels" . | nindent 4 }}
+    grafana_dashboard: "1"
+  {{- if .Values.observability.dashboard.folder }}
+  annotations:
+    grafana_folder: {{ .Values.observability.dashboard.folder | quote }}
+  {{- end }}
+data:
+  victorbona-blog-dashboard.json: |-
+{{ .Files.Get "files/dashboards/blog-analytics.json" | indent 4 }}
+{{- end }}

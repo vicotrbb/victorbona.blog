@@ -221,6 +221,12 @@ observability:
     labels: {}
     namespace: ""
 
+  dashboard:
+    # Enabled in Phase 10 (Grafana Dashboard)
+    enabled: true
+    namespace: "observability-system"  # Namespace where Grafana sidecar watches
+    folder: ""                         # Optional: target Grafana folder name
+
 networkPolicy:
   enabled: false
 
