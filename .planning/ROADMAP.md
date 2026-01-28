@@ -3,7 +3,7 @@
 ## Milestones
 
 - v1.0 Production Deployment - Phases 1-6 (shipped 2026-01-28)
-- v1.1 Analytics & Dashboard - Phases 7-10 (in progress)
+- v1.1 Analytics & Dashboard - Phases 7-10 (shipped 2026-01-28)
 
 ## Phases
 
@@ -20,14 +20,14 @@ See MILESTONES.md for v1.0 details:
 
 </details>
 
-### v1.1 Analytics & Dashboard (In Progress)
+### v1.1 Analytics & Dashboard (SHIPPED 2026-01-28)
 
 **Milestone Goal:** Full observability with actionable page analytics and a unified Grafana dashboard combining Prometheus metrics with Faro browser RUM data.
 
 - [x] **Phase 7: Page View Metrics** - Core middleware with path normalization and request tracking
 - [x] **Phase 8: Traffic Source Attribution** - Referrer categorization and UTM parameter parsing
 - [x] **Phase 9: Device Analytics** - User-Agent parsing for browser and device categories
-- [ ] **Phase 10: Grafana Dashboard** - GitOps-provisioned dashboard with all analytics panels
+- [x] **Phase 10: Grafana Dashboard** - GitOps-provisioned dashboard with all analytics panels
 
 ## Phase Details
 
@@ -86,7 +86,7 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 10-01-PLAN.md — Create dashboard JSON, Helm ConfigMap template, and values.yaml config
+- [x] 10-01-PLAN.md — Create dashboard JSON, Helm ConfigMap template, and values.yaml config
 
 ## Progress
 
@@ -98,11 +98,12 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10
 | 7. Page View Metrics | v1.1 | 1/1 | Complete | 2026-01-28 |
 | 8. Traffic Source Attribution | v1.1 | 1/1 | Complete | 2026-01-28 |
 | 9. Device Analytics | v1.1 | 1/1 | Complete | 2026-01-28 |
-| 10. Grafana Dashboard | v1.1 | 0/1 | Planned | - |
+| 10. Grafana Dashboard | v1.1 | 1/1 | Complete | 2026-01-28 |
 
 ---
 *Roadmap created: 2026-01-28*
 *Milestone v1.1 started*
 *Phase 8 complete: 2026-01-28*
 *Phase 9 complete: 2026-01-28*
-*Phase 10 planned: 2026-01-28*
+*Phase 10 complete: 2026-01-28*
+*v1.1 milestone shipped: 2026-01-28*

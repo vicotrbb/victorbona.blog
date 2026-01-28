@@ -26,14 +26,14 @@ Requirements for Analytics & Dashboard milestone. Each maps to roadmap phases.
 
 ### Grafana Dashboard
 
-- [ ] **DASH-01**: Dashboard JSON provisioned via ConfigMap in Helm chart
-- [ ] **DASH-02**: Dashboard auto-discovered by Grafana sidecar with correct labels
-- [ ] **DASH-03**: Page views over time panel (Prometheus query)
-- [ ] **DASH-04**: Top pages panel showing most viewed paths
-- [ ] **DASH-05**: Traffic sources breakdown panel (referrer categories)
-- [ ] **DASH-06**: Device/browser distribution panel
-- [ ] **DASH-07**: Unique sessions panel from Faro/Loki data
-- [ ] **DASH-08**: Core Web Vitals panel (LCP, FID/INP, CLS) from Faro data
+- [x] **DASH-01**: Dashboard JSON provisioned via ConfigMap in Helm chart
+- [x] **DASH-02**: Dashboard auto-discovered by Grafana sidecar with correct labels
+- [x] **DASH-03**: Page views over time panel (Prometheus query)
+- [x] **DASH-04**: Top pages panel showing most viewed paths
+- [x] **DASH-05**: Traffic sources breakdown panel (referrer categories)
+- [x] **DASH-06**: Device/browser distribution panel
+- [x] **DASH-07**: Unique sessions panel from Faro/Loki data
+- [x] **DASH-08**: Core Web Vitals panel (LCP, FID/INP, CLS) from Faro data
 
 ## Future Requirements
 
@@ -80,14 +80,14 @@ Which phases cover which requirements. Updated during roadmap creation.
 | TRAFFIC-02 | Phase 8 | Complete |
 | DEVICE-01 | Phase 9 | Complete |
 | DEVICE-02 | Phase 9 | Complete |
-| DASH-01 | Phase 10 | Pending |
-| DASH-02 | Phase 10 | Pending |
-| DASH-03 | Phase 10 | Pending |
-| DASH-04 | Phase 10 | Pending |
-| DASH-05 | Phase 10 | Pending |
-| DASH-06 | Phase 10 | Pending |
-| DASH-07 | Phase 10 | Pending |
-| DASH-08 | Phase 10 | Pending |
+| DASH-01 | Phase 10 | Complete |
+| DASH-02 | Phase 10 | Complete |
+| DASH-03 | Phase 10 | Complete |
+| DASH-04 | Phase 10 | Complete |
+| DASH-05 | Phase 10 | Complete |
+| DASH-06 | Phase 10 | Complete |
+| DASH-07 | Phase 10 | Complete |
+| DASH-08 | Phase 10 | Complete |
 
 **Coverage:**
 - v1.1 requirements: 16 total
@@ -96,4 +96,4 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 ---
 *Requirements defined: 2026-01-28*
-*Last updated: 2026-01-28 after roadmap creation*
+*Last updated: 2026-01-28 after v1.1 milestone completion*
