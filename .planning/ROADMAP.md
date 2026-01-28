@@ -64,14 +64,14 @@ Plans:
 **Depends on**: Phase 7 (middleware skeleton exists)
 **Requirements**: DEVICE-01, DEVICE-02
 **Success Criteria** (what must be TRUE):
-  1. Chrome browser visits show browser="Chrome" in metrics
-  2. Safari on iPhone shows browser="Safari" and device="Mobile" in metrics
-  3. Firefox on desktop shows browser="Firefox" and device="Desktop" in metrics
-  4. Unknown/bot user agents show browser="Other" without crashing
-**Plans**: TBD
+  1. Chrome browser visits show browser="chrome" in metrics
+  2. Safari on iPhone shows browser="safari" and device="mobile" in metrics
+  3. Firefox on desktop shows browser="firefox" and device="desktop" in metrics
+  4. Unknown/bot user agents show browser="other" or "unknown" without crashing
+**Plans:** 1 plan
 
 Plans:
-- [ ] 09-01: TBD
+- [ ] 09-01-PLAN.md — Install bowser, create device-detection utility, extend metrics with browser/device labels
 
 ### Phase 10: Grafana Dashboard
 **Goal**: GitOps-provisioned Grafana dashboard combining Prometheus metrics and Faro data
@@ -97,11 +97,11 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10
 |-------|-----------|----------------|--------|-----------|
 | 7. Page View Metrics | v1.1 | 1/1 | Complete | 2026-01-28 |
 | 8. Traffic Source Attribution | v1.1 | 1/1 | Complete | 2026-01-28 |
-| 9. Device Analytics | v1.1 | 0/? | Not started | - |
+| 9. Device Analytics | v1.1 | 0/1 | Planned | - |
 | 10. Grafana Dashboard | v1.1 | 0/? | Not started | - |
 
 ---
 *Roadmap created: 2026-01-28*
 *Milestone v1.1 started*
-*Phase 8 planned: 2026-01-28*
 *Phase 8 complete: 2026-01-28*
+*Phase 9 planned: 2026-01-28*
