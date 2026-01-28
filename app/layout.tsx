@@ -9,6 +9,7 @@ import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
 import Script from "next/script";
 import { FaroInit } from "./components/faro-init";
+import { PageViewTracker } from "./components/page-view-tracker";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -118,6 +119,7 @@ export default function RootLayout({
         ></Script>
       </head>
       <body className="antialiased max-w-4xl mx-4 mt-8 lg:mx-auto">
+        <PageViewTracker />
         <FaroInit />
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-4 md:px-6 lg:px-8">
           <Navbar />
