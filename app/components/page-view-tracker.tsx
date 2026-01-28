@@ -15,6 +15,9 @@ export function PageViewTracker() {
   const contentType = headersList.get('x-metrics-content-type')
   const isBot = headersList.get('x-metrics-is-bot')
   const startTimeStr = headersList.get('x-metrics-start-time')
+  const source = headersList.get('x-metrics-source') || 'direct'
+  const utmSource = headersList.get('x-metrics-utm-source') || ''
+  const utmMedium = headersList.get('x-metrics-utm-medium') || ''
 
   // Only record if all required headers are present (means middleware ran)
   if (path && method && contentType && isBot) {
@@ -24,6 +27,9 @@ export function PageViewTracker() {
       method,
       is_bot: isBot,
       content_type: contentType,
+      source,
+      utm_source: utmSource,
+      utm_medium: utmMedium,
     })
 
     // Record duration if start time is available

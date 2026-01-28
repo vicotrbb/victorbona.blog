@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 import { isbot } from 'isbot'
+import { detectSource } from './app/lib/source-detection'
+import { extractUtmParams } from './app/lib/utm-parser'
 
 // Static asset extensions to exclude from tracking
 const STATIC_EXTENSIONS = [
@@ -95,6 +97,13 @@ export function middleware(request: NextRequest) {
   const userAgent = request.headers.get('user-agent') || ''
   const isBotRequest = isbot(userAgent)
 
+  // Extract referrer source
+  const referer = request.headers.get('referer')
+  const source = detectSource(referer)
+
+  // Extract UTM parameters from URL
+  const { utmSource, utmMedium } = extractUtmParams(request.nextUrl.searchParams)
+
   // Create response with request headers that contain metrics metadata
   // These headers can be read by server-side code (layout.tsx or API routes)
   // to record metrics using prom-client which requires Node.js runtime
@@ -105,6 +114,9 @@ export function middleware(request: NextRequest) {
   requestHeaders.set('x-metrics-is-bot', isBotRequest ? 'true' : 'false')
   requestHeaders.set('x-metrics-start-time', startTime.toString())
   requestHeaders.set('x-url', pathname)
+  requestHeaders.set('x-metrics-source', source)
+  requestHeaders.set('x-metrics-utm-source', utmSource)
+  requestHeaders.set('x-metrics-utm-medium', utmMedium)
 
   return NextResponse.next({
     request: {
