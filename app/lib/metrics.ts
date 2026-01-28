@@ -1,7 +1,10 @@
-import { Registry, collectDefaultMetrics } from 'prom-client'
+import { Registry, collectDefaultMetrics, Counter, Histogram } from 'prom-client'
 
 declare global {
   var metricsRegistry: Registry | undefined
+  var pageViewsCounter: Counter | undefined
+  var httpRequestsCounter: Counter | undefined
+  var pageDurationHistogram: Histogram | undefined
 }
 
 function initializeMetrics(): Registry {
@@ -47,4 +50,62 @@ export const metricsRegistry =
 
 if (process.env.NODE_ENV !== 'production') {
   global.metricsRegistry = metricsRegistry
+}
+
+// Page views counter
+const pageViewsLabelNames = ['path', 'method', 'is_bot', 'content_type'] as const
+
+function initializePageViewsCounter(): Counter {
+  return new Counter({
+    name: 'blog_page_views_total',
+    help: 'Total page views by path, method, bot status, and content type',
+    labelNames: pageViewsLabelNames,
+    registers: [metricsRegistry],
+  })
+}
+
+export const pageViewsCounter =
+  global.pageViewsCounter ?? initializePageViewsCounter()
+
+if (process.env.NODE_ENV !== 'production') {
+  global.pageViewsCounter = pageViewsCounter
+}
+
+// HTTP requests counter (for tracking status codes including 404s)
+const httpRequestsLabelNames = ['path', 'method', 'status_code', 'content_type'] as const
+
+function initializeHttpRequestsCounter(): Counter {
+  return new Counter({
+    name: 'blog_http_requests_total',
+    help: 'Total HTTP requests by path, method, status code, and content type',
+    labelNames: httpRequestsLabelNames,
+    registers: [metricsRegistry],
+  })
+}
+
+export const httpRequestsCounter =
+  global.httpRequestsCounter ?? initializeHttpRequestsCounter()
+
+if (process.env.NODE_ENV !== 'production') {
+  global.httpRequestsCounter = httpRequestsCounter
+}
+
+// Page duration histogram
+const pageDurationLabelNames = ['path', 'method', 'content_type'] as const
+
+function initializePageDurationHistogram(): Histogram {
+  return new Histogram({
+    name: 'blog_page_duration_seconds',
+    help: 'Page request duration in seconds',
+    labelNames: pageDurationLabelNames,
+    buckets: [0.01, 0.025, 0.05, 0.1, 0.25, 0.5, 1, 2.5, 5],
+    registers: [metricsRegistry],
+  })
+}
+
+export const pageDurationHistogram =
+  global.pageDurationHistogram ?? initializePageDurationHistogram()
+
+if (process.env.NODE_ENV !== 'production') {
+  global.pageDurationHistogram = pageDurationHistogram
 }
