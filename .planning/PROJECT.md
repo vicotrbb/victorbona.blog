@@ -34,7 +34,13 @@ The blog runs reliably on the home Kubernetes cluster with the same performance 
 
 ### Active
 
-(Empty - define next milestone with `/gsd:new-milestone`)
+**Milestone v1.1: Analytics & Dashboard**
+
+- Page view metrics per path exposed at /metrics (stateless counters)
+- Referrer tracking with source attribution
+- User agent parsing into browser/device categories
+- Grafana dashboard combining Prometheus metrics + Faro sessions
+- Dashboard deployed via Helm chart ConfigMap (GitOps)
 
 ### Out of Scope
 
@@ -45,7 +51,7 @@ The blog runs reliably on the home Kubernetes cluster with the same performance 
 - Vercel Analytics - replacing with self-hosted observability
 - Multi-replica horizontal scaling - single replica sufficient for personal blog
 - Frontend-backend trace correlation - high complexity, consider for future
-- Custom business metrics - not needed for personal blog
+- Custom business metrics beyond page analytics - not needed for personal blog
 - Real-time alerting - monitor dashboards sufficient
 - Renovate automation - considered but removed from v1.0 scope
 
@@ -89,4 +95,4 @@ The blog runs reliably on the home Kubernetes cluster with the same performance 
 - **Observability**: Must integrate with existing stack - no new observability components
 
 ---
-*Last updated: 2026-01-28 after v1.0 milestone*
+*Last updated: 2026-01-28 after starting v1.1 milestone*
