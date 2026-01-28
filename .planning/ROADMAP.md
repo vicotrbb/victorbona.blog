@@ -50,14 +50,14 @@ Plans:
 **Depends on**: Phase 7 (middleware skeleton exists)
 **Requirements**: TRAFFIC-01, TRAFFIC-02
 **Success Criteria** (what must be TRUE):
-  1. Visit from Google search shows source="search" in metrics
-  2. Visit from Twitter/X link shows source="social" in metrics
+  1. Visit from Google search shows source="google" in metrics
+  2. Visit from Twitter/X link shows source="twitter" in metrics
   3. Direct visits (no referrer) show source="direct" in metrics
   4. URLs with ?utm_source=newsletter tracked with utm labels
-**Plans**: TBD
+**Plans:** 1 plan
 
 Plans:
-- [ ] 08-01: TBD
+- [ ] 08-01-PLAN.md — Create source/UTM utilities, extend metrics labels, wire middleware
 
 ### Phase 9: Device Analytics
 **Goal**: User-Agent parsing into browser and device categories using bowser
@@ -96,11 +96,11 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 7. Page View Metrics | v1.1 | 1/1 | Complete | 2026-01-28 |
-| 8. Traffic Source Attribution | v1.1 | 0/? | Not started | - |
+| 8. Traffic Source Attribution | v1.1 | 0/1 | Planned | - |
 | 9. Device Analytics | v1.1 | 0/? | Not started | - |
 | 10. Grafana Dashboard | v1.1 | 0/? | Not started | - |
 
 ---
 *Roadmap created: 2026-01-28*
 *Milestone v1.1 started*
-*Phase 7 planned: 2026-01-28*
+*Phase 8 planned: 2026-01-28*
