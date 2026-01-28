@@ -25,7 +25,7 @@ See MILESTONES.md for v1.0 details:
 **Milestone Goal:** Full observability with actionable page analytics and a unified Grafana dashboard combining Prometheus metrics with Faro browser RUM data.
 
 - [x] **Phase 7: Page View Metrics** - Core middleware with path normalization and request tracking
-- [ ] **Phase 8: Traffic Source Attribution** - Referrer categorization and UTM parameter parsing
+- [x] **Phase 8: Traffic Source Attribution** - Referrer categorization and UTM parameter parsing
 - [ ] **Phase 9: Device Analytics** - User-Agent parsing for browser and device categories
 - [ ] **Phase 10: Grafana Dashboard** - GitOps-provisioned dashboard with all analytics panels
 
@@ -57,7 +57,7 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 08-01-PLAN.md — Create source/UTM utilities, extend metrics labels, wire middleware
+- [x] 08-01-PLAN.md — Create source/UTM utilities, extend metrics labels, wire middleware
 
 ### Phase 9: Device Analytics
 **Goal**: User-Agent parsing into browser and device categories using bowser
@@ -96,7 +96,7 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
 | 7. Page View Metrics | v1.1 | 1/1 | Complete | 2026-01-28 |
-| 8. Traffic Source Attribution | v1.1 | 0/1 | Planned | - |
+| 8. Traffic Source Attribution | v1.1 | 1/1 | Complete | 2026-01-28 |
 | 9. Device Analytics | v1.1 | 0/? | Not started | - |
 | 10. Grafana Dashboard | v1.1 | 0/? | Not started | - |
 
@@ -104,3 +104,4 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10
 *Roadmap created: 2026-01-28*
 *Milestone v1.1 started*
 *Phase 8 planned: 2026-01-28*
+*Phase 8 complete: 2026-01-28*

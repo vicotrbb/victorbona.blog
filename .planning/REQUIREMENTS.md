@@ -16,8 +16,8 @@ Requirements for Analytics & Dashboard milestone. Each maps to roadmap phases.
 
 ### Traffic Sources
 
-- [ ] **TRAFFIC-01**: Referrer categorized into source buckets (search, social, direct, internal, other)
-- [ ] **TRAFFIC-02**: UTM parameters parsed and tracked (campaign, source, medium)
+- [x] **TRAFFIC-01**: Referrer categorized into source buckets (search, social, direct, internal, other)
+- [x] **TRAFFIC-02**: UTM parameters parsed and tracked (campaign, source, medium)
 
 ### Device Analytics
 
@@ -76,8 +76,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | METRICS-02 | Phase 7 | Complete |
 | METRICS-03 | Phase 7 | Complete |
 | METRICS-04 | Phase 7 | Complete |
-| TRAFFIC-01 | Phase 8 | Pending |
-| TRAFFIC-02 | Phase 8 | Pending |
+| TRAFFIC-01 | Phase 8 | Complete |
+| TRAFFIC-02 | Phase 8 | Complete |
 | DEVICE-01 | Phase 9 | Pending |
 | DEVICE-02 | Phase 9 | Pending |
 | DASH-01 | Phase 10 | Pending |
