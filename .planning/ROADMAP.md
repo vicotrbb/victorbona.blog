@@ -26,7 +26,7 @@ See MILESTONES.md for v1.0 details:
 
 - [x] **Phase 7: Page View Metrics** - Core middleware with path normalization and request tracking
 - [x] **Phase 8: Traffic Source Attribution** - Referrer categorization and UTM parameter parsing
-- [ ] **Phase 9: Device Analytics** - User-Agent parsing for browser and device categories
+- [x] **Phase 9: Device Analytics** - User-Agent parsing for browser and device categories
 - [ ] **Phase 10: Grafana Dashboard** - GitOps-provisioned dashboard with all analytics panels
 
 ## Phase Details
@@ -71,7 +71,7 @@ Plans:
 **Plans:** 1 plan
 
 Plans:
-- [ ] 09-01-PLAN.md — Install bowser, create device-detection utility, extend metrics with browser/device labels
+- [x] 09-01-PLAN.md — Install bowser, create device-detection utility, extend metrics with browser/device labels
 
 ### Phase 10: Grafana Dashboard
 **Goal**: GitOps-provisioned Grafana dashboard combining Prometheus metrics and Faro data
@@ -97,11 +97,11 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10
 |-------|-----------|----------------|--------|-----------|
 | 7. Page View Metrics | v1.1 | 1/1 | Complete | 2026-01-28 |
 | 8. Traffic Source Attribution | v1.1 | 1/1 | Complete | 2026-01-28 |
-| 9. Device Analytics | v1.1 | 0/1 | Planned | - |
+| 9. Device Analytics | v1.1 | 1/1 | Complete | 2026-01-28 |
 | 10. Grafana Dashboard | v1.1 | 0/? | Not started | - |
 
 ---
 *Roadmap created: 2026-01-28*
 *Milestone v1.1 started*
 *Phase 8 complete: 2026-01-28*
-*Phase 9 planned: 2026-01-28*
+*Phase 9 complete: 2026-01-28*

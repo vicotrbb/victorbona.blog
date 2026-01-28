@@ -21,8 +21,8 @@ Requirements for Analytics & Dashboard milestone. Each maps to roadmap phases.
 
 ### Device Analytics
 
-- [ ] **DEVICE-01**: Browser family identified (Chrome, Firefox, Safari, Edge, Other)
-- [ ] **DEVICE-02**: Platform category identified (Desktop, Mobile, Tablet)
+- [x] **DEVICE-01**: Browser family identified (Chrome, Firefox, Safari, Edge, Other)
+- [x] **DEVICE-02**: Platform category identified (Desktop, Mobile, Tablet)
 
 ### Grafana Dashboard
 
@@ -78,8 +78,8 @@ Which phases cover which requirements. Updated during roadmap creation.
 | METRICS-04 | Phase 7 | Complete |
 | TRAFFIC-01 | Phase 8 | Complete |
 | TRAFFIC-02 | Phase 8 | Complete |
-| DEVICE-01 | Phase 9 | Pending |
-| DEVICE-02 | Phase 9 | Pending |
+| DEVICE-01 | Phase 9 | Complete |
+| DEVICE-02 | Phase 9 | Complete |
 | DASH-01 | Phase 10 | Pending |
 | DASH-02 | Phase 10 | Pending |
 | DASH-03 | Phase 10 | Pending |
