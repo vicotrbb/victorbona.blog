@@ -1,240 +1,335 @@
-# Feature Landscape: Next.js Observability for Kubernetes
+# Feature Landscape: Page Analytics for Blog Prometheus Metrics
 
-**Domain:** Production observability for Next.js blog deployed to Kubernetes
-**Existing Stack:** Tempo (traces), Loki (logs), Prometheus (metrics), Grafana Faro (RUM), Alloy (collection)
-**Researched:** 2026-01-26
-**Overall Confidence:** HIGH (verified against official docs and existing Helm chart)
+**Domain:** Page analytics metrics for personal blog using Prometheus/prom-client
+**Existing Stack:** Grafana Faro (browser RUM), prom-client (Node.js runtime metrics), ServiceMonitor
+**Researched:** 2026-01-28
+**Overall Confidence:** HIGH
+
+---
+
+## Context: What Exists vs What's Needed
+
+### Already Implemented
+- **Grafana Faro RUM:** Core Web Vitals (LCP, CLS, INP), JavaScript errors, session tracking (client-side)
+- **prom-client default metrics:** Node.js runtime (heap, GC, event loop, CPU)
+- **ServiceMonitor:** Prometheus scraping at `/metrics` path
+
+### Gap: Page Analytics
+Faro tracks *client-side* performance and errors. The blog needs *server-side* page analytics:
+- Which pages are visited (path)
+- Where traffic comes from (referrer)
+- What devices/browsers are used (user agent)
+
+This is a Prometheus metrics problem, not a Faro problem.
 
 ---
 
 ## Table Stakes
 
-Features required for production-grade observability. Missing these means blind spots during incidents.
-
-### Logging
+Features users expect from basic blog analytics. Missing these means no visibility into traffic patterns.
 
 | Feature | Why Expected | Complexity | Implementation Notes |
 |---------|--------------|------------|---------------------|
-| Structured JSON logs | Alloy DaemonSet auto-scrapes pod stdout; JSON enables Loki queries | Low | Next.js outputs JSON by default in production mode |
-| Request context in logs | Correlate logs to specific requests | Low | Use request ID or trace ID injection |
-| Error stack traces | Debug production errors | Low | Captured automatically; ensure source maps deployed |
+| **Page views by path** | Core analytics - which posts are popular | Low | Counter with `path` label |
+| **Total request count** | Basic traffic volume | Low | Counter, already common pattern |
+| **Request status codes** | See 404s, errors | Low | Counter with `status_code` label |
 
-**Dependencies:** None - Alloy DaemonSet handles collection automatically.
+### Page Views by Path
 
-**Helm Configuration Required:**
-- Pod labels for Alloy scraping (likely already configured)
-- No application-level config needed if using stdout
+The fundamental analytics metric. Must track which URLs are accessed.
 
-### Tracing
+**prom-client implementation:**
+```typescript
+const pageViews = new Counter({
+  name: 'blog_page_views_total',
+  help: 'Total page views by path',
+  labelNames: ['path'] as const,
+  registers: [metricsRegistry],
+})
 
-| Feature | Why Expected | Complexity | Implementation Notes |
-|---------|--------------|------------|---------------------|
-| OpenTelemetry auto-instrumentation | Automatic spans for Next.js lifecycle (SSR, API routes, fetch) | Medium | Use `@vercel/otel` + `instrumentation.ts` |
-| OTLP export to Tempo | Send traces to existing Tempo via Alloy | Low | Configure OTEL_EXPORTER_OTLP_ENDPOINT |
-| Service name in traces | Identify this app in distributed traces | Low | Set OTEL_SERVICE_NAME env var |
-
-**Dependencies:**
-- Requires `experimental.instrumentationHook: true` in next.config.mjs (Next.js 15+ may not need this)
-- OTLP endpoint must be reachable (Alloy svc in cluster)
-
-**Helm Configuration Required:**
-```yaml
-observability:
-  otel:
-    enabled: true
-    serviceName: "victorbona-blog"
-    endpoint: "http://alloy.observability-system.svc.cluster.local:4318"
-    protocol: "http/protobuf"
+// In middleware:
+pageViews.inc({ path: normalizedPath })
 ```
 
-### Metrics
-
-| Feature | Why Expected | Complexity | Implementation Notes |
-|---------|--------------|------------|---------------------|
-| `/metrics` endpoint | Prometheus scraping via ServiceMonitor | Medium | Use `prom-client` or OTEL Prometheus exporter |
-| HTTP request metrics | Request count, latency histograms, error rates | Medium | Auto-instrumented or middleware-based |
-| Node.js runtime metrics | Memory, CPU, event loop lag, GC | Low | `prom-client.collectDefaultMetrics()` |
-
 **Dependencies:**
-- ServiceMonitor/PodMonitor already exists in Helm chart
-- Need to add metrics port to container
+- Existing `metricsRegistry` singleton
+- Next.js middleware to intercept requests
 
-**Helm Configuration Required:**
-```yaml
-components:
-  api:
-    metrics:
-      enabled: true
-      portName: http  # or separate metrics port
-      path: /metrics
+**Cardinality consideration:**
+- Personal blog has finite pages (~50-100 max)
+- Static paths only (no dynamic user IDs)
+- Safe cardinality for Prometheus
+
+### Request Status Codes
+
+Track successful vs error responses.
+
+**prom-client implementation:**
+```typescript
+const httpRequests = new Counter({
+  name: 'blog_http_requests_total',
+  help: 'Total HTTP requests by path and status',
+  labelNames: ['path', 'status_code'] as const,
+  registers: [metricsRegistry],
+})
 ```
 
 ---
 
 ## Differentiators
 
-Features that enhance debugging experience. Not strictly required, but valuable for a well-instrumented production app.
-
-### Browser RUM (Real User Monitoring)
+Features beyond basic analytics. Not strictly required, but valuable for understanding traffic sources.
 
 | Feature | Value Proposition | Complexity | Implementation Notes |
 |---------|-------------------|------------|---------------------|
-| Grafana Faro integration | Core Web Vitals (LCP, CLS, INP), frontend errors, user sessions | Medium | `@grafana/faro-web-sdk` client component |
-| Frontend-backend trace correlation | Link browser spans to server spans for full request lifecycle | High | Requires middleware to inject traceparent into response headers |
-| Page load performance | Real user LCP, TTFB measurements | Medium | Faro captures Web Vitals v5 automatically |
-| JavaScript error tracking | Catch unhandled exceptions, promise rejections | Low | Faro console instrumentation |
+| **Referrer source attribution** | Know where traffic comes from | Medium | Parse referrer into categories |
+| **UTM campaign tracking** | Track specific campaign links | Low | Parse `utm_source`, `utm_medium` from query |
+| **Browser category** | Desktop vs mobile vs tablet | Medium | Parse User-Agent into categories |
+| **Device type** | High-level device breakdown | Medium | UA parsing library required |
+| **Request latency histogram** | Performance by path | Medium | Histogram with path label |
 
-**Dependencies:**
-- Faro collector endpoint (Alloy with faro receiver or Grafana Cloud)
-- Client-side initialization (must be client component in App Router)
-- CORS configuration if Faro endpoint is cross-origin
+### Referrer Source Attribution
 
-**Helm Configuration Required:**
-```yaml
-# Environment variables for frontend
-env:
-  - name: NEXT_PUBLIC_FARO_URL
-    value: "https://faro-collector.example.com/collect"
-  - name: NEXT_PUBLIC_FARO_APP_NAME
-    value: "victorbona-blog"
+Transform raw referrer URLs into actionable categories.
+
+**Why valuable:** "Traffic from Google" is actionable; "traffic from https://www.google.com/search?q=..." is noise.
+
+**Categories (LOW cardinality):**
+| Category | Examples | Label Value |
+|----------|----------|-------------|
+| Direct | No referrer, typing URL | `direct` |
+| Search | Google, Bing, DuckDuckGo | `search` |
+| Social | Twitter/X, LinkedIn, Hacker News, Reddit | `social` |
+| Internal | Same domain | `internal` |
+| Other | All other referrers | `other` |
+
+**prom-client implementation:**
+```typescript
+const pageViewsBySource = new Counter({
+  name: 'blog_page_views_by_source_total',
+  help: 'Page views by traffic source category',
+  labelNames: ['path', 'source'] as const,
+  registers: [metricsRegistry],
+})
+
+// source is one of: direct, search, social, internal, other
 ```
 
-### Advanced Tracing
+**Complexity:** Medium - requires referrer parsing logic, but categories are static.
 
-| Feature | Value Proposition | Complexity | Implementation Notes |
-|---------|-------------------|------------|---------------------|
-| Custom spans for business logic | Trace specific operations (MDX parsing, RSS generation) | Low | `trace.getTracer().startActiveSpan()` |
-| Verbose span mode | See all Next.js internal spans (routing, rendering) | Low | Set `NEXT_OTEL_VERBOSE=1` |
-| Trace sampling (production) | Reduce costs while maintaining visibility | Low | Configure 10% sampling for production |
+### UTM Campaign Tracking
 
-### Enhanced Metrics
+Track specific campaigns when UTM parameters are present.
 
-| Feature | Value Proposition | Complexity | Implementation Notes |
-|---------|-------------------|------------|---------------------|
-| Custom business metrics | Track page views, RSS subscribers, etc. | Low | Create custom Prometheus counters/gauges |
-| Build-time metadata | Version, commit SHA in metrics labels | Low | Inject via env vars at build time |
+**Standard UTM parameters:**
+- `utm_source`: The platform (google, twitter, newsletter)
+- `utm_medium`: The marketing medium (cpc, social, email)
+- `utm_campaign`: Specific campaign name
+
+**prom-client implementation:**
+```typescript
+const campaignViews = new Counter({
+  name: 'blog_campaign_views_total',
+  help: 'Page views from UTM-tagged campaigns',
+  labelNames: ['path', 'utm_source', 'utm_medium'] as const,
+  registers: [metricsRegistry],
+})
+```
+
+**Cardinality warning:** Only track if UTM params exist. Most traffic won't have UTM. Keep `utm_campaign` out of labels (too high cardinality) - track source/medium only.
+
+### Browser/Device Categories
+
+Parse User-Agent into low-cardinality categories.
+
+**Browser categories:**
+| Category | User-Agent Contains | Label Value |
+|----------|---------------------|-------------|
+| Chrome | Chrome (not Edge) | `chrome` |
+| Firefox | Firefox | `firefox` |
+| Safari | Safari (not Chrome) | `safari` |
+| Edge | Edg/ | `edge` |
+| Bot | bot, crawler, spider | `bot` |
+| Other | Everything else | `other` |
+
+**Device categories:**
+| Category | Detection | Label Value |
+|----------|-----------|-------------|
+| Mobile | Mobile, iPhone, Android (mobile) | `mobile` |
+| Tablet | iPad, Android (tablet) | `tablet` |
+| Desktop | Everything else (not bot) | `desktop` |
+| Bot | Bot detection | `bot` |
+
+**prom-client implementation:**
+```typescript
+const pageViewsByDevice = new Counter({
+  name: 'blog_page_views_by_device_total',
+  help: 'Page views by device category',
+  labelNames: ['path', 'device', 'browser'] as const,
+  registers: [metricsRegistry],
+})
+```
+
+**Libraries:**
+- [`ua-parser-js`](https://www.npmjs.com/package/ua-parser-js) - Comprehensive UA parsing
+- Or simple regex for 6 categories (lighter weight)
+
+**Recommendation:** Use simple regex for blog. Only need categories, not exact versions.
 
 ---
 
 ## Anti-Features
 
-Features to explicitly NOT build. Common over-engineering patterns for a personal blog.
+Features to explicitly NOT build for a personal blog. These are over-engineering or privacy concerns.
 
 | Anti-Feature | Why Avoid | What to Do Instead |
 |--------------|-----------|-------------------|
-| APM SaaS integration (Datadog, New Relic) | Expensive, overkill for personal blog; you already have Grafana stack | Use existing Tempo/Loki/Prometheus |
-| 100% trace sampling in production | Generates excessive data, no value for low-traffic blog | Use 10-25% sampling or ratio-based |
-| Custom distributed tracing spans | Blog has no microservices; single Next.js app | Rely on auto-instrumentation |
-| Real-time alerting | Personal blog doesn't need PagerDuty at 3am | Use Grafana dashboards for async review |
-| User session recording | Privacy concerns, no analytics value for blog | Aggregate RUM metrics only |
-| Synthetic monitoring | Expensive for hobby project | Use uptime check from home lab or free tier |
-| Log aggregation with ML anomaly detection | Overkill; simple grep in Loki is sufficient | Query Loki directly |
-| OpenTelemetry Collector sidecar | Alloy DaemonSet already handles collection | Use existing cluster infrastructure |
-| Separate metrics port | Adds complexity; blog traffic is low | Expose `/metrics` on same port as app |
-| Custom instrumentation SDK wrapper | Over-abstraction for single app | Use `@vercel/otel` directly |
+| **Individual visitor tracking** | Privacy concern, no GDPR consent flow | Aggregate counters only |
+| **Full referrer URL in labels** | High cardinality explosion, privacy | Categorize into 5 groups |
+| **Exact browser version** | High cardinality (Chrome 120 vs 121 vs...) | Browser category only |
+| **IP geolocation** | Privacy, requires GeoIP database, overkill | Skip entirely |
+| **Session duration tracking** | Faro already does this client-side | Use existing Faro sessions |
+| **User journey/funnel tracking** | Overkill for blog, complex state | Simple page view counts |
+| **Full utm_campaign label** | Unbounded cardinality (any string) | Track source/medium only |
+| **Request body size metrics** | Blog has no uploads, no value | Skip |
+| **Response body size metrics** | Static content, no variance | Skip |
+| **Cookie/login state tracking** | Blog has no auth | Skip |
+| **A/B test variant tracking** | Blog has no A/B tests | Skip |
+| **Per-post engagement time** | Faro Web Vitals covers this | Use existing Faro |
+
+### Why Stateless is Correct
+
+User wants all counters to reset on pod restart. This is **expected Prometheus behavior**:
+
+1. **Prometheus stores time series** - Counters reset, Prometheus records the rate of change
+2. **`rate()` and `increase()` handle resets** - Standard PromQL functions expect resets
+3. **No state management needed** - No persistent storage in the app
+4. **Pod scaling works naturally** - Each pod has its own counters
+
+**Do NOT try to persist counters.** This would fight Prometheus's design.
 
 ---
 
 ## Feature Dependencies
 
 ```
-                    +------------------+
-                    |  next.config.mjs |
-                    | instrumentationHook |
-                    +--------+---------+
-                             |
-              +--------------+--------------+
-              |                             |
-    +---------v---------+         +---------v---------+
-    | instrumentation.ts|         |   Faro Client     |
-    |   (Server OTEL)   |         |   Component       |
-    +---------+---------+         +---------+---------+
-              |                             |
-    +---------v---------+         +---------v---------+
-    | Traces to Tempo   |         | RUM to Faro/Alloy |
-    | via OTLP          |         | via HTTP          |
-    +-------------------+         +-------------------+
-
-    +---------+---------+
-    | /metrics endpoint |
-    | (prom-client)     |
-    +---------+---------+
-              |
-    +---------v---------+
-    | ServiceMonitor    |
-    | scrapes Prometheus|
-    +-------------------+
++------------------+     +------------------+
+|  Next.js         |     |  Existing        |
+|  Middleware      |---->|  metricsRegistry |
+|  (new)           |     |  (app/lib/       |
++------------------+     |  metrics.ts)     |
+        |                +--------+---------+
+        |                         |
+        v                         v
++------------------+     +------------------+
+| Request Headers  |     | /metrics route   |
+| - path           |     | (existing)       |
+| - referer        |     +------------------+
+| - user-agent     |
+| - query string   |
++------------------+
 ```
 
 **Dependency Notes:**
-- Logs require no application changes (Alloy DaemonSet handles)
-- Traces require `instrumentation.ts` + OTEL packages
-- Metrics require `/metrics` route + prom-client
-- RUM requires client component + Faro packages
-- Frontend-backend correlation requires both tracing AND RUM, plus middleware
+- Uses existing `metricsRegistry` singleton (HMR-safe)
+- Uses existing `/metrics` route (already serving default metrics)
+- Requires NEW middleware (intercept all requests)
+- No Faro changes needed (separate concern)
 
 ---
 
 ## MVP Recommendation
 
-For initial observability milestone, prioritize in this order:
+For initial page analytics, prioritize in this order:
 
-### Phase 1: Tracing (Highest Value)
-1. **Server-side OpenTelemetry** - `@vercel/otel` + `instrumentation.ts`
-2. **OTLP export to Alloy** - Configure endpoint via env vars
-3. **Helm values** - Enable OTEL config section
+### Phase 1: Core Page Views (Must Have)
+1. **Page view counter with path label** - `blog_page_views_total{path="/blog/post-name"}`
+2. **Status code counter** - `blog_http_requests_total{path="/", status_code="200"}`
+3. **Next.js middleware** - Intercept requests, increment counters
 
-*Rationale:* Traces provide the most debugging value. Auto-instrumentation covers request lifecycle. Minimal code changes required.
+*Rationale:* Core analytics with minimal implementation. Safe cardinality.
 
-### Phase 2: Metrics
-1. **Add prom-client** - Default metrics + request histogram
-2. **Create /api/metrics route** - Expose for Prometheus
-3. **Enable ServiceMonitor** - Already in Helm chart, just enable
+### Phase 2: Traffic Sources (Should Have)
+1. **Referrer source categorization** - `blog_page_views_by_source_total{source="search"}`
+2. **UTM source/medium tracking** - `blog_campaign_views_total{utm_source="twitter"}`
 
-*Rationale:* Metrics enable alerting and dashboards. Works with existing Prometheus + ServiceMonitor templates.
+*Rationale:* Understand where traffic comes from. Still low cardinality with categories.
 
-### Phase 3: Browser RUM (Optional)
-1. **Add Faro client component** - Initialize in layout
-2. **Configure Faro endpoint** - Via NEXT_PUBLIC env vars
-3. **Add middleware for trace correlation** - If full-stack tracing desired
+### Phase 3: Device Analytics (Nice to Have)
+1. **Device type counter** - `blog_page_views_by_device_total{device="mobile"}`
+2. **Browser category counter** - Same counter with browser label
 
-*Rationale:* RUM is nice-to-have for a blog. Core Web Vitals are useful but not critical for debugging. Higher complexity due to client/server boundary.
+*Rationale:* UA parsing adds complexity. Lower priority than traffic sources.
 
-**Defer to post-MVP:**
-- Custom business metrics
-- Frontend-backend trace correlation (High complexity)
-- Verbose span mode (debugging only)
+**Defer entirely:**
+- Geolocation
+- Session tracking (Faro handles)
+- Engagement metrics (Faro handles)
+- Full referrer URLs
 
 ---
 
-## Helm Configuration Summary
+## Cardinality Budget
 
-The existing Helm chart already has excellent observability scaffolding. Required additions:
+Prometheus performance degrades with high cardinality. Budget carefully.
 
-### Already Present (Enable Only)
-- `observability.otel.*` - Full OTEL configuration
-- `observability.serviceMonitor.*` - Prometheus scraping
-- `observability.podMonitor.*` - Alternative scraping
-- `components.*.metrics.*` - Per-component metrics config
+| Metric | Labels | Estimated Series |
+|--------|--------|------------------|
+| `blog_page_views_total` | path (50) | 50 |
+| `blog_http_requests_total` | path (50) x status (5) | 250 |
+| `blog_page_views_by_source_total` | path (50) x source (5) | 250 |
+| `blog_campaign_views_total` | path (50) x source (10) x medium (5) | 2,500 max |
+| `blog_page_views_by_device_total` | path (50) x device (4) x browser (6) | 1,200 |
 
-### May Need Addition
-- Faro-specific environment variables (`NEXT_PUBLIC_FARO_*`)
-- Separate metrics port if needed (likely not - use same port)
+**Total estimated series:** ~4,250
+
+**Prometheus guideline:** <10,000 series per target is comfortable. This budget is safe.
+
+**Cardinality traps avoided:**
+- No exact browser versions (~1000s)
+- No full referrer URLs (~unbounded)
+- No full utm_campaign (~unbounded)
+- No user identifiers (~unbounded)
+
+---
+
+## Expected Metric Output
+
+Example `/metrics` output after implementation:
+
+```prometheus
+# HELP blog_page_views_total Total page views by path
+# TYPE blog_page_views_total counter
+blog_page_views_total{app="victorbona-blog",path="/"} 1234
+blog_page_views_total{app="victorbona-blog",path="/blog"} 567
+blog_page_views_total{app="victorbona-blog",path="/blog/my-post"} 89
+
+# HELP blog_page_views_by_source_total Page views by traffic source
+# TYPE blog_page_views_by_source_total counter
+blog_page_views_by_source_total{app="victorbona-blog",path="/",source="direct"} 400
+blog_page_views_by_source_total{app="victorbona-blog",path="/",source="search"} 600
+blog_page_views_by_source_total{app="victorbona-blog",path="/",source="social"} 234
+
+# HELP blog_page_views_by_device_total Page views by device type
+# TYPE blog_page_views_by_device_total counter
+blog_page_views_by_device_total{app="victorbona-blog",path="/",device="desktop",browser="chrome"} 500
+blog_page_views_by_device_total{app="victorbona-blog",path="/",device="mobile",browser="safari"} 300
+```
 
 ---
 
 ## Sources
 
 ### HIGH Confidence (Official Documentation)
-- [Next.js OpenTelemetry Guide](https://nextjs.org/docs/app/guides/open-telemetry) - Official setup instructions, package requirements
-- [Grafana Faro Web SDK](https://github.com/grafana/faro-web-sdk) - Official SDK features and architecture
-- [Grafana Faro Next.js Example](https://github.com/grafana/faro-nextjs-example) - Official integration pattern
+- [prom-client GitHub](https://github.com/siimon/prom-client) - Counter API, label patterns
+- [Prometheus Best Practices: Naming](https://prometheus.io/docs/practices/naming/) - Metric naming conventions
+- [Robust Perception: Cardinality is Key](https://www.robustperception.io/cardinality-is-key/) - Cardinality limits and best practices
 
-### MEDIUM Confidence (Verified Community Sources)
-- [prom-client npm](https://www.npmjs.com/package/prom-client) - Node.js Prometheus client
-- [OpenTelemetry Context Propagation](https://opentelemetry.io/docs/concepts/context-propagation/) - W3C trace context standard
-- [Core Web Vitals 2025](https://web.dev/articles/vitals) - INP replaced FID as of March 2024
+### MEDIUM Confidence (Verified Community)
+- [Better Stack: prom-client Guide](https://betterstack.com/community/guides/scaling-nodejs/nodejs-prometheus/) - Node.js + Prometheus patterns
+- [Simple Analytics: What We Collect](https://docs.simpleanalytics.com/what-we-collect) - Privacy-first analytics patterns
+- [CXL: UTM Parameters Guide](https://cxl.com/blog/utm-parameters/) - UTM parameter standards
 
-### LOW Confidence (WebSearch Only - Verify Before Implementation)
-- Custom Next.js metrics patterns from blog posts
-- prom-client + Next.js API route patterns (common approach but verify compatibility with App Router)
+### LOW Confidence (General Web Search)
+- UA parsing patterns (verify library choice during implementation)
+- Referrer categorization lists (may need adjustment based on actual traffic)

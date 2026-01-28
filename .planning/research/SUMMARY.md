@@ -1,179 +1,203 @@
 # Project Research Summary
 
-**Project:** victorbona.blog Kubernetes Deployment with Observability
-**Domain:** Next.js containerization for Kubernetes with OTEL/Faro observability
-**Researched:** 2026-01-26
-**Confidence:** MEDIUM-HIGH
+**Project:** victorbona.blog v1.1 Analytics and Dashboard
+**Domain:** Page analytics metrics + Grafana dashboard provisioning for existing Next.js blog
+**Researched:** 2026-01-28
+**Confidence:** HIGH
 
 ## Executive Summary
 
-This project involves containerizing an existing Next.js blog (canary, App Router) for deployment to a home Kubernetes cluster with full observability stack integration. The recommended approach is a multi-stage Docker build with `output: 'standalone'`, server-side OpenTelemetry via `@vercel/otel` exporting to Alloy/Tempo, and Grafana Faro for browser RUM. The existing Helm chart already has excellent observability scaffolding that needs enabling rather than building.
+This milestone extends an existing Next.js blog (already deployed with prom-client at `/metrics`, Grafana Faro browser RUM, and ArgoCD GitOps) with server-side page analytics metrics and a GitOps-provisioned Grafana dashboard. The established pattern for this is straightforward: add Prometheus counters for page views/traffic sources, parse User-Agent into categorical labels using bowser (MIT-licensed), and deploy the Grafana dashboard via a ConfigMap with sidecar discovery labels. The existing infrastructure handles the hard parts (metrics scraping, dashboard provisioning) already.
 
-The primary technical risks center on container networking (HOSTNAME binding, SIGTERM handling) and observability SDK initialization (Edge runtime incompatibility, Faro timing). These are well-documented pitfalls with clear prevention strategies. The GitOps workflow via ArgoCD is straightforward given the existing Helm chart infrastructure.
+The recommended approach leverages existing prom-client infrastructure. Add 3-4 new Counter metrics (page views, source attribution, device/browser categories) with carefully bounded cardinality (normalize paths, categorize referrers, parse UA to families). The dashboard is provisioned through a Helm-templated ConfigMap with `grafana_dashboard: "1"` label that the existing Grafana sidecar discovers automatically. This follows GitOps principles: dashboard changes tracked in Git, no manual Grafana UI edits.
 
-For a personal blog, the build should prioritize simplicity over scale. Avoid over-engineering with complex distributed tracing spans, APM SaaS, or real-time alerting. The existing Grafana stack (Tempo, Loki, Prometheus) provides sufficient observability. Focus phases on getting a working containerized deployment first, then layer observability incrementally.
+Key risks center on **cardinality explosion** from unbounded labels. Using raw paths, full referrer URLs, or exact User-Agent strings will cause memory growth and Prometheus performance degradation. The mitigation is design-time: normalize paths to templates (`/blog/:slug`), categorize referrers to ~15 domains, and parse UA to browser/device families. Dashboard-side, ensure ConfigMaps stay under 200KB and verify sidecar label matching. Both risks are avoidable with upfront design.
 
 ## Key Findings
 
 ### Recommended Stack
 
-The stack leverages official/maintained packages with minimal custom configuration.
+The stack is minimal because the heavy lifting already exists. One new production dependency and Helm template additions.
 
-**Core technologies:**
-- **node:22-alpine + distroless runner**: Multi-stage build with 141MB production image, minimal CVEs
-- **@vercel/otel ^2.1.0**: Official Next.js OTEL wrapper, handles Node.js/Edge runtime automatically
-- **@grafana/faro-web-sdk ^2.0.0**: Browser RUM with Web Vitals v5 (INP), traces to existing Faro receiver
-- **prom-client**: Prometheus metrics at `/metrics`, scraped by existing ServiceMonitor
-- **GitHub Actions**: docker/build-push-action v6 to GHCR with multi-arch builds
+**New dependencies:**
+- **bowser@^2.13.1**: MIT-licensed User-Agent parser (18.7M weekly downloads). Chosen over ua-parser-js because ua-parser-js v2+ uses AGPL-3.0 which requires source disclosure for server-side use.
 
-**Critical version notes:**
-- gRPC exporter uses port 4317 (not 4318), expects hostname:port only
-- Faro v2 uses INP instead of deprecated FID for Web Vitals
-- OpenTelemetry packages need version alignment (all ^0.205.0)
+**Helm additions:**
+- ConfigMap template for Grafana dashboard (`chart/templates/dashboard-configmap.yaml`)
+- Dashboard JSON file (`chart/dashboards/victorbona-blog.json`)
+- Values configuration for dashboard enablement
+
+**No new infrastructure needed.** Existing ServiceMonitor continues scraping `/metrics`. Existing Grafana sidecar discovers ConfigMaps with `grafana_dashboard: "1"` label.
 
 ### Expected Features
 
 **Must have (table stakes):**
-- Structured JSON logs (auto-collected by Alloy DaemonSet)
-- Server-side OTEL traces to Tempo
-- Health endpoints for Kubernetes probes
-- `/metrics` endpoint for Prometheus scraping
+- Page views by path — `blog_page_views_total{path="/blog/:slug"}` — core analytics, which posts are popular
+- Request status codes — `blog_http_requests_total{path, status_code}` — see 404s and errors
+- Grafana dashboard with page views over time — single pane of glass for traffic
 
 **Should have (differentiators):**
-- Grafana Faro RUM (Core Web Vitals, JS errors)
-- Node.js runtime metrics (memory, event loop lag)
-- Service name and version in all telemetry
+- Referrer source attribution — `blog_page_views_by_source_total{source="search"}` — where traffic comes from, categorized to ~15 values
+- Device/browser categories — `blog_page_views_by_device_total{device, browser}` — mobile vs desktop breakdown
+- UTM campaign tracking — optional if sharing links with UTM params
 
-**Defer (v2+):**
-- Frontend-backend trace correlation (high complexity)
-- Custom business metrics
-- Verbose span mode (debugging only)
-
-**Anti-features (do NOT build):**
-- APM SaaS integration
-- 100% trace sampling
-- Real-time alerting
-- User session recording
+**Defer (v2+ or skip):**
+- IP geolocation — privacy concern, requires GeoIP database, overkill
+- Session tracking — Faro already handles this client-side
+- Full referrer URLs in metrics — cardinality explosion
+- Engagement time metrics — Faro Web Vitals covers this
+- Individual visitor tracking — privacy concern, no GDPR consent flow
 
 ### Architecture Approach
 
-The architecture follows a clean separation: container image encapsulates the application, Helm chart defines Kubernetes resources, GitHub Actions handles CI/CD, and observability SDKs run within the application. Traffic flows through Cloudflare Tunnel to a ClusterIP Service, with telemetry exported to the existing Alloy/Tempo/Loki/Prometheus stack.
+The architecture follows the existing observability pattern: middleware intercepts requests, increments prom-client counters, Prometheus scrapes `/metrics` via ServiceMonitor, and Grafana queries Prometheus. The new Grafana dashboard is provisioned via ConfigMap with sidecar discovery, following GitOps principles.
 
 **Major components:**
-1. **Dockerfile** — Multi-stage build producing standalone Next.js server
-2. **Helm Chart** — Deployment, Service, ServiceMonitor, observability env vars
-3. **GitHub Actions** — Build, push to GHCR, trigger ArgoCD sync
-4. **instrumentation.ts** — Server-side OTEL SDK initialization
-5. **FaroInit client component** — Browser RUM initialization
-6. **/api/metrics route** — Prometheus metrics endpoint
-7. **/api/health route** — Kubernetes probe target
+1. **Next.js Middleware** — Intercepts all requests, extracts path/referrer/UA, increments counters
+2. **Metrics module extension** — Add new Counters to existing `app/lib/metrics.ts` registry
+3. **UA parsing utility** — New `app/lib/user-agent.ts` using bowser for categorical parsing
+4. **Dashboard ConfigMap** — Helm template deploying dashboard JSON with sidecar labels
+5. **Dashboard JSON** — Grafana dashboard combining Prometheus metrics and Faro/Loki data
+
+**Data flow:**
+- Request hits Next.js middleware
+- Middleware parses path, normalizes it, parses UA, categorizes referrer
+- Counter incremented with low-cardinality labels
+- Prometheus scrapes `/metrics` every 30s (existing ServiceMonitor)
+- Grafana dashboard queries Prometheus and Loki
 
 ### Critical Pitfalls
 
-1. **SIGTERM handling** — Use `CMD ["node", "server.js"]` not `npm start`; npm doesn't forward signals causing 502s during deployments
-2. **HOSTNAME binding** — Set `HOSTNAME=0.0.0.0` in Dockerfile; K8s sets it to container ID causing connection failures
-3. **OTEL in Edge runtime** — Use conditional imports (`if (process.env.NEXT_RUNTIME === 'nodejs')`); NodeSDK crashes Edge routes
-4. **Sharp missing** — Install sharp explicitly or set `images.unoptimized: true`; standalone doesn't include it
-5. **Faro initialization timing** — Initialize before any client code; late init misses early errors and Web Vitals
+1. **High-cardinality path labels** — Never use raw request paths as labels. Normalize to route templates (e.g., `/blog/:slug`). Unbounded paths cause memory growth and Prometheus degradation.
+
+2. **Raw User-Agent labels** — Each browser version creates a new time series. Parse UA into categorical buckets (device: mobile/tablet/desktop, browser: chrome/firefox/safari/edge/other). Target ~15 combinations.
+
+3. **Full referrer URL labels** — External URLs have unbounded cardinality. Extract and normalize to domain categories (google, twitter, github, other). Target ~15 values.
+
+4. **ConfigMap size limits** — Kubernetes limits ConfigMaps to 1MB, annotations to 256KB. Keep dashboard JSON under 200KB. Split if needed.
+
+5. **Missing sidecar label** — ConfigMap without `grafana_dashboard: "1"` label is invisible to Grafana sidecar. Always verify label matches Grafana sidecar configuration.
 
 ## Implications for Roadmap
 
 Based on research, suggested phase structure:
 
-### Phase 1: Container Foundation
-**Rationale:** Everything depends on a working container image. Dockerfile must be correct before any deployment.
-**Delivers:** Multi-stage Dockerfile, next.config.mjs with `output: 'standalone'`, health endpoint
-**Addresses:** Table stakes for deployment
-**Avoids:** SIGTERM handling, HOSTNAME binding, Sharp missing pitfalls
+### Phase 1: Page View Metrics
 
-### Phase 2: CI/CD Pipeline
-**Rationale:** Need automated builds before iterating on deployment config
-**Delivers:** GitHub Actions workflow building multi-arch images to GHCR
-**Uses:** docker/build-push-action, docker/metadata-action
-**Depends on:** Phase 1 Dockerfile
+**Rationale:** Core metrics must exist before dashboard can query them. Start with simplest metric (page views) to validate the pattern.
 
-### Phase 3: Helm Values & Deployment
-**Rationale:** Can't test observability without running pods
-**Delivers:** Customized values.yaml enabling observability config sections, first ArgoCD deployment
-**Uses:** Existing Helm chart scaffolding
-**Avoids:** Missing health probes, missing resource limits pitfalls
+**Delivers:**
+- `blog_page_views_total` counter with normalized path label
+- Next.js middleware skeleton
+- Path normalization utility
 
-### Phase 4: Server-Side Tracing
-**Rationale:** Highest debugging value, auto-instrumentation covers most needs
-**Delivers:** instrumentation.ts with OTEL SDK, traces flowing to Tempo
-**Uses:** @vercel/otel, OTLP gRPC exporter
-**Avoids:** Edge runtime errors, file location pitfalls
+**Addresses:** Table stakes feature (page views by path)
 
-### Phase 5: Prometheus Metrics
-**Rationale:** Enables dashboards and alerting via existing Prometheus/Grafana
-**Delivers:** /api/metrics route, ServiceMonitor enabled
-**Uses:** prom-client, existing ServiceMonitor templates
+**Avoids:** Cardinality explosion by implementing path normalization from day one
 
-### Phase 6: Browser RUM (Optional)
-**Rationale:** Nice-to-have for a blog; lower priority than server observability
-**Delivers:** Faro client component, Web Vitals in Grafana
-**Uses:** @grafana/faro-web-sdk
-**Avoids:** Faro timing, CORS misconfiguration pitfalls
+**Estimated effort:** Small (few hours)
 
-### Phase 7: Renovate Configuration
-**Rationale:** Only configure after stable deployment; prevents churn during development
-**Delivers:** renovate.json with ArgoCD file patterns, pinned dependencies
-**Avoids:** ArgoCD files not detected, canary auto-merge pitfalls
+### Phase 2: Traffic Source Attribution
+
+**Rationale:** Builds on middleware skeleton from Phase 1. Referrer parsing is independent of UA parsing, so can be done separately.
+
+**Delivers:**
+- `blog_page_views_by_source_total` counter with source category label
+- Referrer parsing/categorization utility
+- UTM parameter extraction (optional)
+
+**Addresses:** Differentiator features (referrer attribution)
+
+**Avoids:** Full URL cardinality trap by categorizing upfront
+
+**Estimated effort:** Small (few hours)
+
+### Phase 3: Device and Browser Analytics
+
+**Rationale:** Requires bowser library installation. Slightly more complex than referrer parsing due to UA string edge cases.
+
+**Delivers:**
+- bowser@^2.13.1 installed
+- `blog_page_views_by_device_total` counter with device/browser labels
+- UA parsing utility with fallback handling
+
+**Addresses:** Differentiator features (device breakdown)
+
+**Avoids:** UA cardinality trap by using browser families not versions
+
+**Estimated effort:** Small (few hours)
+
+### Phase 4: Grafana Dashboard
+
+**Rationale:** All metrics must be available and verified in Prometheus before building dashboard. Dashboard design depends on knowing actual data shape.
+
+**Delivers:**
+- Dashboard JSON file with portable datasource variables
+- Helm ConfigMap template with sidecar labels
+- Values configuration for dashboard enablement
+- Combined view of Prometheus metrics + Faro/Loki sessions
+
+**Addresses:** Dashboard as unified view for analytics
+
+**Avoids:** Hardcoded datasource UIDs, YAML formatting issues
+
+**Estimated effort:** Medium (dashboard design + iteration)
 
 ### Phase Ordering Rationale
 
-- **Phases 1-3 form deployment foundation**: Cannot iterate on observability without deployable container
-- **Phase 4 before Phase 5**: Traces provide more debugging value than metrics for initial troubleshooting
-- **Phase 6 optional**: Browser RUM is differentiator, not table stakes for a blog
-- **Phase 7 last**: Automation after stability; Renovate on unstable setup creates noise
+- **Metrics before dashboard:** Dashboard queries require metrics to exist. Building dashboard first would mean guessing at metric names/labels.
+- **Page views first:** Simplest metric validates the entire pipeline (middleware, counter, scraping, Prometheus storage).
+- **Referrer before UA:** Referrer parsing is simpler (URL parsing) than UA parsing (string pattern matching). Lower risk iteration.
+- **Dashboard last:** Once all metrics exist, dashboard can be designed with real data in Grafana Explore, then exported and committed.
 
 ### Research Flags
 
-Phases likely needing deeper research during planning:
-- **Phase 4 (OTEL):** gRPC exporter configuration details may vary by OTEL version
-- **Phase 6 (Faro):** CORS configuration depends on Alloy faro.receiver setup
+Phases with well-documented patterns (skip phase research):
 
-Phases with standard patterns (skip research-phase):
-- **Phase 1 (Dockerfile):** Well-documented Next.js standalone pattern
-- **Phase 2 (CI/CD):** Standard GitHub Actions Docker workflow
-- **Phase 3 (Helm):** Existing chart already has templates, just needs values
-- **Phase 5 (Metrics):** Standard prom-client + ServiceMonitor pattern
+- **Phase 1 (Page Views):** Standard prom-client Counter pattern. Existing metrics module provides the template.
+- **Phase 2 (Referrer):** Simple URL parsing and switch/case categorization.
+- **Phase 3 (Device/Browser):** bowser API is straightforward. Parse UA, extract browser.name and platform.type.
+- **Phase 4 (Dashboard):** Standard ConfigMap + sidecar pattern well documented in Grafana Helm chart.
+
+No phases need `/gsd:research-phase`. All patterns are well-established with high-confidence sources.
 
 ## Confidence Assessment
 
 | Area | Confidence | Notes |
 |------|------------|-------|
-| Stack | HIGH | Official docs verified, @vercel/otel maintained by Vercel |
-| Features | HIGH | Cross-referenced with existing Helm chart capabilities |
-| Architecture | HIGH | Standard Kubernetes patterns, official docs |
-| Pitfalls | HIGH | Multiple community sources confirmed each pitfall |
+| Stack | HIGH | bowser verified on npm (18.7M downloads, MIT license). prom-client already in use. |
+| Features | HIGH | Feature set derived from standard analytics patterns, scoped appropriately for blog |
+| Architecture | HIGH | Follows existing patterns (middleware, prom-client, ConfigMap sidecar). No novel components. |
+| Pitfalls | HIGH | Cardinality traps well-documented in Prometheus ecosystem. ConfigMap limits verified. |
 
-**Overall confidence:** MEDIUM-HIGH
+**Overall confidence:** HIGH
+
+This is a straightforward extension of existing infrastructure. No novel patterns or risky integrations. The main complexity is in design discipline (avoiding cardinality traps), not implementation.
 
 ### Gaps to Address
 
-- **OpenTelemetry version alignment**: Verify peer dependencies during npm install; OTEL ecosystem has many packages
-- **Faro exact versions**: npm registry not directly fetched; verify `npm info @grafana/faro-web-sdk` at implementation
-- **Alloy CORS for Faro**: Requires Alloy-side configuration not covered in this research
-- **NEXT_PUBLIC variables**: Strategy needed if any client config varies by environment (currently none identified)
+- **Grafana sidecar namespace configuration:** Verify whether existing Grafana has `searchNamespace: ALL` or specific namespace. Determines where ConfigMap must deploy. Check during Phase 4.
+
+- **Faro session correlation:** Dashboard can show Faro data via Loki, but cross-datasource correlation is limited. Use separate panels with linked time ranges rather than attempting mixed queries.
+
+- **Histogram bucket tuning:** If adding request latency histogram later, tune buckets for web page loads (50ms-5s range). Not needed for v1.1 counters-only scope.
 
 ## Sources
 
 ### Primary (HIGH confidence)
-- [Next.js OpenTelemetry Guide](https://nextjs.org/docs/app/guides/open-telemetry) — OTEL setup, instrumentation.ts
-- [Next.js Deployment Docs](https://nextjs.org/docs/app/getting-started/deploying) — standalone output, Docker
-- [@vercel/otel npm](https://www.npmjs.com/package/@vercel/otel) — package API
-- [Grafana Faro Web SDK](https://github.com/grafana/faro-web-sdk) — SDK features
-- [Renovate ArgoCD Manager](https://docs.renovatebot.com/modules/manager/argocd/) — file pattern configuration
+- [prom-client GitHub](https://github.com/siimon/prom-client) — Counter API, label patterns, singleton pattern
+- [Prometheus Best Practices: Naming](https://prometheus.io/docs/practices/naming/) — Metric naming, cardinality guidance
+- [bowser npm](https://www.npmjs.com/package/bowser) — MIT license verification, API reference
+- [Grafana Helm Chart](https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml) — Sidecar configuration reference
 
 ### Secondary (MEDIUM confidence)
-- [Arcjet Security Advice](https://blog.arcjet.com/security-advice-for-self-hosting-next-js-in-docker/) — Docker best practices
-- [Grafana Faro Next.js Example](https://github.com/grafana/faro-nextjs-example) — integration pattern
-- [RisingStack Graceful Shutdown](https://blog.risingstack.com/graceful-shutdown-node-js-kubernetes/) — SIGTERM handling
+- [Last9: High Cardinality Metrics](https://last9.io/blog/how-to-manage-high-cardinality-metrics-in-prometheus/) — Cardinality limits, prevention strategies
+- [Dan Laush: Normalizing Next.js dynamic routes](https://danlaush.biz/posts/dynamic-routes-prometheus) — Path normalization patterns
+- [Provision Grafana Dashboards Using Helm and Sidecars](https://medium.com/cloud-native-daily/provision-grafana-dashboards-and-alerts-using-helm-and-sidecars-733dcd223037) — ConfigMap provisioning pattern
 
 ### Tertiary (LOW confidence)
-- Community blog posts on prom-client + Next.js App Router (common approach, verify compatibility)
+- [ua-parser-js License Analysis](https://blog.logrocket.com/user-agent-detection-ua-parser-js-license-change/) — AGPL concerns, validated by checking npm page directly
 
 ---
-*Research completed: 2026-01-26*
+*Research completed: 2026-01-28*
 *Ready for roadmap: yes*

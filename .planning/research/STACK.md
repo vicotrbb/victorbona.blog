@@ -1,12 +1,14 @@
 # Technology Stack
 
 **Project:** victorbona.blog Kubernetes Deployment with Observability
-**Researched:** 2026-01-26
+**Researched:** 2026-01-26 (initial), 2026-01-28 (analytics milestone update)
 **Overall Confidence:** MEDIUM-HIGH
 
 ## Executive Summary
 
 This document specifies the recommended technology stack for containerizing the existing Next.js blog and adding full observability (OpenTelemetry traces, Grafana Faro RUM). The stack is optimized for a home Kubernetes cluster deployment with GHCR image storage and ArgoCD GitOps.
+
+**Analytics Milestone Addition (2026-01-28):** Added stack for page analytics metrics and Grafana dashboard provisioning.
 
 ---
 
@@ -271,6 +273,250 @@ faro.receiver "default" {
 
 ---
 
+## Prometheus Metrics (prom-client)
+
+**Status:** Already integrated - existing `prom-client` ^15.1.3 at `/metrics` endpoint.
+
+The existing metrics module at `app/lib/metrics.ts` provides:
+- Singleton `metricsRegistry` with HMR resilience
+- Default Node.js metrics (CPU, memory, event loop, GC)
+- ServiceMonitor for Prometheus scraping
+
+---
+
+## Page Analytics Metrics (NEW - Analytics Milestone)
+
+### User Agent Parsing Library
+
+#### Recommendation: `bowser` v2.13.1
+
+| Aspect | Value |
+|--------|-------|
+| Package | `bowser` |
+| Version | 2.13.1 (latest as of 2026-01-28) |
+| License | MIT |
+| Weekly Downloads | ~18.7M |
+| Bundle Size | ~4.9 KB minified + gzipped |
+
+**Why bowser over alternatives:**
+
+| Library | Version | License | Recommendation |
+|---------|---------|---------|----------------|
+| **bowser** | 2.13.1 | MIT | **USE THIS** - MIT license, actively maintained, lightweight |
+| ua-parser-js | 2.0.8 | AGPL-3.0 | AVOID - AGPL requires source disclosure for server-side use |
+| useragent | 2.3.0 | MIT | AVOID - Requires separate `useragent-update` for current data |
+
+**Critical note on ua-parser-js:** As of v2.0, ua-parser-js switched from MIT to AGPL-3.0 + commercial license. AGPL requires disclosing source code of any server-side application using the library. For a personal blog this might be acceptable, but bowser provides equivalent functionality under MIT with no legal complexity.
+
+**Sources:**
+- [bowser npm](https://www.npmjs.com/package/bowser) - MIT license, 18.7M weekly downloads
+- [bowser GitHub](https://github.com/bowser-js/bowser) - API documentation
+- [ua-parser-js License Change Analysis](https://blog.logrocket.com/user-agent-detection-ua-parser-js-license-change/) - AGPL implications
+
+#### API Usage Pattern
+
+```typescript
+import Bowser from 'bowser'
+
+// In request handler or middleware
+const ua = request.headers.get('user-agent') ?? ''
+const result = Bowser.parse(ua)
+
+// Result structure:
+// {
+//   browser: { name: 'Chrome', version: '120.0' },
+//   os: { name: 'macOS', version: '14.2' },
+//   platform: { type: 'desktop' },  // or 'mobile', 'tablet'
+//   engine: { name: 'Blink' }
+// }
+
+// For metrics labels (LOW cardinality):
+const browserFamily = result.browser.name ?? 'unknown'  // Chrome, Safari, Firefox, etc.
+const platformType = result.platform.type ?? 'unknown'  // desktop, mobile, tablet
+const osFamily = result.os.name ?? 'unknown'           // Windows, macOS, Linux, iOS, Android
+```
+
+#### Installation
+
+```bash
+npm install bowser@^2.13.1
+```
+
+TypeScript types are included - no separate `@types/bowser` needed.
+
+### Prometheus Metrics Design
+
+#### Cardinality Guidelines (CRITICAL)
+
+From Prometheus best practices:
+- Keep cardinality below 10 per metric where possible
+- Never use high-cardinality labels (user IDs, full URLs, IP addresses)
+- Use route patterns, not actual paths with parameters
+
+**For this blog:** Since we have static routes (finite set of blog posts), using `path` as a label is acceptable. If you had dynamic routes like `/users/:id`, you'd need to normalize to patterns.
+
+**Sources:**
+- [Prometheus Labels Best Practices](https://middleware.io/blog/prometheus-labels/) - Cardinality guidelines
+- [Managing High Cardinality Metrics](https://last9.io/blog/how-to-manage-high-cardinality-metrics-in-prometheus/) - Keep labels under 10
+- [prom-client GitHub](https://github.com/siimon/prom-client) - Counter API with labels
+
+#### Recommended Metrics
+
+Using existing `metricsRegistry` singleton pattern:
+
+```typescript
+import { Counter } from 'prom-client'
+import { metricsRegistry } from '@/app/lib/metrics'
+
+// 1. Page Views - Counter with path label
+export const pageViewsTotal = new Counter({
+  name: 'blog_page_views_total',
+  help: 'Total page views by path',
+  labelNames: ['path'] as const,
+  registers: [metricsRegistry],
+})
+
+// 2. Page Views by Browser Family - Counter
+export const pageViewsByBrowser = new Counter({
+  name: 'blog_page_views_by_browser_total',
+  help: 'Total page views by browser family',
+  labelNames: ['browser'] as const,  // Chrome, Safari, Firefox, Edge, etc.
+  registers: [metricsRegistry],
+})
+
+// 3. Page Views by Platform Type - Counter
+export const pageViewsByPlatform = new Counter({
+  name: 'blog_page_views_by_platform_total',
+  help: 'Total page views by platform type',
+  labelNames: ['platform'] as const,  // desktop, mobile, tablet
+  registers: [metricsRegistry],
+})
+
+// 4. Referrers - Counter (OPTIONAL, watch cardinality)
+export const referrerTotal = new Counter({
+  name: 'blog_referrers_total',
+  help: 'Total page views by referrer domain',
+  labelNames: ['referrer'] as const,  // Normalize to domain only!
+  registers: [metricsRegistry],
+})
+```
+
+#### Incrementing Pattern
+
+```typescript
+// In middleware or page component
+pageViewsTotal.inc({ path: '/blog/my-post' })
+pageViewsByBrowser.inc({ browser: browserFamily })
+pageViewsByPlatform.inc({ platform: platformType })
+
+// For referrer, normalize to domain to limit cardinality:
+const referrerDomain = referrer
+  ? new URL(referrer).hostname
+  : 'direct'
+referrerTotal.inc({ referrer: referrerDomain })
+```
+
+#### Referrer Cardinality Warning
+
+Referrer tracking can explode cardinality if you see traffic from many unique domains. Mitigation strategies:
+
+1. **Normalize aggressively:** Strip `www.`, use only top-level domain
+2. **Allowlist:** Only track known referrers (google.com, twitter.com, etc.), bucket rest as "other"
+3. **Skip entirely:** If traffic is low, referrer tracking may not be valuable
+
+**Recommendation:** Start with allowlist approach - track top 10-15 referrer domains, bucket rest as "other".
+
+---
+
+## Grafana Dashboard Provisioning (NEW - Analytics Milestone)
+
+### Approach: ConfigMap with Sidecar Labels
+
+The Grafana Helm chart includes a sidecar container that watches for ConfigMaps with specific labels and automatically provisions them as dashboards.
+
+**No changes to Grafana Helm values needed** if sidecar is already enabled (standard in most observability stacks).
+
+**Sources:**
+- [Grafana Helm Chart values.yaml](https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml) - Sidecar configuration reference
+- [Provision Grafana Dashboards Using Helm and Sidecars](https://medium.com/cloud-native-daily/provision-grafana-dashboards-and-alerts-using-helm-and-sidecars-733dcd223037) - ConfigMap pattern
+- [Grafana Official Provisioning Docs](https://grafana.com/docs/grafana/latest/administration/provisioning/) - Native provisioning system
+
+### ConfigMap Structure
+
+Create in your Helm chart templates:
+
+```yaml
+# chart/templates/grafana-dashboard.yaml
+{{- if .Values.observability.grafanaDashboard.enabled }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "app-template.fullname" . }}-dashboard
+  namespace: {{ .Values.observability.grafanaDashboard.namespace | default "observability-system" }}
+  labels:
+    grafana_dashboard: "1"
+    {{- include "app-template.commonLabels" . | nindent 4 }}
+  {{- with .Values.observability.grafanaDashboard.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+data:
+  victorbona-blog.json: |-
+    {{ .Files.Get "dashboards/victorbona-blog.json" | nindent 4 }}
+{{- end }}
+```
+
+### values.yaml Addition
+
+```yaml
+observability:
+  # ... existing config ...
+
+  grafanaDashboard:
+    enabled: true
+    # Namespace where Grafana runs (sidecar watches this namespace)
+    namespace: "observability-system"
+    # Optional: folder annotation for dashboard organization
+    annotations:
+      grafana_folder: "Applications"
+```
+
+### Key Sidecar Configuration (Reference)
+
+Standard Grafana Helm chart sidecar config (verify your cluster's Grafana matches):
+
+```yaml
+# In Grafana Helm values (NOT your blog chart)
+sidecar:
+  dashboards:
+    enabled: true
+    label: grafana_dashboard
+    labelValue: "1"
+    searchNamespace: ALL  # or specific namespace
+    folder: /tmp/dashboards
+```
+
+### Dashboard JSON Location
+
+Place dashboard JSON file at: `chart/dashboards/victorbona-blog.json`
+
+The dashboard JSON can be:
+1. Hand-crafted
+2. Exported from Grafana UI
+3. Generated by Grafonnet (overkill for a blog)
+
+### Cross-Namespace Considerations
+
+If your blog deploys to `blog` namespace but Grafana runs in `observability-system`:
+
+- **Option A:** Deploy ConfigMap to Grafana's namespace (requires cross-namespace Helm magic or separate manifest)
+- **Option B:** Set Grafana sidecar `searchNamespace: ALL` to find ConfigMaps cluster-wide
+- **Option C:** Deploy ConfigMap to Grafana's namespace via ArgoCD as separate resource
+
+**Recommendation:** Option B (searchNamespace: ALL) if sidecar already configured this way, otherwise Option C (separate ArgoCD Application) keeps concerns separated.
+
+---
+
 ## Renovate for ArgoCD GitOps
 
 ### Configuration
@@ -436,6 +682,7 @@ jobs:
 ### Production Dependencies to Add
 
 ```bash
+# Original observability stack
 npm install \
   @vercel/otel \
   @opentelemetry/sdk-logs \
@@ -445,6 +692,9 @@ npm install \
   @grafana/faro-web-sdk \
   @grafana/faro-web-tracing \
   @grafana/faro-react
+
+# Analytics milestone addition
+npm install bowser@^2.13.1
 ```
 
 ### Full package.json Additions
@@ -459,9 +709,41 @@ npm install \
     "@opentelemetry/exporter-trace-otlp-grpc": "^0.205.0",
     "@grafana/faro-web-sdk": "^2.0.0",
     "@grafana/faro-web-tracing": "^2.0.0",
-    "@grafana/faro-react": "^2.0.0"
+    "@grafana/faro-react": "^2.0.0",
+    "bowser": "^2.13.1"
   }
 }
+```
+
+---
+
+## What NOT to Add (Analytics Milestone)
+
+| Technology | Why Not |
+|------------|---------|
+| **Separate analytics database** | Overkill - Prometheus time-series is sufficient for blog-scale |
+| **@grafana/grafana-foundation-sdk** | Generates dashboard JSON programmatically - overkill for 1 dashboard |
+| **ua-parser-js v2** | AGPL license requires source disclosure |
+| **express-useragent** | Tied to Express.js, doesn't fit Next.js App Router |
+| **OpenTelemetry Metrics** | Already using prom-client, no need to add complexity |
+
+---
+
+## File Structure After Analytics Implementation
+
+```
+app/
+  lib/
+    metrics.ts          # Existing - add new counters here
+    user-agent.ts       # NEW - bowser parsing utility
+  middleware.ts         # NEW or extended - increment counters on requests
+
+chart/
+  dashboards/
+    victorbona-blog.json  # NEW - Grafana dashboard JSON
+  templates/
+    grafana-dashboard.yaml  # NEW - ConfigMap for dashboard
+  values.yaml             # Updated - add grafanaDashboard config
 ```
 
 ---
@@ -476,6 +758,10 @@ npm install \
 | Faro SDK v2 | MEDIUM | v2 released, but exact version numbers from npm not directly verified |
 | Renovate ArgoCD | HIGH | Official Renovate documentation |
 | GitHub Actions | HIGH | Official Docker and GitHub documentation |
+| bowser UA parsing | HIGH | Verified npm version (2.13.1), MIT license, 18.7M weekly downloads |
+| prom-client Counters | HIGH | Already in use, verified Counter API pattern |
+| Dashboard Provisioning | HIGH | Standard k8s-sidecar pattern, verified Grafana Helm values |
+| Cardinality Design | MEDIUM | Best practices verified, but actual cardinality depends on traffic patterns |
 
 ---
 
@@ -488,3 +774,5 @@ npm install \
 3. **Edge Runtime compatibility**: If using Next.js Edge Runtime for any routes, `@vercel/otel` handles it automatically, but manual NodeSDK configuration does NOT work in Edge.
 
 4. **Alloy configuration**: The Faro receiver configuration on Alloy side needs to be set up separately. Ensure CORS is configured for browser requests.
+
+5. **Grafana sidecar searchNamespace**: Verify whether your Grafana's sidecar is configured with `searchNamespace: ALL` or a specific namespace to determine where to deploy the dashboard ConfigMap.
