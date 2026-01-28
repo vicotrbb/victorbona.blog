@@ -72,28 +72,28 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| METRICS-01 | TBD | Pending |
-| METRICS-02 | TBD | Pending |
-| METRICS-03 | TBD | Pending |
-| METRICS-04 | TBD | Pending |
-| TRAFFIC-01 | TBD | Pending |
-| TRAFFIC-02 | TBD | Pending |
-| DEVICE-01 | TBD | Pending |
-| DEVICE-02 | TBD | Pending |
-| DASH-01 | TBD | Pending |
-| DASH-02 | TBD | Pending |
-| DASH-03 | TBD | Pending |
-| DASH-04 | TBD | Pending |
-| DASH-05 | TBD | Pending |
-| DASH-06 | TBD | Pending |
-| DASH-07 | TBD | Pending |
-| DASH-08 | TBD | Pending |
+| METRICS-01 | Phase 7 | Pending |
+| METRICS-02 | Phase 7 | Pending |
+| METRICS-03 | Phase 7 | Pending |
+| METRICS-04 | Phase 7 | Pending |
+| TRAFFIC-01 | Phase 8 | Pending |
+| TRAFFIC-02 | Phase 8 | Pending |
+| DEVICE-01 | Phase 9 | Pending |
+| DEVICE-02 | Phase 9 | Pending |
+| DASH-01 | Phase 10 | Pending |
+| DASH-02 | Phase 10 | Pending |
+| DASH-03 | Phase 10 | Pending |
+| DASH-04 | Phase 10 | Pending |
+| DASH-05 | Phase 10 | Pending |
+| DASH-06 | Phase 10 | Pending |
+| DASH-07 | Phase 10 | Pending |
+| DASH-08 | Phase 10 | Pending |
 
 **Coverage:**
 - v1.1 requirements: 16 total
-- Mapped to phases: 0
-- Unmapped: 16 ⚠️
+- Mapped to phases: 16
+- Unmapped: 0
 
 ---
 *Requirements defined: 2026-01-28*
-*Last updated: 2026-01-28 after initial definition*
+*Last updated: 2026-01-28 after roadmap creation*
