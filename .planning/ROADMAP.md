@@ -83,10 +83,10 @@ Plans:
   3. Top pages panel shows most viewed paths ranked by count
   4. Traffic sources panel shows breakdown by referrer category
   5. Device/browser panel shows visitor distribution
-**Plans**: TBD
+**Plans:** 1 plan
 
 Plans:
-- [ ] 10-01: TBD
+- [ ] 10-01-PLAN.md — Create dashboard JSON, Helm ConfigMap template, and values.yaml config
 
 ## Progress
 
@@ -98,10 +98,11 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10
 | 7. Page View Metrics | v1.1 | 1/1 | Complete | 2026-01-28 |
 | 8. Traffic Source Attribution | v1.1 | 1/1 | Complete | 2026-01-28 |
 | 9. Device Analytics | v1.1 | 1/1 | Complete | 2026-01-28 |
-| 10. Grafana Dashboard | v1.1 | 0/? | Not started | - |
+| 10. Grafana Dashboard | v1.1 | 0/1 | Planned | - |
 
 ---
 *Roadmap created: 2026-01-28*
 *Milestone v1.1 started*
 *Phase 8 complete: 2026-01-28*
 *Phase 9 complete: 2026-01-28*
+*Phase 10 planned: 2026-01-28*
