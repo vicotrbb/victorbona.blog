@@ -53,12 +53,20 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Page views counter
-const pageViewsLabelNames = ['path', 'method', 'is_bot', 'content_type'] as const
+const pageViewsLabelNames = [
+  'path',
+  'method',
+  'is_bot',
+  'content_type',
+  'source',      // Referrer source (google, twitter, direct, etc.)
+  'utm_source',  // UTM campaign source
+  'utm_medium',  // UTM campaign medium
+] as const
 
 function initializePageViewsCounter(): Counter {
   return new Counter({
     name: 'blog_page_views_total',
-    help: 'Total page views by path, method, bot status, and content type',
+    help: 'Total page views by path, method, bot status, content type, source, and UTM parameters',
     labelNames: pageViewsLabelNames,
     registers: [metricsRegistry],
   })
