@@ -36,14 +36,14 @@ See MILESTONES.md for v1.0 details:
 **Depends on**: Phase 6 (existing /metrics endpoint with prom-client)
 **Requirements**: METRICS-01, METRICS-02, METRICS-03, METRICS-04
 **Success Criteria** (what must be TRUE):
-  1. Visiting /blog/any-post increments counter with label path="/blog/:slug"
-  2. Visiting /articles/any-article increments counter with label path="/articles/:slug"
-  3. 404 errors increment counter with status_code="4xx" label
+  1. Visiting /blog/any-post increments counter with actual path label
+  2. Visiting /articles/any-article increments counter with actual path label
+  3. 404 errors increment counter with status_code="404" label
   4. /metrics endpoint shows blog_page_views_total and blog_http_requests_total metrics
-**Plans**: TBD
+**Plans:** 1 plan
 
 Plans:
-- [ ] 07-01: TBD
+- [ ] 07-01-PLAN.md — Extend metrics, create middleware, track 404s
 
 ### Phase 8: Traffic Source Attribution
 **Goal**: Traffic source categorization from referrer headers and UTM parameters
@@ -95,7 +95,7 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10
 
 | Phase | Milestone | Plans Complete | Status | Completed |
 |-------|-----------|----------------|--------|-----------|
-| 7. Page View Metrics | v1.1 | 0/? | Not started | - |
+| 7. Page View Metrics | v1.1 | 0/1 | Planned | - |
 | 8. Traffic Source Attribution | v1.1 | 0/? | Not started | - |
 | 9. Device Analytics | v1.1 | 0/? | Not started | - |
 | 10. Grafana Dashboard | v1.1 | 0/? | Not started | - |
@@ -103,3 +103,4 @@ Phases execute in numeric order: 7 -> 8 -> 9 -> 10
 ---
 *Roadmap created: 2026-01-28*
 *Milestone v1.1 started*
+*Phase 7 planned: 2026-01-28*
