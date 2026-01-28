@@ -11,15 +11,15 @@
 See: .planning/PROJECT.md (updated 2026-01-28)
 
 **Core value:** Reliable blog on Kubernetes with full observability
-**Current focus:** Phase 7 - Page View Metrics
+**Current focus:** Phase 8 - Traffic Source Attribution
 
 ---
 
 ## Current Position
 
-**Phase:** 7 of 10 (Page View Metrics)
-**Plan:** 1 of 1 complete
-**Status:** Phase complete
+**Phase:** 8 of 10 (Traffic Source Attribution)
+**Plan:** Not yet planned
+**Status:** Ready to plan
 
 **Progress:** [=====---------------] 25%
 

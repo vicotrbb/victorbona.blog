@@ -9,10 +9,10 @@ Requirements for Analytics & Dashboard milestone. Each maps to roadmap phases.
 
 ### Page View Metrics
 
-- [ ] **METRICS-01**: Page views tracked with normalized path labels (`/blog/:slug`, `/articles/:slug`, `/projects/:slug`)
-- [ ] **METRICS-02**: Request count tracked by HTTP status code (2xx, 3xx, 4xx, 5xx)
-- [ ] **METRICS-03**: Request count tracked by content type (blog, article, project, page, api)
-- [ ] **METRICS-04**: Request latency histogram with p50/p90/p99 percentiles
+- [x] **METRICS-01**: Page views tracked with normalized path labels (`/blog/:slug`, `/articles/:slug`, `/projects/:slug`)
+- [x] **METRICS-02**: Request count tracked by HTTP status code (2xx, 3xx, 4xx, 5xx)
+- [x] **METRICS-03**: Request count tracked by content type (blog, article, project, page, api)
+- [x] **METRICS-04**: Request latency histogram with p50/p90/p99 percentiles
 
 ### Traffic Sources
 
@@ -72,10 +72,10 @@ Which phases cover which requirements. Updated during roadmap creation.
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| METRICS-01 | Phase 7 | Pending |
-| METRICS-02 | Phase 7 | Pending |
-| METRICS-03 | Phase 7 | Pending |
-| METRICS-04 | Phase 7 | Pending |
+| METRICS-01 | Phase 7 | Complete |
+| METRICS-02 | Phase 7 | Complete |
+| METRICS-03 | Phase 7 | Complete |
+| METRICS-04 | Phase 7 | Complete |
 | TRAFFIC-01 | Phase 8 | Pending |
 | TRAFFIC-02 | Phase 8 | Pending |
 | DEVICE-01 | Phase 9 | Pending |
