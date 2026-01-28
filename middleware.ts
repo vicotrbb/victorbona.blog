@@ -3,6 +3,7 @@ import type { NextRequest } from 'next/server'
 import { isbot } from 'isbot'
 import { detectSource } from './app/lib/source-detection'
 import { extractUtmParams } from './app/lib/utm-parser'
+import { detectBrowserAndDevice } from './app/lib/device-detection'
 
 // Static asset extensions to exclude from tracking
 const STATIC_EXTENSIONS = [
@@ -97,6 +98,9 @@ export function middleware(request: NextRequest) {
   const userAgent = request.headers.get('user-agent') || ''
   const isBotRequest = isbot(userAgent)
 
+  // Extract browser and device from User-Agent
+  const { browser, device } = detectBrowserAndDevice(userAgent)
+
   // Extract referrer source
   const referer = request.headers.get('referer')
   const source = detectSource(referer)
@@ -117,6 +121,8 @@ export function middleware(request: NextRequest) {
   requestHeaders.set('x-metrics-source', source)
   requestHeaders.set('x-metrics-utm-source', utmSource)
   requestHeaders.set('x-metrics-utm-medium', utmMedium)
+  requestHeaders.set('x-metrics-browser', browser)
+  requestHeaders.set('x-metrics-device', device)
 
   return NextResponse.next({
     request: {
