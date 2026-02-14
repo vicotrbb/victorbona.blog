@@ -120,7 +120,10 @@ export default function RootLayout({
       </head>
       <body className="antialiased max-w-4xl mx-4 mt-8 lg:mx-auto">
         <PageViewTracker />
-        <FaroInit />
+        <FaroInit
+          faroUrl={process.env.FARO_URL}
+          appVersion={process.env.APP_VERSION}
+        />
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-4 md:px-6 lg:px-8">
           <Navbar />
           {children}
