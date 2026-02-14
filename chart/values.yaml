@@ -53,7 +53,8 @@ components:
 
     image:
       repository: ghcr.io/vicotrbb/victorbona.blog
-      tag: "latest"  # Override at deploy time via ArgoCD
+      # tag defaults to Chart.AppVersion (git SHA set by CI)
+      tag: ""
       pullPolicy: IfNotPresent
 
     command: []
