@@ -192,7 +192,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "{job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= `lcp=` | logfmt | unwrap lcp [$__range] | avg_over_time()",
+          "expr": "avg_over_time({job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= `lcp=` | logfmt | unwrap lcp [$__range])",
           "legendFormat": "LCP"
         }
       ],
@@ -586,7 +586,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "{job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= `lcp=` | logfmt | unwrap lcp [$__range] | quantile_over_time(0.75)",
+          "expr": "quantile_over_time(0.75, {job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= `lcp=` | logfmt | unwrap lcp [$__range])",
           "legendFormat": "Health"
         }
       ],
@@ -656,7 +656,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "{job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= `lcp=` | logfmt | unwrap lcp [$__range] | quantile_over_time(0.75)",
+          "expr": "quantile_over_time(0.75, {job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= `lcp=` | logfmt | unwrap lcp [$__range])",
           "legendFormat": "LCP"
         }
       ],
@@ -700,7 +700,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "{job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= ` inp=` | logfmt | unwrap inp [$__range] | quantile_over_time(0.75)",
+          "expr": "quantile_over_time(0.75, {job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= ` inp=` | logfmt | unwrap inp [$__range])",
           "legendFormat": "INP"
         }
       ],
@@ -744,7 +744,7 @@
       "targets": [
         {
           "refId": "A",
-          "expr": "{job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= ` cls=` | logfmt | unwrap cls [$__range] | quantile_over_time(0.75)",
+          "expr": "quantile_over_time(0.75, {job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= ` cls=` | logfmt | unwrap cls [$__range])",
           "legendFormat": "CLS"
         }
       ],
