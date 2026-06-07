@@ -1,0 +1,134 @@
+---
+title: "Building Guara Cloud Like a Product, Not a Kubernetes Dashboard"
+publishedAt: "2026-06-07"
+summary: "Why I am building Guara Cloud as a product around developer outcomes, Brazilian billing, service operations, and reliability instead of exposing Kubernetes as another complicated control panel."
+tags: "guara cloud,paas,kubernetes,startup,product"
+---
+
+I have spent enough time around infrastructure to know one uncomfortable truth: Kubernetes is powerful, but most people do not want Kubernetes.
+
+They want their application online. They want a database that survives the night. They want logs when something breaks, metrics when something slows down, backups when something goes wrong, and a bill they can understand. They want to ship software without having to become a platform engineer first.
+
+That is the idea behind [Guara Cloud](https://guaracloud.com).
+
+Guara Cloud is not an attempt to make Kubernetes look prettier. It is my attempt to turn a serious infrastructure stack into a product that Brazilian developers and small teams can actually use. Under the hood, it is built on Kubernetes, PostgreSQL, Stripe, NATS, GitOps, observability, and a lot of careful backend work. But the user should not have to care about most of that.
+
+The product should feel simple. The system behind it cannot be simplistic.
+
+## The product starts with a constraint
+
+The first constraint was geographic and economic: Guara Cloud is built for Brazil.
+
+That changes more than the language on the landing page. Billing in BRL matters. Local pricing expectations matter. The way people evaluate risk, support, and infrastructure cost matters. A platform that feels reasonable in dollars can become strange very quickly when translated into a different market.
+
+So from the beginning, Guara Cloud had to be a product, not only a technical playground. Subscription plans, usage, quotas, overage behavior, and customer-facing limits are not random constants sprinkled across the codebase. They are part of the platform contract.
+
+That forced a useful discipline: product rules need one source of truth. The application cannot have one tier definition in the frontend, another one in the API, and a slightly different one in the billing worker. If a platform sells reliability, its own internal contracts have to be reliable first.
+
+## Kubernetes is the engine, not the interface
+
+Guara Cloud runs on Kubernetes because Kubernetes gives me the right foundation for isolation, scheduling, service discovery, health checks, rollout control, and operational visibility. It is a good substrate for a platform.
+
+But Kubernetes is not the product interface.
+
+The user should not be thinking about Deployments, Services, PVCs, Ingress objects, pod disruption budgets, or storage classes when they are trying to launch a service from a catalog. Those are platform concerns. The user-facing object should be closer to what they actually want:
+
+- a project
+- a service
+- a database
+- a domain
+- logs
+- metrics
+- backups
+- usage
+- billing
+
+That separation sounds obvious, but it affects almost every implementation decision. A service slug used by the product is not always the same thing as a Kubernetes-safe slug. A user-visible service lifecycle is not the same thing as a pod lifecycle. A friendly error in the dashboard cannot leak an internal stack trace just because the backend saw one.
+
+The product is an opinionated translation layer between developer intent and infrastructure state.
+
+## Service catalog as the main path
+
+One of the strongest ideas in Guara Cloud is the service catalog.
+
+Instead of asking users to assemble every piece from scratch, the platform can offer known service shapes with known operational behavior. A catalog service can have deployment rules, plan compatibility, backup support, metrics, and lifecycle actions defined by the platform.
+
+That matters because the catalog turns infrastructure into a product surface.
+
+If a managed database appears in the catalog, the platform is making a promise. It is not just saying "we can create a container." It is saying "we know how this service should be created, observed, limited, backed up, billed, and eventually removed."
+
+This also creates a cleaner path for reliability work. When the platform owns the catalog definition, it can encode safer defaults. It can decide which services deserve backup controls. It can prevent unsupported combinations. It can show users a smaller set of meaningful actions instead of every primitive Kubernetes would allow.
+
+Good platform design is often subtraction.
+
+## Billing is infrastructure too
+
+People usually talk about billing as a business feature, but in a PaaS it is also infrastructure.
+
+Billing depends on usage data. Usage data depends on metrics. Metrics depend on what the platform scrapes, stores, drops, and preserves. If a metric looks unimportant during observability tuning but powers a tenant usage calculation, dropping it is not a monitoring change. It is a billing bug.
+
+This is why Guara Cloud treats billing, quotas, and observability as connected systems. The platform has to know which measurements are only operational noise and which measurements are part of the customer contract.
+
+The same applies to plan enforcement. If a limit is user-facing, it cannot be hardcoded in whichever file happened to need it first. Limits have to flow from the platform entitlement layer, through typed shared contracts, into API behavior and frontend UX.
+
+The boring rule is the important one: if users pay based on it, the platform cannot improvise it.
+
+## Reliability is a feature users may never notice
+
+The hardest product work in infrastructure is that the best parts are often invisible.
+
+A clean transaction boundary is invisible. An outbox message created atomically with a database mutation is invisible. A generic user-facing error paired with a structured backend log is invisible. A Zod schema rejecting a bad event before it reaches an orchestrator is invisible.
+
+Users notice the absence of these things only when the product behaves strangely.
+
+That is why I like building Guara Cloud with strict internal rules. API response types must line up with shared types. Backend validation goes through schemas. NATS events are defined in one package. Multi-step mutations use transactions. Logs keep useful context without turning the frontend into a place where internal error messages escape.
+
+None of that makes a good screenshot. It does make the product easier to trust.
+
+## Backups are a product promise
+
+One of the clearest examples of this product thinking is backups.
+
+At the infrastructure layer, storage snapshots are useful. Longhorn snapshots can help with local recovery scenarios, and Kubernetes storage primitives are part of the operational toolkit. But a user clicking "download backup" is asking for something different.
+
+They are not asking for a storage-layer implementation detail. They are asking for a product-level recovery artifact.
+
+That distinction led to service-native downloadable backups for catalog services. The backup flow is not just "take a snapshot and hope that means something to the user." It is closer to:
+
+- the API records a backup request
+- the domain operation and outbox message happen together
+- an orchestrator receives the command
+- a job creates the actual backup artifact
+- object storage holds the result
+- the API receives terminal status events
+- the dashboard can show useful state to the user
+
+I wrote more about that engineering boundary in [Backups Are Not Snapshots](/blog/backups-are-not-snapshots).
+
+The important product point is simple: recovery should be designed around the user action, not around whichever storage primitive is easiest to expose.
+
+## Incidents should improve the product
+
+Running infrastructure also means dealing with uncomfortable days.
+
+The useful question after an incident is not "which component can we blame?" It is "what did the system teach us, and which product or operational assumption needs to change?"
+
+Storage incidents, synchronized jobs, observability pressure, noisy metrics, unclear rollout risk, and platform-level feature flags all feed back into the same product question: what would make this safer next time?
+
+Sometimes the answer is technical, like better alerting or safer scheduling. Sometimes it is procedural, like separating a disable-now path from a remove-later path. Sometimes it is a product decision, like making backups visible as first-class user operations instead of hiding everything behind infrastructure automation.
+
+I wrote about the incident-analysis side in [Debugging a Kubernetes Storage Incident Without Lying to Yourself](/blog/debugging-kubernetes-storage-incidents-without-lying-to-yourself).
+
+## The platform I want to use
+
+I am building [Guara Cloud](https://guaracloud.com) because I want a platform that feels practical.
+
+Not magical. Not a toy. Not a thin UI over a cluster. A platform with enough opinion to protect users from unnecessary complexity, and enough engineering discipline to keep those opinions honest.
+
+The work is not only writing code. It is deciding where complexity belongs. It is turning Kubernetes resources into user workflows. It is making billing and observability agree. It is designing backups as product promises. It is refusing to leak internal chaos into the customer experience.
+
+That is the kind of PaaS I want to build.
+
+The funny thing is that the more product-focused Guara Cloud becomes, the more engineering discipline it requires.
+
+That feels like the right trade.

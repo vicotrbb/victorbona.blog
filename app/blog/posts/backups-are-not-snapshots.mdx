@@ -1,0 +1,156 @@
+---
+title: "Backups Are Not Snapshots"
+publishedAt: "2026-06-07"
+summary: "A technical note on why platform backups need to be designed as user-facing recovery artifacts, not confused with storage-layer snapshots."
+tags: "guara cloud,kubernetes,backups,postgresql,platform engineering"
+---
+
+One of the easiest mistakes in platform engineering is using the word "backup" too casually.
+
+A snapshot can be a backup mechanism. A dump can be a backup mechanism. Object storage can hold backup artifacts. A recurring job can trigger backup work. But none of those pieces automatically become a good user-facing backup feature just because they exist.
+
+While building [Guara Cloud](https://guaracloud.com), this distinction became important enough that I started treating it as a product boundary:
+
+> A snapshot is an infrastructure tool. A backup is a recovery promise.
+
+That sounds like a small semantic difference, but it changes the architecture.
+
+## The storage layer sees volumes
+
+At the infrastructure layer, snapshots are extremely useful.
+
+If a Kubernetes workload uses persistent storage, the storage system can often snapshot the volume. In a Longhorn-backed environment, for example, snapshots can help with local recovery, rollback, and operational safety. They are fast, close to the storage engine, and valuable during incidents.
+
+But the storage layer sees volumes. It does not know much about the product.
+
+It does not know that one volume belongs to a catalog database service. It does not know whether the user expects a downloadable artifact. It does not know whether a backup should appear in a dashboard with a lifecycle, status, size, expiration, and audit trail. It does not know whether the current operation should be blocked because another backup is already running.
+
+Snapshots are excellent infrastructure primitives. They are not automatically product features.
+
+## The product sees recovery actions
+
+A user does not usually ask for "a crash-consistent point-in-time representation of a PVC."
+
+They ask for something closer to:
+
+- Can I create a backup now?
+- Can I see whether it succeeded?
+- Can I download it?
+- Can I restore or inspect it later?
+- Can I trust that it belongs to this service?
+- Can I understand why it failed?
+
+That set of questions lives above the storage layer.
+
+In Guara Cloud, the service catalog makes this especially clear. A managed service from the catalog is not only a Kubernetes workload. It is a product object with limits, lifecycle, billing implications, status, and operational affordances. If the catalog says a service supports backups, the implementation needs to serve the catalog experience, not expose a raw cluster detail.
+
+That is why the backup path for catalog services was designed separately from the Longhorn snapshot path.
+
+## The architecture shape
+
+The backup flow I want in a platform has a few properties.
+
+First, the API should own the user request. When a user schedules or creates a backup, the API records that fact in the platform database. That gives the platform a durable object to show in the dashboard, audit, retry, expire, and reason about.
+
+Second, the domain mutation and the async command should be atomic. If the database row says a backup was requested but no worker ever receives the command, the system has lied. If a worker receives a command but the API never committed the request, the system has also lied.
+
+This is where an outbox pattern helps. The API can create the backup record and the outbox message in the same database transaction. A publisher later moves that message to the event system. The user-facing state and the async work are born together.
+
+Third, orchestration should happen outside the API request path. Creating a backup can involve credentials, temporary network paths, Kubernetes Jobs, object storage uploads, status updates, cleanup, and failure handling. That belongs in an orchestrator, not in a synchronous HTTP handler.
+
+Fourth, terminal state should flow back through typed events. A backup is not complete just because a job started. It needs a final status: succeeded, failed, canceled, expired, or whatever the product contract supports. The API should consume those events and update the durable record users see.
+
+The shape is roughly:
+
+1. API validates the request.
+2. API creates a backup row inside a transaction.
+3. API creates an outbox command inside the same transaction.
+4. The command reaches the orchestrator through the platform event system.
+5. The orchestrator creates the backup job.
+6. The job writes an artifact to object storage.
+7. The orchestrator emits terminal status.
+8. The API updates the user-facing backup record.
+9. The dashboard shows a useful state and, when available, a download path.
+
+That is more work than calling a storage snapshot API. It is also a better product boundary.
+
+## Why object storage matters
+
+Downloadable backups need somewhere to live.
+
+Object storage is a natural fit because the result is an artifact, not a running disk. A platform can store the generated file, apply retention rules, issue short-lived download URLs, and keep the artifact separate from the workload that produced it.
+
+That separation is important.
+
+If a backup only exists inside the same storage system that is currently in trouble, it may still be useful, but it is not the same kind of recovery asset. If a user needs to download a database dump, move it elsewhere, inspect it locally, or keep it for compliance reasons, the artifact needs to be addressable outside the original volume.
+
+In Guara Cloud's case, this made Linode Object Storage a natural part of the design for service-native backups.
+
+## Consistency is not free
+
+The uncomfortable part of database backups is that "copy the files" is often not the right abstraction.
+
+For PostgreSQL-backed catalog services, a backup job needs to think about database consistency, credentials, network path, runtime tools, and connection mode. A dump taken through the wrong connection path can behave differently from a dump taken through the direct backend. A job image that looks fine in TypeScript can fail in the cluster because it does not contain the tools the command expects. A non-root container can fail if the writable path is not actually writable.
+
+These are boring problems until they are production problems.
+
+The lesson is that a backup feature has two halves:
+
+- the product/control-plane half: request, state, permissions, events, download links
+- the runtime/data-plane half: job execution, database access, artifact upload, cleanup
+
+Both have to be tested as real systems. A clean API contract does not save a broken job image. A working shell script does not save a product flow with no durable state.
+
+## Fail closed when the feature is not ready
+
+Another important design choice is whether the feature fails open or fails closed.
+
+For platform backups, I prefer fail closed.
+
+If the required object storage configuration is missing, users should not be able to schedule work that cannot finish. If the feature is behind a kill switch, both scheduling and execution need to respect it. Disabling only the API button is not enough if stale queued commands can still launch jobs. Disabling only a worker is not enough if the dashboard still promises a capability that is not actually available.
+
+This is the kind of detail that separates a feature flag from a real operational control.
+
+A backup feature touches too many systems to be casually half-on:
+
+- API
+- database schema
+- frontend state
+- orchestrator consumers
+- event contracts
+- Kubernetes job templates
+- object storage
+- secrets
+- alerts
+- cleanup jobs
+
+If you need to disable it, disable the whole path.
+
+## Snapshots still matter
+
+None of this means snapshots are bad.
+
+Snapshots are still valuable. They are part of the platform operator's toolkit. They can help recover from certain classes of failure faster than a logical backup. They can be automated, scheduled, retained, and monitored.
+
+The mistake is pretending they answer every user recovery question.
+
+For [Guara Cloud](https://guaracloud.com), I want both layers to exist with clear names:
+
+- storage snapshots for infrastructure-level recovery
+- service-native backups for user-facing recovery artifacts
+
+Those two systems can support each other, but they should not be confused.
+
+## The rule I keep coming back to
+
+The rule is simple:
+
+> Design backups from the restore story backward.
+
+If the user needs a downloadable PostgreSQL dump, design for that. If the operator needs a volume rollback, design for that. If the platform needs disaster recovery, design for that separately. Do not let one mechanism inherit every recovery promise by accident.
+
+That is the larger lesson I took from building backups in Guara Cloud.
+
+Infrastructure primitives are powerful, but users do not experience primitives. They experience promises. A platform has to know which promise it is making.
+
+That is why backups are not snapshots.

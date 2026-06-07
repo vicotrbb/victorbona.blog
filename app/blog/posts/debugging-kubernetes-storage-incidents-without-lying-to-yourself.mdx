@@ -1,0 +1,192 @@
+---
+title: "Debugging Kubernetes Storage Incidents Without Lying to Yourself"
+publishedAt: "2026-06-07"
+summary: "A deep engineering note on incident analysis, evidence gathering, and avoiding premature certainty during Kubernetes and Longhorn storage failures."
+tags: "guara cloud,kubernetes,longhorn,incident response,observability"
+---
+
+The worst incident summaries are the confident ones written too early.
+
+"Longhorn broke the cluster."
+
+"Kubernetes is unstable."
+
+"The node is bad."
+
+"It was probably the snapshot job."
+
+Maybe one of those statements is eventually true. Maybe each contains a piece of the truth. But during an active storage incident, premature certainty is dangerous. It makes you stop gathering evidence at exactly the moment when the system is trying to teach you what happened.
+
+While operating [Guara Cloud](https://guaracloud.com), I have become more careful about the difference between a symptom, a correlation, and a cause.
+
+That discipline matters most when Kubernetes, storage, and node health all start failing at the same time.
+
+## The incident shape
+
+The kind of incident I am talking about looks like this:
+
+- a Kubernetes node starts flapping between healthy and unhealthy states
+- kubelet reports readiness problems
+- pods become hard to schedule or hard to trust
+- storage components report strange identity or attachment behavior
+- recurring storage jobs line up near the same time window
+- dashboards show some things recovering while logs still show unresolved anomalies
+
+That combination is hard because every layer has a plausible story.
+
+The Kubernetes layer can tell you the node is not ready. The storage layer can tell you a replica or disk is behaving strangely. The container runtime can tell you pods are not being managed correctly. Metrics can show pressure around the same time a scheduled job ran.
+
+All of those are useful. None of them alone is the whole incident.
+
+## Start by separating surfaces
+
+The first useful move is to separate the evidence by surface.
+
+For a Kubernetes storage incident, I usually want at least these views:
+
+- node readiness and recent events
+- kubelet and container runtime symptoms
+- storage-system node state
+- volume and replica health
+- recurring job schedules
+- workload impact
+- time correlation across metrics and logs
+
+The goal is not to collect everything. The goal is to collect enough from each layer that you can stop confusing one layer's symptom for another layer's cause.
+
+For example, `NodeStatusUnknown` is a Kubernetes symptom. It says the control plane stopped receiving reliable node status. It does not, by itself, tell you whether the root cause is CPU starvation, disk pressure, kubelet failure, container runtime stalls, network issues, storage driver behavior, or a combination.
+
+Likewise, a storage-system warning may be real and important, but it does not automatically explain every pod symptom.
+
+## Correlation is useful, not conclusive
+
+Scheduled work is one of the first things I check.
+
+If many recurring storage jobs fire at the same time, and the node starts flapping around that window, the correlation deserves attention. A synchronized snapshot wave can create pressure. It can interact with storage, CPU, IO, network, and replica management. It can expose a problem that was already waiting.
+
+But the word "interact" matters.
+
+It is tempting to say "the snapshot wave caused the incident." Sometimes that may be right. Other times the scheduled work only made an existing problem visible. Maybe a disk identity issue already existed. Maybe a node was already degraded. Maybe the storage system was already confused, and the scheduled work increased enough load for Kubernetes to start showing symptoms.
+
+The safe phrasing during the incident is:
+
+> The scheduled jobs line up with the instability window and are a plausible pressure source.
+
+That sentence leaves room for new evidence. It is more useful than pretending the case is closed.
+
+## The identity class of bugs
+
+Some storage bugs are especially uncomfortable because they are not simple "disk full" or "pod crashed" problems.
+
+Identity problems are in that category.
+
+If a storage system believes a disk, node, replica, or instance manager identity does not match what it expects, the system can enter a confusing state. The volume may still look healthy in one view. The Kubernetes node may return to ready. Workloads may appear fine. But the storage control plane can still be carrying a live inconsistency.
+
+That is dangerous because it creates a false sense of recovery.
+
+In one Guara Cloud incident investigation, the important lesson was not only that the node became ready again. The important lesson was that readiness did not erase the storage-plane anomaly. The cluster could look calmer while the underlying risk remained unresolved.
+
+This is where incident analysis needs patience. A green dashboard is not always the same thing as a repaired system.
+
+## Stabilization and repair are different phases
+
+During an active incident, I try to avoid mixing stabilization and permanent repair.
+
+Stabilization asks:
+
+- How do we reduce immediate risk?
+- How do we stop scheduling more work onto a suspicious node or disk?
+- How do we avoid the next synchronized pressure window?
+- How do we preserve user workloads while we keep investigating?
+
+Repair asks:
+
+- What object is wrong?
+- Which replicas need to move?
+- Which disk or node identity needs to be corrected?
+- What needs to be removed, recreated, or reattached?
+- Which action is irreversible or high risk?
+
+Those are different conversations.
+
+A low-risk stabilization step might be to cordon a flapping node or disable scheduling on suspicious storage disks. A permanent repair might require replica eviction, disk removal, re-adding storage, or editing identity state. The first category buys time. The second category changes the system.
+
+When those phases get mixed, people take repair-sized risks while they are still trying to understand the incident.
+
+## Use narrow evidence, not heroic log dumps
+
+The fastest way to get lost is to dump everything.
+
+Huge log bundles feel productive because they are large. They also make it easy to miss the few lines that matter. During storage incidents, I prefer narrowing quickly:
+
+- Which node flapped?
+- Which volumes were attached there?
+- Which storage node object changed?
+- Which recurring jobs ran near the window?
+- Which warnings repeat with the same identity or object name?
+- Which workloads actually saw impact?
+
+Then I widen only when needed.
+
+This is not about ignoring evidence. It is about keeping the investigation falsifiable. A focused hypothesis can be tested. A pile of logs can only be searched.
+
+## Preserve the difference between user impact and platform risk
+
+Another useful split is user impact versus platform risk.
+
+Sometimes user workloads are currently healthy, but the platform is carrying a dangerous condition. Sometimes the visible user impact is small because redundancy worked, but the next scheduled job or node event could trigger another failure. Sometimes everything is red, and the only honest answer is that the platform is actively degraded.
+
+These states require different communication.
+
+For a platform like [Guara Cloud](https://guaracloud.com), it is not enough to ask "is it up right now?" The better questions are:
+
+- Are user services currently serving traffic?
+- Is the storage layer internally consistent?
+- Are replicas placed safely?
+- Is the next automated job wave likely to add pressure?
+- Are we one node event away from customer impact?
+
+Reliability is not only current uptime. It is the margin around current uptime.
+
+## What I would automate after seeing it once
+
+Every serious incident should leave behind a sharper system.
+
+For this class of Kubernetes storage issue, I would want better visibility around:
+
+- synchronized recurring storage jobs
+- storage disk scheduling state
+- suspicious duplicate or mismatched storage identities
+- node readiness flaps near heavy storage activity
+- volume health versus storage-control-plane warnings
+- platform alerts that distinguish customer impact from unresolved risk
+
+The goal is not to create a dashboard panel for every weird thing. That usually turns observability into wallpaper. The goal is to capture the few signals that would have shortened the next investigation.
+
+In infrastructure, observability should make the next incident less mysterious.
+
+## The discipline of not lying
+
+The hardest part of incident response is emotional.
+
+You want an answer. Your users want an answer. Your own brain wants a clean story. But production systems rarely fail as cleanly as our summaries make them sound.
+
+So I try to keep the language honest:
+
+- "We know this node flapped during this window."
+- "We know these recurring jobs were scheduled at the same time."
+- "We know the storage layer reported an identity mismatch."
+- "We do not yet know whether this was cause, trigger, or consequence."
+- "The immediate stabilization path is lower risk than the permanent repair."
+
+That style can feel slower, but it is faster than being confidently wrong.
+
+Guara Cloud is a product, but it is also an operating environment. Building it means building features, writing billing logic, improving backups, and designing UI. It also means learning from the days when the infrastructure pushes back.
+
+The lesson I keep taking from those days is simple:
+
+> During an incident, truth is a feature.
+
+Not vibes. Not blame. Not a pretty postmortem written before the facts arrive.
+
+Just evidence, clear phases, careful language, and repairs that match what the system actually proved.
