@@ -1,4 +1,5 @@
-import { ProjectCard } from "app/components/ProjectCard";
+import { SectionHeader } from "app/components/SectionHeader";
+import { SystemRow } from "app/components/SystemRow";
 import { projects } from "./projects";
 import { baseUrl } from "app/sitemap";
 import type { Metadata } from "next";
@@ -14,47 +15,28 @@ export const metadata: Metadata = {
 };
 
 export default function ProjectsPage() {
-  const activeProjects = projects.filter(project => 
-    project.status === 'maintained' || project.status === 'in-progress'
-  ).length;
-
   return (
-    <section className="space-y-12">
-      <div>
-        <h1 className="font-semibold text-3xl mb-4 tracking-tighter text-neutral-900 dark:text-neutral-100">
-          Projects
-        </h1>
-        <p className="mb-6 text-neutral-600 dark:text-neutral-400 text-lg leading-relaxed">
-          A collection of software projects, from open source contributions to personal experiments. 
-          Currently maintaining {activeProjects} active projects.
+    <section className="space-y-5">
+      <div className="grid gap-3 border-b border-[var(--color-rule)] pb-4 md:grid-cols-[12rem_1fr]">
+        <p className="metadata-type text-[var(--color-accent)]">
+          Shipped systems
         </p>
-        
-        <div className="flex gap-4 text-sm">
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-green-500"></span>
-            <span className="text-neutral-600 dark:text-neutral-400">Completed</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-blue-500"></span>
-            <span className="text-neutral-600 dark:text-neutral-400">Maintained</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-yellow-500"></span>
-            <span className="text-neutral-600 dark:text-neutral-400">In Progress</span>
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-red-500"></span>
-            <span className="text-neutral-600 dark:text-neutral-400">Stopped</span>
-          </div>
+        <div>
+          <h1 className="display-type text-2xl font-semibold text-[var(--color-foreground)]">
+            Systems, tools, and infrastructure
+          </h1>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--color-muted-foreground)]">
+            Software that moved past the idea stage: platforms, security tools,
+            infrastructure, developer products, and experiments with enough
+            shape to judge.
+          </p>
         </div>
       </div>
-
-      <div>
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2">
-          {projects.map((project) => (
-            <ProjectCard key={project.name} project={project} />
-          ))}
-        </div>
+      <SectionHeader index="LIVE" title="Project archive" />
+      <div className="border border-[var(--color-border)] px-3">
+        {projects.map((project) => (
+          <SystemRow key={project.name} project={project} />
+        ))}
       </div>
     </section>
   );
