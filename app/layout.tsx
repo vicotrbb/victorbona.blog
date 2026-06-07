@@ -1,14 +1,25 @@
 import "katex/dist/katex.min.css";
 import "./global.css";
 import type { Metadata } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import { Atkinson_Hyperlegible, Libre_Caslon_Text } from "next/font/google";
 import { Navbar } from "./components/nav";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
 import Script from "next/script";
 import { PageViewTracker } from "./components/page-view-tracker";
+
+const display = Libre_Caslon_Text({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-display-serif",
+});
+
+const body = Atkinson_Hyperlegible({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-body-sans",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -99,14 +110,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en"
-      className={cx(
-        "text-black bg-white dark:text-white dark:bg-black",
-        GeistSans.variable,
-        GeistMono.variable
-      )}
-    >
+    <html lang="en" className={cx(display.variable, body.variable)}>
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <Script
@@ -122,11 +126,11 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </head>
-      <body className="antialiased max-w-4xl mx-4 mt-8 lg:mx-auto">
+      <body className="antialiased">
         <PageViewTracker />
-        <main className="flex-auto min-w-0 mt-6 flex flex-col px-4 md:px-6 lg:px-8">
+        <main className="mx-auto flex min-h-screen w-full max-w-[var(--max-shell)] flex-col px-4 py-4 sm:px-6 lg:px-8">
           <Navbar />
-          {children}
+          <div className="flex-auto">{children}</div>
           <Footer />
           <Analytics />
         </main>

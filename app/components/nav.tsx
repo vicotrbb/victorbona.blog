@@ -1,43 +1,33 @@
 import Link from "next/link";
 
-const navItems = {
-  "/": {
-    name: "Home",
-  },
-  "/blog": {
-    name: "Posts",
-  },
-  "/articles": {
-    name: "Papers & Articles",
-  },
-  "/projects": {
-    name: "Projects",
-  },
-};
+const navItems = [
+  { href: "/blog", label: "Writing" },
+  { href: "/projects", label: "Systems" },
+  { href: "/articles", label: "Papers" },
+];
 
 export function Navbar() {
   return (
-    <aside className="-ml-[8px] mb-8 tracking-tight">
-      <div className="lg:sticky lg:top-20">
-        <nav
-          className="flex flex-row items-start relative px-0 pb-0 fade md:overflow-auto scroll-pr-6 md:relative"
-          id="nav"
+    <header className="mb-6 border-b border-[var(--color-border)] pb-3">
+      <nav className="flex items-center justify-between gap-4">
+        <Link
+          href="/"
+          className="display-type text-lg font-semibold text-[var(--color-foreground)]"
         >
-          <div className="flex flex-row space-x-0 pr-10">
-            {Object.entries(navItems).map(([path, { name }]) => {
-              return (
-                <Link
-                  key={path}
-                  href={path}
-                  className="transition-all hover:text-neutral-800 dark:hover:text-neutral-200 flex align-middle relative py-1 px-2 m-1"
-                >
-                  {name}
-                </Link>
-              );
-            })}
-          </div>
-        </nav>
-      </div>
-    </aside>
+          Victor Bona
+        </Link>
+        <div className="flex flex-wrap items-center justify-end gap-1 text-sm">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="rounded-sm px-2 py-1 text-[var(--color-muted-foreground)] transition-colors hover:bg-[var(--color-muted)] hover:text-[var(--color-foreground)]"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      </nav>
+    </header>
   );
 }
