@@ -1,0 +1,27 @@
+{
+  "name": "Victor Bona",
+  "short_name": "Victor Bona",
+  "description": "Software / Systems / Operational Taste",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#16100d",
+  "theme_color": "#16100d",
+  "icons": [
+    {
+      "src": "/logos/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/logos/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/logos/icon-branded-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

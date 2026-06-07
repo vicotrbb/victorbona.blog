@@ -28,8 +28,16 @@ export const metadata: Metadata = {
     template: "%s | Victor Bona Blog",
   },
   icons: {
-    icon: "/logo.ico",
+    icon: [
+      { url: "/logos/favicon-32.png", sizes: "32x32", type: "image/png" },
+      { url: "/logos/favicon-96.png", sizes: "96x96", type: "image/png" },
+      { url: "/logos/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/logos/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
   },
+  manifest: "/logos/site.webmanifest",
   description:
     "A blog about software engineering, software development, software architecture, tech, software, and more.",
   keywords: [
@@ -59,10 +67,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: `${baseUrl}/og`,
+        url: `${baseUrl}/logos/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "Victor Bona Blog",
+        alt: "Victor Bona monogram and site identity",
       },
     ],
   },
@@ -72,7 +80,7 @@ export const metadata: Metadata = {
     description:
       "A blog about software engineering, software development, software architecture, tech, software, and more.",
     creator: "@BonaVictor",
-    images: [`${baseUrl}/og`],
+    images: [`${baseUrl}/logos/og-image.png`],
   },
   robots: {
     index: true,

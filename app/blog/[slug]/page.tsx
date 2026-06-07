@@ -114,7 +114,7 @@ export default function Blog({ params }) {
               name: "Victor Bona Blog",
               logo: {
                 "@type": "ImageObject",
-                url: `${baseUrl}/logo.png`,
+                url: `${baseUrl}/logos/icon-512.png`,
               },
             },
             mainEntityOfPage: {

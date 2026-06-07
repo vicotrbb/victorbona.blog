@@ -1,0 +1,154 @@
+{
+  "brandName": "Victor Bona",
+  "tagline": "Software / Systems / Operational Taste",
+  "source": "bona_logo_green_bg.png",
+  "sourceMetadata": {
+    "width": 1254,
+    "height": 1254,
+    "format": "png",
+    "hasAlpha": false
+  },
+  "chromaKey": {
+    "sampledKey": {
+      "r": 20,
+      "g": 227,
+      "b": 28
+    },
+    "transparentPixels": 1545197,
+    "edgePixels": 5192
+  },
+  "validation": {
+    "logoStats": {
+      "transparent": 244103,
+      "opaque": 23943,
+      "partial": 3364,
+      "transparentRatio": 0.8994,
+      "partialRatio": 0.0124
+    }
+  },
+  "assets": [
+    {
+      "name": "logo-transparent.png",
+      "width": 545,
+      "height": 498,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "logo-square-transparent.png",
+      "width": 1024,
+      "height": 1024,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "monogram-transparent.png",
+      "width": 545,
+      "height": 339,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "monogram-square-transparent.png",
+      "width": 1024,
+      "height": 1024,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "favicon-16.png",
+      "width": 16,
+      "height": 16,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "favicon-32.png",
+      "width": 32,
+      "height": 32,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "favicon-48.png",
+      "width": 48,
+      "height": 48,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "favicon-96.png",
+      "width": 96,
+      "height": 96,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "apple-touch-icon.png",
+      "width": 180,
+      "height": 180,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "icon-192.png",
+      "width": 192,
+      "height": 192,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "icon-512.png",
+      "width": 512,
+      "height": 512,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "apple-touch-icon-branded.png",
+      "width": 180,
+      "height": 180,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "icon-branded-192.png",
+      "width": 192,
+      "height": 192,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "icon-branded-512.png",
+      "width": 512,
+      "height": 512,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "og-image.png",
+      "width": 1200,
+      "height": 630,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "logo-on-white.png",
+      "width": 1024,
+      "height": 1024,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "logo-on-dark.png",
+      "width": 1024,
+      "height": 1024,
+      "format": "png",
+      "hasAlpha": true
+    },
+    {
+      "name": "site.webmanifest",
+      "format": "json"
+    }
+  ]
+}
