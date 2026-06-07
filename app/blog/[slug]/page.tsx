@@ -129,23 +129,19 @@ export default function Blog({ params }) {
         }}
       />
 
-      <div className="flex flex-col lg:flex-row lg:gap-16 max-w-6xl mx-auto">
-        <article
-          className="flex-1 max-w-4xl mx-auto lg:mx-0"
-          itemScope
-          itemType="https://schema.org/BlogPosting"
-        >
+      <div className="mx-auto max-w-[var(--max-reading)]">
+        <article itemScope itemType="https://schema.org/BlogPosting">
           <ReadingProgress />
 
-          <header className="mb-12">
+          <header className="mb-8 border-b border-[var(--color-rule)] pb-5">
             <h1
-              className="font-bold text-3xl md:text-4xl lg:text-5xl tracking-tight mb-6 text-neutral-900 dark:text-neutral-100 leading-tight"
+              className="display-type text-2xl font-semibold leading-tight text-[var(--color-foreground)] sm:text-3xl lg:text-4xl"
               itemProp="headline"
             >
               {post.metadata.title}
             </h1>
 
-            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between text-sm text-neutral-600 dark:text-neutral-400 gap-4 sm:gap-0 mb-8">
+            <div className="mt-4 flex flex-col gap-3 text-sm text-[var(--color-muted-foreground)] sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center flex-wrap gap-4">
                 <time
                   dateTime={post.metadata.publishedAt}
@@ -168,8 +164,8 @@ export default function Blog({ params }) {
             </div>
 
             {post.metadata.summary && (
-              <div className="border-l-4 border-neutral-300 dark:border-neutral-700 pl-6 mb-8">
-                <p className="text-lg text-neutral-700 dark:text-neutral-300 leading-relaxed italic">
+              <div className="mb-6 border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
+                <p className="text-base leading-relaxed text-[var(--color-muted-foreground)]">
                   {post.metadata.summary}
                 </p>
               </div>
@@ -186,9 +182,9 @@ export default function Blog({ params }) {
           </div>
 
           {post.metadata.tags && (
-            <footer className="border-t border-neutral-200 dark:border-neutral-800 pt-8 mt-12">
+            <footer className="mt-8 border-t border-[var(--color-border)] pt-5">
               <h3 className="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-4">
-                Tagged with:
+                Filed under
               </h3>
               <div className="flex flex-wrap gap-2 mb-8">
                 {tags.map((tag) => (
