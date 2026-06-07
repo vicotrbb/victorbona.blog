@@ -15,6 +15,20 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "purple-wolf-whitepaper",
+    title:
+      "Purple Wolf: A Technical White Paper on a Low-Latency Traefik Web Application Firewall and Audit Relay",
+    abstract:
+      "A technical white paper documenting Purple Wolf's Rust workspace architecture, request normalization path, detector groups, policy semantics, Traefik http-wasm adapter, audit relay protocol, release surfaces, related WAF systems, and committed benchmark results against the Coraza http-wasm Traefik plugin.",
+    authors: ["Victor Bona"],
+    publishedAt: "2026-06-07",
+    tags: ["Security", "WAF", "Traefik", "WebAssembly", "Rust", "Benchmarks"],
+    type: "paper",
+    status: "independently published",
+    pdfUrl: "/papers/purple-wolf-whitepaper.pdf",
+    citationKey: "bona2026purplewolf",
+  },
+  {
     slug: "the-missing-http-verb-strut",
     title: "The Missing HTTP Verb: STRUT",
     abstract:
