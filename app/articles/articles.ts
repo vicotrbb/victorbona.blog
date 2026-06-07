@@ -14,6 +14,19 @@ export interface Article {
 }
 
 export const articles: Article[] = [
+  {
+    slug: "the-missing-http-verb-strut",
+    title: "The Missing HTTP Verb: STRUT",
+    abstract:
+      "A position paper proposing STRUT, an idempotent but unsafe HTTP method for server-driven, minimal-input resource creation. The paper defines candidate semantics, compares the method with POST plus Idempotency-Key, conditional PUT, WebDAV, and Prefer, and discusses security, caching, intermediaries, browser behavior, and deployment.",
+    authors: ["Victor Bona"],
+    publishedAt: "2026-06-07",
+    tags: ["HTTP", "REST", "API Design", "Web Standards", "Idempotency"],
+    type: "paper",
+    status: "independently published",
+    pdfUrl: "/papers/the-missing-http-verb-strut.pdf",
+    citationKey: "bona2026strut",
+  },
   // {
   //   slug: "performance-optimization-techniques",
   //   title: "Advanced Performance Optimization Techniques in Web Applications",
