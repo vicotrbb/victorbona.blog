@@ -9,7 +9,7 @@ export function Tag({ name, className = "" }: TagProps) {
   return (
     <Link
       href={`/blog/tag/${encodeURIComponent(name.trim())}`}
-      className={`inline-block px-3 py-1 rounded-full text-sm bg-neutral-100 hover:bg-neutral-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 text-neutral-700 dark:text-neutral-300 transition-colors ${className}`}
+      className={`metadata-type inline-block rounded-sm border border-[var(--color-border)] px-2 py-1 text-[var(--color-muted-foreground)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-foreground)] ${className}`}
     >
       {name.trim()}
     </Link>
