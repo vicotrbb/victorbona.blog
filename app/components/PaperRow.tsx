@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Article } from "app/articles/articles";
+import type { Article } from "app/articles/articles";
 import { MetadataLine } from "./MetadataLine";
 
 export function PaperRow({ article }: { article: Article }) {

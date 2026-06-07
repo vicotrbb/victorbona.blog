@@ -5,7 +5,11 @@ import { WritingRow } from "./components/WritingRow";
 import { SystemRow } from "./components/SystemRow";
 import { EmptyPaperArchive, PaperRow } from "./components/PaperRow";
 import { articles } from "./articles/articles";
-import { projects } from "./projects/projects";
+import { projects, type Project } from "./projects/projects";
+
+function isProject(project: Project | undefined): project is Project {
+  return project !== undefined;
+}
 
 export default function Page() {
   const posts = getBlogPosts().sort(
@@ -13,6 +17,21 @@ export default function Page() {
       new Date(b.metadata.publishedAt).getTime() -
       new Date(a.metadata.publishedAt).getTime()
   );
+
+  if (posts.length === 0) {
+    return (
+      <section className="space-y-4">
+        <SectionHeader index="000" title="Archive" />
+        <div className="border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
+          <p className="text-sm leading-relaxed text-[var(--color-muted-foreground)]">
+            The writing archive is empty for now. Notes and field reports will
+            appear here when they are ready.
+          </p>
+        </div>
+      </section>
+    );
+  }
+
   const featured =
     posts.find((post) => post.slug.includes("hidden-cost-of-abstractions")) ??
     posts[0];
@@ -21,7 +40,7 @@ export default function Page() {
     .slice(0, 6);
   const selectedProjects = ["Guara Cloud", "Purple Wolf", "SQLTemple"]
     .map((name) => projects.find((project) => project.name === name))
-    .filter(Boolean);
+    .filter(isProject);
   const selectedArticles = articles.slice(0, 2);
 
   return (
@@ -87,7 +106,7 @@ export default function Page() {
         />
         <div className="border border-[var(--color-border)] px-3">
           {selectedProjects.map((project) => (
-            <SystemRow key={project!.name} project={project!} />
+            <SystemRow key={project.name} project={project} />
           ))}
         </div>
       </section>

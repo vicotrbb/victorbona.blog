@@ -1,4 +1,4 @@
-import { Project } from "app/projects/projects";
+import type { Project } from "app/projects/projects";
 import { MetadataLine } from "./MetadataLine";
 
 function statusLabel(status: Project["status"]) {
@@ -30,6 +30,7 @@ export function SystemRow({ project }: { project: Project }) {
             href={project.website}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`Visit ${project.name} site`}
             className="text-[var(--color-accent)] hover:text-[var(--color-foreground)]"
           >
             Site
@@ -40,6 +41,7 @@ export function SystemRow({ project }: { project: Project }) {
             href={project.repository}
             target="_blank"
             rel="noopener noreferrer"
+            aria-label={`View ${project.name} source`}
             className="text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]"
           >
             Source

@@ -4,7 +4,10 @@ type MetadataLineProps = {
 };
 
 export function MetadataLine({ items, className = "" }: MetadataLineProps) {
-  const visibleItems = items.filter(Boolean);
+  const visibleItems = items.filter(
+    (item) =>
+      item !== undefined && item !== null && item !== false && item !== ""
+  );
 
   if (visibleItems.length === 0) {
     return null;

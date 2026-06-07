@@ -32,7 +32,7 @@ export default function ProjectsPage() {
           </p>
         </div>
       </div>
-      <SectionHeader index="LIVE" title="Project archive" />
+      <SectionHeader index="SYSTEMS" title="Project archive" />
       <div className="border border-[var(--color-border)] px-3">
         {projects.map((project) => (
           <SystemRow key={project.name} project={project} />

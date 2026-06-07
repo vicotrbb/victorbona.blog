@@ -12,14 +12,25 @@ export function ReadingProgress() {
 
       const totalHeight = article.clientHeight;
       const windowHeight = window.innerHeight;
+      const scrollableHeight = totalHeight - windowHeight;
       const scrolled = window.scrollY;
 
-      const percentage = (scrolled / (totalHeight - windowHeight)) * 100;
+      if (scrollableHeight <= 0) {
+        setProgress(100);
+        return;
+      }
+
+      const percentage = (scrolled / scrollableHeight) * 100;
       setProgress(Math.min(100, Math.max(0, percentage)));
     };
 
+    updateProgress();
     window.addEventListener("scroll", updateProgress);
-    return () => window.removeEventListener("scroll", updateProgress);
+    window.addEventListener("resize", updateProgress);
+    return () => {
+      window.removeEventListener("scroll", updateProgress);
+      window.removeEventListener("resize", updateProgress);
+    };
   }, []);
 
   return (
