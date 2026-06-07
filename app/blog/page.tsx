@@ -1,4 +1,5 @@
 import { BlogPosts } from "app/components/posts";
+import { SectionHeader } from "app/components/SectionHeader";
 import { baseUrl } from "app/sitemap";
 
 export const metadata = {
@@ -16,16 +17,20 @@ export const metadata = {
 
 export default function Page() {
   return (
-    <section className="space-y-8">
-      <div>
-        <h1 className="font-semibold text-3xl mb-4 tracking-tighter text-neutral-900 dark:text-neutral-100">
-          Blog Posts
-        </h1>
-        <p className="text-neutral-600 dark:text-neutral-400 text-lg leading-relaxed">
-          Thoughts on software engineering, architecture, and modern web development. 
-          Exploring ideas from theory to practice.
-        </p>
+    <section className="space-y-5">
+      <div className="grid gap-3 border-b border-[var(--color-rule)] pb-4 md:grid-cols-[12rem_1fr]">
+        <p className="metadata-type text-[var(--color-accent)]">Field notes</p>
+        <div>
+          <h1 className="display-type text-2xl font-semibold text-[var(--color-foreground)]">
+            Writing archive
+          </h1>
+          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--color-muted-foreground)]">
+            Essays and working notes on software architecture, infrastructure,
+            AI tooling, APIs, and the tradeoffs behind production systems.
+          </p>
+        </div>
       </div>
+      <SectionHeader index="ALL" title="All notes" />
       <BlogPosts />
     </section>
   );
