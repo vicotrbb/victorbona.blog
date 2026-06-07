@@ -21,6 +21,50 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    name: "Guara Cloud",
+    description:
+      "A cloud platform for launching and operating catalog-based user services with billing, observability, backups, and Kubernetes-native deployment.",
+    longDescription:
+      "Guara Cloud is a production cloud platform built around service catalog workflows, subscription billing, Kubernetes orchestration, observability, and service-native backup operations. It brings together application delivery, usage-aware billing, infrastructure automation, and operational tooling for running user services safely.",
+    repository: undefined,
+    website: "https://guaracloud.com",
+    tags: [
+      "Kubernetes",
+      "Next.js",
+      "TypeScript",
+      "PostgreSQL",
+      "Stripe",
+      "GitOps",
+    ],
+    status: "maintained",
+    publiclyShared: false,
+    license: "Proprietary",
+    gifs: ["/projects/guaracloud/gif_1.gif"],
+    tech: {
+      frontend: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+      backend: ["Node.js", "TypeScript", "NATS"],
+      database: ["PostgreSQL"],
+      deployment: ["Kubernetes", "Helm", "GitOps", "Longhorn", "OpenTelemetry"],
+    },
+  },
+  {
+    name: "Purple Wolf",
+    description:
+      "A fast, low-memory Web Application Firewall for Traefik, shipped as a WASM plugin with signed releases, SBOMs, and Kubernetes packaging.",
+    longDescription:
+      "Purple Wolf is a Rust-based Traefik WAF built around a pure detection engine, a WASM/http-wasm adapter, and a webhook relay for signed audit-event fan-out. It inspects headers, URLs, query parameters, and capped request bodies using libinjection, literal signatures, structural checks, and reputation controls. The project includes a public threat model, reproducible benchmarks, release verification, Helm and Kustomize deployment paths, and a local demo.",
+    repository: "https://github.com/guaracloud/purple-wolf",
+    website: "https://guaracloud.github.io/purple-wolf/",
+    tags: ["Rust", "WASM", "Traefik", "Security", "Kubernetes", "Helm"],
+    status: "maintained",
+    publiclyShared: true,
+    license: "MIT OR Apache-2.0",
+    tech: {
+      backend: ["Rust", "WASM", "Tokio", "libinjection"],
+      deployment: ["Traefik", "Kubernetes", "Helm OCI", "Kustomize", "GHCR"],
+    },
+  },
+  {
     name: "Victor Bona Blog",
     description:
       "My personal blog built with Next.js, MDX, and Tailwind CSS. Features dark mode, RSS feed, and more.",
@@ -50,7 +94,7 @@ export const projects: Project[] = [
     repository: undefined,
     website: undefined,
     tags: ["Python", "Celery", "Next.js", "AI", "Postgres", "Agno"],
-    status: "maintained",
+    status: "stopped",
     publiclyShared: false,
     license: "Proprietary",
     startDate: "2025-04-01",
@@ -95,7 +139,7 @@ export const projects: Project[] = [
     repository: "https://github.com/vicotrbb/agent-buddy",
     website: undefined,
     tags: ["ChatGPT", "OpenAI", "terminal", "ReAct"],
-    status: "maintained",
+    status: "stopped",
     publiclyShared: true,
     license: "MIT",
   },
@@ -116,7 +160,7 @@ export const projects: Project[] = [
       "OpenAI",
       "X",
     ],
-    status: "maintained",
+    status: "stopped",
     publiclyShared: false,
     gifs: [],
     license: "Proprietary",

@@ -2,7 +2,11 @@
   "uid": "victorbona-blog-analytics",
   "title": "victorbona.blog Analytics",
   "description": "Page views, traffic sources, device analytics, and Web Vitals",
-  "tags": ["victorbona-blog", "analytics", "rum"],
+  "tags": [
+    "victorbona-blog",
+    "analytics",
+    "rum"
+  ],
   "timezone": "browser",
   "editable": false,
   "graphTooltip": 1,
@@ -13,8 +17,24 @@
     "to": "now"
   },
   "timepicker": {
-    "refresh_intervals": ["5s", "10s", "30s", "1m", "5m"],
-    "time_options": ["5m", "15m", "1h", "6h", "12h", "24h", "2d", "7d", "30d"]
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
   },
   "templating": {
     "list": [
@@ -44,14 +64,24 @@
       "type": "row",
       "title": "Summary Stats",
       "collapsed": false,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 0 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
       "id": 1,
       "panels": []
     },
     {
       "type": "stat",
       "title": "Total Page Views",
-      "gridPos": { "h": 4, "w": 6, "x": 0, "y": 1 },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 1
+      },
       "id": 2,
       "datasource": {
         "type": "prometheus",
@@ -71,7 +101,10 @@
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "green", "value": null }
+              {
+                "color": "green",
+                "value": null
+              }
             ]
           }
         },
@@ -84,48 +117,9 @@
         "orientation": "auto",
         "reduceOptions": {
           "values": false,
-          "calcs": ["lastNotNull"],
-          "fields": ""
-        }
-      }
-    },
-    {
-      "type": "stat",
-      "title": "Unique Sessions",
-      "gridPos": { "h": 4, "w": 6, "x": 6, "y": 1 },
-      "id": 3,
-      "datasource": {
-        "type": "loki",
-        "uid": "${loki}"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "count(sum by (session_id) (count_over_time({job=\"faro\"} |= `app_name=victorbona-blog` | logfmt | session_id != `` [$__range])))",
-          "legendFormat": "Sessions"
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "short",
-          "decimals": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              { "color": "blue", "value": null }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "values": false,
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": ""
         }
       }
@@ -133,7 +127,12 @@
     {
       "type": "stat",
       "title": "Top Page",
-      "gridPos": { "h": 4, "w": 6, "x": 12, "y": 1 },
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 1
+      },
       "id": 4,
       "datasource": {
         "type": "prometheus",
@@ -154,7 +153,10 @@
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "purple", "value": null }
+              {
+                "color": "purple",
+                "value": null
+              }
             ]
           }
         },
@@ -167,7 +169,9 @@
         "orientation": "auto",
         "reduceOptions": {
           "values": false,
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": "/^path$/"
         }
       },
@@ -175,66 +179,36 @@
         {
           "id": "organize",
           "options": {
-            "excludeByName": { "Time": true, "Value": false }
+            "excludeByName": {
+              "Time": true,
+              "Value": false
+            }
           }
         }
       ]
     },
     {
-      "type": "stat",
-      "title": "Avg Load Time (LCP)",
-      "gridPos": { "h": 4, "w": 6, "x": 18, "y": 1 },
-      "id": 5,
-      "datasource": {
-        "type": "loki",
-        "uid": "${loki}"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "avg_over_time({job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= `lcp=` | logfmt | unwrap lcp [$__range])",
-          "legendFormat": "LCP"
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "ms",
-          "decimals": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              { "color": "green", "value": null },
-              { "color": "yellow", "value": 2500 },
-              { "color": "red", "value": 4000 }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "values": false,
-          "calcs": ["lastNotNull"],
-          "fields": ""
-        }
-      }
-    },
-    {
       "type": "row",
       "title": "Traffic Trends - How much traffic?",
       "collapsed": false,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 5 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 5
+      },
       "id": 6,
       "panels": []
     },
     {
       "type": "timeseries",
       "title": "Page Views Over Time",
-      "gridPos": { "h": 8, "w": 24, "x": 0, "y": 6 },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 6
+      },
       "id": 7,
       "datasource": {
         "type": "prometheus",
@@ -268,29 +242,49 @@
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "green", "value": null }
+              {
+                "color": "green",
+                "value": null
+              }
             ]
           }
         },
         "overrides": []
       },
       "options": {
-        "tooltip": { "mode": "single", "sort": "none" },
-        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true }
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        }
       }
     },
     {
       "type": "row",
       "title": "Top Pages",
       "collapsed": false,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 14 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
       "id": 8,
       "panels": []
     },
     {
       "type": "table",
       "title": "Top Pages Ranking",
-      "gridPos": { "h": 7, "w": 24, "x": 0, "y": 15 },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 15
+      },
       "id": 9,
       "datasource": {
         "type": "prometheus",
@@ -308,9 +302,17 @@
         {
           "id": "organize",
           "options": {
-            "excludeByName": { "Time": true },
-            "renameByName": { "path": "Page", "Value": "Views" },
-            "indexByName": { "Page": 0, "Views": 1 }
+            "excludeByName": {
+              "Time": true
+            },
+            "renameByName": {
+              "path": "Page",
+              "Value": "Views"
+            },
+            "indexByName": {
+              "Page": 0,
+              "Views": 1
+            }
           }
         }
       ],
@@ -326,21 +328,37 @@
         },
         "overrides": [
           {
-            "matcher": { "id": "byName", "options": "Views" },
+            "matcher": {
+              "id": "byName",
+              "options": "Views"
+            },
             "properties": [
-              { "id": "unit", "value": "short" },
-              { "id": "decimals", "value": 0 }
+              {
+                "id": "unit",
+                "value": "short"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
             ]
           }
         ]
       },
       "options": {
         "showHeader": true,
-        "sortBy": [{ "displayName": "Views", "desc": true }],
+        "sortBy": [
+          {
+            "displayName": "Views",
+            "desc": true
+          }
+        ],
         "cellHeight": "sm",
         "footer": {
           "show": false,
-          "reducer": ["sum"]
+          "reducer": [
+            "sum"
+          ]
         }
       }
     },
@@ -348,14 +366,24 @@
       "type": "row",
       "title": "Traffic Sources - Where from?",
       "collapsed": false,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 22 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
       "id": 10,
       "panels": []
     },
     {
       "type": "piechart",
       "title": "Traffic Sources",
-      "gridPos": { "h": 7, "w": 8, "x": 0, "y": 23 },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 0,
+        "y": 23
+      },
       "id": 11,
       "datasource": {
         "type": "prometheus",
@@ -370,7 +398,9 @@
       ],
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "palette-classic" },
+          "color": {
+            "mode": "palette-classic"
+          },
           "unit": "short",
           "decimals": 0
         },
@@ -378,17 +408,28 @@
       },
       "options": {
         "pieType": "pie",
-        "tooltip": { "mode": "single", "sort": "none" },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
         "legend": {
           "displayMode": "table",
           "placement": "right",
-          "values": ["value", "percent"],
+          "values": [
+            "value",
+            "percent"
+          ],
           "showLegend": true
         },
-        "displayLabels": ["name", "percent"],
+        "displayLabels": [
+          "name",
+          "percent"
+        ],
         "reduceOptions": {
           "values": false,
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": ""
         }
       }
@@ -396,7 +437,12 @@
     {
       "type": "piechart",
       "title": "UTM Sources",
-      "gridPos": { "h": 7, "w": 8, "x": 8, "y": 23 },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 8,
+        "y": 23
+      },
       "id": 12,
       "datasource": {
         "type": "prometheus",
@@ -411,7 +457,9 @@
       ],
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "palette-classic" },
+          "color": {
+            "mode": "palette-classic"
+          },
           "unit": "short",
           "decimals": 0
         },
@@ -419,17 +467,28 @@
       },
       "options": {
         "pieType": "pie",
-        "tooltip": { "mode": "single", "sort": "none" },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
         "legend": {
           "displayMode": "table",
           "placement": "right",
-          "values": ["value", "percent"],
+          "values": [
+            "value",
+            "percent"
+          ],
           "showLegend": true
         },
-        "displayLabels": ["name", "percent"],
+        "displayLabels": [
+          "name",
+          "percent"
+        ],
         "reduceOptions": {
           "values": false,
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": ""
         }
       }
@@ -437,7 +496,12 @@
     {
       "type": "piechart",
       "title": "UTM Mediums",
-      "gridPos": { "h": 7, "w": 8, "x": 16, "y": 23 },
+      "gridPos": {
+        "h": 7,
+        "w": 8,
+        "x": 16,
+        "y": 23
+      },
       "id": 13,
       "datasource": {
         "type": "prometheus",
@@ -452,7 +516,9 @@
       ],
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "palette-classic" },
+          "color": {
+            "mode": "palette-classic"
+          },
           "unit": "short",
           "decimals": 0
         },
@@ -460,17 +526,28 @@
       },
       "options": {
         "pieType": "pie",
-        "tooltip": { "mode": "single", "sort": "none" },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
         "legend": {
           "displayMode": "table",
           "placement": "right",
-          "values": ["value", "percent"],
+          "values": [
+            "value",
+            "percent"
+          ],
           "showLegend": true
         },
-        "displayLabels": ["name", "percent"],
+        "displayLabels": [
+          "name",
+          "percent"
+        ],
         "reduceOptions": {
           "values": false,
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": ""
         }
       }
@@ -479,14 +556,24 @@
       "type": "row",
       "title": "Devices - What devices?",
       "collapsed": false,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 30 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 30
+      },
       "id": 14,
       "panels": []
     },
     {
       "type": "piechart",
       "title": "Browsers",
-      "gridPos": { "h": 7, "w": 12, "x": 0, "y": 31 },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 31
+      },
       "id": 15,
       "datasource": {
         "type": "prometheus",
@@ -501,7 +588,9 @@
       ],
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "palette-classic" },
+          "color": {
+            "mode": "palette-classic"
+          },
           "unit": "short",
           "decimals": 0
         },
@@ -509,17 +598,28 @@
       },
       "options": {
         "pieType": "pie",
-        "tooltip": { "mode": "single", "sort": "none" },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
         "legend": {
           "displayMode": "table",
           "placement": "right",
-          "values": ["value", "percent"],
+          "values": [
+            "value",
+            "percent"
+          ],
           "showLegend": true
         },
-        "displayLabels": ["name", "percent"],
+        "displayLabels": [
+          "name",
+          "percent"
+        ],
         "reduceOptions": {
           "values": false,
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": ""
         }
       }
@@ -527,7 +627,12 @@
     {
       "type": "piechart",
       "title": "Devices",
-      "gridPos": { "h": 7, "w": 12, "x": 12, "y": 31 },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 31
+      },
       "id": 16,
       "datasource": {
         "type": "prometheus",
@@ -542,7 +647,9 @@
       ],
       "fieldConfig": {
         "defaults": {
-          "color": { "mode": "palette-classic" },
+          "color": {
+            "mode": "palette-classic"
+          },
           "unit": "short",
           "decimals": 0
         },
@@ -550,17 +657,28 @@
       },
       "options": {
         "pieType": "pie",
-        "tooltip": { "mode": "single", "sort": "none" },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
         "legend": {
           "displayMode": "table",
           "placement": "right",
-          "values": ["value", "percent"],
+          "values": [
+            "value",
+            "percent"
+          ],
           "showLegend": true
         },
-        "displayLabels": ["name", "percent"],
+        "displayLabels": [
+          "name",
+          "percent"
+        ],
         "reduceOptions": {
           "values": false,
-          "calcs": ["lastNotNull"],
+          "calcs": [
+            "lastNotNull"
+          ],
           "fields": ""
         }
       }
@@ -569,261 +687,25 @@
       "type": "row",
       "title": "Performance - How fast?",
       "collapsed": false,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 38 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 38
+      },
       "id": 17,
       "panels": []
-    },
-    {
-      "type": "stat",
-      "title": "Web Vitals Health",
-      "description": "Overall Web Vitals assessment based on Core Web Vitals thresholds",
-      "gridPos": { "h": 5, "w": 8, "x": 0, "y": 39 },
-      "id": 18,
-      "datasource": {
-        "type": "loki",
-        "uid": "${loki}"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "quantile_over_time(0.75, {job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= `lcp=` | logfmt | unwrap lcp [$__range])",
-          "legendFormat": "Health"
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "ms",
-          "decimals": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              { "color": "green", "value": null },
-              { "color": "yellow", "value": 2500 },
-              { "color": "red", "value": 4000 }
-            ]
-          },
-          "mappings": [
-            {
-              "type": "range",
-              "options": {
-                "from": 0,
-                "to": 2500,
-                "result": { "text": "Good", "color": "green" }
-              }
-            },
-            {
-              "type": "range",
-              "options": {
-                "from": 2500,
-                "to": 4000,
-                "result": { "text": "Needs Improvement", "color": "yellow" }
-              }
-            },
-            {
-              "type": "range",
-              "options": {
-                "from": 4000,
-                "to": null,
-                "result": { "text": "Poor", "color": "red" }
-              }
-            }
-          ]
-        },
-        "overrides": []
-      },
-      "options": {
-        "colorMode": "background",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "values": false,
-          "calcs": ["lastNotNull"],
-          "fields": ""
-        }
-      }
-    },
-    {
-      "type": "stat",
-      "title": "LCP (p75)",
-      "description": "Largest Contentful Paint - measures loading performance. Good: <2.5s",
-      "gridPos": { "h": 5, "w": 4, "x": 8, "y": 39 },
-      "id": 19,
-      "datasource": {
-        "type": "loki",
-        "uid": "${loki}"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "quantile_over_time(0.75, {job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= `lcp=` | logfmt | unwrap lcp [$__range])",
-          "legendFormat": "LCP"
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "ms",
-          "decimals": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              { "color": "green", "value": null },
-              { "color": "yellow", "value": 2500 },
-              { "color": "red", "value": 4000 }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "values": false,
-          "calcs": ["lastNotNull"],
-          "fields": ""
-        }
-      }
-    },
-    {
-      "type": "stat",
-      "title": "INP (p75)",
-      "description": "Interaction to Next Paint - measures responsiveness. Good: <200ms",
-      "gridPos": { "h": 5, "w": 4, "x": 12, "y": 39 },
-      "id": 20,
-      "datasource": {
-        "type": "loki",
-        "uid": "${loki}"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "quantile_over_time(0.75, {job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= ` inp=` | logfmt | unwrap inp [$__range])",
-          "legendFormat": "INP"
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "ms",
-          "decimals": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              { "color": "green", "value": null },
-              { "color": "yellow", "value": 200 },
-              { "color": "red", "value": 500 }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "values": false,
-          "calcs": ["lastNotNull"],
-          "fields": ""
-        }
-      }
-    },
-    {
-      "type": "stat",
-      "title": "CLS (p75)",
-      "description": "Cumulative Layout Shift - measures visual stability. Good: <0.1",
-      "gridPos": { "h": 5, "w": 4, "x": 16, "y": 39 },
-      "id": 21,
-      "datasource": {
-        "type": "loki",
-        "uid": "${loki}"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "quantile_over_time(0.75, {job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=measurement` |= ` cls=` | logfmt | unwrap cls [$__range])",
-          "legendFormat": "CLS"
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "none",
-          "decimals": 3,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              { "color": "green", "value": null },
-              { "color": "yellow", "value": 0.1 },
-              { "color": "red", "value": 0.25 }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "textMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "values": false,
-          "calcs": ["lastNotNull"],
-          "fields": ""
-        }
-      }
-    },
-    {
-      "type": "stat",
-      "title": "JS Errors",
-      "description": "JavaScript errors captured by Faro",
-      "gridPos": { "h": 5, "w": 4, "x": 20, "y": 39 },
-      "id": 22,
-      "datasource": {
-        "type": "loki",
-        "uid": "${loki}"
-      },
-      "targets": [
-        {
-          "refId": "A",
-          "expr": "sum(count_over_time({job=\"faro\"} |= `app_name=victorbona-blog` |= `kind=exception` [$__range]))",
-          "legendFormat": "Errors"
-        }
-      ],
-      "fieldConfig": {
-        "defaults": {
-          "unit": "short",
-          "decimals": 0,
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              { "color": "green", "value": null },
-              { "color": "yellow", "value": 1 },
-              { "color": "red", "value": 10 }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "options": {
-        "colorMode": "value",
-        "graphMode": "area",
-        "textMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "values": false,
-          "calcs": ["sum"],
-          "fields": ""
-        }
-      }
     },
     {
       "type": "row",
       "title": "Application Performance",
       "collapsed": false,
-      "gridPos": { "h": 1, "w": 24, "x": 0, "y": 44 },
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 44
+      },
       "id": 30,
       "panels": []
     },
@@ -831,7 +713,12 @@
       "type": "timeseries",
       "title": "Request Duration",
       "description": "Server-side page render duration (p50, p90, p99)",
-      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 45 },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 45
+      },
       "id": 31,
       "datasource": {
         "type": "prometheus",
@@ -866,29 +753,52 @@
             "pointSize": 5,
             "showPoints": "never",
             "lineInterpolation": "smooth",
-            "scaleDistribution": { "type": "linear" }
+            "scaleDistribution": {
+              "type": "linear"
+            }
           },
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "green", "value": null },
-              { "color": "yellow", "value": 0.5 },
-              { "color": "red", "value": 2 }
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 0.5
+              },
+              {
+                "color": "red",
+                "value": 2
+              }
             ]
           }
         },
         "overrides": []
       },
       "options": {
-        "tooltip": { "mode": "multi", "sort": "desc" },
-        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true }
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        }
       }
     },
     {
       "type": "timeseries",
       "title": "Request Rate",
       "description": "Page views per second (human + bot)",
-      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 45 },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 45
+      },
       "id": 32,
       "datasource": {
         "type": "prometheus",
@@ -918,27 +828,44 @@
             "pointSize": 5,
             "showPoints": "never",
             "lineInterpolation": "smooth",
-            "scaleDistribution": { "type": "linear" }
+            "scaleDistribution": {
+              "type": "linear"
+            }
           },
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "green", "value": null }
+              {
+                "color": "green",
+                "value": null
+              }
             ]
           }
         },
         "overrides": []
       },
       "options": {
-        "tooltip": { "mode": "multi", "sort": "desc" },
-        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true }
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        }
       }
     },
     {
       "type": "timeseries",
       "title": "CPU Usage",
       "description": "Total CPU time consumed per second",
-      "gridPos": { "h": 8, "w": 8, "x": 0, "y": 53 },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 53
+      },
       "id": 33,
       "datasource": {
         "type": "prometheus",
@@ -962,28 +889,48 @@
             "spanNulls": false,
             "showPoints": "never",
             "lineInterpolation": "smooth",
-            "scaleDistribution": { "type": "linear" }
+            "scaleDistribution": {
+              "type": "linear"
+            }
           },
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "green", "value": null },
-              { "color": "red", "value": 0.8 }
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 0.8
+              }
             ]
           }
         },
         "overrides": []
       },
       "options": {
-        "tooltip": { "mode": "single", "sort": "none" },
-        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true }
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        }
       }
     },
     {
       "type": "timeseries",
       "title": "Memory (RSS)",
       "description": "Resident memory per pod",
-      "gridPos": { "h": 8, "w": 8, "x": 8, "y": 53 },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 53
+      },
       "id": 34,
       "datasource": {
         "type": "prometheus",
@@ -1007,29 +954,52 @@
             "spanNulls": false,
             "showPoints": "never",
             "lineInterpolation": "smooth",
-            "scaleDistribution": { "type": "linear" }
+            "scaleDistribution": {
+              "type": "linear"
+            }
           },
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "green", "value": null },
-              { "color": "yellow", "value": 209715200 },
-              { "color": "red", "value": 262144000 }
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 209715200
+              },
+              {
+                "color": "red",
+                "value": 262144000
+              }
             ]
           }
         },
         "overrides": []
       },
       "options": {
-        "tooltip": { "mode": "multi", "sort": "desc" },
-        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true }
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        }
       }
     },
     {
       "type": "timeseries",
       "title": "Event Loop Lag",
       "description": "Node.js event loop delay (p50, p99)",
-      "gridPos": { "h": 8, "w": 8, "x": 16, "y": 53 },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 53
+      },
       "id": 35,
       "datasource": {
         "type": "prometheus",
@@ -1058,29 +1028,52 @@
             "spanNulls": false,
             "showPoints": "never",
             "lineInterpolation": "smooth",
-            "scaleDistribution": { "type": "linear" }
+            "scaleDistribution": {
+              "type": "linear"
+            }
           },
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "green", "value": null },
-              { "color": "yellow", "value": 0.1 },
-              { "color": "red", "value": 1 }
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 0.1
+              },
+              {
+                "color": "red",
+                "value": 1
+              }
             ]
           }
         },
         "overrides": []
       },
       "options": {
-        "tooltip": { "mode": "multi", "sort": "desc" },
-        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true }
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        }
       }
     },
     {
       "type": "timeseries",
       "title": "Heap Usage",
       "description": "Node.js heap memory (used vs total)",
-      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 61 },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 61
+      },
       "id": 36,
       "datasource": {
         "type": "prometheus",
@@ -1109,35 +1102,67 @@
             "spanNulls": false,
             "showPoints": "never",
             "lineInterpolation": "smooth",
-            "scaleDistribution": { "type": "linear" }
+            "scaleDistribution": {
+              "type": "linear"
+            }
           },
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "green", "value": null }
+              {
+                "color": "green",
+                "value": null
+              }
             ]
           }
         },
         "overrides": [
           {
-            "matcher": { "id": "byName", "options": "Heap total" },
+            "matcher": {
+              "id": "byName",
+              "options": "Heap total"
+            },
             "properties": [
-              { "id": "custom.fillOpacity", "value": 0 },
-              { "id": "custom.lineStyle", "value": { "fill": "dash", "dash": [10, 10] } }
+              {
+                "id": "custom.fillOpacity",
+                "value": 0
+              },
+              {
+                "id": "custom.lineStyle",
+                "value": {
+                  "fill": "dash",
+                  "dash": [
+                    10,
+                    10
+                  ]
+                }
+              }
             ]
           }
         ]
       },
       "options": {
-        "tooltip": { "mode": "multi", "sort": "desc" },
-        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true }
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        }
       }
     },
     {
       "type": "timeseries",
       "title": "GC Duration",
       "description": "Garbage collection pause time by type",
-      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 61 },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 61
+      },
       "id": 37,
       "datasource": {
         "type": "prometheus",
@@ -1161,21 +1186,35 @@
             "spanNulls": false,
             "showPoints": "never",
             "lineInterpolation": "smooth",
-            "stacking": { "mode": "normal" },
-            "scaleDistribution": { "type": "linear" }
+            "stacking": {
+              "mode": "normal"
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
           },
           "thresholds": {
             "mode": "absolute",
             "steps": [
-              { "color": "green", "value": null }
+              {
+                "color": "green",
+                "value": null
+              }
             ]
           }
         },
         "overrides": []
       },
       "options": {
-        "tooltip": { "mode": "multi", "sort": "desc" },
-        "legend": { "displayMode": "list", "placement": "bottom", "showLegend": true }
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        },
+        "legend": {
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": true
+        }
       }
     }
   ]

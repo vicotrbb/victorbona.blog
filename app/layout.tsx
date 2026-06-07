@@ -8,7 +8,6 @@ import { Analytics } from "@vercel/analytics/react";
 import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
 import Script from "next/script";
-import { FaroInit } from "./components/faro-init";
 import { PageViewTracker } from "./components/page-view-tracker";
 
 export const metadata: Metadata = {
@@ -117,13 +116,14 @@ export default function RootLayout({
           src="/js/script.js"
           strategy="afterInteractive"
         ></Script>
+        <Script
+          src="https://cdn.himetrica.com/tracker.js"
+          data-api-key="hm_3b2d85c927c1d62a2794dcda0729c270dd60efa5a17d3674"
+          strategy="afterInteractive"
+        />
       </head>
       <body className="antialiased max-w-4xl mx-4 mt-8 lg:mx-auto">
         <PageViewTracker />
-        <FaroInit
-          faroUrl={process.env.FARO_URL}
-          appVersion={process.env.APP_VERSION}
-        />
         <main className="flex-auto min-w-0 mt-6 flex flex-col px-4 md:px-6 lg:px-8">
           <Navbar />
           {children}
