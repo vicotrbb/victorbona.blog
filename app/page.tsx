@@ -1,108 +1,129 @@
-import { BlogPosts } from "app/components/posts";
-import { ArrowIcon } from "./components/ArrowIcon";
-import { GitHubIcon } from "./components/icons/GitHubIcon";
-import { XIcon } from "./components/icons/XIcon";
-import { ArticleCard } from "./components/ArticleCard";
-import { ProjectCard } from "./components/ProjectCard";
+import { getBlogPosts } from "app/blog/utils";
+import { FeaturedArgument } from "./components/FeaturedArgument";
+import { SectionHeader } from "./components/SectionHeader";
+import { WritingRow } from "./components/WritingRow";
+import { SystemRow } from "./components/SystemRow";
+import { EmptyPaperArchive, PaperRow } from "./components/PaperRow";
 import { articles } from "./articles/articles";
 import { projects } from "./projects/projects";
 
 export default function Page() {
-  const recentArticles = articles.slice(0, 3);
-  const recentProjects = projects.slice(0, 3);
+  const posts = getBlogPosts().sort(
+    (a, b) =>
+      new Date(b.metadata.publishedAt).getTime() -
+      new Date(a.metadata.publishedAt).getTime()
+  );
+  const featured =
+    posts.find((post) => post.slug.includes("hidden-cost-of-abstractions")) ??
+    posts[0];
+  const fieldNotes = posts
+    .filter((post) => post.slug !== featured.slug)
+    .slice(0, 6);
+  const selectedProjects = ["Guara Cloud", "Purple Wolf", "SQLTemple"]
+    .map((name) => projects.find((project) => project.name === name))
+    .filter(Boolean);
+  const selectedArticles = articles.slice(0, 2);
 
   return (
-    <div className="space-y-16">
-      {/* Hero Section */}
-      <section className="text-center py-8 md:py-12 animate-fade-in-up">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-neutral-900 dark:text-neutral-100">
-          Victor Bona
-        </h1>
-        <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl mx-auto leading-relaxed">
-          Full-stack engineer sharing insights on software architecture, 
-          emerging technologies, and engineering best practices.
+    <div className="space-y-6">
+      <section className="grid gap-4 border-b border-[var(--color-rule)] pb-5 lg:grid-cols-[1fr_1.6fr] lg:items-end">
+        <div>
+          <p className="metadata-type text-[var(--color-accent)]">
+            Software / systems / operational taste
+          </p>
+          <h1 className="display-type mt-2 text-2xl font-semibold leading-tight text-[var(--color-foreground)] sm:text-3xl">
+            Victor Bona builds software systems and writes down the arguments
+            that survive contact with production.
+          </h1>
+        </div>
+        <p className="text-sm leading-relaxed text-[var(--color-muted-foreground)] lg:max-w-xl">
+          Notes on software architecture, infrastructure, product engineering,
+          security, AI systems, and the cost of abstractions.
         </p>
-        
-        <div className="flex justify-center gap-6 mb-8">
-          <a
-            href="https://github.com/vicotrbb"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-all duration-300 hover:scale-105"
-          >
-            <GitHubIcon />
-            <span className="text-sm">GitHub</span>
-          </a>
-          <a
-            href="https://twitter.com/BonaVictor"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-all duration-300 hover:scale-105"
-          >
-            <XIcon />
-            <span className="text-sm">X (Twitter)</span>
-          </a>
-        </div>
       </section>
 
-      {/* Recent Posts Section */}
-      <section>
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-            Recent Posts
-          </h2>
-          <a
+      <section className="grid gap-4 lg:grid-cols-[1.05fr_1fr]">
+        <div>
+          <SectionHeader index="001" title="Current Argument" />
+          <FeaturedArgument
+            slug={featured.slug}
+            title={featured.metadata.title}
+            summary={featured.metadata.summary}
+            publishedAt={featured.metadata.publishedAt}
+            tags={featured.metadata.tags}
+            content={featured.content}
+          />
+        </div>
+        <div>
+          <SectionHeader
+            index="002"
+            title="Field Notes"
             href="/blog"
-            className="flex items-center gap-1 text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors"
-          >
-            View all
-            <ArrowIcon />
-          </a>
-        </div>
-        <BlogPosts limit={4} />
-      </section>
-
-      {/* Recent Articles Section */}
-      {recentArticles.length > 0 && (
-        <section>
-          <div className="flex items-center justify-between mb-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-              Recent Articles
-            </h2>
-            <a
-              href="/articles"
-              className="flex items-center gap-1 text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors"
-            >
-              View all
-              <ArrowIcon />
-            </a>
-          </div>
-          <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {recentArticles.map((article) => (
-              <ArticleCard key={article.slug} article={article} />
+            actionLabel="All writing"
+          />
+          <div className="border border-[var(--color-border)] bg-[var(--color-background)] px-3">
+            {fieldNotes.map((post) => (
+              <WritingRow
+                key={post.slug}
+                slug={post.slug}
+                title={post.metadata.title}
+                summary={post.metadata.summary}
+                publishedAt={post.metadata.publishedAt}
+                tags={post.metadata.tags}
+                content={post.content}
+                compact
+              />
             ))}
           </div>
-        </section>
-      )}
-
-      {/* Recent Projects Section */}
-      <section>
-        <div className="flex items-center justify-between mb-6">
-          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 dark:text-neutral-100">
-            Recent Projects
-          </h2>
-          <a
-            href="/projects"
-            className="flex items-center gap-1 text-sm text-neutral-600 hover:text-neutral-900 dark:text-neutral-400 dark:hover:text-neutral-100 transition-colors"
-          >
-            View all
-            <ArrowIcon />
-          </a>
         </div>
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {recentProjects.map((project) => (
-            <ProjectCard key={project.name} project={project} />
+      </section>
+
+      <section>
+        <SectionHeader
+          index="003"
+          title="Shipped Systems"
+          href="/projects"
+          actionLabel="All systems"
+        />
+        <div className="border border-[var(--color-border)] px-3">
+          {selectedProjects.map((project) => (
+            <SystemRow key={project!.name} project={project!} />
           ))}
+        </div>
+      </section>
+
+      <section className="grid gap-4 lg:grid-cols-[1fr_1fr]">
+        <div>
+          <SectionHeader
+            index="004"
+            title="Longer Work"
+            href="/articles"
+            actionLabel="Papers"
+          />
+          {selectedArticles.length > 0 ? (
+            <div className="border border-[var(--color-border)] px-3">
+              {selectedArticles.map((article) => (
+                <PaperRow key={article.slug} article={article} />
+              ))}
+            </div>
+          ) : (
+            <EmptyPaperArchive />
+          )}
+        </div>
+        <div>
+          <SectionHeader
+            index="005"
+            title="Archive"
+            href="/blog"
+            actionLabel="Enter"
+          />
+          <div className="border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
+            <p className="text-sm leading-relaxed text-[var(--color-muted-foreground)]">
+              The full writing archive stays organized by date and topic: clean
+              code, scalability, APIs, concurrency, AI tooling, homelab
+              infrastructure, and the tradeoffs behind shipped software.
+            </p>
+          </div>
         </div>
       </section>
     </div>
