@@ -55,10 +55,16 @@ export default function Page() {
           </h1>
         </div>
         <p className="text-sm leading-relaxed text-[var(--color-muted-foreground)] lg:max-w-xl">
-          Builds software systems and writes down the arguments that survive
-          contact with production: software architecture, infrastructure,
-          product engineering, security, AI systems, and the cost of
-          abstractions.
+          <span className="line-clamp-2 sm:hidden">
+            Software systems, production-tested arguments, and notes on
+            architecture, infra, security, and AI.
+          </span>
+          <span className="hidden sm:inline">
+            Builds software systems and writes down the arguments that survive
+            contact with production: software architecture, infrastructure,
+            product engineering, security, AI systems, and the cost of
+            abstractions.
+          </span>
         </p>
       </section>
 
