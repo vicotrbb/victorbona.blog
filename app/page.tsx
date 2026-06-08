@@ -51,13 +51,14 @@ export default function Page() {
             Software / systems / operational taste
           </p>
           <h1 className="display-type mt-2 text-2xl font-semibold leading-tight text-[var(--color-foreground)] sm:text-3xl">
-            Victor Bona builds software systems and writes down the arguments
-            that survive contact with production.
+            Victor Bona
           </h1>
         </div>
         <p className="text-sm leading-relaxed text-[var(--color-muted-foreground)] lg:max-w-xl">
-          Notes on software architecture, infrastructure, product engineering,
-          security, AI systems, and the cost of abstractions.
+          Builds software systems and writes down the arguments that survive
+          contact with production: software architecture, infrastructure,
+          product engineering, security, AI systems, and the cost of
+          abstractions.
         </p>
       </section>
 
