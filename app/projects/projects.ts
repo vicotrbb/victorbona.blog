@@ -113,7 +113,7 @@ export const projects: Project[] = [
   },
   {
     name: "SQLTemple",
-    description: "Open-source AI powered SQL Bench/IDE.",
+    description: "Open-source AI-powered SQL Bench/IDE.",
     longDescription:
       "SQLTemple is a modern, AI-powered SQL IDE built with Electron and React. It provides intelligent query assistance, execution plan visualization, and a VS Code-like development experience for database work.",
     repository: "https://github.com/vicotrbb/sqltemple",
@@ -197,7 +197,7 @@ export const projects: Project[] = [
   {
     name: "Pylexitext",
     description:
-      "A python library that aggregates a series of NLP methods, text analysis, content converters and other usefull stuff.",
+      "A Python library that aggregates a series of NLP methods, text analysis, content converters, and other useful utilities.",
     repository: "https://github.com/vicotrbb/Pylexitext",
     website: undefined,
     tags: ["Python", "NLP", "Text Analysis"],

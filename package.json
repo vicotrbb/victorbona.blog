@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "test:seo": "node scripts/seo-smoke.mjs",
     "start": "next start"
   },
   "dependencies": {

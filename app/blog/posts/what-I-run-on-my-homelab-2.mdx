@@ -12,6 +12,18 @@ Earlier this year I wrote about my first proper homelab setup: a single Proxmox 
 
 The diagram attached to this article is the current snapshot of the madness I built. Let me walk you through it, house, network, servers, and all the nice little choices that turned into a proper home infrastructure.
 
+## Short answer
+
+My current homelab is a small home data center built around pfSense, a managed switch, two Proxmox nodes, TrueNAS, Proxmox Backup Server, media services, observability, infrastructure services, and a few AI experiments. The main lesson is that network control, storage separation, and backups matter more than adding another random self-hosted app.
+
+## Key takeaways
+
+- pfSense and a managed switch moved the network from consumer-router chaos to a controlled edge.
+- Proxmox separates container-heavy daily services from warm VM and experiment capacity.
+- TrueNAS and Proxmox Backup Server give storage and recovery their own machines.
+- Observability is useful even at home because it turns "why is this slow?" into a real investigation.
+- The best homelab improvements are usually boring: DNS, backups, VLANs, power, and documentation.
+
 ## From “one box” to “mini data center”
 
 The first version of my homelab was classic:
@@ -56,7 +68,7 @@ pfSense is where I:
 
 It replaces the ISP router completely. The modem is just a dumb bridge, which means fewer surprises and more control. Also: no more random firmware “upgrades” and duplicated NAT and COGN.
 
-### Wi-Fi: ASUS mesh and a miriad of smart stuff
+### Wi-Fi: ASUS mesh and a myriad of smart stuff
 
 From pfSense and the switch, I feed an **ASUS RT-AX82U** as my main Wi-Fi/AP and a second AX82U as a **mesh node**.
 

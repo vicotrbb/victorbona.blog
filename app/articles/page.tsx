@@ -3,22 +3,52 @@ import { PaperRow, EmptyPaperArchive } from "app/components/PaperRow";
 import { SectionHeader } from "app/components/SectionHeader";
 import { baseUrl } from "app/sitemap";
 import type { Metadata } from "next";
+import { getBreadcrumbJsonLd, getItemListJsonLd } from "app/lib/seo";
 
 export const metadata: Metadata = {
   title: "Articles & Papers",
   description: "Academic papers and technical articles on software engineering, distributed systems, and modern web development.",
+  alternates: {
+    canonical: `${baseUrl}/articles`,
+  },
   openGraph: {
     title: "Articles & Papers - Victor Bona",
     description: "Academic papers and technical articles on software engineering, distributed systems, and modern web development.",
     url: `${baseUrl}/articles`,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Articles & Papers - Victor Bona",
+    description: "Academic papers and technical articles on software engineering, distributed systems, and modern web development.",
+  },
 };
 
 export default function ArticlesPage() {
   const articles = getArticles();
+  const jsonLd = [
+    getBreadcrumbJsonLd([
+      { name: "Home", item: baseUrl },
+      { name: "Articles", item: `${baseUrl}/articles` },
+    ]),
+    getItemListJsonLd(
+      "Victor Bona Articles and Papers",
+      articles.map((article) => ({
+        name: article.title,
+        url: `${baseUrl}/articles/${article.slug}`,
+        description: article.abstract,
+      }))
+    ),
+  ];
 
   return (
     <section className="space-y-5">
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
       <div className="grid gap-3 border-b border-[var(--color-rule)] pb-4 md:grid-cols-[12rem_1fr]">
         <p className="metadata-type text-[var(--color-accent)]">Longer work</p>
         <div>

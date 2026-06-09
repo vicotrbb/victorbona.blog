@@ -11,6 +11,17 @@ I decided I didn't want to be that engineer anymore.
 
 This is the story of why I'm building my own bare-metal Kubernetes cluster at home, not because I hate the cloud, not because I'm trying to save money, but because I want to own every layer of my infrastructure and prove to myself that I can.
 
+## Short answer
+
+I went bare metal because I wanted to understand the full production path: hardware, operating system, networking, storage, Kubernetes, GitOps, observability, backups, and cost. The point is not rejecting managed cloud; the point is making future cloud choices from knowledge instead of dependency.
+
+## Key takeaways
+
+- Bare metal turns infrastructure from an opaque service into a learning system.
+- Owning the layers makes managed services an intentional tradeoff instead of a reflex.
+- NixOS, K3s, ArgoCD, Longhorn, MinIO, and observability are the core pieces of this setup.
+- The real payoff is operational confidence: debugging, recovery, cost visibility, and architectural judgment.
+
 ## The Uncomfortable Truth About Abstractions
 
 Let me be clear about something: I'm not anti-cloud. I use cloud services. I deploy SaaS applications to managed Kubernetes when my clients need the reliability guarantees that come with enterprise infrastructure. The cloud is a tool, and like any tool, it has its place.

@@ -4,6 +4,10 @@ import { baseUrl } from "app/sitemap";
 import type { Metadata } from "next";
 import { Tag } from "app/components/Tag";
 import { MetadataLine } from "app/components/MetadataLine";
+import {
+  getBreadcrumbJsonLd,
+  getScholarlyArticleJsonLd,
+} from "app/lib/seo";
 
 type ArticlePageProps = {
   params: {
@@ -40,7 +44,7 @@ export async function generateMetadata({
   }
 
   return {
-    title: `${article.title} | Victor Bona`,
+    title: article.title,
     description: article.abstract,
     authors: article.authors.map((name) => ({ name })),
     keywords: [...article.tags, "research", "paper", "academic"],
@@ -74,6 +78,14 @@ export default function ArticlePage({ params }: ArticlePageProps) {
   }
 
   const publishedYear = new Date(article.publishedAt).getFullYear();
+  const jsonLd = [
+    getScholarlyArticleJsonLd(article),
+    getBreadcrumbJsonLd([
+      { name: "Home", item: baseUrl },
+      { name: "Articles", item: `${baseUrl}/articles` },
+      { name: article.title, item: `${baseUrl}/articles/${article.slug}` },
+    ]),
+  ];
 
   return (
     <article className="space-y-6">
@@ -81,39 +93,7 @@ export default function ArticlePage({ params }: ArticlePageProps) {
         type="application/ld+json"
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "ScholarlyArticle",
-            headline: article.title,
-            author: article.authors.map((name) => ({
-              "@type": "Person",
-              name,
-            })),
-            datePublished: article.publishedAt,
-            description: article.abstract,
-            url: `${baseUrl}/articles/${article.slug}`,
-            publisher: {
-              "@type": "Person",
-              name: "Victor Bona",
-            },
-            ...(article.pdfUrl && {
-              encoding: {
-                "@type": "MediaObject",
-                contentUrl: `${baseUrl}${article.pdfUrl}`,
-                encodingFormat: "application/pdf",
-              },
-            }),
-            ...(article.journal && {
-              isPartOf: {
-                "@type": "Periodical",
-                name: article.journal,
-              },
-            }),
-            ...(article.doi && {
-              sameAs: `https://doi.org/${article.doi}`,
-            }),
-            keywords: article.tags.join(", "),
-          }),
+          __html: JSON.stringify(jsonLd),
         }}
       />
 

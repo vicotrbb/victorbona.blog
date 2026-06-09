@@ -21,6 +21,18 @@ While operating [Guara Cloud](https://guaracloud.com), I have become more carefu
 
 That discipline matters most when Kubernetes, storage, and node health all start failing at the same time.
 
+## Short answer
+
+During a Kubernetes storage incident, do not turn the first plausible correlation into the root cause. Separate evidence by layer, stabilize before repairing, preserve the difference between user impact and platform risk, and keep the language honest until the system has proven what actually happened.
+
+## Key takeaways
+
+- Node readiness, storage warnings, recurring jobs, and workload symptoms are different evidence surfaces.
+- A synchronized snapshot or recurring-job wave can be a pressure source without being the sole cause.
+- A green dashboard can hide unresolved storage-plane risk.
+- Stabilization steps should buy time; repair steps should wait for narrower evidence.
+- Incident writing should distinguish known facts, plausible hypotheses, and unresolved questions.
+
 ## The incident shape
 
 The kind of incident I am talking about looks like this:

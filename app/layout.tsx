@@ -8,6 +8,7 @@ import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
 import Script from "next/script";
 import { PageViewTracker } from "./components/page-view-tracker";
+import { getBlogJsonLd, getPersonJsonLd, getWebsiteJsonLd } from "./lib/seo";
 
 const display = Libre_Caslon_Text({
   subsets: ["latin"],
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
   },
   manifest: "/logos/site.webmanifest",
   description:
-    "A blog about software engineering, software development, software architecture, tech, software, and more.",
+    "Victor Bona writes about production software, architecture, infrastructure, security, AI systems, and the tradeoffs behind shipped engineering work.",
   keywords: [
     "full-stack developer",
     "engineering",
@@ -60,7 +61,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Victor Bona Blog",
     description:
-      "A blog about software engineering, software development, software architecture, tech, software, and more.",
+      "Victor Bona writes about production software, architecture, infrastructure, security, AI systems, and the tradeoffs behind shipped engineering work.",
     url: baseUrl,
     siteName: "Victor Bona Blog",
     locale: "en_US",
@@ -78,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Victor Bona Blog",
     description:
-      "A blog about software engineering, software development, software architecture, tech, software, and more.",
+      "Victor Bona writes about production software, architecture, infrastructure, security, AI systems, and the tradeoffs behind shipped engineering work.",
     creator: "@BonaVictor",
     images: [`${baseUrl}/logos/og-image.png`],
   },
@@ -100,14 +101,16 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: baseUrl,
-    languages: {
-      "en-US": "/en-US",
-    },
   },
   category: "technology",
   other: {
     // "google-site-verification": "your-google-verification-code",
   },
+};
+
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 const cx = (...classes) => classes.filter(Boolean).join(" ");
@@ -117,10 +120,18 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const siteJsonLd = [getPersonJsonLd(), getWebsiteJsonLd(), getBlogJsonLd()];
+
   return (
     <html lang="en" className={cx(display.variable, body.variable)}>
       <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script
+          type="application/ld+json"
+          suppressHydrationWarning
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(siteJsonLd),
+          }}
+        />
         <Script
           defer
           data-website-id="683fc4e7e5c802d499876375"

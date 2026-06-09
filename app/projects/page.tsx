@@ -3,20 +3,51 @@ import { SystemRow } from "app/components/SystemRow";
 import { projects } from "./projects";
 import { baseUrl } from "app/sitemap";
 import type { Metadata } from "next";
+import { getBreadcrumbJsonLd, getItemListJsonLd } from "app/lib/seo";
 
 export const metadata: Metadata = {
   title: "Projects",
   description: "Explore my software projects and open source contributions.",
+  alternates: {
+    canonical: `${baseUrl}/projects`,
+  },
   openGraph: {
     title: "Projects - Victor Bona",
     description: "Explore my software projects and open source contributions.",
     url: `${baseUrl}/projects`,
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Projects - Victor Bona",
+    description: "Explore my software projects and open source contributions.",
+  },
 };
 
 export default function ProjectsPage() {
+  const jsonLd = [
+    getBreadcrumbJsonLd([
+      { name: "Home", item: baseUrl },
+      { name: "Projects", item: `${baseUrl}/projects` },
+    ]),
+    getItemListJsonLd(
+      "Victor Bona Projects",
+      projects.map((project) => ({
+        name: project.name,
+        url: project.website || project.repository || `${baseUrl}/projects`,
+        description: project.description,
+      }))
+    ),
+  ];
+
   return (
     <section className="space-y-5">
+      <script
+        type="application/ld+json"
+        suppressHydrationWarning
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(jsonLd),
+        }}
+      />
       <div className="grid gap-3 border-b border-[var(--color-rule)] pb-4 md:grid-cols-[12rem_1fr]">
         <p className="metadata-type text-[var(--color-accent)]">
           Shipped systems

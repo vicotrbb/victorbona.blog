@@ -15,6 +15,18 @@ While building [Guara Cloud](https://guaracloud.com), this distinction became im
 
 That sounds like a small semantic difference, but it changes the architecture.
 
+## Short answer
+
+Backups should be designed from the restore story backward. A storage snapshot can help an operator recover a volume, but a platform backup needs a durable user-facing record, a consistent artifact, retention rules, status events, and a recovery path the user can actually understand.
+
+## Key takeaways
+
+- Snapshots are infrastructure primitives; backups are product promises.
+- User-facing backups need durable state, auditability, status, and download or restore semantics.
+- Object storage matters when the recovery artifact must live outside the workload volume.
+- Database consistency, credentials, job images, and writable paths are part of the backup feature, not incidental runtime details.
+- Backup kill switches should fail closed across scheduling and execution, not only hide a dashboard button.
+
 ## The storage layer sees volumes
 
 At the infrastructure layer, snapshots are extremely useful.

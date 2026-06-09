@@ -15,9 +15,20 @@ This is the story of why I did it, how it works under the hood, and what I learn
 
 ![SQLTemple](/i-built-my-own-sql-ide/sqltemple.webp)
 
+## Short answer
+
+SQLTemple is my open-source SQL IDE built with Electron, React, TypeScript, Monaco, local SQLite, and an AI agent that can use real database tools. I built it because database work should feel closer to a developer environment than a cramped admin utility.
+
+## Key takeaways
+
+- The app separates Electron main-process database work from a React renderer.
+- The AI layer is tool-based: it can inspect schemas, sample rows, plans, and queries instead of guessing from vague text.
+- SQLTemple remains useful without AI; AI is an optional workflow upgrade powered by user-configured providers.
+- Shipping it as a real desktop product forced installers, updates, versioning, CI, and documentation.
+
 ## Why build a new SQL IDE at all
 
-For years of my career I lived in the usual database tooling, using DBeaver or corporate offewred Datagrip. Open a heavy client, connect, write SQL in a cramped text area, run it, squint at the results grid, then copy the query into a separate editor to make it nicer. Every tool did most of what I needed, but nothing felt like a place I wanted to live in all day. Also, almost none had the AI features I was realling looking to use.
+For years of my career I lived in the usual database tooling, using DBeaver or corporate-offered DataGrip. Open a heavy client, connect, write SQL in a cramped text area, run it, squint at the results grid, then copy the query into a separate editor to make it nicer. Every tool did most of what I needed, but nothing felt like a place I wanted to live in all day. Also, almost none had the AI features I was really looking to use.
 
 I wanted three things at the same time:
 

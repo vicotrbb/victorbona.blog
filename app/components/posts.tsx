@@ -16,8 +16,8 @@ export function BlogPosts({ limit, filter }: BlogPostsProps) {
     allBlogs = allBlogs.filter((post) =>
       post.metadata.tags
         ?.split(",")
-        .map((t) => t.trim())
-        .includes(filter.tag!)
+        .map((t) => t.trim().toLowerCase())
+        .includes(filter.tag!.toLowerCase())
     );
   }
 

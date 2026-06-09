@@ -1,6 +1,15 @@
 import { baseUrl } from "app/sitemap";
 import { getBlogPosts } from "app/blog/utils";
 
+function escapeXml(value: string) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&apos;");
+}
+
 export async function GET() {
   let allBlogs = await getBlogPosts();
 
@@ -12,31 +21,36 @@ export async function GET() {
       return 1;
     })
     .map(
-      (post) =>
+      (post) => {
+        const url = `${baseUrl}/blog/${post.slug}`;
+        return (
         `<item>
-          <title>${post.metadata.title}</title>
-          <link>${baseUrl}/blog/${post.slug}</link>
-          <description>${post.metadata.summary || ""}</description>
+          <title>${escapeXml(post.metadata.title)}</title>
+          <link>${url}</link>
+          <guid isPermaLink="true">${url}</guid>
+          <description>${escapeXml(post.metadata.summary || "")}</description>
           <pubDate>${new Date(
             post.metadata.publishedAt
           ).toUTCString()}</pubDate>
         </item>`
+        );
+      }
     )
     .join("\n");
 
   const rssFeed = `<?xml version="1.0" encoding="UTF-8" ?>
   <rss version="2.0">
     <channel>
-        <title>My Portfolio</title>
+        <title>Victor Bona Blog</title>
         <link>${baseUrl}</link>
-        <description>This is my portfolio RSS feed</description>
+        <description>Production notes on software architecture, infrastructure, cloud, security, AI systems, and shipped engineering work.</description>
         ${itemsXml}
     </channel>
   </rss>`;
 
   return new Response(rssFeed, {
     headers: {
-      "Content-Type": "text/xml",
+      "Content-Type": "application/rss+xml; charset=utf-8",
     },
   });
 }

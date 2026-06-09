@@ -2,6 +2,7 @@ import { baseUrl } from "app/sitemap";
 import { getBlogPosts } from "app/blog/utils";
 import { projects } from "app/projects/projects";
 import { getArticles } from "app/articles/articles";
+import { absoluteUrl } from "app/lib/seo";
 
 const siteInfo = {
   name: "Victor Bona Blog",
@@ -15,6 +16,16 @@ const siteInfo = {
     "cloud",
     "AI",
     "productivity",
+  ],
+  canonicalTopics: [
+    "production software",
+    "Kubernetes",
+    "platform engineering",
+    "security engineering",
+    "AI systems",
+    "homelab infrastructure",
+    "APIs",
+    "performance",
   ],
   contact: {
     twitter: "https://twitter.com/BonaVictor",
@@ -60,7 +71,7 @@ function formatProjectLine(project) {
 function formatArticleLine(article) {
   const tags = article.tags?.join("; ") || "";
   const doi = article.doi ? ` | doi: ${article.doi}` : "";
-  const pdf = article.pdfUrl ? ` | pdf: ${article.pdfUrl}` : "";
+  const pdf = article.pdfUrl ? ` | pdf: ${absoluteUrl(article.pdfUrl)}` : "";
 
   return `- [${article.type}] ${article.publishedAt} | ${article.title} | ${compact(
     article.abstract
@@ -76,6 +87,18 @@ export async function GET() {
   });
 
   const publishedArticles = getArticles();
+  const prioritySlugs = [
+    "building-guara-cloud-like-a-product-not-a-kubernetes-dashboard",
+    "backups-are-not-snapshots",
+    "debugging-kubernetes-storage-incidents-without-lying-to-yourself",
+    "why-i-decided-to-go-baremetal",
+    "what-i-run-on-my-homelab-2",
+    "i-built-my-own-sql-ide",
+    "quntile-a-framework-for-structured-collaborative-ai-agents",
+  ];
+  const priorityPosts = prioritySlugs
+    .map((slug) => posts.find((post) => post.slug === slug))
+    .filter(Boolean);
 
   const lines: string[] = [];
 
@@ -90,6 +113,14 @@ export async function GET() {
   lines.push(
     `feeds: rss ${baseUrl}/rss | sitemap ${baseUrl}/sitemap.xml`
   );
+  lines.push("");
+
+  lines.push("## Canonical Topics");
+  siteInfo.canonicalTopics.forEach((topic) => lines.push(`- ${topic}`));
+  lines.push("");
+
+  lines.push("## Best First-Hand Sources");
+  priorityPosts.forEach((post) => lines.push(formatPostLine(post)));
   lines.push("");
 
   lines.push("## Blog Posts");

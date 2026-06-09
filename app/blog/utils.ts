@@ -55,6 +55,19 @@ export function getBlogPosts() {
   return getMDXData(path.join(process.cwd(), "app", "blog", "posts"));
 }
 
+export function getTags(posts = getBlogPosts()) {
+  return Array.from(
+    new Set(
+      posts.flatMap((post) =>
+        post.metadata.tags
+          ?.split(",")
+          .map((tag) => tag.trim().toLowerCase())
+          .filter(Boolean)
+      )
+    )
+  ).sort((a, b) => a.localeCompare(b));
+}
+
 export function formatDate(date: string, includeRelative = false) {
   if (!date.includes("T")) {
     date = `${date}T00:00:00`;

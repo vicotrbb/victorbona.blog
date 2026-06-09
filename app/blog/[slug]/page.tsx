@@ -8,6 +8,7 @@ import { CustomMDX } from "app/components/mdx";
 import { Tag } from "app/components/Tag";
 import { RelatedPosts } from "app/components/RelatedPosts";
 import { ReadingProgress } from "app/components/ReadingProgress";
+import { getBlogPostingJsonLd, getBreadcrumbJsonLd } from "app/lib/seo";
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   const tags = post.metadata.tags.split(",").map((tag) => tag.trim());
 
   return {
-    title: `${post.metadata.title} | Victor Bona Blog`,
+    title: post.metadata.title,
     description: post.metadata.summary,
     authors: [{ name: "Victor Bona", url: baseUrl }],
     keywords: [...tags, "blog", "tech", "software development"],
@@ -83,6 +84,19 @@ export default function Blog({ params }) {
 
   const readingTime = getReadingTime(post.content);
   const tags = post.metadata.tags.split(",").map((tag) => tag.trim());
+  const jsonLd = [
+    getBlogPostingJsonLd({
+      post,
+      slug: post.slug,
+      tags,
+      readingTime,
+    }),
+    getBreadcrumbJsonLd([
+      { name: "Home", item: baseUrl },
+      { name: "Blog", item: `${baseUrl}/blog` },
+      { name: post.metadata.title, item: `${baseUrl}/blog/${post.slug}` },
+    ]),
+  ];
 
   return (
     <section>
@@ -90,42 +104,7 @@ export default function Blog({ params }) {
         type="application/ld+json"
         suppressHydrationWarning
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            headline: post.metadata.title,
-            datePublished: post.metadata.publishedAt,
-            dateModified: post.metadata.publishedAt,
-            description: post.metadata.summary,
-            image: post.metadata.image
-              ? `${baseUrl}${post.metadata.image}`
-              : `${baseUrl}/og?title=${encodeURIComponent(
-                  post.metadata.title
-                )}&date=${post.metadata.publishedAt}`,
-            url: `${baseUrl}/blog/${post.slug}`,
-            author: {
-              "@type": "Person",
-              name: "Victor Bona",
-              url: baseUrl,
-              "@id": `${baseUrl}#author`,
-            },
-            publisher: {
-              "@type": "Organization",
-              name: "Victor Bona Blog",
-              logo: {
-                "@type": "ImageObject",
-                url: `${baseUrl}/logos/icon-512.png`,
-              },
-            },
-            mainEntityOfPage: {
-              "@type": "WebPage",
-              "@id": `${baseUrl}/blog/${post.slug}`,
-            },
-            keywords: tags.join(", "),
-            articleBody: post.content,
-            wordCount: post.content.split(/\s+/).length,
-            timeRequired: `PT${readingTime}M`,
-          }),
+          __html: JSON.stringify(jsonLd),
         }}
       />
 

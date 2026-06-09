@@ -15,6 +15,18 @@ Guara Cloud is not an attempt to make Kubernetes look prettier. It is my attempt
 
 The product should feel simple. The system behind it cannot be simplistic.
 
+## Core argument
+
+Guara Cloud should not expose Kubernetes as the product. Kubernetes is the substrate; the product is a set of developer workflows around projects, services, logs, metrics, backups, billing, and supportable operations. That means product clarity depends on backend discipline, not on hiding complexity with a prettier dashboard.
+
+## Key takeaways
+
+- A PaaS should translate developer intent into infrastructure state, not make users operate raw Kubernetes objects.
+- Catalog services are product promises: creation, observability, limits, backups, billing, and removal need to be designed together.
+- Billing and observability are coupled because usage data becomes part of the customer contract.
+- Reliable user experience depends on invisible control-plane choices: transactions, outbox events, shared types, validation, and safe errors.
+- Backups and incidents should feed product design instead of living only as operational afterthoughts.
+
 ## The product starts with a constraint
 
 The first constraint was geographic and economic: Guara Cloud is built for Brazil.
