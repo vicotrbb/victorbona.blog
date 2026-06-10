@@ -15,7 +15,7 @@ export default function Page() {
   const posts = getBlogPosts().sort(
     (a, b) =>
       new Date(b.metadata.publishedAt).getTime() -
-      new Date(a.metadata.publishedAt).getTime()
+      new Date(a.metadata.publishedAt).getTime(),
   );
 
   if (posts.length === 0) {
@@ -33,8 +33,9 @@ export default function Page() {
   }
 
   const featured =
-    posts.find((post) => post.slug.includes("hidden-cost-of-abstractions")) ??
-    posts[0];
+    posts.find((post) =>
+      post.slug.includes("durable-execution-youre-already-building-it-badly"),
+    ) ?? posts[0];
   const fieldNotes = posts
     .filter((post) => post.slug !== featured.slug)
     .slice(0, 6);
