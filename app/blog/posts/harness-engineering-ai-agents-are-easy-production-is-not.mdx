@@ -1,0 +1,88 @@
+---
+title: "Harness Engineering: AI Agents Are Easy, Production Is Not"
+publishedAt: "2026-06-09"
+summary: "Why the hard part of AI agents is not the model or the prompt but the harness: context management, tool design, sandboxing, evals, and the engineering discipline forming around agents in production."
+tags: "AI,agents,harness engineering,software,engineering,llm"
+---
+
+Building an AI agent takes an afternoon. A model, a loop, a handful of tools, and you have something that reads a ticket, searches a codebase, and proposes a fix. The demo is genuinely impressive, and the demo is the easy part.
+
+Then you try to run it in production, against real systems, with real permissions, on real customer data, and the questions change. What exactly can this thing touch? What happens when it reads a malicious document? Who reviews what it did? How do you know this week's version is better than last week's? Why did it spend forty dollars summarizing a log file?
+
+None of those questions are about the model. They are about everything around the model. The industry has started calling that everything the harness, and I think harness engineering is the most honest name yet for what working with AI in production actually is.
+
+## Short answer
+
+An agent is a model in a loop with tools. A harness is the engineered environment that makes that loop safe and useful: context management, tool design, permission boundaries, sandboxing, evaluation, observability, and cost control. The model is a commodity you rent. The harness is the software you actually build, and it is where agent projects succeed or die.
+
+## Key takeaways
+
+- The capability gap between an agent demo and an agent in production is the harness, not the model.
+- Context is a budget, not a bucket. Deciding what enters the context window is the highest-leverage design decision in any agent system.
+- Tools are the real API surface. A well-designed tool constrains the blast radius of a wrong decision better than any system prompt.
+- Agents must run inside permission boundaries that hold even when the model is confidently wrong, because instructions are suggestions and sandboxes are physics.
+- Without evals and traces you are not iterating, you are guessing. Agent behavior regresses silently between model versions and prompt edits.
+
+## The model stopped being the project
+
+For the first couple of years of the LLM wave, teams competed on model access and prompt cleverness. That era is over. The frontier models are good, broadly comparable for most tasks, and available to everyone for the price of an API key. Whatever advantage lived in the model is now rented, not owned.
+
+What is not rented is everything that surrounds the loop. When I look at agent systems that actually hold up, the engineering effort distributes something like this: a small slice on choosing the model, a slightly larger slice on prompts, and the overwhelming majority on the harness. Tool contracts, context assembly, failure handling, permissions, evaluation, cost ceilings, audit trails.
+
+This should feel familiar. The database engine is not your product either; the schema, the queries, the migrations, and the backup story are. We rent engines and engineer around them. Models have joined that category, and the surrounding discipline is taking shape the way every infrastructure discipline does: through incidents.
+
+I wrote about structuring agents into phased, cooperative teams in [Quintile](/blog/quntile-a-framework-for-structured-collaborative-ai-agents), and the lesson that has aged best from that work is exactly this one. The structure around the agents mattered more than the agents themselves. The harness was the framework. The models were interchangeable.
+
+## Context is a budget, not a bucket
+
+The most common beginner mistake in agent design is treating the context window as a bucket: shovel in everything that might be relevant and let the model sort it out. Windows are huge now, so why not?
+
+Because relevance does not survive dilution. A model reasoning over two hundred thousand tokens of mostly irrelevant material performs measurably worse than the same model over eight thousand carefully chosen ones. Long contexts bury the load-bearing facts in noise, and the failure is graceful enough that you may not notice. The agent does not error, it just gets slightly dumber, slightly more generic, slightly more likely to confidently miss the one line that mattered.
+
+So the real design question is editorial: of everything the agent could see, what should it see right now? Production harnesses converge on the same patterns. Retrieval narrowed by the current step instead of the whole task. Summarization layers that compress history as it ages. Tool results trimmed to what the next decision needs rather than dumped raw. Sub-agents given clean, minimal contexts for delegated work instead of inheriting the parent's full transcript, which is the same isolation instinct that makes you give a function parameters instead of global variables.
+
+A useful test for any agent harness: can you answer, for a given model call, why each piece of the context is there? If the answer is "it accumulated," your context is not designed, it is sedimentary. There is even a recent line of research asking whether elaborate retrieval stacks beat an agent with plain grep in a loop, and the honest answer is "more often than is comfortable," which tells you how much of agent performance is the harness deciding what the model looks at.
+
+## Tools are the real API surface
+
+Prompts get the attention, but tools are where an agent system is actually programmed.
+
+A tool definition is a contract: name, description, parameters, and an implementation on the other side. The model chooses among contracts. That means tool design quietly controls agent behavior more than any instruction does, and it obeys the same rules as any API design, with one twist. Your caller is a probabilistic process that will eventually try everything your schema permits.
+
+That twist has concrete consequences. Tools should be specific rather than general: a `query_orders(customer_id, date_range)` tool fails so much better than an `execute_sql(query)` tool, because the worst case of the former is a wrong lookup and the worst case of the latter is a table scan or a deleted row. Destructive operations deserve their own tools with their own confirmation semantics, never a flag on a benign one. Error messages returned to the model are part of the interface, a tool that answers a bad call with guidance ("date_range must be under 90 days") creates a self-correcting loop; one that answers with a stack trace creates a confused agent burning tokens on archaeology.
+
+The blast radius rule summarizes it:
+
+> Design every tool so that the worst plausible call the model could make is one you can live with.
+
+If you cannot live with the worst plausible call, the fix is not a sterner system prompt. It is a narrower tool.
+
+## Sandboxes are physics, instructions are suggestions
+
+Here is the uncomfortable truth that separates harness engineering from prompt engineering: you cannot instruct your way to safety.
+
+A system prompt that says "never modify production data" is a suggestion. The model follows it almost always, and almost always is not a security boundary. Worse, agents read untrusted input by design, web pages, documents, tickets, emails, and any of it can contain text crafted to look like instructions. Prompt injection is not an exotic attack; it is the default condition of letting a language model read the internet. The lethal combination is well known by now: an agent with access to private data, exposure to untrusted content, and a channel to communicate externally is an exfiltration engine waiting for the right paragraph.
+
+The answer is the same one operating systems reached decades ago. Real boundaries, enforced outside the decision-maker. Run agent-executed code in disposable sandboxes with no ambient credentials. Scope tokens to the narrowest resource and the shortest lifetime that works. Make permission checks happen in the tool implementation, on the deterministic side of the line, never inside the model's judgment. Put a human approval gate on actions that are irreversible or outward-facing, money, emails, deploys, deletes, and log everything with enough fidelity to reconstruct what the agent saw when it decided.
+
+The mental model that works is the one we already use for people: least privilege, audit trails, and the assumption that any actor, however well-intentioned, can be socially engineered. Agents did not create that threat model. They just made it apply to software.
+
+## Evals are the new tests, traces are the new logs
+
+The last pillar of the harness is the one that makes iteration possible at all: measurement.
+
+Agent behavior is non-deterministic and brutally sensitive to things that do not look like changes. A model version bump, a reworded tool description, one added sentence in a system prompt, any of these can shift behavior across the whole task distribution. Without measurement, you find out from users. Teams that run agents seriously treat evals the way the rest of software treats tests: a suite of representative tasks with checkable outcomes, run on every meaningful change, watched for regressions. Building that suite is genuinely hard, real tasks are messy, success is sometimes a judgment call, and judge models bring their own biases, but the alternative is shipping vibes.
+
+Same story for observability. When an agent does something strange, "it failed" is useless. You need the trace: every model call, every context assembled, every tool invocation and result, every token spent, threaded through the run. Traces are to agents what structured logs are to services, the difference between debugging and folklore. And cost is part of the same telemetry. Agents are the first software component whose marginal cost per request is both high and wildly variable; a retry loop that would be invisible in a normal service is a billing event in an agentic one. Budget ceilings per run, per user, and per day belong in the harness from the first week, because the first surprising invoice always arrives before the first incident.
+
+The teams that get this right stop arguing about whether the agent "seems better" and start reading dashboards. That transition, from anecdote to measurement, is the moment agent work becomes engineering.
+
+## The discipline is forming the usual way
+
+Step back and the pattern is recognizable. Every infrastructure wave starts with demos, hits production, generates incidents, and crystallizes into discipline with a name. Deployment chaos became CI/CD. Server chaos became infrastructure as code and SRE. The current round of agent incidents, leaked credentials, runaway costs, injected instructions, silent regressions, is crystallizing into harness engineering, and the practices in this post are its early standard library.
+
+None of it is glamorous. Context budgets, tool contracts, sandboxes, eval suites, cost ceilings. It is the same kind of unglamorous that backups, migrations, and rate limiters are, which is to say: the part that decides whether the impressive demo becomes a system anyone can trust.
+
+The models will keep getting better, and that will keep being the headline. It will also keep being the wrong thing to bet your engineering effort on, because everyone gets the same models. The harness is where the differentiation lives, it is where the failures live, and it is where the craft lives.
+
+Agents are easy. Production is not. Build the harness like you mean it.

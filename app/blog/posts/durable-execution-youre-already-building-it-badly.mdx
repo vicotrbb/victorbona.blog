@@ -1,0 +1,120 @@
+---
+title: "Durable Execution: You're Already Building It, Badly"
+publishedAt: "2026-06-09"
+summary: "Every retry loop, job queue, state column, and idempotency key is a piece of a durable execution engine. What Temporal, Restate, and Inngest actually solve, what they cost, and when a plain queue is still right."
+tags: "distributed systems,durable execution,architecture,reliability,software"
+---
+
+There is a moment in every backend system's life when someone adds a `status` column to a table.
+
+It starts innocently. A signup flow needs to create a user, charge a card, provision a workspace, and send an email. Any of those can fail, so you add a job queue. Jobs can be retried, so you add idempotency keys. Retries can land out of order, so you add a state machine. The state machine can get stuck, so you add a cron job that sweeps for stuck rows. The sweeper has bugs, so you add an internal admin page for "just fixing it in the database."
+
+Congratulations. You have built a durable execution engine. It is just a bad one, it has no name, no tests for its failure modes, and its documentation is one Slack thread and the memory of whoever wrote the sweeper.
+
+This article is about recognizing that system for what it is, understanding what the purpose-built engines like Temporal, Restate, and Inngest actually do differently, and being honest about when you need one and when a plain queue remains the right call.
+
+## Short answer
+
+Durable execution makes a multi-step workflow survive process crashes by persisting its progress, so a restarted worker resumes from the last completed step instead of starting over or stranding state. Frameworks achieve this with event sourcing and deterministic replay. You should adopt one when you have long-running, multi-step business flows whose intermediate state matters, and you should skip it when your jobs are short, independent, and idempotent, because the cost of determinism constraints and workflow versioning is real.
+
+## Key takeaways
+
+- A retry loop, a queue, a status column, and a sweeper cron is a durable execution engine built by accident, with the failure handling spread across four places.
+- Durable execution engines persist workflow progress as an event history and recover by deterministically replaying code against it.
+- The price is determinism: workflow code cannot freely use the clock, random numbers, direct I/O, or anything that behaves differently between executions.
+- Workflow versioning is the second price. Long-lived executions outlive the code that started them, and migrating them is a discipline of its own.
+- Plain queues are still correct for short, idempotent, independent jobs. Reconciliation loops are still correct for convergence problems. Durable execution earns its keep on long-running, stateful, ordered business flows.
+
+## The system you built by accident
+
+Take the signup flow and watch where the failure logic lives.
+
+The card charge wraps in a retry helper with exponential backoff. The provisioning step runs in a queue worker, with retries configured on the queue. The email sends from a second queue. A `signup_state` column tracks progress: `created`, `charged`, `provisioned`, `welcomed`. A nightly cron looks for signups stuck in `charged` for more than an hour and re-enqueues them. An idempotency key on the charge prevents the retry from double-billing.
+
+Each piece is locally reasonable. Together they form a distributed state machine whose transitions are scattered across an HTTP handler, two queue workers, a cron job, and the heads of three engineers. Nobody can answer simple questions about it. What happens if the process dies between the charge succeeding and the row updating to `charged`? Is the sweeper idempotent against a job that is still in flight? If you add a step, which of the five places need to change?
+
+The deep problem is that the workflow, the actual business sequence "charge, then provision, then welcome," exists nowhere in the code. It exists only as an emergent property of queues and columns. You cannot read it, you cannot test it as a unit, and when it breaks you debug it by archaeology.
+
+I keep coming back to a line from an older post on [over-engineering](/blog/over-engineering-the-enemy-of-good-software): complexity you refuse to acknowledge does not disappear, it just stops being managed. The accidental engine is exactly that. The complexity of partial failure is real and irreducible. The only choice is whether it lives in one named place or in five unnamed ones.
+
+## What durable execution actually does
+
+The pitch of durable execution sounds like magic: write your workflow as a normal function, and the framework makes it survive crashes.
+
+```typescript
+async function signupWorkflow(input: SignupInput) {
+  const customer = await activities.createCustomer(input);
+  await activities.chargeCard(customer.id, input.plan);
+  const workspace = await activities.provisionWorkspace(customer.id);
+  await activities.sendWelcomeEmail(customer.email, workspace.url);
+  return workspace.id;
+}
+```
+
+If the process dies after `chargeCard` succeeds, a new worker picks up the workflow and resumes exactly at `provisionWorkspace`. No sweeper, no status column, no archaeology. The workflow is readable as a sequence because it is written as one.
+
+The mechanism behind the magic is event sourcing plus deterministic replay. Every time the workflow performs an effect, an activity call, a timer, a signal, the engine records the result in an append-only history. When a worker crashes and another picks up the workflow, the engine re-executes the function from the top, but every effect that already happened is answered from history instead of being performed again. The code replays in milliseconds to the exact point where it stopped, then continues live from there.
+
+Temporal made this model mainstream, carrying it forward from its ancestors at AWS and Uber. Restate implements the same idea with a log-centric design and lower latency ambitions. Inngest packages it for the serverless and TypeScript world. The differences matter when choosing a vendor, but the contract is shared: your progress is persisted, your code resumes, and a workflow can sleep for thirty days and wake up as if no time had passed.
+
+That last property is quietly the most transformative one. "Wait three days, then check if the user activated, then send a nudge" stops being a cron job plus a query plus a flag column. It is three lines inside the function, and the waiting costs nothing.
+
+## The first price: determinism
+
+Replay is the trick, and replay has a non-negotiable requirement: the workflow function must make the same decisions every time it runs against the same history.
+
+That single constraint radiates consequences. The workflow cannot read the wall clock, because the clock will answer differently during replay. It cannot generate random numbers, branch on environment variables, or do direct I/O. All of that must move into activities, whose results are recorded, or into framework-provided deterministic equivalents for time and randomness. Iterating over a hash map whose order is not stable can technically break replay. Upgrading a library that changes internal behavior between versions can too.
+
+In practice this splits your code into two castes. Activities are normal code: they can do anything, and they are assumed to fail and retry, which means they must be idempotent. Workflow code is orchestration only: it decides what happens next and owns no effects of its own.
+
+This split is genuinely good design, the same separation of decision and effect that makes code testable. But the framework does not suggest it, it enforces it, and the enforcement arrives as unfamiliar failure modes. A non-determinism error in production, where a replayed workflow diverges from its own history, is a category of bug your team has never debugged before. The error messages have gotten better over the years. The conceptual model still has to be taught, and the first incident is always confusing.
+
+## The second price: versioning
+
+The subtler cost shows up months later.
+
+Workflows are durable, which means they are long-lived, which means they outlive your code. A workflow started in March is still sleeping in June, waiting on its thirty-day timer. Meanwhile you have deployed forty times, and one of those deploys reordered two activities. When that old workflow wakes and replays against the new code, the history no longer matches the decisions, and the engine refuses to continue.
+
+Every durable execution platform has an answer: patch markers in Temporal, version pinning per execution, worker fleets that keep old code paths alive until old executions drain. They all work. None of them are free. Your deployment story now includes the question "which workflow versions are still in flight?", and your code accumulates version branches that can only be deleted when the last old execution completes.
+
+Teams that adopt durable execution casually hit this wall around month three, and it is the moment that decides whether the adoption sticks. The ones that survive treat workflow definitions like database schemas: changes are migrations, reviewed with the same suspicion. The mindset is close to what I argued in [the hidden cost of abstractions](/blog/the-hidden-cost-of-abstractions-why-clean-code-isnt-always-good-code): an abstraction this powerful does not remove complexity, it relocates and concentrates it, and you need to know exactly where it now lives.
+
+## When a plain queue is still right
+
+Honesty requires the other direction too. Most background work does not need any of this.
+
+Sending one email, resizing one image, syncing one record to an external system, recomputing one cache entry. These jobs are short, independent, and idempotent. A queue with retries and a dead letter queue handles them completely. There is no intermediate state to lose, so there is nothing for durable execution to protect. Wrapping single-step jobs in a workflow engine adds operational weight, a new infrastructure dependency, a learning curve, deployment constraints, and returns nothing for it.
+
+There is also a second pattern that competes with workflows and wins on its own ground: the reconciliation loop. When the goal is convergence toward a desired state rather than completion of an ordered sequence, a loop that repeatedly computes the difference and acts on it is simpler and more self-healing than a saga. It does not care how the world reached its current shape, only what remains to be done, which means crash recovery and normal operation are the same code. I wrote about that shape in [A PaaS Is a Reconciliation Loop With a Bill Attached](/blog/a-paas-is-a-reconciliation-loop-with-a-bill-attached), and that is exactly how I run infrastructure convergence in [Guara Cloud](https://guaracloud.com): the provisioning path is reconcilers and an outbox, not a workflow engine, because "make the cluster look like the database" is a convergence problem, not a sequence.
+
+The rough decision table I trust:
+
+| Work looks like | Reach for |
+| --- | --- |
+| Short, independent, idempotent jobs | Queue with retries and a DLQ |
+| Converging infrastructure or data toward desired state | Reconciliation loop with idempotent passes |
+| Multi-step business flow with money, ordering, or long waits | Durable execution |
+| Multi-step flow, but only two steps and both rarely fail | Queue plus one status column, honestly |
+
+The last row matters. The accidental engine is not always wrong. With two steps and forgiving semantics, a status column is proportionate engineering. The trap is growth without a decision: two steps become six, the sweeper appears, and nobody ever chose to build an orchestrator. The skill is noticing the threshold while you can still cross it deliberately.
+
+## The signals that say switch
+
+A few concrete tells that your accidental engine is over the threshold:
+
+- You have more than one sweeper cron whose job is unsticking stuck rows.
+- Engineers fix workflow state by hand in production with UPDATE statements.
+- A flow includes a human-scale wait, days for approval, a trial period, a webhook that may never come.
+- The same business sequence is implemented across three services and no single file shows its order.
+- Postmortems keep containing the phrase "the retry ran twice" or "the job was lost between steps."
+- You are about to add compensation logic, undo the charge if provisioning fails, and there is no obvious place to put it.
+
+Each of these is the system asking for an orchestrator. The frameworks did not invent the requirements. They named a problem you already had and moved it into one place with tests, visibility, and a recovery model that does not depend on tribal memory.
+
+## The rule I keep coming back to
+
+> Durability of business state is a requirement, not a feature. The only question is whether the machinery providing it is designed or accidental.
+
+If a workflow matters enough to retry, track, and repair, it matters enough to exist in the code as a workflow. Either write it in a durable execution engine that names the problem, or keep it small enough that a queue and a column tell the whole truth. The unforgivable middle is the system nobody decided to build: five components, zero owners, and a state machine that lives only in the heads of the people on call.
+
+You are already building durable execution. The only choice you actually have is whether to build it badly.

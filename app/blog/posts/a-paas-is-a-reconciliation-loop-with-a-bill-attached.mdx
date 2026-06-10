@@ -1,0 +1,143 @@
+---
+title: "A PaaS Is a Reconciliation Loop With a Bill Attached"
+publishedAt: "2026-06-09"
+summary: "Why a PaaS control plane is really a reconciliation loop: desired state, observed state, transactional outbox events, and billing that cannot afford to lie."
+tags: "guara cloud,paas,kubernetes,distributed systems,control plane,architecture"
+---
+
+Every platform as a service has the same hidden problem: it runs on two databases that disagree with each other.
+
+The first database is the product database. It stores what users asked for. Projects, services, plans, domains, environment variables, backup schedules. The second database is the cluster itself. Kubernetes stores what actually exists. Deployments, pods, volumes, certificates, jobs.
+
+A PaaS is the machine that keeps those two databases honest with each other. And because customers pay for the result, it has to do that bookkeeping with money on the line.
+
+While building [Guara Cloud](https://guaracloud.com), this became the clearest way I have found to describe what a PaaS control plane actually is:
+
+> A PaaS is a reconciliation loop between what users asked for and what the infrastructure is doing, with an invoice attached to the difference.
+
+Everything else, the dashboard, the API, the service catalog, the billing page, is a view into that loop.
+
+## Short answer
+
+A PaaS control plane should be modeled as a reconciliation loop, not as a chain of API calls. The product database stores desired state. The cluster holds observed state. Reconcilers converge one toward the other through idempotent operations. Intent is recorded transactionally with an outbox, status flows back through typed events, and billing reads from observed state, because customers pay for what ran, not for what was requested.
+
+## Key takeaways
+
+- A request and response mental model breaks the moment provisioning spans more than one system.
+- Desired state belongs in the product database. Observed state belongs to the infrastructure. Neither should pretend to be the other.
+- The transactional outbox makes intent durable: the state change and the command to act on it are born in the same database transaction.
+- Reconcilers must be idempotent and re-runnable, because partial failure is the normal case, not the exception.
+- Billing is a consumer of reconciliation. You can only charge for observed state, so a control plane that drifts produces an invoice that lies.
+
+## The two sources of truth
+
+The product database knows things the cluster will never know.
+
+It knows which user owns a project. It knows which subscription plan applies, what the quota limits are, which services came from the catalog, which domains were verified, and which backup schedule the customer configured. None of that belongs in etcd. Kubernetes is not a billing system, and torturing it into one with annotations is a mistake I decided not to make.
+
+The cluster knows things the product database can never know on its own.
+
+It knows whether the pod is actually running. It knows whether the volume mounted, whether the certificate was issued, whether the rollout converged or got stuck on an image pull. The product database can record that a deployment was requested, but only the cluster can report that it worked.
+
+So the architecture question for a PaaS is not "where is the truth?" There are two truths, and they answer different questions. The real question is: what closes the gap between them, and how honestly does it report on that gap?
+
+## Request and response is the wrong shape
+
+The natural first instinct is to build provisioning as a chain of API calls. The user clicks create, the API creates a namespace, then a deployment, then a service, then an ingress, then waits for a certificate, then returns success.
+
+That shape fails immediately, for two reasons.
+
+First, latency. A real service creation can take minutes. Image pulls, volume binding, DNS propagation, certificate issuance. No sane HTTP request should hold a connection open while a certificate authority thinks about its life choices.
+
+Second, partial failure. If the request dies after the deployment was created but before the ingress was, what is true now? The API returned an error, but half of the infrastructure exists. The user retries, and now there are naming collisions, orphaned objects, and a support ticket.
+
+So the API has to do something more modest and more honest: validate the request, record the intent, and return. The answer to "create my service" is not "done." The answer is "accepted, and here is how to watch it become true."
+
+That decision is what creates the reconciliation problem. Once intent and execution are separated, something has to drive execution and something has to report back. That something is the loop.
+
+## The shape of the loop
+
+Kubernetes itself already works this way internally. A Deployment is not a command, it is a desire. Controllers run in loops, compare desire with reality, and act on the difference. A PaaS adds one more layer of the same pattern above it: user intent becomes product desired state, product desired state becomes Kubernetes objects, and cluster reality flows back up as status.
+
+In Guara Cloud, the full path looks roughly like this:
+
+1. The API validates the request against plan limits, quotas, and catalog rules.
+2. The API writes the desired state into the product database inside a transaction.
+3. The API writes an outbox command in that same transaction.
+4. A publisher delivers the command through the event system.
+5. A reconciler translates desired state into Kubernetes objects.
+6. The reconciler observes what the cluster reports back.
+7. Typed events carry status changes to the API.
+8. The product record updates, and the dashboard tells the truth.
+
+No single step in that list is exotic. The discipline is in refusing to skip any of them.
+
+## Intent must be durable
+
+Step two and step three deserve their own section, because this is where most homegrown control planes quietly lie.
+
+The classic failure has two mirror images. In the first, the API commits the database row and then tries to publish a message, but the process dies in between. The product database says a service is being created, and no worker will ever create it. In the second, the message is published first and the transaction rolls back. A worker is now building infrastructure that the product database has no record of.
+
+Both outcomes are lies, just aimed at different victims.
+
+The transactional outbox closes this gap. The desired state change and the command to act on it are written in the same database transaction, so they either both exist or neither does. A separate publisher reads the outbox and delivers messages with at least once semantics, and consumers deduplicate. I wrote about the same pattern in the context of [platform backups](/blog/backups-are-not-snapshots), because it shows up everywhere once you start looking: the user-facing record and the async work have to be born together.
+
+This is the part of the system nobody screenshots for the landing page. It is also the part that decides whether the dashboard is a status page or a fiction.
+
+## Partial failure is the normal case
+
+A single user-facing "service" in a PaaS is a small crowd of infrastructure objects. A namespace, a deployment, a Kubernetes service, an ingress, a certificate, secrets, network policies, monitors. Creation can fail between any two of them.
+
+There are two honest strategies for dealing with that.
+
+The first is forward orchestration: model creation as a sequence of steps with explicit compensation when a step fails. This is the saga shape, and it cares deeply about history. What step am I on, what already happened, what do I undo.
+
+The second is convergence: do not track steps at all. Track the difference. Every reconciliation pass asks the same question, "what does desired state require that observed state does not have?", and then does only that work. If a pass crashes halfway, the next pass picks up the remaining difference without needing to know anything about the crash.
+
+I chose convergence for Guara Cloud, and the longer I run it, the more convinced I am. A reconciler that computes the gap is self-healing by construction. Failures do not need special recovery code, because recovery and normal operation are the same code path. The trade-offs between these two shapes are a topic of their own, and I dig into them in [Durable Execution: You're Already Building It, Badly](/blog/durable-execution-youre-already-building-it-badly).
+
+## Idempotency or chaos
+
+Convergence only works if every action is safe to repeat.
+
+That sounds like a slogan until you enumerate what it actually demands. Resource names must be deterministic, so creating "again" finds the existing object instead of colliding with it. Ownership must be explicit, with labels marking what the platform manages, so a cleanup pass never deletes something it does not own. Updates must be expressed as "make it look like this" rather than "change it by this much." Deletes must be guarded, so a reconciler that is missing context fails closed instead of removing a customer workload.
+
+The uncomfortable rule underneath all of this:
+
+> Any operation a reconciler performs will eventually run twice, run late, or run against a world that changed since it was scheduled. Design for that world, because that is the world.
+
+## Status is earned, not assumed
+
+The loop runs downward, from intent to infrastructure. The other half of the product is the upward path: what the user sees.
+
+The cheap version shows a success state because the API call succeeded. The honest version treats "creating" as a real state with real duration, and only shows "running" when the readiness evidence actually arrived through events. The difference sounds cosmetic. It is not. A dashboard that shows green based on intent will eventually show green during an outage, and that single moment costs more trust than a hundred slow creations.
+
+This is the same discipline I described in [debugging storage incidents](/blog/debugging-kubernetes-storage-incidents-without-lying-to-yourself): the system should report evidence, not optimism. A status field is a claim. Claims need provenance.
+
+## The bill attached
+
+Here is where the loop stops being a purely technical pattern and becomes a business contract.
+
+Billing in a PaaS is a consumer of reconciliation. Quota enforcement happens against desired state, at admission time: a user on a starter plan cannot request more than the plan allows, and the API rejects it up front. But charging happens against observed state, from usage that actually occurred. Compute hours, storage consumed, traffic served. You cannot invoice intent.
+
+That has two sharp consequences.
+
+First, the usage pipeline is part of the platform contract, not an observability nicety. If a metric feeds a tenant usage calculation, dropping it during a monitoring cleanup is not tuning, it is a billing incident. I made this argument in the [original Guara Cloud post](/blog/building-guara-cloud-like-a-product-not-a-kubernetes-dashboard), and reconciliation is exactly why it holds: usage data is observed state, and observed state is what the customer pays for.
+
+Second, drift is a financial event. Suppose a user deletes a service, the product database marks it deleted, and the cluster workload survives because a reconciliation pass failed and nothing retried. The customer is no longer paying for that compute. The platform still is. Multiply by enough tenants and drift detection stops being hygiene and becomes margin protection. An orphan sweep that compares observed infrastructure against desired state is not janitorial work. It is an audit.
+
+## Deletion is reconciliation too
+
+Deletion deserves a final word, because it is the case everyone underestimates.
+
+Creating infrastructure converges toward presence. Deleting converges toward absence, and absence is harder to verify. The product database can soft delete the record and keep the audit trail, but the cluster needs the workload, the volumes, the certificates, and the DNS records actually gone. "I sent the delete" is desired state. "It is no longer there" is observed state. The loop has to close on deletion with the same rigor it closes on creation, or the platform leaks resources and money in the quiet places nobody monitors.
+
+## The rule I keep coming back to
+
+> Desired state is a promise. Observed state is the truth. The product is the loop that closes the gap, and the bill must be computed from the truth.
+
+When I evaluate any new Guara Cloud feature now, I ask where it sits in that loop. Does it record intent durably? Does it converge through idempotent passes? Does it report status from evidence? Does billing see what actually happened?
+
+A PaaS that answers those four questions well can afford a modest dashboard, because the system underneath it tells the truth. A PaaS that answers them badly can be beautiful and will still, eventually, send someone a wrong invoice for a service that did not exist.
+
+The loop is the product. The bill is attached.
