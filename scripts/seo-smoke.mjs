@@ -33,10 +33,13 @@ assertNotIncludes("app/articles/[slug]/page.tsx", "title: `${article.title} | Vi
 for (const route of [
   '"/projects"',
   '"/articles"',
+  '"/compendium"',
   '"/rss"',
   '"/llms.txt"',
   "getTags",
   "getArticles",
+  "compendiumCollections",
+  "getCompendiumNotes",
 ]) {
   assertIncludes("app/sitemap.ts", route);
 }
@@ -58,10 +61,12 @@ for (const schema of [
   "getWebsiteJsonLd",
   "getBreadcrumbJsonLd",
   "getBlogPostingJsonLd",
+  "getCompendiumNoteJsonLd",
   "getItemListJsonLd",
 ]) {
   assertIncludes("app/lib/seo.ts", schema);
 }
+assertNotIncludes("app/lib/seo.ts", "articleBody: note.content");
 
 for (const routeFile of [
   "app/blog/[slug]/page.tsx",
@@ -69,12 +74,17 @@ for (const routeFile of [
   "app/blog/page.tsx",
   "app/projects/page.tsx",
   "app/articles/page.tsx",
+  "app/compendium/page.tsx",
+  "app/compendium/[collection]/page.tsx",
+  "app/compendium/[collection]/[slug]/page.tsx",
 ]) {
   assertIncludes(routeFile, "application/ld+json");
 }
 
 assertIncludes("app/llms.txt/route.ts", "Canonical Topics");
 assertIncludes("app/llms.txt/route.ts", "Best First-Hand Sources");
+assertIncludes("app/llms.txt/route.ts", "Compendium");
+assertIncludes("app/llms.txt/route.ts", "formatCompendium");
 assertIncludes("app/llms.txt/route.ts", "absoluteUrl");
 
 assertIncludes("app/rss/route.ts", "<guid isPermaLink=\"true\">");

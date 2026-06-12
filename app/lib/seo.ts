@@ -1,9 +1,11 @@
 import { baseUrl } from "app/sitemap";
+import type { CompendiumCollection, CompendiumNote } from "app/compendium/types";
 
 export const seoIds = {
   person: `${baseUrl}/#victor-bona`,
   website: `${baseUrl}/#website`,
   blog: `${baseUrl}/blog#blog`,
+  compendium: `${baseUrl}/compendium#compendium`,
 };
 
 export function absoluteUrl(value?: string) {
@@ -147,6 +149,40 @@ export function getBlogPostingJsonLd({
     articleBody: post.content,
     wordCount: post.content.split(/\s+/).length,
     timeRequired: `PT${readingTime}M`,
+  };
+}
+
+export function getCompendiumNoteJsonLd(
+  note: CompendiumNote,
+  collection: CompendiumCollection
+) {
+  const url = `${baseUrl}/compendium/${note.collection}/${note.slug}`;
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "@id": `${url}#article`,
+    headline: note.title,
+    description: note.excerpt,
+    url,
+    inLanguage: "en-US",
+    author: { "@id": seoIds.person },
+    publisher: { "@id": seoIds.person },
+    isPartOf: {
+      "@type": "CreativeWorkSeries",
+      "@id": `${baseUrl}${collection.route}#collection`,
+      name: `${collection.title} Compendium`,
+      url: `${baseUrl}${collection.route}`,
+      isPartOf: { "@id": seoIds.compendium },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": url,
+    },
+    articleSection: collection.title,
+    wordCount: note.wordCount,
+    timeRequired: `PT${note.readingTime}M`,
+    keywords: [collection.title, "compendium", note.title].join(", "),
   };
 }
 

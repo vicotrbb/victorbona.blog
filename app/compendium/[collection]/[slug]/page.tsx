@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getBreadcrumbJsonLd } from "app/lib/seo";
+import { getBreadcrumbJsonLd, getCompendiumNoteJsonLd } from "app/lib/seo";
 import { baseUrl } from "app/sitemap";
 import {
   compendiumCollections,
@@ -24,49 +24,6 @@ type CompendiumNotePageProps = {
 
 function getNoteUrl(collection: string, slug: string) {
   return `${baseUrl}/compendium/${collection}/${slug}`;
-}
-
-function getLocalCompendiumNoteJsonLd({
-  note,
-  collectionTitle,
-}: {
-  note: NonNullable<ReturnType<typeof getCompendiumNote>>;
-  collectionTitle: string;
-}) {
-  const url = getNoteUrl(note.collection, note.slug);
-
-  return {
-    "@context": "https://schema.org",
-    "@type": "TechArticle",
-    "@id": `${url}#article`,
-    headline: note.title,
-    description: note.excerpt,
-    url,
-    inLanguage: "en-US",
-    author: {
-      "@type": "Person",
-      name: "Victor Bona",
-      url: baseUrl,
-    },
-    publisher: {
-      "@type": "Person",
-      name: "Victor Bona",
-      url: baseUrl,
-    },
-    isPartOf: {
-      "@type": "CreativeWorkSeries",
-      name: `${collectionTitle} Compendium`,
-      url: `${baseUrl}/compendium/${note.collection}`,
-    },
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": url,
-    },
-    articleSection: collectionTitle,
-    wordCount: note.wordCount,
-    timeRequired: `PT${note.readingTime}M`,
-    citation: note.sourcePath,
-  };
 }
 
 export function generateStaticParams() {
@@ -134,10 +91,7 @@ export default function CompendiumNotePage({
   const adjacent = getAdjacentCompendiumNotes(note);
   const url = getNoteUrl(note.collection, note.slug);
   const jsonLd = [
-    getLocalCompendiumNoteJsonLd({
-      note,
-      collectionTitle: collection.title,
-    }),
+    getCompendiumNoteJsonLd(note, collection),
     getBreadcrumbJsonLd([
       { name: "Home", item: baseUrl },
       { name: "Compendium", item: `${baseUrl}/compendium` },

@@ -3,6 +3,8 @@ import { getBlogPosts } from "app/blog/utils";
 import { projects } from "app/projects/projects";
 import { getArticles } from "app/articles/articles";
 import { absoluteUrl } from "app/lib/seo";
+import { compendiumCollections } from "app/compendium/collections";
+import { getCompendiumNotes } from "app/compendium/utils";
 
 const siteInfo = {
   name: "Victor Bona Blog",
@@ -78,6 +80,20 @@ function formatArticleLine(article) {
   )} | tags: ${tags}${doi}${pdf} | url: ${baseUrl}/articles/${article.slug}`;
 }
 
+function formatCompendiumCollectionLine(collection) {
+  return `- [compendium:collection] ${collection.title} | ${compact(
+    collection.description
+  )} | url: ${baseUrl}${collection.route}`;
+}
+
+function formatCompendiumNoteLine(note) {
+  return `- [compendium:note] ${note.title} | ${compact(
+    note.excerpt
+  )} | collection: ${note.collection} | readingTime: ${
+    note.readingTime
+  } min | url: ${baseUrl}/compendium/${note.collection}/${note.slug}`;
+}
+
 export async function GET() {
   const posts = getBlogPosts().sort((a, b) => {
     if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
@@ -87,6 +103,9 @@ export async function GET() {
   });
 
   const publishedArticles = getArticles();
+  const compendiumNotes = compendiumCollections.flatMap((collection) =>
+    getCompendiumNotes(collection.id)
+  );
   const prioritySlugs = [
     "building-guara-cloud-like-a-product-not-a-kubernetes-dashboard",
     "backups-are-not-snapshots",
@@ -144,6 +163,19 @@ export async function GET() {
     lines.push("- none yet");
   } else {
     publishedArticles.forEach((article) => lines.push(formatArticleLine(article)));
+  }
+  lines.push("");
+
+  lines.push("## Compendium");
+  if (compendiumCollections.length === 0) {
+    lines.push("- none yet");
+  } else {
+    compendiumCollections.forEach((collection) => {
+      lines.push(formatCompendiumCollectionLine(collection));
+      compendiumNotes
+        .filter((note) => note.collection === collection.id)
+        .forEach((note) => lines.push(formatCompendiumNoteLine(note)));
+    });
   }
   lines.push("");
 
