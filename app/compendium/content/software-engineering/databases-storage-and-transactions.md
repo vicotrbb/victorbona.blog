@@ -520,7 +520,7 @@ Replication lag scenarios:
 
 ## Quorum databases
 
-Quorum systems store each item on N replicas and require enough acknowledgements to consider operations successful. A common rule of thumb is `R + W > N`, where R is read quorum and W is write quorum. This only gives useful consistency under specific assumptions: stable replica sets, no sloppy quorum surprises, correct conflict resolution, and reads that reconcile divergent versions.
+Quorum systems store each item on N replicas and require enough acknowledgements to consider operations successful. A common rule of thumb is `R + W &gt; N`, where R is read quorum and W is write quorum. This only gives useful consistency under specific assumptions: stable replica sets, no sloppy quorum surprises, correct conflict resolution, and reads that reconcile divergent versions.
 
 | Parameter | Meaning | Tradeoff |
 |---|---|---|

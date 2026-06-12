@@ -26,7 +26,7 @@ In microservices and sharded databases:
 - A global lock or two-phase commit (2PC) is slow, brittle, and often avoided.
 
 So the real question becomes:
-> How do we build multi-step operations that are correct even when components fail, retry, and run in partial states?
+&gt; How do we build multi-step operations that are correct even when components fail, retry, and run in partial states?
 
 ### 1.2 The Saga answer
 A **Saga** is a **sequence of local transactions**, one per service/shard.  
@@ -97,9 +97,9 @@ A central **Saga Orchestrator** coordinates steps by sending commands.
 - Still must design for retries/failures
 
 **Flow sketch**
-1. Orchestrator -> `DebitAccount`
-2. Shard/Service replies -> `DebitSucceeded` or `DebitFailed`
-3. Orchestrator -> `CreditAccount`
+1. Orchestrator -&gt; `DebitAccount`
+2. Shard/Service replies -&gt; `DebitSucceeded` or `DebitFailed`
+3. Orchestrator -&gt; `CreditAccount`
 4. On failure, orchestrator triggers compensations
 ## 4) Where to Use the Saga Pattern
 
@@ -111,8 +111,8 @@ A central **Saga Orchestrator** coordinates steps by sending commands.
 
 **Common domains**
 - Payments / Transfers
-- Orders (order -> inventory -> payment -> shipping)
-- Booking systems (reserve -> confirm)
+- Orders (order -&gt; inventory -&gt; payment -&gt; shipping)
+- Booking systems (reserve -&gt; confirm)
 - Cross-shard operations (transfer between users on different shards)
 
 ### Avoid sagas when
@@ -170,7 +170,7 @@ This state machine belongs either in:
 
 ### 6.3 Outbox pattern (don’t lose events)
 The #1 failure mode in event-driven workflows:
-> DB commit succeeds, but publishing the event fails
+&gt; DB commit succeeds, but publishing the event fails
 
 **Outbox pattern** fixes this:
 - Within the same local transaction:
@@ -463,7 +463,7 @@ Goal:
 Sagas don’t give you global ACID.
 They give you something more valuable in distributed systems:
 
-> A controlled, observable, recoverable path through failure.
+&gt; A controlled, observable, recoverable path through failure.
 
 For cross-shard “transactions” (like user-to-user transfers), the Saga pattern is one of the most practical ways to stay correct without sacrificing availability or building a fragile distributed locking system.
 

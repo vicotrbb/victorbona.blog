@@ -361,7 +361,7 @@ class CDNCache {
 | Hash Set | O(n) | 0% | Yes | O(1) |
 | Bloom Filter | O(1)* | 1-5% | No | O(k) |
 | Counting Bloom | O(1)* | 1-5% | Yes | O(k) |
-| Cuckoo Filter | O(n) | <1% | Yes | O(1) |
+| Cuckoo Filter | O(n) | &lt;1% | Yes | O(1) |
 
 *Fixed size regardless of n
 

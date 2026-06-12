@@ -9,7 +9,7 @@ A **Binary Search Tree (BST)** is a binary tree with an ordering property: for e
 * **Intent:** Maintain a sorted collection of elements with efficient search, insertion, and deletion operations.
 * **Use Cases:** Dictionary implementations, database indexing, priority queues (when order matters), range queries, floor/ceiling operations, symbol tables.
 * **Key Properties:**
-  - Left subtree values < node value < right subtree values
+  - Left subtree values &lt; node value &lt; right subtree values
   - Inorder traversal yields sorted sequence
   - Average O(log n) operations (when balanced)
   - Can degenerate to O(n) if unbalanced

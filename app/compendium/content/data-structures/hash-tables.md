@@ -424,8 +424,8 @@ console.log(fibonacci(50)); // Fast due to memoization
 
 **Load Factor** = number of entries / number of buckets
 
-- Low load factor (< 0.5): Wastes memory
-- High load factor (> 0.75): More collisions, slower operations
+- Low load factor (&lt; 0.5): Wastes memory
+- High load factor (&gt; 0.75): More collisions, slower operations
 - Typical threshold: 0.75 (resize when exceeded)
 
 Resizing involves:

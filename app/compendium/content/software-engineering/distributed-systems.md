@@ -224,7 +224,7 @@ A Lamport clock is a logical counter:
 3. Send the counter with each message.
 4. On receive, set local counter to max(local, received) + 1.
 
-If event A happened before event B, then Lamport(A) < Lamport(B). The converse is not guaranteed. If Lamport(A) < Lamport(B), A may or may not have caused B.
+If event A happened before event B, then Lamport(A) &lt; Lamport(B). The converse is not guaranteed. If Lamport(A) &lt; Lamport(B), A may or may not have caused B.
 
 | Benefit | Limitation |
 |---|---|
@@ -248,8 +248,8 @@ Comparison:
 
 | Relationship | Condition | Meaning |
 |---|---|---|
-| A before B | Every component of A <= B and at least one component is lower. | B has observed A causally. |
-| B before A | Every component of B <= A and at least one component is lower. | A has observed B causally. |
+| A before B | Every component of A &lt;= B and at least one component is lower. | B has observed A causally. |
+| B before A | Every component of B &lt;= A and at least one component is lower. | A has observed B causally. |
 | Concurrent | Neither vector dominates the other. | Both updates must be merged or resolved. |
 | Equal | All components equal. | Same causal history. |
 
@@ -578,7 +578,7 @@ Common formula:
 - N: replica count.
 - W: write acknowledgements.
 - R: read acknowledgements.
-- If R + W > N, reads intersect with writes.
+- If R + W &gt; N, reads intersect with writes.
 
 Examples:
 
@@ -588,7 +588,7 @@ Examples:
 | 3 | 3 | 1 | Fast reads, slow writes, no write availability if one replica fails. |
 | 5 | 3 | 3 | Majority quorum, tolerates two failed replicas for reads or writes. |
 | 5 | 1 | 5 | Fast writes, expensive reads, weak write durability until repair. |
-| 5 | 2 | 2 | R + W <= N, reads may miss recent writes. |
+| 5 | 2 | 2 | R + W &lt;= N, reads may miss recent writes. |
 
 Quorum risks:
 

@@ -344,6 +344,25 @@ function findRemainingWikilinksOutsideFences(content) {
   return matches;
 }
 
+function escapeMdxComparisons(segment) {
+  const spans = [];
+  const protectedSegment = segment.replace(
+    /<span className="compendium-external-reference" title="Vault-only reference">.*?<\/span>/g,
+    (span) => {
+      const placeholder = `@@COMPENDIUM_EXTERNAL_REFERENCE_${spans.length}@@`;
+      spans.push(span);
+      return placeholder;
+    }
+  );
+
+  return protectedSegment
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/@@COMPENDIUM_EXTERNAL_REFERENCE_(\d+)@@/g, (_match, index) =>
+      spans[Number(index)]
+    );
+}
+
 function countMatches(content, pattern) {
   return (content.match(pattern) || []).length;
 }
@@ -351,7 +370,6 @@ function countMatches(content, pattern) {
 function importCompendium() {
   const index = buildImportedNoteIndex();
   const report = {
-    generatedAt: new Date().toISOString(),
     source: "selected Obsidian knowledge-base folders",
     outputRoot: path.relative(root, outputRoot),
     collections: [],
@@ -378,9 +396,10 @@ function importCompendium() {
 
     for (const note of notes) {
       const original = fs.readFileSync(note.sourceFile, "utf8");
-      const body = transformOutsideFences(original, (segment) =>
+      const linked = transformOutsideFences(original, (segment) =>
         rewriteWikilinks(segment, note, index, report)
       );
+      const body = transformOutsideFences(linked, escapeMdxComparisons);
       const remainingWikilinks = findRemainingWikilinksOutsideFences(body);
       if (remainingWikilinks.length > 0) {
         remainingWikilinks.forEach((target) => {

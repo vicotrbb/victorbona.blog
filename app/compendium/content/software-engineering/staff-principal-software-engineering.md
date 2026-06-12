@@ -14,7 +14,7 @@ The core shift is from "I can solve hard problems" to "I can make the system, th
 
 For every meaningful system change, ask:
 
-> What system property changes, who owns that property, how can it fail, and how do we know?
+&gt; What system property changes, who owns that property, how can it fail, and how do we know?
 
 That question connects code, architecture, reliability, security, cost, delivery, and organizational design. It also prevents the common failure mode where a team debates implementation details while nobody names the property being protected.
 
@@ -403,7 +403,7 @@ flowchart TD
 
 A weak review says, "The new service is cleaner." A Principal review says:
 
-> This change is acceptable only if we treat it as an authorization migration, not a code cleanup. The invariant is tenant-scoped entitlement correctness. The rollout must prove old and new decisions match before enforcement, and fallback behavior must prevent a central outage from becoming a global denial event.
+&gt; This change is acceptable only if we treat it as an authorization migration, not a code cleanup. The invariant is tenant-scoped entitlement correctness. The rollout must prove old and new decisions match before enforcement, and fallback behavior must prevent a central outage from becoming a global denial event.
 
 ## Concrete example: high-throughput queue change
 

@@ -33,7 +33,7 @@ Weighted Graph:            Directed Acyclic Graph (DAG):
 ## Graph Representations
 
 ### Adjacency List
-Best for sparse graphs (E << V²)
+Best for sparse graphs (E &lt;&lt; V²)
 
 ```typescript
 class Graph<T> {
@@ -558,7 +558,7 @@ function primMST<T>(graph: WeightedGraph<T>): [T, T, number][] {
 ## When to Use Different Representations
 
 **Adjacency List:**
-- Sparse graphs (E << V²)
+- Sparse graphs (E &lt;&lt; V²)
 - Need to iterate over neighbors
 - Memory is constrained
 

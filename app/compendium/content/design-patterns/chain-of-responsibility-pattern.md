@@ -81,6 +81,6 @@ tier1.handleIssue(3);
 // Tier3 resolved the issue.
 ```
 
-In this code, we set up a chain: Tier1 -> Tier2 -> Tier3. The `handleIssue` method in each tier decides if it can handle the issue based on `issueLevel`. If not, it calls `super.handleIssue(issueLevel)` which forwards to the next in chain. The client simply calls `tier1.handleIssue(...)` and doesn’t need to know the details of escalation. The request travels through the chain until someone handles it (or the chain ends).
+In this code, we set up a chain: Tier1 -&gt; Tier2 -&gt; Tier3. The `handleIssue` method in each tier decides if it can handle the issue based on `issueLevel`. If not, it calls `super.handleIssue(issueLevel)` which forwards to the next in chain. The client simply calls `tier1.handleIssue(...)` and doesn’t need to know the details of escalation. The request travels through the chain until someone handles it (or the chain ends).
 
 The Chain of Responsibility pattern reduces coupling by **avoiding explicit if/switch logic mapping requests to handlers**; new handlers can be added easily without modifying senders. It also allows multiple handlers to attempt processing, which can add flexibility (e.g., multiple logging handlers all get a shot). One thing to watch out for is that if no handler handles the request, it might fall off the end of the chain silently — so sometimes a default handler at the end is added.
