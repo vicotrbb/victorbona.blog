@@ -121,9 +121,9 @@ export function CollectionRows({
 
 export function NoteRow({ note }: { note: CompendiumNote }) {
   return (
-    <article
-      id={note.slug}
-      className="scroll-mt-8 border-b border-[var(--color-border)] py-3 last:border-b-0"
+    <Link
+      href={`/compendium/${note.collection}/${note.slug}`}
+      className="group block border-b border-[var(--color-border)] py-3 outline-none transition-colors last:border-b-0 hover:bg-[var(--color-surface)] focus-visible:bg-[var(--color-surface)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-background)]"
     >
       <div className="grid gap-2 sm:grid-cols-[11rem_1fr] sm:gap-4">
         <MetadataLine
@@ -136,7 +136,7 @@ export function NoteRow({ note }: { note: CompendiumNote }) {
           ]}
         />
         <div className="min-w-0">
-          <h3 className="text-base font-semibold leading-snug text-[var(--color-foreground)]">
+          <h3 className="text-base font-semibold leading-snug text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] group-focus-visible:text-[var(--color-accent)]">
             {note.title}
           </h3>
           <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-[var(--color-muted-foreground)]">
@@ -144,7 +144,7 @@ export function NoteRow({ note }: { note: CompendiumNote }) {
           </p>
         </div>
       </div>
-    </article>
+    </Link>
   );
 }
 

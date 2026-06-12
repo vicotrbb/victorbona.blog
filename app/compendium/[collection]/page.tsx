@@ -76,7 +76,7 @@ export default function CompendiumCollectionPage({
       `${collection.title} Compendium Notes`,
       notes.map((note) => ({
         name: note.title,
-        url: `${baseUrl}${collection.route}#${note.slug}`,
+        url: `${baseUrl}/compendium/${note.collection}/${note.slug}`,
         description: note.excerpt,
       }))
     ),
