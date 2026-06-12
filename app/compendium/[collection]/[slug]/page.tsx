@@ -63,7 +63,6 @@ function getLocalCompendiumNoteJsonLd({
       "@id": url,
     },
     articleSection: collectionTitle,
-    articleBody: note.content,
     wordCount: note.wordCount,
     timeRequired: `PT${note.readingTime}M`,
     citation: note.sourcePath,

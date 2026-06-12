@@ -103,9 +103,9 @@ export function CompendiumShell({
         {(relatedNotes.length > 0 || previous || next) && (
           <footer className="mt-10 border-t border-[var(--color-rule)] pt-5">
             {relatedNotes.length > 0 && (
-              <section aria-labelledby="related-notes">
+              <section aria-labelledby="compendium-related-notes">
                 <h2
-                  id="related-notes"
+                  id="compendium-related-notes"
                   className="metadata-type text-[var(--color-muted-foreground)]"
                 >
                   Related notes
