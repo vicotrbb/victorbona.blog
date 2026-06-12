@@ -235,7 +235,7 @@ function levelOrder<T>(root: TreeNode<T> | null): T[][] {
 //     2   3
 //    / \   \
 //   4   5   6
-// Level order: [ [1], [2, 3], [4, 5, 6] ]
+// Level order: [[1], [2, 3], [4, 5, 6]]
 ```
 
 ## Common Binary Tree Problems

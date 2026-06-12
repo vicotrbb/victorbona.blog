@@ -185,7 +185,7 @@ function countComponents(n: number, edges: [number, number][]): number {
   return ds.getNumSets();
 }
 
-console.log(countComponents(5, [ [0, 1], [1, 2], [3, 4] ])); // 2
+console.log(countComponents(5, [[0, 1], [1, 2], [3, 4]])); // 2
 // Components: {0,1,2} and {3,4}
 ```
 
@@ -205,8 +205,8 @@ function hasCycle(n: number, edges: [number, number][]): boolean {
   return false;
 }
 
-console.log(hasCycle(4, [ [0, 1], [1, 2], [2, 0] ])); // true
-console.log(hasCycle(4, [ [0, 1], [1, 2], [2, 3] ])); // false
+console.log(hasCycle(4, [[0, 1], [1, 2], [2, 0]])); // true
+console.log(hasCycle(4, [[0, 1], [1, 2], [2, 3]])); // false
 ```
 
 ### Kruskal's Minimum Spanning Tree
@@ -313,7 +313,7 @@ function findRedundantConnection(edges: [number, number][]): [number, number] {
   return [-1, -1];
 }
 
-console.log(findRedundantConnection([ [1,2], [1,3], [2,3] ])); // [2, 3]
+console.log(findRedundantConnection([[1,2], [1,3], [2,3]])); // [2, 3]
 ```
 
 ### Largest Component by Size
@@ -360,7 +360,7 @@ class WeightedUnionFind {
     const [root, parentWeight] = this.find(this.parent[x]);
     this.parent[x] = root;
     this.weight[x] += parentWeight;
-    return [root, this.weight[x] ];
+    return [root, this.weight[x]];
   }
 
   // Union with weight: weight[y] - weight[x] = w

@@ -191,7 +191,7 @@ class BTree<K, V> {
       if (!node.isLeaf) {
         this.inorderHelper(node.children[i], result);
       }
-      result.push([node.keys[i], node.values[i] ]);
+      result.push([node.keys[i], node.values[i]]);
     }
     if (!node.isLeaf) {
       this.inorderHelper(node.children[node.keys.length], result);
@@ -219,7 +219,7 @@ btree.insert(15, "fifteen");
 btree.insert(25, "twenty-five");
 
 console.log(btree.search(15));  // "fifteen"
-console.log(btree.inorder());   // [ [5,"five"], [10,"ten"], ...]
+console.log(btree.inorder());   // [[5,"five"], [10,"ten"], ...]
 ```
 
 ## B+ Tree Implementation (Simplified)
@@ -292,7 +292,7 @@ class BPlusTree<K, V> {
       for (let i = 0; i < node.keys.length; i++) {
         if (this.compareFn(node.keys[i], start) >= 0 &&
             this.compareFn(node.keys[i], end) <= 0) {
-          result.push([node.keys[i], node.values[i] ]);
+          result.push([node.keys[i], node.values[i]]);
         }
         if (this.compareFn(node.keys[i], end) > 0) {
           return result;

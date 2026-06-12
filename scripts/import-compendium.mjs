@@ -303,7 +303,7 @@ function rewriteWikilinks(content, currentNote, index, report) {
   });
 }
 
-function normalizeDoubleBracketsInCodeBlocks(content) {
+function transformOutsideFences(content, transform) {
   const lines = content.split(/(\r?\n)/);
   let inFence = false;
   let fenceMarker = "";
@@ -325,11 +325,23 @@ function normalizeDoubleBracketsInCodeBlocks(content) {
         return segment;
       }
 
-      if (!inFence) return segment;
-
-      return segment.replace(/\[\[/g, "[ [").replace(/\]\]/g, "] ]");
+      return inFence ? segment : transform(segment);
     })
     .join("");
+}
+
+function findRemainingWikilinksOutsideFences(content) {
+  const matches = [];
+
+  transformOutsideFences(content, (segment) => {
+    for (const match of segment.matchAll(/\[\[([^\]]+)\]\]/g)) {
+      matches.push(match[1].trim());
+    }
+
+    return segment;
+  });
+
+  return matches;
 }
 
 function countMatches(content, pattern) {
@@ -340,7 +352,7 @@ function importCompendium() {
   const index = buildImportedNoteIndex();
   const report = {
     generatedAt: new Date().toISOString(),
-    vaultRoot,
+    source: "selected Obsidian knowledge-base folders",
     outputRoot: path.relative(root, outputRoot),
     collections: [],
     copiedNotes: [],
@@ -366,9 +378,25 @@ function importCompendium() {
 
     for (const note of notes) {
       const original = fs.readFileSync(note.sourceFile, "utf8");
-      const body = normalizeDoubleBracketsInCodeBlocks(
-        rewriteWikilinks(original, note, index, report)
+      const body = transformOutsideFences(original, (segment) =>
+        rewriteWikilinks(segment, note, index, report)
       );
+      const remainingWikilinks = findRemainingWikilinksOutsideFences(body);
+      if (remainingWikilinks.length > 0) {
+        remainingWikilinks.forEach((target) => {
+          report.unresolvedReferences.push({
+            from: note.sourcePath,
+            target,
+            reason: "unrewritten-wikilink",
+          });
+        });
+        throw new Error(
+          `Unresolved wikilinks remain outside fenced code in ${note.sourcePath}: ${remainingWikilinks.join(
+            ", "
+          )}`
+        );
+      }
+
       const mermaidBlocks = countMatches(body, /```mermaid/g);
       report.mermaidBlocks += mermaidBlocks;
       const content = `${frontmatterFor(note)}${body}${

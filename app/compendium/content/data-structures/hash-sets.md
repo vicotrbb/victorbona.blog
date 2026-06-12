@@ -318,7 +318,7 @@ When you need ordered iteration or range operations, use a tree-based set:
 // Use a BST or library like 'sorted-set'
 class TreeSet<T> {
   // Implemented using Red-Black Tree or AVL Tree
-  // See [Red-Black Trees](/compendium/data-structures/red-black-trees) or [AVL Trees](/compendium/data-structures/avl-trees)
+  // See [[Red-Black Trees]] or [[AVL Trees]]
 }
 ```
 

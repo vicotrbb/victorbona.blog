@@ -247,8 +247,8 @@ skipList.insert(2, "two");
 skipList.insert(4, "four");
 
 console.log(skipList.search(3));      // "three"
-console.log(skipList.toArray());      // [ [1,"one"], [2,"two"], ...]
-console.log(skipList.range(2, 4));    // [ [2,"two"], [3,"three"], [4,"four"] ]
+console.log(skipList.toArray());      // [[1,"one"], [2,"two"], ...]
+console.log(skipList.range(2, 4));    // [[2,"two"], [3,"three"], [4,"four"]]
 console.log(skipList.min());          // [1, "one"]
 console.log(skipList.max());          // [5, "five"]
 

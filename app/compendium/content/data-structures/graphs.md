@@ -275,7 +275,7 @@ function dijkstra<T>(
 ): Map<T, { distance: number; previous: T | null }> {
   const distances = new Map<T, { distance: number; previous: T | null }>();
   const visited = new Set<T>();
-  const pq: [T, number][] = <span className="compendium-external-reference" title="Vault-only reference">start, 0</span>;
+  const pq: [T, number][] = [[start, 0]];
 
   // Initialize
   for (const vertex of graph.getVertices()) {

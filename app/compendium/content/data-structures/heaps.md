@@ -74,7 +74,7 @@ class MinHeap<T> {
   }
 
   private swap(i: number, j: number): void {
-    [this.heap[i], this.heap[j] ] = [this.heap[j], this.heap[i] ];
+    [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
   }
 
   // O(log n) - Insert element
@@ -194,7 +194,7 @@ class MaxHeap<T> {
   }
 
   private swap(i: number, j: number): void {
-    [this.heap[i], this.heap[j] ] = [this.heap[j], this.heap[i] ];
+    [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
   }
 
   insert(value: T): void {
@@ -286,7 +286,7 @@ function heapSort(arr: number[]): number[] {
 
   // Extract elements one by one
   for (let i = n - 1; i > 0; i--) {
-    [arr[0], arr[i] ] = [arr[i], arr[0] ];
+    [arr[0], arr[i]] = [arr[i], arr[0]];
     heapifyDown(arr, i, 0);
   }
 
@@ -302,7 +302,7 @@ function heapifyDown(arr: number[], n: number, i: number): void {
   if (right < n && arr[right] > arr[largest]) largest = right;
 
   if (largest !== i) {
-    [arr[i], arr[largest] ] = [arr[largest], arr[i] ];
+    [arr[i], arr[largest]] = [arr[largest], arr[i]];
     heapifyDown(arr, n, largest);
   }
 }
@@ -369,7 +369,7 @@ function mergeKSortedArrays(arrays: number[][]): number[] {
   return result;
 }
 
-console.log(mergeKSortedArrays([ [1, 4, 7], [2, 5, 8], [3, 6, 9] ]));
+console.log(mergeKSortedArrays([[1, 4, 7], [2, 5, 8], [3, 6, 9]]));
 // [1, 2, 3, 4, 5, 6, 7, 8, 9]
 ```
 

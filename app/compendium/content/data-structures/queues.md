@@ -308,10 +308,10 @@ function bfs(graph: Map<number, number[]>, start: number): number[] {
 
 // Example graph: 1 -> [2, 3], 2 -> [4], 3 -> [4]
 const graph = new Map([
-  [1, [2, 3] ],
-  [2, [4] ],
-  [3, [4] ],
-  [4, [] ]
+  [1, [2, 3]],
+  [2, [4]],
+  [3, [4]],
+  [4, []]
 ]);
 console.log(bfs(graph, 1)); // [1, 2, 3, 4]
 ```
@@ -402,7 +402,7 @@ function maxSlidingWindow(nums: number[], k: number): number[] {
     }
 
     // Remove smaller elements (they won't be maximum)
-    while (deque.length && nums[deque[deque.length - 1] ] < nums[i]) {
+    while (deque.length && nums[deque[deque.length - 1]] < nums[i]) {
       deque.pop();
     }
 
@@ -410,7 +410,7 @@ function maxSlidingWindow(nums: number[], k: number): number[] {
 
     // Add to result once window is full
     if (i >= k - 1) {
-      result.push(nums[deque[0] ]);
+      result.push(nums[deque[0]]);
     }
   }
 

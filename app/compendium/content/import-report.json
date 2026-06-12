@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-12T22:18:30.602Z",
-  "vaultRoot": "/Users/victorbona/Documents/Obsidian Vault",
+  "generatedAt": "2026-06-12T22:23:15.802Z",
+  "source": "selected Obsidian knowledge-base folders",
   "outputRoot": "app/compendium/content",
   "collections": [
     {
@@ -3144,18 +3144,6 @@
     },
     {
       "from": "Knowledge base/Data Structures/Hash Sets.md",
-      "to": "Knowledge base/Data Structures/AVL Trees.md",
-      "href": "/compendium/data-structures/avl-trees",
-      "label": "AVL Trees"
-    },
-    {
-      "from": "Knowledge base/Data Structures/Hash Sets.md",
-      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
-      "href": "/compendium/data-structures/red-black-trees",
-      "label": "Red-Black Trees"
-    },
-    {
-      "from": "Knowledge base/Data Structures/Hash Sets.md",
       "to": "Knowledge base/Data Structures/Hash Tables.md",
       "href": "/compendium/data-structures/hash-tables",
       "label": "Hash Tables"
@@ -3171,12 +3159,6 @@
       "to": "Knowledge base/Data Structures/Hash Tables.md",
       "href": "/compendium/data-structures/hash-tables",
       "label": "Hash Tables"
-    },
-    {
-      "from": "Knowledge base/Data Structures/Hash Tables.md",
-      "to": "Knowledge base/Data Structures/LRU Cache.md",
-      "href": "/compendium/data-structures/lru-cache",
-      "label": "LRU Cache"
     },
     {
       "from": "Knowledge base/Data Structures/Hash Tables.md",
@@ -3969,11 +3951,6 @@
       "from": "Knowledge base/Data Structures/AVL Trees.md",
       "target": "Splay Trees",
       "label": "Splay Trees"
-    },
-    {
-      "from": "Knowledge base/Data Structures/Graphs.md",
-      "target": "start, 0",
-      "label": "start, 0"
     }
   ],
   "unresolvedReferences": [],

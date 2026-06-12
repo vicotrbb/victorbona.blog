@@ -386,12 +386,12 @@ function groupAnagrams(strs: string[]): string[][] {
 }
 
 console.log(groupAnagrams(["eat", "tea", "tan", "ate", "nat", "bat"]));
-// [ ["eat", "tea", "ate"], ["tan", "nat"], ["bat"] ]
+// [["eat", "tea", "ate"], ["tan", "nat"], ["bat"]]
 ```
 
 ### LRU Cache (with Hash Map)
 ```typescript
-// See [LRU Cache](/compendium/data-structures/lru-cache) for full implementation
+// See [[LRU Cache]] for full implementation
 // Hash map provides O(1) lookup
 // Doubly linked list provides O(1) reordering
 ```
