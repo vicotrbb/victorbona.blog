@@ -4,6 +4,7 @@ const navItems = [
   { href: "/blog", label: "Writing" },
   { href: "/projects", label: "Systems" },
   { href: "/articles", label: "Papers" },
+  { href: "/compendium", label: "Compendium" },
 ];
 
 export function Navbar() {
