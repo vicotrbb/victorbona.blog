@@ -83,12 +83,17 @@ function escapeYaml(value) {
   return JSON.stringify(value);
 }
 
+function publicSourcePath(sourcePath) {
+  if (!path.isAbsolute(sourcePath)) return sourcePath;
+  return path.relative(vaultRoot, sourcePath).split(path.sep).join("/");
+}
+
 function frontmatterFor(note) {
   return [
     "---",
     `title: ${escapeYaml(note.title)}`,
     `collection: ${escapeYaml(note.collection)}`,
-    `sourcePath: ${escapeYaml(note.sourcePath)}`,
+    `sourcePath: ${escapeYaml(publicSourcePath(note.sourcePath))}`,
     `order: ${note.order}`,
     "---",
     "",
