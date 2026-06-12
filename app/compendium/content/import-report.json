@@ -1,0 +1,3981 @@
+{
+  "generatedAt": "2026-06-12T22:18:30.602Z",
+  "vaultRoot": "/Users/victorbona/Documents/Obsidian Vault",
+  "outputRoot": "app/compendium/content",
+  "collections": [
+    {
+      "id": "software-engineering",
+      "title": "Software Engineering",
+      "noteCount": 16
+    },
+    {
+      "id": "data-structures",
+      "title": "Data Structures",
+      "noteCount": 21
+    },
+    {
+      "id": "design-patterns",
+      "title": "Design Patterns",
+      "noteCount": 25
+    }
+  ],
+  "copiedNotes": [
+    {
+      "title": "Staff Principal Software Engineering",
+      "collection": "software-engineering",
+      "slug": "staff-principal-software-engineering",
+      "sourcePath": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "outputPath": "app/compendium/content/software-engineering/staff-principal-software-engineering.md",
+      "order": 0,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Engineering Fundamentals",
+      "collection": "software-engineering",
+      "slug": "engineering-fundamentals",
+      "sourcePath": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "outputPath": "app/compendium/content/software-engineering/engineering-fundamentals.md",
+      "order": 1,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Architecture and Design",
+      "collection": "software-engineering",
+      "slug": "architecture-and-design",
+      "sourcePath": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "outputPath": "app/compendium/content/software-engineering/architecture-and-design.md",
+      "order": 2,
+      "mermaidBlocks": 14
+    },
+    {
+      "title": "Data Structures Algorithms and Complexity",
+      "collection": "software-engineering",
+      "slug": "data-structures-algorithms-and-complexity",
+      "sourcePath": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "outputPath": "app/compendium/content/software-engineering/data-structures-algorithms-and-complexity.md",
+      "order": 3,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Databases Storage and Transactions",
+      "collection": "software-engineering",
+      "slug": "databases-storage-and-transactions",
+      "sourcePath": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "outputPath": "app/compendium/content/software-engineering/databases-storage-and-transactions.md",
+      "order": 4,
+      "mermaidBlocks": 11
+    },
+    {
+      "title": "Distributed Systems",
+      "collection": "software-engineering",
+      "slug": "distributed-systems",
+      "sourcePath": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "outputPath": "app/compendium/content/software-engineering/distributed-systems.md",
+      "order": 5,
+      "mermaidBlocks": 12
+    },
+    {
+      "title": "Caching Queues and Streaming",
+      "collection": "software-engineering",
+      "slug": "caching-queues-and-streaming",
+      "sourcePath": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "outputPath": "app/compendium/content/software-engineering/caching-queues-and-streaming.md",
+      "order": 6,
+      "mermaidBlocks": 7
+    },
+    {
+      "title": "APIs Contracts and Integration",
+      "collection": "software-engineering",
+      "slug": "apis-contracts-and-integration",
+      "sourcePath": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "outputPath": "app/compendium/content/software-engineering/apis-contracts-and-integration.md",
+      "order": 7,
+      "mermaidBlocks": 6
+    },
+    {
+      "title": "Reliability Observability and Operations",
+      "collection": "software-engineering",
+      "slug": "reliability-observability-and-operations",
+      "sourcePath": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "outputPath": "app/compendium/content/software-engineering/reliability-observability-and-operations.md",
+      "order": 8,
+      "mermaidBlocks": 5
+    },
+    {
+      "title": "Security and Supply Chain",
+      "collection": "software-engineering",
+      "slug": "security-and-supply-chain",
+      "sourcePath": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "outputPath": "app/compendium/content/software-engineering/security-and-supply-chain.md",
+      "order": 9,
+      "mermaidBlocks": 5
+    },
+    {
+      "title": "Testing Verification and Quality Bars",
+      "collection": "software-engineering",
+      "slug": "testing-verification-and-quality-bars",
+      "sourcePath": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "outputPath": "app/compendium/content/software-engineering/testing-verification-and-quality-bars.md",
+      "order": 10,
+      "mermaidBlocks": 4
+    },
+    {
+      "title": "Performance Capacity and Cost",
+      "collection": "software-engineering",
+      "slug": "performance-capacity-and-cost",
+      "sourcePath": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "outputPath": "app/compendium/content/software-engineering/performance-capacity-and-cost.md",
+      "order": 11,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Delivery Migrations and Release Engineering",
+      "collection": "software-engineering",
+      "slug": "delivery-migrations-and-release-engineering",
+      "sourcePath": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "outputPath": "app/compendium/content/software-engineering/delivery-migrations-and-release-engineering.md",
+      "order": 12,
+      "mermaidBlocks": 6
+    },
+    {
+      "title": "Technical Leadership and Execution",
+      "collection": "software-engineering",
+      "slug": "technical-leadership-and-execution",
+      "sourcePath": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "outputPath": "app/compendium/content/software-engineering/technical-leadership-and-execution.md",
+      "order": 13,
+      "mermaidBlocks": 6
+    },
+    {
+      "title": "AI Native Software Engineering",
+      "collection": "software-engineering",
+      "slug": "ai-native-software-engineering",
+      "sourcePath": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "outputPath": "app/compendium/content/software-engineering/ai-native-software-engineering.md",
+      "order": 14,
+      "mermaidBlocks": 9
+    },
+    {
+      "title": "Software Engineering",
+      "collection": "software-engineering",
+      "slug": "software-engineering",
+      "sourcePath": "Knowledge base/Software Engineering/Software Engineering.md",
+      "outputPath": "app/compendium/content/software-engineering/software-engineering.md",
+      "order": 16,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Arrays",
+      "collection": "data-structures",
+      "slug": "arrays",
+      "sourcePath": "Knowledge base/Data Structures/Arrays.md",
+      "outputPath": "app/compendium/content/data-structures/arrays.md",
+      "order": 1,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "AVL Trees",
+      "collection": "data-structures",
+      "slug": "avl-trees",
+      "sourcePath": "Knowledge base/Data Structures/AVL Trees.md",
+      "outputPath": "app/compendium/content/data-structures/avl-trees.md",
+      "order": 2,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "B-Trees",
+      "collection": "data-structures",
+      "slug": "b-trees",
+      "sourcePath": "Knowledge base/Data Structures/B-Trees.md",
+      "outputPath": "app/compendium/content/data-structures/b-trees.md",
+      "order": 3,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Binary Search Trees",
+      "collection": "data-structures",
+      "slug": "binary-search-trees",
+      "sourcePath": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "outputPath": "app/compendium/content/data-structures/binary-search-trees.md",
+      "order": 4,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Binary Trees",
+      "collection": "data-structures",
+      "slug": "binary-trees",
+      "sourcePath": "Knowledge base/Data Structures/Binary Trees.md",
+      "outputPath": "app/compendium/content/data-structures/binary-trees.md",
+      "order": 5,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Bloom Filters",
+      "collection": "data-structures",
+      "slug": "bloom-filters",
+      "sourcePath": "Knowledge base/Data Structures/Bloom Filters.md",
+      "outputPath": "app/compendium/content/data-structures/bloom-filters.md",
+      "order": 6,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Data Structures",
+      "collection": "data-structures",
+      "slug": "data-structures",
+      "sourcePath": "Knowledge base/Data Structures/Data Structures.md",
+      "outputPath": "app/compendium/content/data-structures/data-structures.md",
+      "order": 7,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Disjoint Set (Union-Find)",
+      "collection": "data-structures",
+      "slug": "disjoint-set-union-find",
+      "sourcePath": "Knowledge base/Data Structures/Disjoint Set (Union-Find).md",
+      "outputPath": "app/compendium/content/data-structures/disjoint-set-union-find.md",
+      "order": 8,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Fenwick Trees",
+      "collection": "data-structures",
+      "slug": "fenwick-trees",
+      "sourcePath": "Knowledge base/Data Structures/Fenwick Trees.md",
+      "outputPath": "app/compendium/content/data-structures/fenwick-trees.md",
+      "order": 9,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Graphs",
+      "collection": "data-structures",
+      "slug": "graphs",
+      "sourcePath": "Knowledge base/Data Structures/Graphs.md",
+      "outputPath": "app/compendium/content/data-structures/graphs.md",
+      "order": 10,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Hash Sets",
+      "collection": "data-structures",
+      "slug": "hash-sets",
+      "sourcePath": "Knowledge base/Data Structures/Hash Sets.md",
+      "outputPath": "app/compendium/content/data-structures/hash-sets.md",
+      "order": 11,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Hash Tables",
+      "collection": "data-structures",
+      "slug": "hash-tables",
+      "sourcePath": "Knowledge base/Data Structures/Hash Tables.md",
+      "outputPath": "app/compendium/content/data-structures/hash-tables.md",
+      "order": 12,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Heaps",
+      "collection": "data-structures",
+      "slug": "heaps",
+      "sourcePath": "Knowledge base/Data Structures/Heaps.md",
+      "outputPath": "app/compendium/content/data-structures/heaps.md",
+      "order": 13,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Linked Lists",
+      "collection": "data-structures",
+      "slug": "linked-lists",
+      "sourcePath": "Knowledge base/Data Structures/Linked Lists.md",
+      "outputPath": "app/compendium/content/data-structures/linked-lists.md",
+      "order": 14,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "LRU Cache",
+      "collection": "data-structures",
+      "slug": "lru-cache",
+      "sourcePath": "Knowledge base/Data Structures/LRU Cache.md",
+      "outputPath": "app/compendium/content/data-structures/lru-cache.md",
+      "order": 15,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Queues",
+      "collection": "data-structures",
+      "slug": "queues",
+      "sourcePath": "Knowledge base/Data Structures/Queues.md",
+      "outputPath": "app/compendium/content/data-structures/queues.md",
+      "order": 16,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Red-Black Trees",
+      "collection": "data-structures",
+      "slug": "red-black-trees",
+      "sourcePath": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "outputPath": "app/compendium/content/data-structures/red-black-trees.md",
+      "order": 17,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Segment Trees",
+      "collection": "data-structures",
+      "slug": "segment-trees",
+      "sourcePath": "Knowledge base/Data Structures/Segment Trees.md",
+      "outputPath": "app/compendium/content/data-structures/segment-trees.md",
+      "order": 18,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Skip Lists",
+      "collection": "data-structures",
+      "slug": "skip-lists",
+      "sourcePath": "Knowledge base/Data Structures/Skip Lists.md",
+      "outputPath": "app/compendium/content/data-structures/skip-lists.md",
+      "order": 19,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Stacks",
+      "collection": "data-structures",
+      "slug": "stacks",
+      "sourcePath": "Knowledge base/Data Structures/Stacks.md",
+      "outputPath": "app/compendium/content/data-structures/stacks.md",
+      "order": 20,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Tries",
+      "collection": "data-structures",
+      "slug": "tries",
+      "sourcePath": "Knowledge base/Data Structures/Tries.md",
+      "outputPath": "app/compendium/content/data-structures/tries.md",
+      "order": 21,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Adapter Pattern",
+      "collection": "design-patterns",
+      "slug": "adapter-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Adapter Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/adapter-pattern.md",
+      "order": 1,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Bridge Pattern",
+      "collection": "design-patterns",
+      "slug": "bridge-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Bridge Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/bridge-pattern.md",
+      "order": 2,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Builder Pattern",
+      "collection": "design-patterns",
+      "slug": "builder-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Builder Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/builder-pattern.md",
+      "order": 3,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Chain of Responsibility Pattern",
+      "collection": "design-patterns",
+      "slug": "chain-of-responsibility-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Chain of Responsibility Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/chain-of-responsibility-pattern.md",
+      "order": 4,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Command Pattern",
+      "collection": "design-patterns",
+      "slug": "command-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Command Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/command-pattern.md",
+      "order": 5,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Composite Pattern",
+      "collection": "design-patterns",
+      "slug": "composite-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Composite Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/composite-pattern.md",
+      "order": 6,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "CQRS (Command Query Responsibility Segregation)",
+      "collection": "design-patterns",
+      "slug": "cqrs-command-query-responsibility-segregation",
+      "sourcePath": "Knowledge base/Design Patterns/CQRS (Command Query Responsibility Segregation).md",
+      "outputPath": "app/compendium/content/design-patterns/cqrs-command-query-responsibility-segregation.md",
+      "order": 7,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Decorator Pattern",
+      "collection": "design-patterns",
+      "slug": "decorator-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Decorator Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/decorator-pattern.md",
+      "order": 8,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Dependency Injection (and Inversion of Control)",
+      "collection": "design-patterns",
+      "slug": "dependency-injection-and-inversion-of-control",
+      "sourcePath": "Knowledge base/Design Patterns/Dependency Injection (and Inversion of Control).md",
+      "outputPath": "app/compendium/content/design-patterns/dependency-injection-and-inversion-of-control.md",
+      "order": 9,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Design patterns",
+      "collection": "design-patterns",
+      "slug": "design-patterns",
+      "sourcePath": "Knowledge base/Design Patterns/Design patterns.md",
+      "outputPath": "app/compendium/content/design-patterns/design-patterns.md",
+      "order": 10,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Event Sourcing",
+      "collection": "design-patterns",
+      "slug": "event-sourcing",
+      "sourcePath": "Knowledge base/Design Patterns/Event Sourcing.md",
+      "outputPath": "app/compendium/content/design-patterns/event-sourcing.md",
+      "order": 11,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Facade Pattern",
+      "collection": "design-patterns",
+      "slug": "facade-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Facade Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/facade-pattern.md",
+      "order": 12,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Factory Method and Abstract Factory",
+      "collection": "design-patterns",
+      "slug": "factory-method-and-abstract-factory",
+      "sourcePath": "Knowledge base/Design Patterns/Factory Method and Abstract Factory.md",
+      "outputPath": "app/compendium/content/design-patterns/factory-method-and-abstract-factory.md",
+      "order": 13,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Microkernel (Plugin) Architecture",
+      "collection": "design-patterns",
+      "slug": "microkernel-plugin-architecture",
+      "sourcePath": "Knowledge base/Design Patterns/Microkernel (Plugin) Architecture.md",
+      "outputPath": "app/compendium/content/design-patterns/microkernel-plugin-architecture.md",
+      "order": 14,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Microservices Architecture",
+      "collection": "design-patterns",
+      "slug": "microservices-architecture",
+      "sourcePath": "Knowledge base/Design Patterns/Microservices Architecture.md",
+      "outputPath": "app/compendium/content/design-patterns/microservices-architecture.md",
+      "order": 15,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Model-View-Controller (MVC)",
+      "collection": "design-patterns",
+      "slug": "model-view-controller-mvc",
+      "sourcePath": "Knowledge base/Design Patterns/Model-View-Controller (MVC).md",
+      "outputPath": "app/compendium/content/design-patterns/model-view-controller-mvc.md",
+      "order": 16,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Observer Pattern",
+      "collection": "design-patterns",
+      "slug": "observer-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Observer Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/observer-pattern.md",
+      "order": 17,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Outbox Pattern",
+      "collection": "design-patterns",
+      "slug": "outbox-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Outbox Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/outbox-pattern.md",
+      "order": 18,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Prototype Pattern",
+      "collection": "design-patterns",
+      "slug": "prototype-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Prototype Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/prototype-pattern.md",
+      "order": 19,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Proxy Pattern",
+      "collection": "design-patterns",
+      "slug": "proxy-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Proxy Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/proxy-pattern.md",
+      "order": 20,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Repository Pattern",
+      "collection": "design-patterns",
+      "slug": "repository-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Repository Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/repository-pattern.md",
+      "order": 21,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Saga Pattern for Distributed Transactions",
+      "collection": "design-patterns",
+      "slug": "saga-pattern-for-distributed-transactions",
+      "sourcePath": "Knowledge base/Design Patterns/Saga Pattern for Distributed Transactions.md",
+      "outputPath": "app/compendium/content/design-patterns/saga-pattern-for-distributed-transactions.md",
+      "order": 22,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Singleton",
+      "collection": "design-patterns",
+      "slug": "singleton",
+      "sourcePath": "Knowledge base/Design Patterns/Singleton.md",
+      "outputPath": "app/compendium/content/design-patterns/singleton.md",
+      "order": 23,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Strategy Pattern",
+      "collection": "design-patterns",
+      "slug": "strategy-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Strategy Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/strategy-pattern.md",
+      "order": 24,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Template Method Pattern",
+      "collection": "design-patterns",
+      "slug": "template-method-pattern",
+      "sourcePath": "Knowledge base/Design Patterns/Template Method Pattern.md",
+      "outputPath": "app/compendium/content/design-patterns/template-method-pattern.md",
+      "order": 25,
+      "mermaidBlocks": 0
+    }
+  ],
+  "convertedLinks": [
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
+      "label": "01 Engineering Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "href": "/compendium/software-engineering/data-structures-algorithms-and-complexity",
+      "label": "03 Data Structures Algorithms and Complexity"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "href": "/compendium/software-engineering/architecture-and-design",
+      "label": "02 Architecture and Design"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
+      "label": "06 Caching Queues and Streaming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
+      "label": "04 Databases Storage and Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
+      "label": "07 APIs Contracts and Integration"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
+      "label": "09 Security and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
+      "label": "11 Performance Capacity and Cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering",
+      "label": "12 Delivery Migrations and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "href": "/compendium/software-engineering/technical-leadership-and-execution",
+      "label": "13 Technical Leadership and Execution"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "href": "/compendium/software-engineering/ai-native-software-engineering",
+      "label": "14 AI Native Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/Software Engineering.md",
+      "href": "/compendium/software-engineering/software-engineering",
+      "label": "Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
+      "label": "01 Engineering Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "href": "/compendium/software-engineering/architecture-and-design",
+      "label": "02 Architecture and Design"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "href": "/compendium/software-engineering/data-structures-algorithms-and-complexity",
+      "label": "03 Data Structures Algorithms and Complexity"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
+      "label": "04 Databases Storage and Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
+      "label": "06 Caching Queues and Streaming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
+      "label": "07 APIs Contracts and Integration"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
+      "label": "09 Security and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
+      "label": "11 Performance Capacity and Cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering",
+      "label": "12 Delivery Migrations and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "href": "/compendium/software-engineering/technical-leadership-and-execution",
+      "label": "13 Technical Leadership and Execution"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "href": "/compendium/software-engineering/ai-native-software-engineering",
+      "label": "14 AI Native Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "to": "Knowledge base/Data Structures/Data Structures.md",
+      "href": "/compendium/data-structures/data-structures",
+      "label": "Data Structures/Data Structures"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "to": "Knowledge base/Design Patterns/Dependency Injection (and Inversion of Control).md",
+      "href": "/compendium/design-patterns/dependency-injection-and-inversion-of-control",
+      "label": "Design Patterns/Dependency Injection (and Inversion of Control)"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "to": "Knowledge base/Design Patterns/Repository Pattern.md",
+      "href": "/compendium/design-patterns/repository-pattern",
+      "label": "Design Patterns/Repository Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "to": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "href": "/compendium/software-engineering/data-structures-algorithms-and-complexity",
+      "label": "03 Data Structures Algorithms and Complexity"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
+      "label": "11 Performance Capacity and Cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Design patterns.md",
+      "href": "/compendium/design-patterns/design-patterns",
+      "label": "Design Patterns/Design patterns"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Adapter Pattern.md",
+      "href": "/compendium/design-patterns/adapter-pattern",
+      "label": "Design Patterns/Adapter Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Facade Pattern.md",
+      "href": "/compendium/design-patterns/facade-pattern",
+      "label": "Design Patterns/Facade Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Repository Pattern.md",
+      "href": "/compendium/design-patterns/repository-pattern",
+      "label": "Design Patterns/Repository Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Dependency Injection (and Inversion of Control).md",
+      "href": "/compendium/design-patterns/dependency-injection-and-inversion-of-control",
+      "label": "Design Patterns/Dependency Injection (and Inversion of Control)"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Strategy Pattern.md",
+      "href": "/compendium/design-patterns/strategy-pattern",
+      "label": "Design Patterns/Strategy Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Command Pattern.md",
+      "href": "/compendium/design-patterns/command-pattern",
+      "label": "Design Patterns/Command Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Outbox Pattern.md",
+      "href": "/compendium/design-patterns/outbox-pattern",
+      "label": "Design Patterns/Outbox Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/CQRS (Command Query Responsibility Segregation).md",
+      "href": "/compendium/design-patterns/cqrs-command-query-responsibility-segregation",
+      "label": "Design Patterns/CQRS (Command Query Responsibility Segregation)"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Event Sourcing.md",
+      "href": "/compendium/design-patterns/event-sourcing",
+      "label": "Design Patterns/Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Outbox Pattern.md",
+      "href": "/compendium/design-patterns/outbox-pattern",
+      "label": "Design Patterns/Outbox Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Saga Pattern for Distributed Transactions.md",
+      "href": "/compendium/design-patterns/saga-pattern-for-distributed-transactions",
+      "label": "Design Patterns/Saga Pattern for Distributed Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Design patterns.md",
+      "href": "/compendium/design-patterns/design-patterns",
+      "label": "Design Patterns/Design patterns"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Microservices Architecture.md",
+      "href": "/compendium/design-patterns/microservices-architecture",
+      "label": "Design Patterns/Microservices Architecture"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/CQRS (Command Query Responsibility Segregation).md",
+      "href": "/compendium/design-patterns/cqrs-command-query-responsibility-segregation",
+      "label": "Design Patterns/CQRS (Command Query Responsibility Segregation)"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Event Sourcing.md",
+      "href": "/compendium/design-patterns/event-sourcing",
+      "label": "Design Patterns/Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Outbox Pattern.md",
+      "href": "/compendium/design-patterns/outbox-pattern",
+      "label": "Design Patterns/Outbox Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Saga Pattern for Distributed Transactions.md",
+      "href": "/compendium/design-patterns/saga-pattern-for-distributed-transactions",
+      "label": "Design Patterns/Saga Pattern for Distributed Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Adapter Pattern.md",
+      "href": "/compendium/design-patterns/adapter-pattern",
+      "label": "Design Patterns/Adapter Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Facade Pattern.md",
+      "href": "/compendium/design-patterns/facade-pattern",
+      "label": "Design Patterns/Facade Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Repository Pattern.md",
+      "href": "/compendium/design-patterns/repository-pattern",
+      "label": "Design Patterns/Repository Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Dependency Injection (and Inversion of Control).md",
+      "href": "/compendium/design-patterns/dependency-injection-and-inversion-of-control",
+      "label": "Design Patterns/Dependency Injection (and Inversion of Control)"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Strategy Pattern.md",
+      "href": "/compendium/design-patterns/strategy-pattern",
+      "label": "Design Patterns/Strategy Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Design Patterns/Command Pattern.md",
+      "href": "/compendium/design-patterns/command-pattern",
+      "label": "Design Patterns/Command Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "href": "/compendium/software-engineering/technical-leadership-and-execution",
+      "label": "13 Technical Leadership and Execution"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Data Structures.md",
+      "href": "/compendium/data-structures/data-structures",
+      "label": "Data Structures/Data Structures"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Arrays.md",
+      "href": "/compendium/data-structures/arrays",
+      "label": "Data Structures/Arrays"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Linked Lists.md",
+      "href": "/compendium/data-structures/linked-lists",
+      "label": "Data Structures/Linked Lists"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Stacks.md",
+      "href": "/compendium/data-structures/stacks",
+      "label": "Data Structures/Stacks"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Queues.md",
+      "href": "/compendium/data-structures/queues",
+      "label": "Data Structures/Queues"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Data Structures/Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Hash Sets.md",
+      "href": "/compendium/data-structures/hash-sets",
+      "label": "Data Structures/Hash Sets"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Binary Trees.md",
+      "href": "/compendium/data-structures/binary-trees",
+      "label": "Data Structures/Binary Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "href": "/compendium/data-structures/binary-search-trees",
+      "label": "Data Structures/Binary Search Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "Data Structures/AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Data Structures/Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/B-Trees.md",
+      "href": "/compendium/data-structures/b-trees",
+      "label": "Data Structures/B-Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Heaps.md",
+      "href": "/compendium/data-structures/heaps",
+      "label": "Data Structures/Heaps"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Tries.md",
+      "href": "/compendium/data-structures/tries",
+      "label": "Data Structures/Tries"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Segment Trees.md",
+      "href": "/compendium/data-structures/segment-trees",
+      "label": "Data Structures/Segment Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Fenwick Trees.md",
+      "href": "/compendium/data-structures/fenwick-trees",
+      "label": "Data Structures/Fenwick Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Graphs.md",
+      "href": "/compendium/data-structures/graphs",
+      "label": "Data Structures/Graphs"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Bloom Filters.md",
+      "href": "/compendium/data-structures/bloom-filters",
+      "label": "Data Structures/Bloom Filters"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Skip Lists.md",
+      "href": "/compendium/data-structures/skip-lists",
+      "label": "Data Structures/Skip Lists"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Disjoint Set (Union-Find).md",
+      "href": "/compendium/data-structures/disjoint-set-union-find",
+      "label": "Data Structures/Disjoint Set (Union-Find)"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/LRU Cache.md",
+      "href": "/compendium/data-structures/lru-cache",
+      "label": "Data Structures/LRU Cache"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Data Structures/Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Hash Sets.md",
+      "href": "/compendium/data-structures/hash-sets",
+      "label": "Data Structures/Hash Sets"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "href": "/compendium/data-structures/binary-search-trees",
+      "label": "Data Structures/Binary Search Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "Data Structures/AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Data Structures/Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/B-Trees.md",
+      "href": "/compendium/data-structures/b-trees",
+      "label": "Data Structures/B-Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Skip Lists.md",
+      "href": "/compendium/data-structures/skip-lists",
+      "label": "Data Structures/Skip Lists"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Arrays.md",
+      "href": "/compendium/data-structures/arrays",
+      "label": "Data Structures/Arrays"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Linked Lists.md",
+      "href": "/compendium/data-structures/linked-lists",
+      "label": "Data Structures/Linked Lists"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Queues.md",
+      "href": "/compendium/data-structures/queues",
+      "label": "Data Structures/Queues"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Stacks.md",
+      "href": "/compendium/data-structures/stacks",
+      "label": "Data Structures/Stacks"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Heaps.md",
+      "href": "/compendium/data-structures/heaps",
+      "label": "Data Structures/Heaps"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Tries.md",
+      "href": "/compendium/data-structures/tries",
+      "label": "Data Structures/Tries"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Segment Trees.md",
+      "href": "/compendium/data-structures/segment-trees",
+      "label": "Data Structures/Segment Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Fenwick Trees.md",
+      "href": "/compendium/data-structures/fenwick-trees",
+      "label": "Data Structures/Fenwick Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Disjoint Set (Union-Find).md",
+      "href": "/compendium/data-structures/disjoint-set-union-find",
+      "label": "Data Structures/Disjoint Set (Union-Find)"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/LRU Cache.md",
+      "href": "/compendium/data-structures/lru-cache",
+      "label": "Data Structures/LRU Cache"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Bloom Filters.md",
+      "href": "/compendium/data-structures/bloom-filters",
+      "label": "Data Structures/Bloom Filters"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Graphs.md",
+      "href": "/compendium/data-structures/graphs",
+      "label": "Data Structures/Graphs"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Data Structures/Disjoint Set (Union-Find).md",
+      "href": "/compendium/data-structures/disjoint-set-union-find",
+      "label": "Data Structures/Disjoint Set (Union-Find)"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
+      "label": "01 Engineering Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
+      "label": "04 Databases Storage and Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
+      "label": "06 Caching Queues and Streaming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
+      "label": "11 Performance Capacity and Cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "to": "Knowledge base/Data Structures/B-Trees.md",
+      "href": "/compendium/data-structures/b-trees",
+      "label": "Data Structures/B-Trees"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "to": "Knowledge base/Data Structures/Bloom Filters.md",
+      "href": "/compendium/data-structures/bloom-filters",
+      "label": "Data Structures/Bloom Filters"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Data Structures/Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "to": "Knowledge base/Data Structures/Skip Lists.md",
+      "href": "/compendium/data-structures/skip-lists",
+      "label": "Data Structures/Skip Lists"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "to": "Knowledge base/Design Patterns/Outbox Pattern.md",
+      "href": "/compendium/design-patterns/outbox-pattern",
+      "label": "Design Patterns/Outbox Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "to": "Knowledge base/Design Patterns/Saga Pattern for Distributed Transactions.md",
+      "href": "/compendium/design-patterns/saga-pattern-for-distributed-transactions",
+      "label": "Design Patterns/Saga Pattern for Distributed Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "to": "Knowledge base/Design Patterns/CQRS (Command Query Responsibility Segregation).md",
+      "href": "/compendium/design-patterns/cqrs-command-query-responsibility-segregation",
+      "label": "Design Patterns/CQRS (Command Query Responsibility Segregation)"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
+      "label": "06 Caching Queues and Streaming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering",
+      "label": "12 Delivery Migrations and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "to": "Knowledge base/Design Patterns/Microservices Architecture.md",
+      "href": "/compendium/design-patterns/microservices-architecture",
+      "label": "Design Patterns/Microservices Architecture"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "to": "Knowledge base/Design Patterns/Outbox Pattern.md",
+      "href": "/compendium/design-patterns/outbox-pattern",
+      "label": "Design Patterns/Outbox Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "to": "Knowledge base/Design Patterns/Saga Pattern for Distributed Transactions.md",
+      "href": "/compendium/design-patterns/saga-pattern-for-distributed-transactions",
+      "label": "Design Patterns/Saga Pattern for Distributed Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
+      "label": "06 Caching Queues and Streaming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "to": "Knowledge base/Data Structures/LRU Cache.md",
+      "href": "/compendium/data-structures/lru-cache",
+      "label": "Data Structures/LRU Cache"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "to": "Knowledge base/Data Structures/Bloom Filters.md",
+      "href": "/compendium/data-structures/bloom-filters",
+      "label": "Data Structures/Bloom Filters"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "to": "Knowledge base/Design Patterns/Outbox Pattern.md",
+      "href": "/compendium/design-patterns/outbox-pattern",
+      "label": "Design Patterns/Outbox Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "to": "Knowledge base/Design Patterns/Saga Pattern for Distributed Transactions.md",
+      "href": "/compendium/design-patterns/saga-pattern-for-distributed-transactions",
+      "label": "Design Patterns/Saga Pattern for Distributed Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "to": "Knowledge base/Design Patterns/Outbox Pattern.md",
+      "href": "/compendium/design-patterns/outbox-pattern",
+      "label": "Design Patterns/Outbox Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "to": "Knowledge base/Design Patterns/Event Sourcing.md",
+      "href": "/compendium/design-patterns/event-sourcing",
+      "label": "Design Patterns/Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "to": "Knowledge base/Design Patterns/Saga Pattern for Distributed Transactions.md",
+      "href": "/compendium/design-patterns/saga-pattern-for-distributed-transactions",
+      "label": "Design Patterns/Saga Pattern for Distributed Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
+      "label": "11 Performance Capacity and Cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "to": "Knowledge base/Design Patterns/Outbox Pattern.md",
+      "href": "/compendium/design-patterns/outbox-pattern",
+      "label": "Design Patterns/Outbox Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "to": "Knowledge base/Design Patterns/CQRS (Command Query Responsibility Segregation).md",
+      "href": "/compendium/design-patterns/cqrs-command-query-responsibility-segregation",
+      "label": "Design Patterns/CQRS (Command Query Responsibility Segregation)"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "to": "Knowledge base/Design Patterns/Outbox Pattern.md",
+      "href": "/compendium/design-patterns/outbox-pattern",
+      "label": "Design Patterns/Outbox Pattern"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
+      "label": "11 Performance Capacity and Cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
+      "label": "01 Engineering Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering",
+      "label": "12 Delivery Migrations and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "to": "Knowledge base/Data Structures/LRU Cache.md",
+      "href": "/compendium/data-structures/lru-cache",
+      "label": "Data Structures/LRU Cache"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "to": "Knowledge base/Data Structures/Bloom Filters.md",
+      "href": "/compendium/data-structures/bloom-filters",
+      "label": "Data Structures/Bloom Filters"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "to": "Knowledge base/Data Structures/LRU Cache.md",
+      "href": "/compendium/data-structures/lru-cache",
+      "label": "Data Structures/LRU Cache"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "to": "Knowledge base/Data Structures/Bloom Filters.md",
+      "href": "/compendium/data-structures/bloom-filters",
+      "label": "Data Structures/Bloom Filters"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
+      "label": "06 Caching Queues and Streaming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
+      "label": "04 Databases Storage and Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "href": "/compendium/software-engineering/architecture-and-design",
+      "label": "02 Architecture and Design"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "href": "/compendium/software-engineering/staff-principal-software-engineering",
+      "label": "00 Staff Principal Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
+      "label": "11 Performance Capacity and Cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "href": "/compendium/software-engineering/staff-principal-software-engineering",
+      "label": "00 Staff Principal Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/Software Engineering.md",
+      "href": "#domain-map",
+      "label": "#Domain map"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/Software Engineering.md",
+      "href": "#staff-and-principal-standard",
+      "label": "#Staff and Principal standard"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/Software Engineering.md",
+      "href": "#system-review-lens",
+      "label": "#System review lens"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/Software Engineering.md",
+      "href": "#required-topic-coverage-matrix",
+      "label": "#Required topic coverage matrix"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/Software Engineering.md",
+      "href": "#staff-and-principal-study-path",
+      "label": "#Staff and Principal study path"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Data Structures/Data Structures.md",
+      "href": "/compendium/data-structures/data-structures",
+      "label": "Data Structures/Data Structures"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Design Patterns/Design patterns.md",
+      "href": "/compendium/design-patterns/design-patterns",
+      "label": "Design Patterns/Design patterns"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "href": "/compendium/software-engineering/staff-principal-software-engineering",
+      "label": "00 Staff Principal Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
+      "label": "01 Engineering Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "href": "/compendium/software-engineering/architecture-and-design",
+      "label": "02 Architecture and Design"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "href": "/compendium/software-engineering/data-structures-algorithms-and-complexity",
+      "label": "03 Data Structures Algorithms and Complexity"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
+      "label": "04 Databases Storage and Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
+      "label": "06 Caching Queues and Streaming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
+      "label": "07 APIs Contracts and Integration"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
+      "label": "09 Security and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
+      "label": "11 Performance Capacity and Cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering",
+      "label": "12 Delivery Migrations and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "href": "/compendium/software-engineering/technical-leadership-and-execution",
+      "label": "13 Technical Leadership and Execution"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "href": "/compendium/software-engineering/ai-native-software-engineering",
+      "label": "14 AI Native Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "href": "/compendium/software-engineering/staff-principal-software-engineering",
+      "label": "00 Staff Principal Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
+      "label": "01 Engineering Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "href": "/compendium/software-engineering/architecture-and-design",
+      "label": "02 Architecture and Design"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "href": "/compendium/software-engineering/data-structures-algorithms-and-complexity",
+      "label": "03 Data Structures Algorithms and Complexity"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
+      "label": "04 Databases Storage and Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
+      "label": "06 Caching Queues and Streaming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
+      "label": "07 APIs Contracts and Integration"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
+      "label": "09 Security and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
+      "label": "11 Performance Capacity and Cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering",
+      "label": "12 Delivery Migrations and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "href": "/compendium/software-engineering/technical-leadership-and-execution",
+      "label": "13 Technical Leadership and Execution"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "href": "/compendium/software-engineering/ai-native-software-engineering",
+      "label": "14 AI Native Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
+      "label": "01 Engineering Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
+      "label": "04 Databases Storage and Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
+      "label": "11 Performance Capacity and Cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering",
+      "label": "12 Delivery Migrations and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "href": "/compendium/software-engineering/architecture-and-design",
+      "label": "02 Architecture and Design"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
+      "label": "07 APIs Contracts and Integration"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "href": "/compendium/software-engineering/technical-leadership-and-execution",
+      "label": "13 Technical Leadership and Execution"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
+      "label": "09 Security and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
+      "label": "06 Caching Queues and Streaming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
+      "label": "11 Performance Capacity and Cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering",
+      "label": "12 Delivery Migrations and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#consistency-models",
+      "label": "05 Distributed Systems#Consistency models"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions#isolation-and-correctness",
+      "label": "04 Databases Storage and Transactions#Isolation and correctness"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration#event-contracts",
+      "label": "07 APIs Contracts and Integration#Event contracts"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#consistency-models",
+      "label": "05 Distributed Systems#Consistency models"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars#formal-methods-and-model-checking",
+      "label": "10 Testing Verification and Quality Bars#Formal methods and model checking"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions#isolation-and-correctness",
+      "label": "04 Databases Storage and Transactions#Isolation and correctness"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions#transactions",
+      "label": "04 Databases Storage and Transactions#Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#consistency-models",
+      "label": "05 Distributed Systems#Consistency models"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming#message-delivery-semantics",
+      "label": "06 Caching Queues and Streaming#Message delivery semantics"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration#event-contracts",
+      "label": "07 APIs Contracts and Integration#Event contracts"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals#concurrency-primitives",
+      "label": "01 Engineering Fundamentals#Concurrency primitives"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#contention",
+      "label": "11 Performance Capacity and Cost#Contention"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals#concurrency-primitives",
+      "label": "01 Engineering Fundamentals#Concurrency primitives"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming#queueing-fundamentals",
+      "label": "06 Caching Queues and Streaming#Queueing fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#contention",
+      "label": "11 Performance Capacity and Cost#Contention"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals#concurrency-primitives",
+      "label": "01 Engineering Fundamentals#Concurrency primitives"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars#concurrency-testing",
+      "label": "10 Testing Verification and Quality Bars#Concurrency testing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals#memory-models-and-ordering",
+      "label": "01 Engineering Fundamentals#Memory models and ordering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#cpu-and-memory-performance",
+      "label": "11 Performance Capacity and Cost#CPU and memory performance"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals#memory-models-and-ordering",
+      "label": "01 Engineering Fundamentals#Memory models and ordering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals#nonblocking-algorithms",
+      "label": "01 Engineering Fundamentals#Nonblocking algorithms"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals#lock-free-and-wait-free-programming",
+      "label": "01 Engineering Fundamentals#Lock-free and wait-free programming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#lock-free-and-wait-free-tradeoffs",
+      "label": "11 Performance Capacity and Cost#Lock-free and wait-free tradeoffs"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals#nonblocking-algorithms",
+      "label": "01 Engineering Fundamentals#Nonblocking algorithms"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "href": "/compendium/software-engineering/data-structures-algorithms-and-complexity#concurrent-data-structures",
+      "label": "03 Data Structures Algorithms and Complexity#Concurrent data structures"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals#liveness-failures",
+      "label": "01 Engineering Fundamentals#Liveness failures"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars#concurrency-testing",
+      "label": "10 Testing Verification and Quality Bars#Concurrency testing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals#liveness-failures",
+      "label": "01 Engineering Fundamentals#Liveness failures"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations#failure-modes",
+      "label": "08 Reliability Observability and Operations#Failure modes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals#liveness-failures",
+      "label": "01 Engineering Fundamentals#Liveness failures"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#contention",
+      "label": "11 Performance Capacity and Cost#Contention"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals#cache-coherency",
+      "label": "01 Engineering Fundamentals#Cache coherency"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#cpu-and-memory-performance",
+      "label": "11 Performance Capacity and Cost#CPU and memory performance"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "href": "/compendium/software-engineering/data-structures-algorithms-and-complexity#complexity-as-an-engineering-tool",
+      "label": "03 Data Structures Algorithms and Complexity#Complexity as an engineering tool"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#capacity-planning",
+      "label": "11 Performance Capacity and Cost#Capacity planning"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "href": "/compendium/software-engineering/data-structures-algorithms-and-complexity#storage-oriented-structures",
+      "label": "03 Data Structures Algorithms and Complexity#Storage oriented structures"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions#storage-engine-mental-model",
+      "label": "04 Databases Storage and Transactions#Storage engine mental model"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions#advanced-databases",
+      "label": "04 Databases Storage and Transactions#Advanced databases"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "href": "/compendium/software-engineering/data-structures-algorithms-and-complexity#storage-oriented-structures",
+      "label": "03 Data Structures Algorithms and Complexity#Storage oriented structures"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions#isolation-and-correctness",
+      "label": "04 Databases Storage and Transactions#Isolation and correctness"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions#transactions",
+      "label": "04 Databases Storage and Transactions#Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#replication",
+      "label": "05 Distributed Systems#Replication"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions#replication-and-storage-correctness",
+      "label": "04 Databases Storage and Transactions#Replication and storage correctness"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#quorums",
+      "label": "05 Distributed Systems#Quorums"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions#distributed-databases",
+      "label": "04 Databases Storage and Transactions#Distributed databases"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#cap-pacelc-and-failure-tradeoffs",
+      "label": "05 Distributed Systems#CAP PACELC and failure tradeoffs"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions#distributed-databases",
+      "label": "04 Databases Storage and Transactions#Distributed databases"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#cap-pacelc-and-failure-tradeoffs",
+      "label": "05 Distributed Systems#CAP PACELC and failure tradeoffs"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#latency-and-throughput",
+      "label": "11 Performance Capacity and Cost#Latency and throughput"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#consensus-algorithms",
+      "label": "05 Distributed Systems#Consensus algorithms"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations#control-planes",
+      "label": "08 Reliability Observability and Operations#Control planes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#replicated-state-machines",
+      "label": "05 Distributed Systems#Replicated state machines"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "href": "/compendium/software-engineering/architecture-and-design#state-machines",
+      "label": "02 Architecture and Design#State machines"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#time-clocks-and-ordering",
+      "label": "05 Distributed Systems#Time clocks and ordering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars#formal-methods-and-model-checking",
+      "label": "10 Testing Verification and Quality Bars#Formal methods and model checking"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration#idempotent-apis",
+      "label": "07 APIs Contracts and Integration#Idempotent APIs"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#idempotency-and-retries",
+      "label": "05 Distributed Systems#Idempotency and retries"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering#migration-safety",
+      "label": "12 Delivery Migrations and Release Engineering#Migration safety"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#advanced-networking",
+      "label": "05 Distributed Systems#Advanced networking"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations#network-operations",
+      "label": "08 Reliability Observability and Operations#Network operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming#caching-patterns",
+      "label": "06 Caching Queues and Streaming#Caching patterns"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming#cache-invalidation",
+      "label": "06 Caching Queues and Streaming#Cache invalidation"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#latency-and-throughput",
+      "label": "11 Performance Capacity and Cost#Latency and throughput"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming#queueing-fundamentals",
+      "label": "06 Caching Queues and Streaming#Queueing fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#capacity-planning",
+      "label": "11 Performance Capacity and Cost#Capacity planning"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming#streaming-systems",
+      "label": "06 Caching Queues and Streaming#Streaming systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration#event-contracts",
+      "label": "07 APIs Contracts and Integration#Event contracts"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration#contract-types",
+      "label": "07 APIs Contracts and Integration#Contract types"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration#schema-evolution",
+      "label": "07 APIs Contracts and Integration#Schema evolution"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations#observability-pillars",
+      "label": "08 Reliability Observability and Operations#Observability pillars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations#alert-quality",
+      "label": "08 Reliability Observability and Operations#Alert quality"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations#incident-response",
+      "label": "08 Reliability Observability and Operations#Incident response"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "href": "/compendium/software-engineering/technical-leadership-and-execution#leadership-operating-rhythm",
+      "label": "13 Technical Leadership and Execution#Leadership operating rhythm"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain#threat-modeling",
+      "label": "09 Security and Supply Chain#Threat modeling"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain#access-boundaries",
+      "label": "09 Security and Supply Chain#Access boundaries"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain#supply-chain-controls",
+      "label": "09 Security and Supply Chain#Supply chain controls"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars#formal-methods-and-model-checking",
+      "label": "10 Testing Verification and Quality Bars#Formal methods and model checking"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#consensus-algorithms",
+      "label": "05 Distributed Systems#Consensus algorithms"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "href": "/compendium/software-engineering/architecture-and-design#state-machines",
+      "label": "02 Architecture and Design#State machines"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars#concurrency-testing",
+      "label": "10 Testing Verification and Quality Bars#Concurrency testing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals#liveness-failures",
+      "label": "01 Engineering Fundamentals#Liveness failures"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#cpu-and-memory-performance",
+      "label": "11 Performance Capacity and Cost#CPU and memory performance"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#load-testing",
+      "label": "11 Performance Capacity and Cost#Load testing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#capacity-planning",
+      "label": "11 Performance Capacity and Cost#Capacity planning"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming#queueing-fundamentals",
+      "label": "06 Caching Queues and Streaming#Queueing fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering#migration-safety",
+      "label": "12 Delivery Migrations and Release Engineering#Migration safety"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions#data-migration-playbook",
+      "label": "04 Databases Storage and Transactions#Data migration playbook"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering#rollback-and-rollforward",
+      "label": "12 Delivery Migrations and Release Engineering#Rollback and rollforward"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations#incident-response",
+      "label": "08 Reliability Observability and Operations#Incident response"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering#gitops-operating-model",
+      "label": "12 Delivery Migrations and Release Engineering#GitOps operating model"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations#control-planes",
+      "label": "08 Reliability Observability and Operations#Control planes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "href": "/compendium/software-engineering/technical-leadership-and-execution#conways-law",
+      "label": "13 Technical Leadership and Execution#Conways Law"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "href": "/compendium/software-engineering/architecture-and-design#architecture-and-organization",
+      "label": "02 Architecture and Design#Architecture and organization"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "href": "/compendium/software-engineering/technical-leadership-and-execution#technical-strategy",
+      "label": "13 Technical Leadership and Execution#Technical strategy"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "href": "/compendium/software-engineering/staff-principal-software-engineering#the-execution-loop",
+      "label": "00 Staff Principal Software Engineering#The execution loop"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "href": "/compendium/software-engineering/ai-native-software-engineering#ai-assisted-development-quality-bar",
+      "label": "14 AI Native Software Engineering#AI assisted development quality bar"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars#quality-bars",
+      "label": "10 Testing Verification and Quality Bars#Quality bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "href": "/compendium/software-engineering/ai-native-software-engineering#retrieval-and-context",
+      "label": "14 AI Native Software Engineering#Retrieval and context"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "href": "/compendium/software-engineering/ai-native-software-engineering#llmops",
+      "label": "14 AI Native Software Engineering#LLMOps"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations#observability-pillars",
+      "label": "08 Reliability Observability and Operations#Observability pillars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "href": "/compendium/software-engineering/architecture-and-design#state-machines",
+      "label": "02 Architecture and Design#State machines"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions#transactions",
+      "label": "04 Databases Storage and Transactions#Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#replication",
+      "label": "05 Distributed Systems#Replication"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations#observability-pillars",
+      "label": "08 Reliability Observability and Operations#Observability pillars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering#migration-safety",
+      "label": "12 Delivery Migrations and Release Engineering#Migration safety"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration#idempotent-apis",
+      "label": "07 APIs Contracts and Integration#Idempotent APIs"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#idempotency-and-retries",
+      "label": "05 Distributed Systems#Idempotency and retries"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming#poison-messages-and-retries",
+      "label": "06 Caching Queues and Streaming#Poison messages and retries"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars#quality-bars",
+      "label": "10 Testing Verification and Quality Bars#Quality bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost#latency-and-throughput",
+      "label": "11 Performance Capacity and Cost#Latency and throughput"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming#queueing-fundamentals",
+      "label": "06 Caching Queues and Streaming#Queueing fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations#observability-pillars",
+      "label": "08 Reliability Observability and Operations#Observability pillars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#advanced-networking",
+      "label": "05 Distributed Systems#Advanced networking"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions#data-migration-playbook",
+      "label": "04 Databases Storage and Transactions#Data migration playbook"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering#migration-safety",
+      "label": "12 Delivery Migrations and Release Engineering#Migration safety"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars#quality-bars",
+      "label": "10 Testing Verification and Quality Bars#Quality bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations#incident-response",
+      "label": "08 Reliability Observability and Operations#Incident response"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "href": "/compendium/software-engineering/staff-principal-software-engineering#system-property-checklist",
+      "label": "00 Staff Principal Software Engineering#System property checklist"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "href": "/compendium/software-engineering/architecture-and-design#boundaries",
+      "label": "02 Architecture and Design#Boundaries"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "href": "/compendium/software-engineering/technical-leadership-and-execution#conways-law",
+      "label": "13 Technical Leadership and Execution#Conways Law"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain#threat-modeling",
+      "label": "09 Security and Supply Chain#Threat modeling"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming#streaming-systems",
+      "label": "06 Caching Queues and Streaming#Streaming systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration#event-contracts",
+      "label": "07 APIs Contracts and Integration#Event contracts"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems#time-clocks-and-ordering",
+      "label": "05 Distributed Systems#Time clocks and ordering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "href": "/compendium/software-engineering/ai-native-software-engineering#ai-assisted-development-quality-bar",
+      "label": "14 AI Native Software Engineering#AI assisted development quality bar"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars#quality-bars",
+      "label": "10 Testing Verification and Quality Bars#Quality bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
+      "label": "01 Engineering Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "href": "/compendium/software-engineering/data-structures-algorithms-and-complexity",
+      "label": "03 Data Structures Algorithms and Complexity"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Data Structures/Data Structures.md",
+      "href": "/compendium/data-structures/data-structures",
+      "label": "Data Structures/Data Structures"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Design Patterns/Design patterns.md",
+      "href": "/compendium/design-patterns/design-patterns",
+      "label": "Design Patterns/Design patterns"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "href": "/compendium/software-engineering/architecture-and-design",
+      "label": "02 Architecture and Design"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
+      "label": "07 APIs Contracts and Integration"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
+      "label": "04 Databases Storage and Transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
+      "label": "06 Caching Queues and Streaming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
+      "label": "09 Security and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
+      "label": "11 Performance Capacity and Cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering",
+      "label": "12 Delivery Migrations and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "href": "/compendium/software-engineering/technical-leadership-and-execution",
+      "label": "13 Technical Leadership and Execution"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "href": "/compendium/software-engineering/staff-principal-software-engineering",
+      "label": "00 Staff Principal Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "href": "/compendium/software-engineering/ai-native-software-engineering",
+      "label": "14 AI Native Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Data Structures/Data Structures.md",
+      "href": "/compendium/data-structures/data-structures",
+      "label": "Data Structures/Data Structures"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Design Patterns/Design patterns.md",
+      "href": "/compendium/design-patterns/design-patterns",
+      "label": "Design Patterns/Design patterns"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Arrays.md",
+      "to": "Knowledge base/Data Structures/Linked Lists.md",
+      "href": "/compendium/data-structures/linked-lists",
+      "label": "Linked Lists"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Arrays.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Arrays.md",
+      "to": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "href": "/compendium/data-structures/binary-search-trees",
+      "label": "Binary Search Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/AVL Trees.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/AVL Trees.md",
+      "to": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "href": "/compendium/data-structures/binary-search-trees",
+      "label": "Binary Search Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/AVL Trees.md",
+      "to": "Knowledge base/Data Structures/Segment Trees.md",
+      "href": "/compendium/data-structures/segment-trees",
+      "label": "Segment Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/AVL Trees.md",
+      "to": "Knowledge base/Data Structures/Skip Lists.md",
+      "href": "/compendium/data-structures/skip-lists",
+      "label": "Skip Lists"
+    },
+    {
+      "from": "Knowledge base/Data Structures/AVL Trees.md",
+      "to": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "href": "/compendium/data-structures/binary-search-trees",
+      "label": "Binary Search Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/AVL Trees.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/AVL Trees.md",
+      "to": "Knowledge base/Data Structures/B-Trees.md",
+      "href": "/compendium/data-structures/b-trees",
+      "label": "B-Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/B-Trees.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/B-Trees.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/B-Trees.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/B-Trees.md",
+      "to": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "href": "/compendium/data-structures/binary-search-trees",
+      "label": "Binary Search Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/B-Trees.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/B-Trees.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "to": "Knowledge base/Data Structures/Heaps.md",
+      "href": "/compendium/data-structures/heaps",
+      "label": "Heaps"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "to": "Knowledge base/Data Structures/Tries.md",
+      "href": "/compendium/data-structures/tries",
+      "label": "Tries"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Binary Trees.md",
+      "to": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "href": "/compendium/data-structures/binary-search-trees",
+      "label": "Binary Search Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Binary Trees.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Binary Trees.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Binary Trees.md",
+      "to": "Knowledge base/Data Structures/Heaps.md",
+      "href": "/compendium/data-structures/heaps",
+      "label": "Heaps"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Binary Trees.md",
+      "to": "Knowledge base/Data Structures/Tries.md",
+      "href": "/compendium/data-structures/tries",
+      "label": "Tries"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Binary Trees.md",
+      "to": "Knowledge base/Data Structures/Segment Trees.md",
+      "href": "/compendium/data-structures/segment-trees",
+      "label": "Segment Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Bloom Filters.md",
+      "to": "Knowledge base/Data Structures/Hash Sets.md",
+      "href": "/compendium/data-structures/hash-sets",
+      "label": "Hash Sets"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Bloom Filters.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Arrays.md",
+      "href": "/compendium/data-structures/arrays",
+      "label": "Arrays"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Linked Lists.md",
+      "href": "/compendium/data-structures/linked-lists",
+      "label": "Linked Lists"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Stacks.md",
+      "href": "/compendium/data-structures/stacks",
+      "label": "Stacks"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Queues.md",
+      "href": "/compendium/data-structures/queues",
+      "label": "Queues"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Hash Sets.md",
+      "href": "/compendium/data-structures/hash-sets",
+      "label": "Hash Sets"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Binary Trees.md",
+      "href": "/compendium/data-structures/binary-trees",
+      "label": "Binary Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "href": "/compendium/data-structures/binary-search-trees",
+      "label": "Binary Search Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/B-Trees.md",
+      "href": "/compendium/data-structures/b-trees",
+      "label": "B-Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Heaps.md",
+      "href": "/compendium/data-structures/heaps",
+      "label": "Heaps"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Tries.md",
+      "href": "/compendium/data-structures/tries",
+      "label": "Tries"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Segment Trees.md",
+      "href": "/compendium/data-structures/segment-trees",
+      "label": "Segment Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Fenwick Trees.md",
+      "href": "/compendium/data-structures/fenwick-trees",
+      "label": "Fenwick Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Graphs.md",
+      "href": "/compendium/data-structures/graphs",
+      "label": "Graphs"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Bloom Filters.md",
+      "href": "/compendium/data-structures/bloom-filters",
+      "label": "Bloom Filters"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Skip Lists.md",
+      "href": "/compendium/data-structures/skip-lists",
+      "label": "Skip Lists"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Disjoint Set (Union-Find).md",
+      "href": "/compendium/data-structures/disjoint-set-union-find",
+      "label": "Disjoint Set (Union-Find)"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/LRU Cache.md",
+      "href": "/compendium/data-structures/lru-cache",
+      "label": "LRU Cache"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Stacks.md",
+      "href": "/compendium/data-structures/stacks",
+      "label": "Stacks"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Queues.md",
+      "href": "/compendium/data-structures/queues",
+      "label": "Queues"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Heaps.md",
+      "href": "/compendium/data-structures/heaps",
+      "label": "Heaps"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Tries.md",
+      "href": "/compendium/data-structures/tries",
+      "label": "Tries"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Bloom Filters.md",
+      "href": "/compendium/data-structures/bloom-filters",
+      "label": "Bloom Filters"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Data Structures.md",
+      "to": "Knowledge base/Data Structures/Disjoint Set (Union-Find).md",
+      "href": "/compendium/data-structures/disjoint-set-union-find",
+      "label": "Disjoint Set (Union-Find)"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Disjoint Set (Union-Find).md",
+      "to": "Knowledge base/Data Structures/Graphs.md",
+      "href": "/compendium/data-structures/graphs",
+      "label": "Graphs"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Disjoint Set (Union-Find).md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Disjoint Set (Union-Find).md",
+      "to": "Knowledge base/Data Structures/Binary Trees.md",
+      "href": "/compendium/data-structures/binary-trees",
+      "label": "Binary Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Fenwick Trees.md",
+      "to": "Knowledge base/Data Structures/Segment Trees.md",
+      "href": "/compendium/data-structures/segment-trees",
+      "label": "Segment Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Fenwick Trees.md",
+      "to": "Knowledge base/Data Structures/Arrays.md",
+      "href": "/compendium/data-structures/arrays",
+      "label": "Arrays"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Graphs.md",
+      "to": "Knowledge base/Data Structures/Disjoint Set (Union-Find).md",
+      "href": "/compendium/data-structures/disjoint-set-union-find",
+      "label": "Disjoint Set (Union-Find)"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Graphs.md",
+      "to": "Knowledge base/Data Structures/Heaps.md",
+      "href": "/compendium/data-structures/heaps",
+      "label": "Heaps"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Graphs.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Graphs.md",
+      "to": "Knowledge base/Data Structures/Binary Trees.md",
+      "href": "/compendium/data-structures/binary-trees",
+      "label": "Binary Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Hash Sets.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Hash Sets.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Hash Sets.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Hash Sets.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Hash Sets.md",
+      "to": "Knowledge base/Data Structures/Bloom Filters.md",
+      "href": "/compendium/data-structures/bloom-filters",
+      "label": "Bloom Filters"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Hash Sets.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Hash Tables.md",
+      "to": "Knowledge base/Data Structures/LRU Cache.md",
+      "href": "/compendium/data-structures/lru-cache",
+      "label": "LRU Cache"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Hash Tables.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Hash Tables.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Hash Tables.md",
+      "to": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "href": "/compendium/data-structures/binary-search-trees",
+      "label": "Binary Search Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Hash Tables.md",
+      "to": "Knowledge base/Data Structures/Heaps.md",
+      "href": "/compendium/data-structures/heaps",
+      "label": "Heaps"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Hash Tables.md",
+      "to": "Knowledge base/Data Structures/Arrays.md",
+      "href": "/compendium/data-structures/arrays",
+      "label": "Arrays"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Hash Tables.md",
+      "to": "Knowledge base/Data Structures/Bloom Filters.md",
+      "href": "/compendium/data-structures/bloom-filters",
+      "label": "Bloom Filters"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Heaps.md",
+      "to": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "href": "/compendium/data-structures/binary-search-trees",
+      "label": "Binary Search Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Heaps.md",
+      "to": "Knowledge base/Data Structures/Arrays.md",
+      "href": "/compendium/data-structures/arrays",
+      "label": "Arrays"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Heaps.md",
+      "to": "Knowledge base/Data Structures/Queues.md",
+      "href": "/compendium/data-structures/queues",
+      "label": "Queues"
+    },
+    {
+      "from": "Knowledge base/Data Structures/LRU Cache.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/LRU Cache.md",
+      "to": "Knowledge base/Data Structures/Linked Lists.md",
+      "href": "/compendium/data-structures/linked-lists",
+      "label": "Linked Lists"
+    },
+    {
+      "from": "Knowledge base/Data Structures/LRU Cache.md",
+      "to": "Knowledge base/Data Structures/Queues.md",
+      "href": "/compendium/data-structures/queues",
+      "label": "Queues"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Queues.md",
+      "to": "Knowledge base/Data Structures/Heaps.md",
+      "href": "/compendium/data-structures/heaps",
+      "label": "Heaps"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Queues.md",
+      "to": "Knowledge base/Data Structures/Heaps.md",
+      "href": "/compendium/data-structures/heaps",
+      "label": "Heaps"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Queues.md",
+      "to": "Knowledge base/Data Structures/Heaps.md",
+      "href": "/compendium/data-structures/heaps",
+      "label": "Heaps"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "to": "Knowledge base/Data Structures/B-Trees.md",
+      "href": "/compendium/data-structures/b-trees",
+      "label": "B-Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "to": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "href": "/compendium/data-structures/binary-search-trees",
+      "label": "Binary Search Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "to": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "href": "/compendium/data-structures/binary-search-trees",
+      "label": "Binary Search Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "to": "Knowledge base/Data Structures/B-Trees.md",
+      "href": "/compendium/data-structures/b-trees",
+      "label": "B-Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "to": "Knowledge base/Data Structures/Skip Lists.md",
+      "href": "/compendium/data-structures/skip-lists",
+      "label": "Skip Lists"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Segment Trees.md",
+      "to": "Knowledge base/Data Structures/Fenwick Trees.md",
+      "href": "/compendium/data-structures/fenwick-trees",
+      "label": "Fenwick Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Segment Trees.md",
+      "to": "Knowledge base/Data Structures/Fenwick Trees.md",
+      "href": "/compendium/data-structures/fenwick-trees",
+      "label": "Fenwick Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Segment Trees.md",
+      "to": "Knowledge base/Data Structures/Binary Trees.md",
+      "href": "/compendium/data-structures/binary-trees",
+      "label": "Binary Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Skip Lists.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Skip Lists.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Skip Lists.md",
+      "to": "Knowledge base/Data Structures/B-Trees.md",
+      "href": "/compendium/data-structures/b-trees",
+      "label": "B-Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Skip Lists.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Skip Lists.md",
+      "to": "Knowledge base/Data Structures/Heaps.md",
+      "href": "/compendium/data-structures/heaps",
+      "label": "Heaps"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Skip Lists.md",
+      "to": "Knowledge base/Data Structures/Linked Lists.md",
+      "href": "/compendium/data-structures/linked-lists",
+      "label": "Linked Lists"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Skip Lists.md",
+      "to": "Knowledge base/Data Structures/Red-Black Trees.md",
+      "href": "/compendium/data-structures/red-black-trees",
+      "label": "Red-Black Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Skip Lists.md",
+      "to": "Knowledge base/Data Structures/AVL Trees.md",
+      "href": "/compendium/data-structures/avl-trees",
+      "label": "AVL Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Skip Lists.md",
+      "to": "Knowledge base/Data Structures/B-Trees.md",
+      "href": "/compendium/data-structures/b-trees",
+      "label": "B-Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Stacks.md",
+      "to": "Knowledge base/Data Structures/Queues.md",
+      "href": "/compendium/data-structures/queues",
+      "label": "Queues"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Stacks.md",
+      "to": "Knowledge base/Data Structures/Arrays.md",
+      "href": "/compendium/data-structures/arrays",
+      "label": "Arrays"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Stacks.md",
+      "to": "Knowledge base/Data Structures/Linked Lists.md",
+      "href": "/compendium/data-structures/linked-lists",
+      "label": "Linked Lists"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Tries.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Tries.md",
+      "to": "Knowledge base/Data Structures/Binary Search Trees.md",
+      "href": "/compendium/data-structures/binary-search-trees",
+      "label": "Binary Search Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Tries.md",
+      "to": "Knowledge base/Data Structures/Hash Tables.md",
+      "href": "/compendium/data-structures/hash-tables",
+      "label": "Hash Tables"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Adapter Pattern.md",
+      "href": "/compendium/design-patterns/adapter-pattern",
+      "label": "Adapter Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Bridge Pattern.md",
+      "href": "/compendium/design-patterns/bridge-pattern",
+      "label": "Bridge Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Builder Pattern.md",
+      "href": "/compendium/design-patterns/builder-pattern",
+      "label": "Builder Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Chain of Responsibility Pattern.md",
+      "href": "/compendium/design-patterns/chain-of-responsibility-pattern",
+      "label": "Chain of Responsibility Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Command Pattern.md",
+      "href": "/compendium/design-patterns/command-pattern",
+      "label": "Command Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Composite Pattern.md",
+      "href": "/compendium/design-patterns/composite-pattern",
+      "label": "Composite Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/CQRS (Command Query Responsibility Segregation).md",
+      "href": "/compendium/design-patterns/cqrs-command-query-responsibility-segregation",
+      "label": "CQRS (Command Query Responsibility Segregation)"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Decorator Pattern.md",
+      "href": "/compendium/design-patterns/decorator-pattern",
+      "label": "Decorator Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Dependency Injection (and Inversion of Control).md",
+      "href": "/compendium/design-patterns/dependency-injection-and-inversion-of-control",
+      "label": "Dependency Injection (and Inversion of Control)"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Event Sourcing.md",
+      "href": "/compendium/design-patterns/event-sourcing",
+      "label": "Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Facade Pattern.md",
+      "href": "/compendium/design-patterns/facade-pattern",
+      "label": "Facade Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Factory Method and Abstract Factory.md",
+      "href": "/compendium/design-patterns/factory-method-and-abstract-factory",
+      "label": "Factory Method and Abstract Factory"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Microkernel (Plugin) Architecture.md",
+      "href": "/compendium/design-patterns/microkernel-plugin-architecture",
+      "label": "Microkernel (Plugin) Architecture"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Microservices Architecture.md",
+      "href": "/compendium/design-patterns/microservices-architecture",
+      "label": "Microservices Architecture"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Model-View-Controller (MVC).md",
+      "href": "/compendium/design-patterns/model-view-controller-mvc",
+      "label": "Model-View-Controller (MVC)"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Observer Pattern.md",
+      "href": "/compendium/design-patterns/observer-pattern",
+      "label": "Observer Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Prototype Pattern.md",
+      "href": "/compendium/design-patterns/prototype-pattern",
+      "label": "Prototype Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Proxy Pattern.md",
+      "href": "/compendium/design-patterns/proxy-pattern",
+      "label": "Proxy Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Repository Pattern.md",
+      "href": "/compendium/design-patterns/repository-pattern",
+      "label": "Repository Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Singleton.md",
+      "href": "/compendium/design-patterns/singleton",
+      "label": "Singleton"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Strategy Pattern.md",
+      "href": "/compendium/design-patterns/strategy-pattern",
+      "label": "Strategy Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Template Method Pattern.md",
+      "href": "/compendium/design-patterns/template-method-pattern",
+      "label": "Template Method Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Outbox Pattern.md",
+      "href": "/compendium/design-patterns/outbox-pattern",
+      "label": "Outbox Pattern"
+    },
+    {
+      "from": "Knowledge base/Design Patterns/Design patterns.md",
+      "to": "Knowledge base/Design Patterns/Saga Pattern for Distributed Transactions.md",
+      "href": "/compendium/design-patterns/saga-pattern-for-distributed-transactions",
+      "label": "Saga Pattern for Distributed Transactions"
+    }
+  ],
+  "externalReferences": [
+    {
+      "from": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "target": "Javascript",
+      "label": "Javascript"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "target": "Javascript optimization tips",
+      "label": "Javascript optimization tips"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "target": "Event-Driven Architectures and Event Sourcing",
+      "label": "Event-Driven Architectures and Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "target": "kubernetes/Kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "target": "Littles law and efficient queue strategy",
+      "label": "Littles law and efficient queue strategy"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "target": "Event-Driven Architectures and Event Sourcing",
+      "label": "Event-Driven Architectures and Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "target": "Event-Driven Architectures and Event Sourcing",
+      "label": "Event-Driven Architectures and Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "target": "Event-Driven Architectures and Event Sourcing",
+      "label": "Event-Driven Architectures and Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "target": "kubernetes/Sections/8. Observability and Health Checks",
+      "label": "kubernetes/Sections/8. Observability and Health Checks"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "target": "kubernetes/Kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "target": "kubernetes/Sections/6. Configuration and Secrets",
+      "label": "kubernetes/Sections/6. Configuration and Secrets"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "target": "kubernetes/Sections/9. Advanced Topics & Appendix",
+      "label": "kubernetes/Sections/9. Advanced Topics & Appendix"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "target": "SWE Review topics",
+      "label": "SWE Review topics"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "target": "Littles law and efficient queue strategy",
+      "label": "Littles law and efficient queue strategy"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "target": "Javascript optimization tips",
+      "label": "Javascript optimization tips"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "target": "kubernetes/Kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "target": "kubernetes/Sections/4. Pods, Deployments, and ReplicaSets",
+      "label": "kubernetes/Sections/4. Pods, Deployments, and ReplicaSets"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "target": "kubernetes/Sections/9. Advanced Topics & Appendix",
+      "label": "kubernetes/Sections/9. Advanced Topics & Appendix"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "target": "SWE Review topics",
+      "label": "SWE Review topics"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "target": "AI-Enhanced Software Development",
+      "label": "AI-Enhanced Software Development"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "target": "AI Development",
+      "label": "AI Development"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "target": "AI-Enhanced Software Development",
+      "label": "AI-Enhanced Software Development"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "target": "Indexing Large Codebases for AI-Assisted Development",
+      "label": "Indexing Large Codebases for AI-Assisted Development"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "target": "Context-Aware Systems and MCP Protocols",
+      "label": "Context-Aware Systems and MCP Protocols"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "target": "ReAct Agent Architecture & Flow",
+      "label": "ReAct Agent Architecture & Flow"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "target": "LLMOps and Model Deployment",
+      "label": "LLMOps and Model Deployment"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/14 AI Native Software Engineering.md",
+      "target": "Programming Languages for AI-Native Agents",
+      "label": "Programming Languages for AI-Native Agents"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Event-Driven Architectures and Event Sourcing",
+      "label": "Event-Driven Architectures and Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "kubernetes/Kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "AI-Enhanced Software Development",
+      "label": "AI-Enhanced Software Development"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Indexing Large Codebases for AI-Assisted Development",
+      "label": "Indexing Large Codebases for AI-Assisted Development"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Context-Aware Systems and MCP Protocols",
+      "label": "Context-Aware Systems and MCP Protocols"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "LLMOps and Model Deployment",
+      "label": "LLMOps and Model Deployment"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Littles law and efficient queue strategy",
+      "label": "Littles law and efficient queue strategy"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "kubernetes/Kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Littles law and efficient queue strategy",
+      "label": "Littles law and efficient queue strategy"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Event-Driven Architectures and Event Sourcing",
+      "label": "Event-Driven Architectures and Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "kubernetes/Kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "AI-Enhanced Software Development",
+      "label": "AI-Enhanced Software Development"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Indexing Large Codebases for AI-Assisted Development",
+      "label": "Indexing Large Codebases for AI-Assisted Development"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Context-Aware Systems and MCP Protocols",
+      "label": "Context-Aware Systems and MCP Protocols"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "LLMOps and Model Deployment",
+      "label": "LLMOps and Model Deployment"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Event-Driven Architectures and Event Sourcing",
+      "label": "Event-Driven Architectures and Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Indexing Large Codebases for AI-Assisted Development",
+      "label": "Indexing Large Codebases for AI-Assisted Development"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Context-Aware Systems and MCP Protocols",
+      "label": "Context-Aware Systems and MCP Protocols"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Event-Driven Architectures and Event Sourcing",
+      "label": "Event-Driven Architectures and Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Littles law and efficient queue strategy",
+      "label": "Littles law and efficient queue strategy"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "kubernetes/Kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "kubernetes/One-Day Kubernetes Crash Course",
+      "label": "kubernetes/One-Day Kubernetes Crash Course"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "SWE Review topics",
+      "label": "SWE Review topics"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "AI-Enhanced Software Development",
+      "label": "AI-Enhanced Software Development"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Indexing Large Codebases for AI-Assisted Development",
+      "label": "Indexing Large Codebases for AI-Assisted Development"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Context-Aware Systems and MCP Protocols",
+      "label": "Context-Aware Systems and MCP Protocols"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "LLMOps and Model Deployment",
+      "label": "LLMOps and Model Deployment"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Event-Driven Architectures and Event Sourcing",
+      "label": "Event-Driven Architectures and Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Software Engineering glossary",
+      "label": "Software Engineering glossary"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "SWE Review topics",
+      "label": "SWE Review topics"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Littles law and efficient queue strategy",
+      "label": "Littles law and efficient queue strategy"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "kubernetes/Kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "kubernetes/One-Day Kubernetes Crash Course",
+      "label": "kubernetes/One-Day Kubernetes Crash Course"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "AI-Enhanced Software Development",
+      "label": "AI-Enhanced Software Development"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Indexing Large Codebases for AI-Assisted Development",
+      "label": "Indexing Large Codebases for AI-Assisted Development"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "Context-Aware Systems and MCP Protocols",
+      "label": "Context-Aware Systems and MCP Protocols"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "target": "LLMOps and Model Deployment",
+      "label": "LLMOps and Model Deployment"
+    },
+    {
+      "from": "Knowledge base/Data Structures/AVL Trees.md",
+      "target": "Splay Trees",
+      "label": "Splay Trees"
+    },
+    {
+      "from": "Knowledge base/Data Structures/Graphs.md",
+      "target": "start, 0",
+      "label": "start, 0"
+    }
+  ],
+  "unresolvedReferences": [],
+  "mermaidBlocks": 94
+}

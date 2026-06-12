@@ -103,3 +103,308 @@ function frontmatterFor(note) {
 function compactReferenceLabel(target, label) {
   return label && label.trim() ? label.trim() : target.trim();
 }
+
+function stripMarkdownExtension(value) {
+  return value.replace(/\.md$/i, "").trim();
+}
+
+function indexKey(value) {
+  return stripMarkdownExtension(value).toLowerCase();
+}
+
+function pushIndexEntry(map, key, note) {
+  const normalized = indexKey(key);
+  if (!normalized) return;
+  if (!map.has(normalized)) map.set(normalized, []);
+  map.get(normalized).push(note);
+}
+
+function uniqueNotes(notes) {
+  return [...new Set(notes)];
+}
+
+function buildImportedNoteIndex() {
+  const notes = [];
+  const byTitle = new Map();
+  const byPathSuffix = new Map();
+  const byRoute = new Map();
+
+  for (const collection of collections) {
+    readMarkdownFiles(collection.sourceDir).forEach((filePath, index) => {
+      const sourcePath = publicSourcePath(filePath);
+      const title = noteTitleFromFile(filePath);
+      const slug = slugify(title);
+      const note = {
+        title,
+        slug,
+        collection: collection.id,
+        collectionTitle: collection.title,
+        sourceFile: filePath,
+        sourcePath,
+        outputFile: path.join(outputRoot, collection.id, `${slug}.md`),
+        order: noteOrderFromFile(filePath, index + 1),
+      };
+
+      notes.push(note);
+      pushIndexEntry(byTitle, title, note);
+
+      const suffixes = [
+        title,
+        path.basename(filePath, ".md"),
+        path.posix.join(collection.title, title),
+        path.posix.join(collection.title, path.basename(filePath, ".md")),
+        path.posix.join("Knowledge base", collection.title, title),
+        path.posix.join(
+          "Knowledge base",
+          collection.title,
+          path.basename(filePath, ".md")
+        ),
+        sourcePath.replace(/\.md$/i, ""),
+      ];
+
+      suffixes.forEach((suffix) => pushIndexEntry(byPathSuffix, suffix, note));
+
+      const routeKey = `${note.collection}/${note.slug}`;
+      if (!byRoute.has(routeKey)) byRoute.set(routeKey, []);
+      byRoute.get(routeKey).push(note);
+    });
+  }
+
+  const duplicateRoutes = [...byRoute.entries()].filter(
+    ([, matchingNotes]) => matchingNotes.length > 1
+  );
+
+  if (duplicateRoutes.length > 0) {
+    const details = duplicateRoutes
+      .map(([route, matchingNotes]) => {
+        const paths = matchingNotes.map((note) => note.sourcePath).join(", ");
+        return `${route}: ${paths}`;
+      })
+      .join("\n");
+    throw new Error(`Duplicate Compendium routes detected:\n${details}`);
+  }
+
+  return { notes, byTitle, byPathSuffix };
+}
+
+function findImportedNote(rawTarget, index) {
+  const target = stripMarkdownExtension(rawTarget);
+  const key = indexKey(target);
+  if (!key) return undefined;
+
+  const directTitleMatches = index.byTitle.get(key) || [];
+  const pathSuffixMatches = index.byPathSuffix.get(key) || [];
+  const sourceSuffixMatches = index.notes.filter((note) =>
+    stripMarkdownExtension(note.sourcePath).toLowerCase().endsWith(`/${key}`)
+  );
+  const matches = uniqueNotes([
+    ...directTitleMatches,
+    ...pathSuffixMatches,
+    ...sourceSuffixMatches,
+  ]);
+
+  if (matches.length > 1) {
+    const paths = matches.map((note) => note.sourcePath).join(", ");
+    throw new Error(`Ambiguous wikilink target "${rawTarget}": ${paths}`);
+  }
+
+  return matches[0];
+}
+
+function splitWikilink(rawLink) {
+  const aliasSeparator = rawLink.indexOf("|");
+  const targetPart =
+    aliasSeparator === -1 ? rawLink : rawLink.slice(0, aliasSeparator);
+  const labelPart =
+    aliasSeparator === -1 ? undefined : rawLink.slice(aliasSeparator + 1);
+  const headingSeparator = targetPart.indexOf("#");
+  const target =
+    headingSeparator === -1
+      ? targetPart.trim()
+      : targetPart.slice(0, headingSeparator).trim();
+  const heading =
+    headingSeparator === -1 ? "" : targetPart.slice(headingSeparator + 1).trim();
+
+  return {
+    target,
+    heading,
+    targetWithHeading: targetPart.trim(),
+    label: compactReferenceLabel(targetPart.trim(), labelPart),
+  };
+}
+
+function escapeMarkdownLinkLabel(value) {
+  return value
+    .replace(/\\/g, "\\\\")
+    .replace(/\[/g, "\\[")
+    .replace(/\]/g, "\\]");
+}
+
+function escapeMdxText(value) {
+  return value
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/{/g, "&#123;")
+    .replace(/}/g, "&#125;");
+}
+
+function externalReferenceSpan(label) {
+  return `<span className="compendium-external-reference" title="Vault-only reference">${escapeMdxText(
+    label
+  )}</span>`;
+}
+
+function rewriteWikilinks(content, currentNote, index, report) {
+  return content.replace(/\[\[([^\]]+)\]\]/g, (fullMatch, rawLink) => {
+    const parsed = splitWikilink(rawLink);
+
+    if (!parsed.target && !parsed.heading) {
+      report.unresolvedReferences.push({
+        from: currentNote.sourcePath,
+        target: rawLink.trim(),
+        reason: "empty-target",
+      });
+      return externalReferenceSpan(parsed.label || rawLink.trim());
+    }
+
+    if (!parsed.target && parsed.heading) {
+      const href = `#${headingSlug(parsed.heading)}`;
+      report.convertedLinks.push({
+        from: currentNote.sourcePath,
+        to: currentNote.sourcePath,
+        href,
+        label: parsed.label,
+      });
+      return `[${escapeMarkdownLinkLabel(parsed.label)}](${href})`;
+    }
+
+    const importedTarget = findImportedNote(parsed.target, index);
+
+    if (importedTarget) {
+      const hash = parsed.heading ? `#${headingSlug(parsed.heading)}` : "";
+      const href = `/compendium/${importedTarget.collection}/${importedTarget.slug}${hash}`;
+      report.convertedLinks.push({
+        from: currentNote.sourcePath,
+        to: importedTarget.sourcePath,
+        href,
+        label: parsed.label,
+      });
+      return `[${escapeMarkdownLinkLabel(parsed.label)}](${href})`;
+    }
+
+    report.externalReferences.push({
+      from: currentNote.sourcePath,
+      target: parsed.targetWithHeading,
+      label: parsed.label,
+    });
+
+    return externalReferenceSpan(parsed.label);
+  });
+}
+
+function normalizeDoubleBracketsInCodeBlocks(content) {
+  const lines = content.split(/(\r?\n)/);
+  let inFence = false;
+  let fenceMarker = "";
+
+  return lines
+    .map((segment) => {
+      if (segment === "\n" || segment === "\r\n") return segment;
+
+      const fenceMatch = segment.match(/^(\s*)(`{3,}|~{3,})/);
+      if (fenceMatch) {
+        const marker = fenceMatch[2][0];
+        if (!inFence) {
+          inFence = true;
+          fenceMarker = marker;
+        } else if (marker === fenceMarker) {
+          inFence = false;
+          fenceMarker = "";
+        }
+        return segment;
+      }
+
+      if (!inFence) return segment;
+
+      return segment.replace(/\[\[/g, "[ [").replace(/\]\]/g, "] ]");
+    })
+    .join("");
+}
+
+function countMatches(content, pattern) {
+  return (content.match(pattern) || []).length;
+}
+
+function importCompendium() {
+  const index = buildImportedNoteIndex();
+  const report = {
+    generatedAt: new Date().toISOString(),
+    vaultRoot,
+    outputRoot: path.relative(root, outputRoot),
+    collections: [],
+    copiedNotes: [],
+    convertedLinks: [],
+    externalReferences: [],
+    unresolvedReferences: [],
+    mermaidBlocks: 0,
+  };
+
+  ensureCleanDir(outputRoot);
+
+  for (const collection of collections) {
+    fs.mkdirSync(path.join(outputRoot, collection.id), { recursive: true });
+    const notes = index.notes
+      .filter((note) => note.collection === collection.id)
+      .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
+
+    report.collections.push({
+      id: collection.id,
+      title: collection.title,
+      noteCount: notes.length,
+    });
+
+    for (const note of notes) {
+      const original = fs.readFileSync(note.sourceFile, "utf8");
+      const body = normalizeDoubleBracketsInCodeBlocks(
+        rewriteWikilinks(original, note, index, report)
+      );
+      const mermaidBlocks = countMatches(body, /```mermaid/g);
+      report.mermaidBlocks += mermaidBlocks;
+      const content = `${frontmatterFor(note)}${body}${
+        body.endsWith("\n") ? "" : "\n"
+      }`;
+
+      fs.writeFileSync(note.outputFile, content);
+
+      report.copiedNotes.push({
+        title: note.title,
+        collection: note.collection,
+        slug: note.slug,
+        sourcePath: note.sourcePath,
+        outputPath: path.relative(root, note.outputFile),
+        order: note.order,
+        mermaidBlocks,
+      });
+    }
+  }
+
+  fs.writeFileSync(
+    path.join(outputRoot, "import-report.json"),
+    `${JSON.stringify(report, null, 2)}\n`
+  );
+
+  console.log(
+    `Imported ${report.copiedNotes.length} Compendium notes with ${report.mermaidBlocks} Mermaid blocks.`
+  );
+  console.log(`Converted links: ${report.convertedLinks.length}`);
+  console.log(`External references: ${report.externalReferences.length}`);
+  console.log(
+    `Unresolved references: ${report.unresolvedReferences.length}`
+  );
+  console.log(
+    `Report: ${path.relative(root, path.join(outputRoot, "import-report.json"))}`
+  );
+}
+
+importCompendium();
