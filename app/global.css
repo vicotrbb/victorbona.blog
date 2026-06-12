@@ -408,6 +408,11 @@ img[data-loading="true"] {
   word-break: break-word;
 }
 
+.prose.compendium-content {
+  max-width: none;
+  margin-inline: 0;
+}
+
 .prose h1 {
   font-size: var(--text-2xl);
   @apply font-bold tracking-tight mt-8 mb-6 text-neutral-900 dark:text-neutral-100;

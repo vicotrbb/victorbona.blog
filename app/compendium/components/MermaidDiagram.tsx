@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 import mermaid from "mermaid";
 
 type MermaidDiagramProps = {
@@ -33,15 +33,19 @@ function initializeMermaid() {
 
 export function MermaidDiagram({ code }: MermaidDiagramProps) {
   const reactId = useId();
+  const renderCountRef = useRef(0);
   const [svg, setSvg] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const stableDiagramPrefix = `compendium-mermaid-${reactId.replace(/[^a-zA-Z0-9_-]/g, "")}`;
 
   useEffect(() => {
     let isMounted = true;
-    const diagramId = `compendium-mermaid-${reactId.replace(/[^a-zA-Z0-9_-]/g, "")}`;
 
     async function renderDiagram() {
+      renderCountRef.current += 1;
+      const diagramId = `${stableDiagramPrefix}-${renderCountRef.current}`;
+
       setIsLoading(true);
       setError(null);
       setSvg("");
@@ -72,7 +76,7 @@ export function MermaidDiagram({ code }: MermaidDiagramProps) {
     return () => {
       isMounted = false;
     };
-  }, [code, reactId]);
+  }, [code, stableDiagramPrefix]);
 
   if (error) {
     return (
