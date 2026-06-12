@@ -213,6 +213,124 @@ table {
   white-space: nowrap;
 }
 
+.compendium-grid {
+  display: grid;
+  gap: var(--space-xl);
+  grid-template-columns: minmax(0, 1fr);
+  width: 100%;
+}
+
+.compendium-sidebar,
+.compendium-toc {
+  border: 1px solid var(--color-border);
+  background: color-mix(in oklch, var(--color-surface) 86%, transparent);
+  padding: var(--space-md);
+}
+
+.compendium-sidebar {
+  align-self: start;
+}
+
+.compendium-toc {
+  align-self: start;
+  max-height: min(32rem, calc(100vh - 8rem));
+  overflow-y: auto;
+}
+
+.compendium-content {
+  min-width: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.compendium-content table,
+.compendium-content pre {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.compendium-content pre {
+  white-space: pre;
+}
+
+.compendium-content pre code {
+  overflow-wrap: normal;
+  word-break: normal;
+}
+
+.compendium-external-reference {
+  display: inline-flex;
+  align-items: center;
+  max-width: 100%;
+  border: 1px solid color-mix(in oklch, var(--color-border) 76%, transparent);
+  border-radius: var(--radius-sm);
+  background: color-mix(in oklch, var(--color-muted) 64%, transparent);
+  padding: 0.05rem 0.35rem;
+  color: var(--color-muted-foreground);
+  font-size: 0.92em;
+  line-height: 1.45;
+  vertical-align: baseline;
+}
+
+.compendium-mermaid {
+  margin-block: var(--space-xl);
+  max-width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: color-mix(in oklch, var(--color-surface) 84%, transparent);
+  padding: var(--space-md);
+}
+
+.compendium-mermaid__viewport {
+  min-width: max-content;
+}
+
+.compendium-mermaid svg {
+  display: block;
+  width: auto;
+  max-width: none;
+  height: auto;
+  min-height: 1rem;
+  color: var(--color-foreground);
+}
+
+.compendium-mermaid__loading {
+  color: var(--color-muted-foreground);
+  font-size: var(--text-sm);
+}
+
+.compendium-mermaid--fallback {
+  border-color: color-mix(in oklch, var(--color-accent) 45%, var(--color-border));
+}
+
+.compendium-mermaid--fallback figcaption {
+  margin-bottom: var(--space-sm);
+  color: var(--color-muted-foreground);
+  font-size: var(--text-sm);
+}
+
+.compendium-mermaid--fallback pre {
+  margin: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+@media (min-width: 64rem) {
+  .compendium-grid {
+    grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr) minmax(12rem, 16rem);
+    align-items: start;
+  }
+
+  .compendium-sidebar,
+  .compendium-toc {
+    position: sticky;
+    top: var(--space-lg);
+  }
+}
+
 .title {
   text-wrap: balance;
 }
