@@ -220,8 +220,7 @@ table {
   width: 100%;
 }
 
-.compendium-sidebar,
-.compendium-toc {
+.compendium-sidebar {
   border: 1px solid var(--color-border);
   background: color-mix(in oklch, var(--color-surface) 86%, transparent);
   padding: var(--space-md);
@@ -229,12 +228,6 @@ table {
 
 .compendium-sidebar {
   align-self: start;
-}
-
-.compendium-toc {
-  align-self: start;
-  max-height: min(32rem, calc(100vh - 8rem));
-  overflow-y: auto;
 }
 
 .compendium-content {
@@ -247,6 +240,19 @@ table {
 .compendium-content pre {
   max-width: 100%;
   overflow-x: auto;
+}
+
+.compendium-content table {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  white-space: normal;
+}
+
+.compendium-content th,
+.compendium-content td {
+  vertical-align: top;
+  overflow-wrap: anywhere;
 }
 
 .compendium-content pre {
@@ -321,12 +327,11 @@ table {
 
 @media (min-width: 64rem) {
   .compendium-grid {
-    grid-template-columns: minmax(12rem, 16rem) minmax(0, 1fr) minmax(12rem, 16rem);
+    grid-template-columns: minmax(13rem, 17rem) minmax(0, 1fr);
     align-items: start;
   }
 
-  .compendium-sidebar,
-  .compendium-toc {
+  .compendium-sidebar {
     position: sticky;
     top: var(--space-lg);
   }

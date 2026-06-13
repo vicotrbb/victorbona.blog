@@ -165,31 +165,6 @@ export function CompendiumShell({
         )}
       </div>
 
-      <aside className="compendium-toc">
-        <p className="metadata-type text-[var(--color-muted-foreground)]">
-          On this page
-        </p>
-        <nav aria-label="On this page" className="mt-3 grid gap-2 text-sm">
-          {note.toc.length === 0 ? (
-            <span className="text-[var(--color-muted-foreground)]">
-              No sections
-            </span>
-          ) : (
-            note.toc.map((item, index) => (
-              <a
-                key={`${item.id}-${index}`}
-                href={`#${item.id}`}
-                className={[
-                  "leading-snug text-[var(--color-muted-foreground)] transition-colors hover:text-[var(--color-foreground)] focus-visible:text-[var(--color-foreground)]",
-                  item.level === 3 ? "pl-3" : "",
-                ].join(" ")}
-              >
-                {item.text}
-              </a>
-            ))
-          )}
-        </nav>
-      </aside>
     </article>
   );
 }
