@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useState } from "react";
-import mermaid from "mermaid";
+import mermaid from "mermaid/dist/mermaid.esm.mjs";
 
 type MermaidDiagramProps = {
   code: string;
@@ -18,12 +18,12 @@ function initializeMermaid() {
     theme: "base",
     themeVariables: {
       background: "transparent",
-      primaryColor: "transparent",
-      primaryTextColor: "currentColor",
-      primaryBorderColor: "currentColor",
-      lineColor: "currentColor",
-      secondaryColor: "transparent",
-      tertiaryColor: "transparent",
+      primaryColor: "#f8fafc",
+      primaryTextColor: "#111827",
+      primaryBorderColor: "#64748b",
+      lineColor: "#475569",
+      secondaryColor: "#f1f5f9",
+      tertiaryColor: "#e2e8f0",
       fontFamily: "inherit",
     },
   });
@@ -81,7 +81,7 @@ export function MermaidDiagram({ code }: MermaidDiagramProps) {
   if (error) {
     return (
       <figure className="compendium-mermaid compendium-mermaid--fallback">
-        <figcaption>Diagram failed to render. Showing source.</figcaption>
+        <figcaption>Diagram failed to render: {error}</figcaption>
         <pre>
           <code>{code}</code>
         </pre>
