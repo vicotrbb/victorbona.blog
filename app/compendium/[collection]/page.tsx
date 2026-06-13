@@ -9,13 +9,30 @@ import {
   NoteRows,
   getCompendiumCollectionSummary,
 } from "../components/CompendiumIndex";
-import { getCompendiumImportReport, getCompendiumNotes } from "../utils";
+import { CompendiumMdx } from "../components/CompendiumMdx";
+import {
+  getCompendiumImportReport,
+  getCompendiumNote,
+  getCompendiumNotes,
+} from "../utils";
 
 type CollectionPageProps = {
   params: {
     collection: string;
   };
 };
+
+function getSoftwareEngineeringStudyIndex() {
+  return getCompendiumNote("software-engineering", "software-engineering");
+}
+
+function withoutLeadingTitle(content: string, title: string) {
+  const heading = `# ${title}`;
+
+  return content.startsWith(heading)
+    ? content.slice(heading.length).replace(/^\s+/, "")
+    : content;
+}
 
 export function generateStaticParams() {
   return compendiumCollections.map((collection) => ({
@@ -60,6 +77,10 @@ export default function CompendiumCollectionPage({
   }
 
   const notes = getCompendiumNotes(collection.id);
+  const studyIndex =
+    collection.id === "software-engineering"
+      ? getSoftwareEngineeringStudyIndex()
+      : undefined;
   const importReport = getCompendiumImportReport();
   const summary = getCompendiumCollectionSummary({
     collection,
@@ -105,6 +126,16 @@ export default function CompendiumCollectionPage({
         </div>
       </div>
       <CompendiumStats summary={summary} />
+      {studyIndex && (
+        <section className="space-y-4">
+          <SectionHeader index="INDEX" title="Study map" />
+          <div className="prose compendium-content">
+            <CompendiumMdx
+              source={withoutLeadingTitle(studyIndex.content, studyIndex.title)}
+            />
+          </div>
+        </section>
+      )}
       <SectionHeader index="NOTES" title="Ordered notes" />
       <NoteRows notes={notes} />
     </section>
