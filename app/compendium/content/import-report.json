@@ -1860,13 +1860,13 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
-      "href": "/compendium/software-engineering/databases-storage-and-transactions#isolation-and-correctness",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
       "label": "04 Databases Storage and Transactions#Isolation and correctness"
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
-      "href": "/compendium/software-engineering/apis-contracts-and-integration#event-contracts",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
       "label": "07 APIs Contracts and Integration#Event contracts"
     },
     {
@@ -1884,13 +1884,13 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
-      "href": "/compendium/software-engineering/databases-storage-and-transactions#isolation-and-correctness",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
       "label": "04 Databases Storage and Transactions#Isolation and correctness"
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
-      "href": "/compendium/software-engineering/databases-storage-and-transactions#transactions",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
       "label": "04 Databases Storage and Transactions#Transactions"
     },
     {
@@ -1902,13 +1902,13 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
-      "href": "/compendium/software-engineering/caching-queues-and-streaming#message-delivery-semantics",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
       "label": "06 Caching Queues and Streaming#Message delivery semantics"
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
-      "href": "/compendium/software-engineering/apis-contracts-and-integration#event-contracts",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
       "label": "07 APIs Contracts and Integration#Event contracts"
     },
     {
@@ -1962,7 +1962,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
-      "href": "/compendium/software-engineering/performance-capacity-and-cost#cpu-and-memory-performance",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
       "label": "11 Performance Capacity and Cost#CPU and memory performance"
     },
     {
@@ -1974,7 +1974,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
-      "href": "/compendium/software-engineering/engineering-fundamentals#nonblocking-algorithms",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
       "label": "01 Engineering Fundamentals#Nonblocking algorithms"
     },
     {
@@ -1992,7 +1992,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
-      "href": "/compendium/software-engineering/engineering-fundamentals#nonblocking-algorithms",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
       "label": "01 Engineering Fundamentals#Nonblocking algorithms"
     },
     {
@@ -2004,7 +2004,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
-      "href": "/compendium/software-engineering/engineering-fundamentals#liveness-failures",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
       "label": "01 Engineering Fundamentals#Liveness failures"
     },
     {
@@ -2016,7 +2016,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
-      "href": "/compendium/software-engineering/engineering-fundamentals#liveness-failures",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
       "label": "01 Engineering Fundamentals#Liveness failures"
     },
     {
@@ -2028,7 +2028,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
-      "href": "/compendium/software-engineering/engineering-fundamentals#liveness-failures",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
       "label": "01 Engineering Fundamentals#Liveness failures"
     },
     {
@@ -2046,7 +2046,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
-      "href": "/compendium/software-engineering/performance-capacity-and-cost#cpu-and-memory-performance",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
       "label": "11 Performance Capacity and Cost#CPU and memory performance"
     },
     {
@@ -2076,7 +2076,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
-      "href": "/compendium/software-engineering/databases-storage-and-transactions#advanced-databases",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
       "label": "04 Databases Storage and Transactions#Advanced databases"
     },
     {
@@ -2088,13 +2088,13 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
-      "href": "/compendium/software-engineering/databases-storage-and-transactions#isolation-and-correctness",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
       "label": "04 Databases Storage and Transactions#Isolation and correctness"
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
-      "href": "/compendium/software-engineering/databases-storage-and-transactions#transactions",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
       "label": "04 Databases Storage and Transactions#Transactions"
     },
     {
@@ -2106,7 +2106,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
-      "href": "/compendium/software-engineering/databases-storage-and-transactions#replication-and-storage-correctness",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
       "label": "04 Databases Storage and Transactions#Replication and storage correctness"
     },
     {
@@ -2124,7 +2124,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
-      "href": "/compendium/software-engineering/distributed-systems#cap-pacelc-and-failure-tradeoffs",
+      "href": "/compendium/software-engineering/distributed-systems",
       "label": "05 Distributed Systems#CAP PACELC and failure tradeoffs"
     },
     {
@@ -2136,13 +2136,13 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
-      "href": "/compendium/software-engineering/distributed-systems#cap-pacelc-and-failure-tradeoffs",
+      "href": "/compendium/software-engineering/distributed-systems",
       "label": "05 Distributed Systems#CAP PACELC and failure tradeoffs"
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
-      "href": "/compendium/software-engineering/performance-capacity-and-cost#latency-and-throughput",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
       "label": "11 Performance Capacity and Cost#Latency and throughput"
     },
     {
@@ -2172,7 +2172,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
-      "href": "/compendium/software-engineering/distributed-systems#time-clocks-and-ordering",
+      "href": "/compendium/software-engineering/distributed-systems",
       "label": "05 Distributed Systems#Time clocks and ordering"
     },
     {
@@ -2220,13 +2220,13 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
-      "href": "/compendium/software-engineering/caching-queues-and-streaming#cache-invalidation",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
       "label": "06 Caching Queues and Streaming#Cache invalidation"
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
-      "href": "/compendium/software-engineering/performance-capacity-and-cost#latency-and-throughput",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
       "label": "11 Performance Capacity and Cost#Latency and throughput"
     },
     {
@@ -2250,7 +2250,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
-      "href": "/compendium/software-engineering/apis-contracts-and-integration#event-contracts",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
       "label": "07 APIs Contracts and Integration#Event contracts"
     },
     {
@@ -2268,7 +2268,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
-      "href": "/compendium/software-engineering/reliability-observability-and-operations#observability-pillars",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
       "label": "08 Reliability Observability and Operations#Observability pillars"
     },
     {
@@ -2286,7 +2286,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
-      "href": "/compendium/software-engineering/technical-leadership-and-execution#leadership-operating-rhythm",
+      "href": "/compendium/software-engineering/technical-leadership-and-execution",
       "label": "13 Technical Leadership and Execution#Leadership operating rhythm"
     },
     {
@@ -2298,13 +2298,13 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
-      "href": "/compendium/software-engineering/security-and-supply-chain#access-boundaries",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
       "label": "09 Security and Supply Chain#Access boundaries"
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
-      "href": "/compendium/software-engineering/security-and-supply-chain#supply-chain-controls",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
       "label": "09 Security and Supply Chain#Supply chain controls"
     },
     {
@@ -2334,13 +2334,13 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
-      "href": "/compendium/software-engineering/engineering-fundamentals#liveness-failures",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
       "label": "01 Engineering Fundamentals#Liveness failures"
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
-      "href": "/compendium/software-engineering/performance-capacity-and-cost#cpu-and-memory-performance",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
       "label": "11 Performance Capacity and Cost#CPU and memory performance"
     },
     {
@@ -2406,7 +2406,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
-      "href": "/compendium/software-engineering/architecture-and-design#architecture-and-organization",
+      "href": "/compendium/software-engineering/architecture-and-design",
       "label": "02 Architecture and Design#Architecture and organization"
     },
     {
@@ -2448,7 +2448,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
-      "href": "/compendium/software-engineering/reliability-observability-and-operations#observability-pillars",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
       "label": "08 Reliability Observability and Operations#Observability pillars"
     },
     {
@@ -2460,7 +2460,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
-      "href": "/compendium/software-engineering/databases-storage-and-transactions#transactions",
+      "href": "/compendium/software-engineering/databases-storage-and-transactions",
       "label": "04 Databases Storage and Transactions#Transactions"
     },
     {
@@ -2472,7 +2472,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
-      "href": "/compendium/software-engineering/reliability-observability-and-operations#observability-pillars",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
       "label": "08 Reliability Observability and Operations#Observability pillars"
     },
     {
@@ -2496,7 +2496,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
-      "href": "/compendium/software-engineering/caching-queues-and-streaming#poison-messages-and-retries",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
       "label": "06 Caching Queues and Streaming#Poison messages and retries"
     },
     {
@@ -2508,7 +2508,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
-      "href": "/compendium/software-engineering/performance-capacity-and-cost#latency-and-throughput",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
       "label": "11 Performance Capacity and Cost#Latency and throughput"
     },
     {
@@ -2520,7 +2520,7 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
-      "href": "/compendium/software-engineering/reliability-observability-and-operations#observability-pillars",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
       "label": "08 Reliability Observability and Operations#Observability pillars"
     },
     {
@@ -2586,13 +2586,13 @@
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
-      "href": "/compendium/software-engineering/apis-contracts-and-integration#event-contracts",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
       "label": "07 APIs Contracts and Integration#Event contracts"
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
-      "href": "/compendium/software-engineering/distributed-systems#time-clocks-and-ordering",
+      "href": "/compendium/software-engineering/distributed-systems",
       "label": "05 Distributed Systems#Time clocks and ordering"
     },
     {
@@ -3953,5 +3953,280 @@
     }
   ],
   "unresolvedReferences": [],
+  "invalidHeadingReferences": [
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "requestedHeading": "Isolation and correctness",
+      "requestedHash": "#isolation-and-correctness",
+      "fallbackHref": "/compendium/software-engineering/databases-storage-and-transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "requestedHeading": "Event contracts",
+      "requestedHash": "#event-contracts",
+      "fallbackHref": "/compendium/software-engineering/apis-contracts-and-integration"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "requestedHeading": "Isolation and correctness",
+      "requestedHash": "#isolation-and-correctness",
+      "fallbackHref": "/compendium/software-engineering/databases-storage-and-transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "requestedHeading": "Transactions",
+      "requestedHash": "#transactions",
+      "fallbackHref": "/compendium/software-engineering/databases-storage-and-transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "requestedHeading": "Message delivery semantics",
+      "requestedHash": "#message-delivery-semantics",
+      "fallbackHref": "/compendium/software-engineering/caching-queues-and-streaming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "requestedHeading": "Event contracts",
+      "requestedHash": "#event-contracts",
+      "fallbackHref": "/compendium/software-engineering/apis-contracts-and-integration"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "requestedHeading": "CPU and memory performance",
+      "requestedHash": "#cpu-and-memory-performance",
+      "fallbackHref": "/compendium/software-engineering/performance-capacity-and-cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "requestedHeading": "Nonblocking algorithms",
+      "requestedHash": "#nonblocking-algorithms",
+      "fallbackHref": "/compendium/software-engineering/engineering-fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "requestedHeading": "Nonblocking algorithms",
+      "requestedHash": "#nonblocking-algorithms",
+      "fallbackHref": "/compendium/software-engineering/engineering-fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "requestedHeading": "Liveness failures",
+      "requestedHash": "#liveness-failures",
+      "fallbackHref": "/compendium/software-engineering/engineering-fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "requestedHeading": "Liveness failures",
+      "requestedHash": "#liveness-failures",
+      "fallbackHref": "/compendium/software-engineering/engineering-fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "requestedHeading": "Liveness failures",
+      "requestedHash": "#liveness-failures",
+      "fallbackHref": "/compendium/software-engineering/engineering-fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "requestedHeading": "CPU and memory performance",
+      "requestedHash": "#cpu-and-memory-performance",
+      "fallbackHref": "/compendium/software-engineering/performance-capacity-and-cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "requestedHeading": "Advanced databases",
+      "requestedHash": "#advanced-databases",
+      "fallbackHref": "/compendium/software-engineering/databases-storage-and-transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "requestedHeading": "Isolation and correctness",
+      "requestedHash": "#isolation-and-correctness",
+      "fallbackHref": "/compendium/software-engineering/databases-storage-and-transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "requestedHeading": "Transactions",
+      "requestedHash": "#transactions",
+      "fallbackHref": "/compendium/software-engineering/databases-storage-and-transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "requestedHeading": "Replication and storage correctness",
+      "requestedHash": "#replication-and-storage-correctness",
+      "fallbackHref": "/compendium/software-engineering/databases-storage-and-transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "requestedHeading": "CAP PACELC and failure tradeoffs",
+      "requestedHash": "#cap-pacelc-and-failure-tradeoffs",
+      "fallbackHref": "/compendium/software-engineering/distributed-systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "requestedHeading": "CAP PACELC and failure tradeoffs",
+      "requestedHash": "#cap-pacelc-and-failure-tradeoffs",
+      "fallbackHref": "/compendium/software-engineering/distributed-systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "requestedHeading": "Latency and throughput",
+      "requestedHash": "#latency-and-throughput",
+      "fallbackHref": "/compendium/software-engineering/performance-capacity-and-cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "requestedHeading": "Time clocks and ordering",
+      "requestedHash": "#time-clocks-and-ordering",
+      "fallbackHref": "/compendium/software-engineering/distributed-systems"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "requestedHeading": "Cache invalidation",
+      "requestedHash": "#cache-invalidation",
+      "fallbackHref": "/compendium/software-engineering/caching-queues-and-streaming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "requestedHeading": "Latency and throughput",
+      "requestedHash": "#latency-and-throughput",
+      "fallbackHref": "/compendium/software-engineering/performance-capacity-and-cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "requestedHeading": "Event contracts",
+      "requestedHash": "#event-contracts",
+      "fallbackHref": "/compendium/software-engineering/apis-contracts-and-integration"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "requestedHeading": "Observability pillars",
+      "requestedHash": "#observability-pillars",
+      "fallbackHref": "/compendium/software-engineering/reliability-observability-and-operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "requestedHeading": "Leadership operating rhythm",
+      "requestedHash": "#leadership-operating-rhythm",
+      "fallbackHref": "/compendium/software-engineering/technical-leadership-and-execution"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "requestedHeading": "Access boundaries",
+      "requestedHash": "#access-boundaries",
+      "fallbackHref": "/compendium/software-engineering/security-and-supply-chain"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "requestedHeading": "Supply chain controls",
+      "requestedHash": "#supply-chain-controls",
+      "fallbackHref": "/compendium/software-engineering/security-and-supply-chain"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "requestedHeading": "Liveness failures",
+      "requestedHash": "#liveness-failures",
+      "fallbackHref": "/compendium/software-engineering/engineering-fundamentals"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "requestedHeading": "CPU and memory performance",
+      "requestedHash": "#cpu-and-memory-performance",
+      "fallbackHref": "/compendium/software-engineering/performance-capacity-and-cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/02 Architecture and Design.md",
+      "requestedHeading": "Architecture and organization",
+      "requestedHash": "#architecture-and-organization",
+      "fallbackHref": "/compendium/software-engineering/architecture-and-design"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "requestedHeading": "Observability pillars",
+      "requestedHash": "#observability-pillars",
+      "fallbackHref": "/compendium/software-engineering/reliability-observability-and-operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/04 Databases Storage and Transactions.md",
+      "requestedHeading": "Transactions",
+      "requestedHash": "#transactions",
+      "fallbackHref": "/compendium/software-engineering/databases-storage-and-transactions"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "requestedHeading": "Observability pillars",
+      "requestedHash": "#observability-pillars",
+      "fallbackHref": "/compendium/software-engineering/reliability-observability-and-operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "requestedHeading": "Poison messages and retries",
+      "requestedHash": "#poison-messages-and-retries",
+      "fallbackHref": "/compendium/software-engineering/caching-queues-and-streaming"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "requestedHeading": "Latency and throughput",
+      "requestedHash": "#latency-and-throughput",
+      "fallbackHref": "/compendium/software-engineering/performance-capacity-and-cost"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "requestedHeading": "Observability pillars",
+      "requestedHash": "#observability-pillars",
+      "fallbackHref": "/compendium/software-engineering/reliability-observability-and-operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "requestedHeading": "Event contracts",
+      "requestedHash": "#event-contracts",
+      "fallbackHref": "/compendium/software-engineering/apis-contracts-and-integration"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "requestedHeading": "Time clocks and ordering",
+      "requestedHash": "#time-clocks-and-ordering",
+      "fallbackHref": "/compendium/software-engineering/distributed-systems"
+    }
+  ],
   "mermaidBlocks": 94
 }

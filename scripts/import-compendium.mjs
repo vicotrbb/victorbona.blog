@@ -48,8 +48,60 @@ function headingSlug(value) {
     .trim()
     .replace(/\s+/g, "-")
     .replace(/&/g, "-and-")
-    .replace(/[^\w\-]+/g, "")
-    .replace(/\-\-+/g, "-");
+    .replace(/[^\w-]+/g, "")
+    .replace(/--+/g, "-")
+    .replace(/^-+|-+$/g, "");
+}
+
+function getUniqueHeadingId(heading, counts) {
+  const baseId = headingSlug(heading);
+  const count = counts.get(baseId) ?? 0;
+  counts.set(baseId, count + 1);
+
+  return count === 0 ? baseId : `${baseId}-${count}`;
+}
+
+function stripHeadingMarkdown(value) {
+  return value.replace(/#+$/, "").replace(/[`*_]/g, "").trim();
+}
+
+function collectRenderedHeadingIds(content) {
+  const counts = new Map();
+  const ids = new Set();
+  let inCodeFence = false;
+  let fenceMarker = "";
+
+  for (const line of content.split(/\r?\n/)) {
+    const fenceMatch = line.match(/^(\s*)(`{3,}|~{3,})/);
+    if (fenceMatch) {
+      const marker = fenceMatch[2][0];
+      if (!inCodeFence) {
+        inCodeFence = true;
+        fenceMarker = marker;
+      } else if (marker === fenceMarker) {
+        inCodeFence = false;
+        fenceMarker = "";
+      }
+      continue;
+    }
+
+    if (inCodeFence) continue;
+
+    const match = /^(#{1,6})\s+(.+)$/.exec(line);
+    if (!match) continue;
+
+    const text = stripHeadingMarkdown(match[2]);
+    if (!text) continue;
+
+    const level = match[1].length;
+    ids.add(
+      level === 2 || level === 3
+        ? getUniqueHeadingId(text, counts)
+        : headingSlug(text)
+    );
+  }
+
+  return ids;
 }
 
 function readMarkdownFiles(dir) {
@@ -143,6 +195,7 @@ function buildImportedNoteIndex() {
         sourcePath,
         outputFile: path.join(outputRoot, collection.id, `${slug}.md`),
         order: noteOrderFromFile(filePath, index + 1),
+        headingIds: collectRenderedHeadingIds(fs.readFileSync(filePath, "utf8")),
       };
 
       notes.push(note);
@@ -269,21 +322,49 @@ function rewriteWikilinks(content, currentNote, index, report) {
     }
 
     if (!parsed.target && parsed.heading) {
-      const href = `#${headingSlug(parsed.heading)}`;
+      const requestedHash = headingSlug(parsed.heading);
+      const hash = currentNote.headingIds.has(requestedHash)
+        ? `#${requestedHash}`
+        : "";
+      if (requestedHash && !hash) {
+        report.invalidHeadingReferences.push({
+          from: currentNote.sourcePath,
+          to: currentNote.sourcePath,
+          requestedHeading: parsed.heading,
+          requestedHash: `#${requestedHash}`,
+          fallbackHref: "",
+        });
+      }
+      const href = hash || "";
       report.convertedLinks.push({
         from: currentNote.sourcePath,
         to: currentNote.sourcePath,
         href,
         label: parsed.label,
       });
-      return `[${escapeMarkdownLinkLabel(parsed.label)}](${href})`;
+      return href
+        ? `[${escapeMarkdownLinkLabel(parsed.label)}](${href})`
+        : escapeMarkdownLinkLabel(parsed.label);
     }
 
     const importedTarget = findImportedNote(parsed.target, index);
 
     if (importedTarget) {
-      const hash = parsed.heading ? `#${headingSlug(parsed.heading)}` : "";
+      const requestedHash = parsed.heading ? headingSlug(parsed.heading) : "";
+      const hash =
+        requestedHash && importedTarget.headingIds.has(requestedHash)
+          ? `#${requestedHash}`
+          : "";
       const href = `/compendium/${importedTarget.collection}/${importedTarget.slug}${hash}`;
+      if (requestedHash && !hash) {
+        report.invalidHeadingReferences.push({
+          from: currentNote.sourcePath,
+          to: importedTarget.sourcePath,
+          requestedHeading: parsed.heading,
+          requestedHash: `#${requestedHash}`,
+          fallbackHref: `/compendium/${importedTarget.collection}/${importedTarget.slug}`,
+        });
+      }
       report.convertedLinks.push({
         from: currentNote.sourcePath,
         to: importedTarget.sourcePath,
@@ -377,6 +458,7 @@ function importCompendium() {
     convertedLinks: [],
     externalReferences: [],
     unresolvedReferences: [],
+    invalidHeadingReferences: [],
     mermaidBlocks: 0,
   };
 
@@ -448,6 +530,9 @@ function importCompendium() {
   console.log(`External references: ${report.externalReferences.length}`);
   console.log(
     `Unresolved references: ${report.unresolvedReferences.length}`
+  );
+  console.log(
+    `Invalid heading references: ${report.invalidHeadingReferences.length}`
   );
   console.log(
     `Report: ${path.relative(root, path.join(outputRoot, "import-report.json"))}`
