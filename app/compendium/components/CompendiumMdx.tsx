@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeKatex from "rehype-katex";
+import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import { highlight } from "sugar-high";
 import React, { Children, isValidElement, type ReactNode } from "react";
@@ -171,6 +172,7 @@ export function CompendiumMdx({ components, ...props }: CompendiumMdxProps) {
         mdxOptions: {
           ...props.options?.mdxOptions,
           remarkPlugins: [
+            remarkGfm,
             remarkMath,
             ...(props.options?.mdxOptions?.remarkPlugins || []),
           ],

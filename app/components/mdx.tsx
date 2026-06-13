@@ -1,4 +1,5 @@
 import Link from "next/link";
+import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import Image from "next/image";
@@ -107,7 +108,7 @@ export function CustomMDX(props) {
       {...props}
       options={{
         mdxOptions: {
-          remarkPlugins: [remarkMath],
+          remarkPlugins: [remarkGfm, remarkMath],
           rehypePlugins: [rehypeKatex],
         },
       }}
