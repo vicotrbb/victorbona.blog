@@ -6,7 +6,7 @@ order: 18
 ---
 The **Outbox Pattern** is an architectural pattern used to guarantee **reliable, atomic, and consistent publication of events** in distributed systems. Instead of attempting to send external messages within the same transaction that mutates the application's data, the pattern records those messages in a dedicated **outbox table**. A separate process then reads from this outbox and publishes events to message brokers or other services. This avoids the classic dual-write problem and ensures messages are delivered **exactly once or at-least once**, depending on the implementation.
 
-The pattern is especially common in microservice architectures where systems must update a local database and emit events—both of which must succeed without drifting out of sync. By turning the message emission into part of the same local transaction, the outbox pattern brings determinism to an otherwise fragile operation.
+The pattern is especially common in microservice architectures where systems must update a local database and emit events - both of which must succeed without drifting out of sync. By turning the message emission into part of the same local transaction, the outbox pattern brings determinism to an otherwise fragile operation.
 
 * **Intent:** “Provide a reliable mechanism to publish events to external systems by writing them into an outbox table inside the same database transaction as the state change, and then asynchronously dispatch those events to message brokers or other services.”
 * **Use Cases:** When a service must update its database and also publish an event (e.g., “OrderCreated”, “InvoicePaid”, “UserRegistered”) reliably. The pattern prevents lost messages, duplicates, and cross-system inconsistencies. It is widely applied in event sourcing, CQRS architectures, microservices, or whenever transactional boundaries do not naturally extend across system boundaries.
@@ -32,7 +32,7 @@ This transforms the problem from “two writes in two systems” to “one write
 
 ## **How It Works**
 
-When an application performs some business action—say, creating an order—it writes:
+When an application performs some business action - say, creating an order - it writes:
 
 1. The **order** itself into `orders`
 2. A corresponding **event** into `outbox` (e.g., `{ type: "OrderCreated", payload: {...} }`)
@@ -191,7 +191,7 @@ Because event payloads live as **immutable historical records**, schema changes 
 * Version events (`type = "OrderCreated:v2"`)
 * Keep backward compatibility in consumers
 
-The outbox becomes a de facto timeline of facts—treat it like a ledger.
+The outbox becomes a de facto timeline of facts - treat it like a ledger.
 
 ---
 
@@ -207,11 +207,11 @@ A new order is submitted:
 6. Dispatcher marks event as sent.
 
 If the dispatcher crashes or Kafka becomes unavailable?
-No problem—the event is still in the outbox.
+No problem - the event is still in the outbox.
 
 If the publish succeeds but marking `sent_at` fails?
 On retry, the dispatcher might republish the event.
-Consumers must be idempotent—but the event is never lost.
+Consumers must be idempotent - but the event is never lost.
 
 ---
 

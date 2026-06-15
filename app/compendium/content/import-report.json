@@ -16,6 +16,11 @@
       "id": "design-patterns",
       "title": "Design Patterns",
       "noteCount": 25
+    },
+    {
+      "id": "kubernetes",
+      "title": "Kubernetes",
+      "noteCount": 19
     }
   ],
   "copiedNotes": [
@@ -576,6 +581,177 @@
       "outputPath": "app/compendium/content/design-patterns/template-method-pattern.md",
       "order": 25,
       "mermaidBlocks": 0
+    },
+    {
+      "title": "Kubernetes Mastery Roadmap",
+      "collection": "kubernetes",
+      "slug": "kubernetes-mastery-roadmap",
+      "sourcePath": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "outputPath": "app/compendium/content/kubernetes/kubernetes-mastery-roadmap.md",
+      "order": 0,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Kubernetes Mental Model and Architecture",
+      "collection": "kubernetes",
+      "slug": "kubernetes-mental-model-and-architecture",
+      "sourcePath": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "outputPath": "app/compendium/content/kubernetes/kubernetes-mental-model-and-architecture.md",
+      "order": 1,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Containers Pods and Workload Primitives",
+      "collection": "kubernetes",
+      "slug": "containers-pods-and-workload-primitives",
+      "sourcePath": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "outputPath": "app/compendium/content/kubernetes/containers-pods-and-workload-primitives.md",
+      "order": 2,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs",
+      "collection": "kubernetes",
+      "slug": "deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "sourcePath": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "outputPath": "app/compendium/content/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs.md",
+      "order": 3,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Services DNS Ingress Gateway API and Traffic Routing",
+      "collection": "kubernetes",
+      "slug": "services-dns-ingress-gateway-api-and-traffic-routing",
+      "sourcePath": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "outputPath": "app/compendium/content/kubernetes/services-dns-ingress-gateway-api-and-traffic-routing.md",
+      "order": 4,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Kubernetes Networking CNI NetworkPolicy and Service Mesh",
+      "collection": "kubernetes",
+      "slug": "kubernetes-networking-cni-networkpolicy-and-service-mesh",
+      "sourcePath": "Knowledge base/kubernetes/05 Kubernetes Networking CNI NetworkPolicy and Service Mesh.md",
+      "outputPath": "app/compendium/content/kubernetes/kubernetes-networking-cni-networkpolicy-and-service-mesh.md",
+      "order": 5,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Configuration Secrets ServiceAccounts and Runtime Identity",
+      "collection": "kubernetes",
+      "slug": "configuration-secrets-serviceaccounts-and-runtime-identity",
+      "sourcePath": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "outputPath": "app/compendium/content/kubernetes/configuration-secrets-serviceaccounts-and-runtime-identity.md",
+      "order": 6,
+      "mermaidBlocks": 4
+    },
+    {
+      "title": "Storage Volumes PVCs StorageClasses CSI and Stateful Data",
+      "collection": "kubernetes",
+      "slug": "storage-volumes-pvcs-storageclasses-csi-and-stateful-data",
+      "sourcePath": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "outputPath": "app/compendium/content/kubernetes/storage-volumes-pvcs-storageclasses-csi-and-stateful-data.md",
+      "order": 7,
+      "mermaidBlocks": 4
+    },
+    {
+      "title": "Scheduling Resources Requests Limits QoS and Autoscaling",
+      "collection": "kubernetes",
+      "slug": "scheduling-resources-requests-limits-qos-and-autoscaling",
+      "sourcePath": "Knowledge base/kubernetes/08 Scheduling Resources Requests Limits QoS and Autoscaling.md",
+      "outputPath": "app/compendium/content/kubernetes/scheduling-resources-requests-limits-qos-and-autoscaling.md",
+      "order": 8,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Security RBAC Pod Security Admission and Supply Chain",
+      "collection": "kubernetes",
+      "slug": "security-rbac-pod-security-admission-and-supply-chain",
+      "sourcePath": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "outputPath": "app/compendium/content/kubernetes/security-rbac-pod-security-admission-and-supply-chain.md",
+      "order": 9,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Observability Logging Metrics Tracing Events and Probes",
+      "collection": "kubernetes",
+      "slug": "observability-logging-metrics-tracing-events-and-probes",
+      "sourcePath": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "outputPath": "app/compendium/content/kubernetes/observability-logging-metrics-tracing-events-and-probes.md",
+      "order": 10,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Troubleshooting Debugging and Incident Response",
+      "collection": "kubernetes",
+      "slug": "troubleshooting-debugging-and-incident-response",
+      "sourcePath": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "outputPath": "app/compendium/content/kubernetes/troubleshooting-debugging-and-incident-response.md",
+      "order": 11,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Helm Kustomize Manifests and Release Engineering",
+      "collection": "kubernetes",
+      "slug": "helm-kustomize-manifests-and-release-engineering",
+      "sourcePath": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "outputPath": "app/compendium/content/kubernetes/helm-kustomize-manifests-and-release-engineering.md",
+      "order": 12,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "GitOps Controllers Operators CRDs and Platform APIs",
+      "collection": "kubernetes",
+      "slug": "gitops-controllers-operators-crds-and-platform-apis",
+      "sourcePath": "Knowledge base/kubernetes/13 GitOps Controllers Operators CRDs and Platform APIs.md",
+      "outputPath": "app/compendium/content/kubernetes/gitops-controllers-operators-crds-and-platform-apis.md",
+      "order": 13,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Cluster Operations Upgrades Backup Restore and Disaster Recovery",
+      "collection": "kubernetes",
+      "slug": "cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "sourcePath": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "outputPath": "app/compendium/content/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery.md",
+      "order": 14,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Multi Tenancy Policy Governance and Cost Management",
+      "collection": "kubernetes",
+      "slug": "multi-tenancy-policy-governance-and-cost-management",
+      "sourcePath": "Knowledge base/kubernetes/15 Multi Tenancy Policy Governance and Cost Management.md",
+      "outputPath": "app/compendium/content/kubernetes/multi-tenancy-policy-governance-and-cost-management.md",
+      "order": 15,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Production Patterns Anti Patterns and Reference Architectures",
+      "collection": "kubernetes",
+      "slug": "production-patterns-anti-patterns-and-reference-architectures",
+      "sourcePath": "Knowledge base/kubernetes/16 Production Patterns Anti Patterns and Reference Architectures.md",
+      "outputPath": "app/compendium/content/kubernetes/production-patterns-anti-patterns-and-reference-architectures.md",
+      "order": 16,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Kubernetes Ecosystem Tools and Learning Projects",
+      "collection": "kubernetes",
+      "slug": "kubernetes-ecosystem-tools-and-learning-projects",
+      "sourcePath": "Knowledge base/kubernetes/17 Kubernetes Ecosystem Tools and Learning Projects.md",
+      "outputPath": "app/compendium/content/kubernetes/kubernetes-ecosystem-tools-and-learning-projects.md",
+      "order": 17,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Kubernetes",
+      "collection": "kubernetes",
+      "slug": "kubernetes",
+      "sourcePath": "Knowledge base/kubernetes/Kubernetes.md",
+      "outputPath": "app/compendium/content/kubernetes/kubernetes.md",
+      "order": 19,
+      "mermaidBlocks": 1
     }
   ],
   "convertedLinks": [
@@ -1301,6 +1477,12 @@
     },
     {
       "from": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/05 Distributed Systems.md",
       "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
       "href": "/compendium/software-engineering/caching-queues-and-streaming",
       "label": "06 Caching Queues and Streaming"
@@ -1409,6 +1591,12 @@
     },
     {
       "from": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
       "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
       "href": "/compendium/software-engineering/distributed-systems",
       "label": "05 Distributed Systems"
@@ -1478,6 +1666,12 @@
       "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
       "href": "/compendium/software-engineering/reliability-observability-and-operations",
       "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "kubernetes/Kubernetes"
     },
     {
       "from": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
@@ -1574,6 +1768,12 @@
       "to": "Knowledge base/Design Patterns/Design patterns.md",
       "href": "/compendium/design-patterns/design-patterns",
       "label": "Design Patterns/Design patterns"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "kubernetes/Kubernetes"
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
@@ -2213,6 +2413,12 @@
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
       "href": "/compendium/software-engineering/caching-queues-and-streaming#caching-patterns",
       "label": "06 Caching Queues and Streaming#Caching patterns"
@@ -2390,6 +2596,12 @@
       "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
       "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering#gitops-operating-model",
       "label": "12 Delivery Migrations and Release Engineering#GitOps operating model"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "kubernetes/Kubernetes"
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
@@ -2693,6 +2905,12 @@
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
       "href": "/compendium/software-engineering/technical-leadership-and-execution",
       "label": "13 Technical Leadership and Execution"
@@ -2720,6 +2938,12 @@
       "to": "Knowledge base/Design Patterns/Design patterns.md",
       "href": "/compendium/design-patterns/design-patterns",
       "label": "Design Patterns/Design patterns"
+    },
+    {
+      "from": "Knowledge base/Software Engineering/Software Engineering.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "kubernetes/Kubernetes"
     },
     {
       "from": "Knowledge base/Data Structures/Arrays.md",
@@ -3548,6 +3772,1032 @@
       "to": "Knowledge base/Design Patterns/Saga Pattern for Distributed Transactions.md",
       "href": "/compendium/design-patterns/saga-pattern-for-distributed-transactions",
       "label": "Saga Pattern for Distributed Transactions"
+    },
+    {
+      "from": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "to": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "href": "/compendium/kubernetes/kubernetes-mastery-roadmap",
+      "label": "00 Kubernetes Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "to": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "href": "/compendium/kubernetes/kubernetes-mastery-roadmap",
+      "label": "00 Kubernetes Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "to": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "href": "/compendium/kubernetes/kubernetes-mastery-roadmap",
+      "label": "00 Kubernetes Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "to": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "href": "/compendium/kubernetes/kubernetes-mastery-roadmap",
+      "label": "00 Kubernetes Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "to": "Knowledge base/kubernetes/08 Scheduling Resources Requests Limits QoS and Autoscaling.md",
+      "href": "/compendium/kubernetes/scheduling-resources-requests-limits-qos-and-autoscaling",
+      "label": "08 Scheduling Resources Requests Limits QoS and Autoscaling"
+    },
+    {
+      "from": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "Deployment"
+    },
+    {
+      "from": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "StatefulSet"
+    },
+    {
+      "from": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "DaemonSet"
+    },
+    {
+      "from": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "Job"
+    },
+    {
+      "from": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "to": "Knowledge base/kubernetes/08 Scheduling Resources Requests Limits QoS and Autoscaling.md",
+      "href": "/compendium/kubernetes/scheduling-resources-requests-limits-qos-and-autoscaling",
+      "label": "08 Scheduling Resources Requests Limits QoS and Autoscaling"
+    },
+    {
+      "from": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "to": "Knowledge base/kubernetes/08 Scheduling Resources Requests Limits QoS and Autoscaling.md",
+      "href": "/compendium/kubernetes/scheduling-resources-requests-limits-qos-and-autoscaling",
+      "label": "08 Scheduling Resources Requests Limits QoS and Autoscaling"
+    },
+    {
+      "from": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "to": "Knowledge base/kubernetes/08 Scheduling Resources Requests Limits QoS and Autoscaling.md",
+      "href": "/compendium/kubernetes/scheduling-resources-requests-limits-qos-and-autoscaling",
+      "label": "08 Scheduling Resources Requests Limits QoS and Autoscaling"
+    },
+    {
+      "from": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "to": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "href": "/compendium/kubernetes/containers-pods-and-workload-primitives",
+      "label": "02 Containers Pods and Workload Primitives"
+    },
+    {
+      "from": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "to": "Knowledge base/kubernetes/08 Scheduling Resources Requests Limits QoS and Autoscaling.md",
+      "href": "/compendium/kubernetes/scheduling-resources-requests-limits-qos-and-autoscaling",
+      "label": "08 Scheduling Resources Requests Limits QoS and Autoscaling"
+    },
+    {
+      "from": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "to": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "href": "/compendium/kubernetes/containers-pods-and-workload-primitives",
+      "label": "02 Containers Pods and Workload Primitives"
+    },
+    {
+      "from": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "to": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "href": "/compendium/kubernetes/kubernetes-mastery-roadmap",
+      "label": "00 Kubernetes Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "to": "Knowledge base/kubernetes/05 Kubernetes Networking CNI NetworkPolicy and Service Mesh.md",
+      "href": "/compendium/kubernetes/kubernetes-networking-cni-networkpolicy-and-service-mesh",
+      "label": "05 Kubernetes Networking CNI NetworkPolicy and Service Mesh"
+    },
+    {
+      "from": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "to": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "href": "/compendium/kubernetes/services-dns-ingress-gateway-api-and-traffic-routing",
+      "label": "04 Services DNS Ingress Gateway API and Traffic Routing"
+    },
+    {
+      "from": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "to": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "href": "/compendium/kubernetes/services-dns-ingress-gateway-api-and-traffic-routing",
+      "label": "04 Services DNS Ingress Gateway API and Traffic Routing"
+    },
+    {
+      "from": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "to": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "href": "/compendium/kubernetes/services-dns-ingress-gateway-api-and-traffic-routing",
+      "label": "04 Services DNS Ingress Gateway API and Traffic Routing"
+    },
+    {
+      "from": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "to": "Knowledge base/kubernetes/05 Kubernetes Networking CNI NetworkPolicy and Service Mesh.md",
+      "href": "/compendium/kubernetes/kubernetes-networking-cni-networkpolicy-and-service-mesh",
+      "label": "NetworkPolicy"
+    },
+    {
+      "from": "Knowledge base/kubernetes/05 Kubernetes Networking CNI NetworkPolicy and Service Mesh.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/05 Kubernetes Networking CNI NetworkPolicy and Service Mesh.md",
+      "to": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "href": "/compendium/kubernetes/kubernetes-mastery-roadmap",
+      "label": "00 Kubernetes Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/kubernetes/05 Kubernetes Networking CNI NetworkPolicy and Service Mesh.md",
+      "to": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "href": "/compendium/kubernetes/services-dns-ingress-gateway-api-and-traffic-routing",
+      "label": "04 Services DNS Ingress Gateway API and Traffic Routing"
+    },
+    {
+      "from": "Knowledge base/kubernetes/05 Kubernetes Networking CNI NetworkPolicy and Service Mesh.md",
+      "to": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "href": "/compendium/kubernetes/services-dns-ingress-gateway-api-and-traffic-routing",
+      "label": "04 Services DNS Ingress Gateway API and Traffic Routing"
+    },
+    {
+      "from": "Knowledge base/kubernetes/05 Kubernetes Networking CNI NetworkPolicy and Service Mesh.md",
+      "to": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "href": "/compendium/kubernetes/security-rbac-pod-security-admission-and-supply-chain",
+      "label": "09 Security RBAC Pod Security Admission and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/kubernetes/05 Kubernetes Networking CNI NetworkPolicy and Service Mesh.md",
+      "to": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "href": "/compendium/kubernetes/services-dns-ingress-gateway-api-and-traffic-routing",
+      "label": "04 Services DNS Ingress Gateway API and Traffic Routing"
+    },
+    {
+      "from": "Knowledge base/kubernetes/05 Kubernetes Networking CNI NetworkPolicy and Service Mesh.md",
+      "to": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "href": "/compendium/kubernetes/observability-logging-metrics-tracing-events-and-probes",
+      "label": "10 Observability Logging Metrics Tracing Events and Probes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "to": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "href": "/compendium/kubernetes/security-rbac-pod-security-admission-and-supply-chain",
+      "label": "09 Security RBAC Pod Security Admission and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "to": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "href": "/compendium/kubernetes/security-rbac-pod-security-admission-and-supply-chain",
+      "label": "09 Security RBAC Pod Security Admission and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "to": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "href": "/compendium/kubernetes/storage-volumes-pvcs-storageclasses-csi-and-stateful-data",
+      "label": "07 Storage Volumes PVCs StorageClasses CSI and Stateful Data"
+    },
+    {
+      "from": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "to": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "href": "/compendium/kubernetes/security-rbac-pod-security-admission-and-supply-chain",
+      "label": "09 Security RBAC Pod Security Admission and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "to": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "href": "/compendium/kubernetes/security-rbac-pod-security-admission-and-supply-chain",
+      "label": "09 Security RBAC Pod Security Admission and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "to": "Knowledge base/Software Engineering/Software Engineering.md",
+      "href": "/compendium/software-engineering/software-engineering#required-topic-coverage-matrix",
+      "label": "Software Engineering#Required topic coverage matrix"
+    },
+    {
+      "from": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "to": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "href": "/compendium/kubernetes/storage-volumes-pvcs-storageclasses-csi-and-stateful-data",
+      "label": "07 Storage Volumes PVCs StorageClasses CSI and Stateful Data"
+    },
+    {
+      "from": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "to": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "href": "/compendium/kubernetes/configuration-secrets-serviceaccounts-and-runtime-identity",
+      "label": "06 Configuration Secrets ServiceAccounts and Runtime Identity"
+    },
+    {
+      "from": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "to": "Knowledge base/Software Engineering/Software Engineering.md",
+      "href": "/compendium/software-engineering/software-engineering#required-topic-coverage-matrix",
+      "label": "Software Engineering#Required topic coverage matrix"
+    },
+    {
+      "from": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "to": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "href": "/compendium/kubernetes/storage-volumes-pvcs-storageclasses-csi-and-stateful-data",
+      "label": "07 Storage Volumes PVCs StorageClasses CSI and Stateful Data"
+    },
+    {
+      "from": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/08 Scheduling Resources Requests Limits QoS and Autoscaling.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/08 Scheduling Resources Requests Limits QoS and Autoscaling.md",
+      "to": "Knowledge base/kubernetes/02 Containers Pods and Workload Primitives.md",
+      "href": "/compendium/kubernetes/containers-pods-and-workload-primitives",
+      "label": "02 Containers Pods and Workload Primitives"
+    },
+    {
+      "from": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "to": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "href": "/compendium/kubernetes/configuration-secrets-serviceaccounts-and-runtime-identity",
+      "label": "06 Configuration Secrets ServiceAccounts and Runtime Identity"
+    },
+    {
+      "from": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "to": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "href": "/compendium/kubernetes/security-rbac-pod-security-admission-and-supply-chain",
+      "label": "09 Security RBAC Pod Security Admission and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "to": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "href": "/compendium/kubernetes/observability-logging-metrics-tracing-events-and-probes",
+      "label": "10 Observability Logging Metrics Tracing Events and Probes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "to": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "href": "/compendium/kubernetes/services-dns-ingress-gateway-api-and-traffic-routing",
+      "label": "04 Services DNS Ingress Gateway API and Traffic Routing"
+    },
+    {
+      "from": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "to": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "href": "/compendium/kubernetes/services-dns-ingress-gateway-api-and-traffic-routing",
+      "label": "04 Services DNS Ingress Gateway API and Traffic Routing"
+    },
+    {
+      "from": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "to": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "href": "/compendium/kubernetes/storage-volumes-pvcs-storageclasses-csi-and-stateful-data",
+      "label": "07 Storage Volumes PVCs StorageClasses CSI and Stateful Data"
+    },
+    {
+      "from": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "to": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "href": "/compendium/kubernetes/observability-logging-metrics-tracing-events-and-probes",
+      "label": "10 Observability Logging Metrics Tracing Events and Probes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "to": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "href": "/compendium/kubernetes/security-rbac-pod-security-admission-and-supply-chain",
+      "label": "09 Security RBAC Pod Security Admission and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "to": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "href": "/compendium/kubernetes/observability-logging-metrics-tracing-events-and-probes",
+      "label": "10 Observability Logging Metrics Tracing Events and Probes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/13 GitOps Controllers Operators CRDs and Platform APIs.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/13 GitOps Controllers Operators CRDs and Platform APIs.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/13 GitOps Controllers Operators CRDs and Platform APIs.md",
+      "to": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "href": "/compendium/kubernetes/helm-kustomize-manifests-and-release-engineering",
+      "label": "12 Helm Kustomize Manifests and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/kubernetes/13 GitOps Controllers Operators CRDs and Platform APIs.md",
+      "to": "Knowledge base/kubernetes/15 Multi Tenancy Policy Governance and Cost Management.md",
+      "href": "/compendium/kubernetes/multi-tenancy-policy-governance-and-cost-management",
+      "label": "15 Multi Tenancy Policy Governance and Cost Management"
+    },
+    {
+      "from": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "to": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "href": "/compendium/kubernetes/storage-volumes-pvcs-storageclasses-csi-and-stateful-data",
+      "label": "07 Storage Volumes PVCs StorageClasses CSI and Stateful Data"
+    },
+    {
+      "from": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "to": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "href": "/compendium/kubernetes/observability-logging-metrics-tracing-events-and-probes",
+      "label": "10 Observability Logging Metrics Tracing Events and Probes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "to": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "href": "/compendium/kubernetes/helm-kustomize-manifests-and-release-engineering",
+      "label": "12 Helm Kustomize Manifests and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "to": "Knowledge base/kubernetes/13 GitOps Controllers Operators CRDs and Platform APIs.md",
+      "href": "/compendium/kubernetes/gitops-controllers-operators-crds-and-platform-apis",
+      "label": "13 GitOps Controllers Operators CRDs and Platform APIs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/15 Multi Tenancy Policy Governance and Cost Management.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/15 Multi Tenancy Policy Governance and Cost Management.md",
+      "to": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "href": "/compendium/kubernetes/configuration-secrets-serviceaccounts-and-runtime-identity",
+      "label": "06 Configuration Secrets ServiceAccounts and Runtime Identity"
+    },
+    {
+      "from": "Knowledge base/kubernetes/15 Multi Tenancy Policy Governance and Cost Management.md",
+      "to": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "href": "/compendium/kubernetes/storage-volumes-pvcs-storageclasses-csi-and-stateful-data",
+      "label": "07 Storage Volumes PVCs StorageClasses CSI and Stateful Data"
+    },
+    {
+      "from": "Knowledge base/kubernetes/15 Multi Tenancy Policy Governance and Cost Management.md",
+      "to": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "href": "/compendium/kubernetes/observability-logging-metrics-tracing-events-and-probes",
+      "label": "10 Observability Logging Metrics Tracing Events and Probes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/15 Multi Tenancy Policy Governance and Cost Management.md",
+      "to": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "href": "/compendium/kubernetes/helm-kustomize-manifests-and-release-engineering",
+      "label": "12 Helm Kustomize Manifests and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/kubernetes/15 Multi Tenancy Policy Governance and Cost Management.md",
+      "to": "Knowledge base/kubernetes/13 GitOps Controllers Operators CRDs and Platform APIs.md",
+      "href": "/compendium/kubernetes/gitops-controllers-operators-crds-and-platform-apis",
+      "label": "13 GitOps Controllers Operators CRDs and Platform APIs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/16 Production Patterns Anti Patterns and Reference Architectures.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/16 Production Patterns Anti Patterns and Reference Architectures.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/16 Production Patterns Anti Patterns and Reference Architectures.md",
+      "to": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "href": "/compendium/kubernetes/services-dns-ingress-gateway-api-and-traffic-routing",
+      "label": "04 Services DNS Ingress Gateway API and Traffic Routing"
+    },
+    {
+      "from": "Knowledge base/kubernetes/16 Production Patterns Anti Patterns and Reference Architectures.md",
+      "to": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "href": "/compendium/kubernetes/storage-volumes-pvcs-storageclasses-csi-and-stateful-data",
+      "label": "07 Storage Volumes PVCs StorageClasses CSI and Stateful Data"
+    },
+    {
+      "from": "Knowledge base/kubernetes/16 Production Patterns Anti Patterns and Reference Architectures.md",
+      "to": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "href": "/compendium/kubernetes/observability-logging-metrics-tracing-events-and-probes",
+      "label": "10 Observability Logging Metrics Tracing Events and Probes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/16 Production Patterns Anti Patterns and Reference Architectures.md",
+      "to": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "href": "/compendium/kubernetes/helm-kustomize-manifests-and-release-engineering",
+      "label": "12 Helm Kustomize Manifests and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/kubernetes/16 Production Patterns Anti Patterns and Reference Architectures.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/17 Kubernetes Ecosystem Tools and Learning Projects.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/17 Kubernetes Ecosystem Tools and Learning Projects.md",
+      "to": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "href": "/compendium/kubernetes/kubernetes-mastery-roadmap",
+      "label": "00 Kubernetes Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/kubernetes/17 Kubernetes Ecosystem Tools and Learning Projects.md",
+      "to": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "href": "/compendium/kubernetes/helm-kustomize-manifests-and-release-engineering",
+      "label": "12 Helm Kustomize Manifests and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/kubernetes/17 Kubernetes Ecosystem Tools and Learning Projects.md",
+      "to": "Knowledge base/kubernetes/13 GitOps Controllers Operators CRDs and Platform APIs.md",
+      "href": "/compendium/kubernetes/gitops-controllers-operators-crds-and-platform-apis",
+      "label": "13 GitOps Controllers Operators CRDs and Platform APIs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/17 Kubernetes Ecosystem Tools and Learning Projects.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/17 Kubernetes Ecosystem Tools and Learning Projects.md",
+      "to": "Knowledge base/kubernetes/15 Multi Tenancy Policy Governance and Cost Management.md",
+      "href": "/compendium/kubernetes/multi-tenancy-policy-governance-and-cost-management",
+      "label": "15 Multi Tenancy Policy Governance and Cost Management"
+    },
+    {
+      "from": "Knowledge base/kubernetes/17 Kubernetes Ecosystem Tools and Learning Projects.md",
+      "to": "Knowledge base/kubernetes/16 Production Patterns Anti Patterns and Reference Architectures.md",
+      "href": "/compendium/kubernetes/production-patterns-anti-patterns-and-reference-architectures",
+      "label": "16 Production Patterns Anti Patterns and Reference Architectures"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "href": "/compendium/kubernetes/kubernetes-mastery-roadmap",
+      "label": "00 Kubernetes Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "href": "/compendium/kubernetes/kubernetes-mastery-roadmap",
+      "label": "00 Kubernetes Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/17 Kubernetes Ecosystem Tools and Learning Projects.md",
+      "href": "/compendium/kubernetes/kubernetes-ecosystem-tools-and-learning-projects",
+      "label": "17 Kubernetes Ecosystem Tools and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "href": "/compendium/kubernetes/services-dns-ingress-gateway-api-and-traffic-routing",
+      "label": "04 Services DNS Ingress Gateway API and Traffic Routing"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "href": "/compendium/kubernetes/configuration-secrets-serviceaccounts-and-runtime-identity",
+      "label": "06 Configuration Secrets ServiceAccounts and Runtime Identity"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "href": "/compendium/kubernetes/storage-volumes-pvcs-storageclasses-csi-and-stateful-data",
+      "label": "07 Storage Volumes PVCs StorageClasses CSI and Stateful Data"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "href": "/compendium/kubernetes/observability-logging-metrics-tracing-events-and-probes",
+      "label": "10 Observability Logging Metrics Tracing Events and Probes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "href": "/compendium/kubernetes/security-rbac-pod-security-admission-and-supply-chain",
+      "label": "09 Security RBAC Pod Security Admission and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs.md",
+      "href": "/compendium/kubernetes/deployments-replicasets-statefulsets-daemonsets-jobs-and-cronjobs",
+      "label": "03 Deployments ReplicaSets StatefulSets DaemonSets Jobs and CronJobs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/05 Kubernetes Networking CNI NetworkPolicy and Service Mesh.md",
+      "href": "/compendium/kubernetes/kubernetes-networking-cni-networkpolicy-and-service-mesh",
+      "label": "05 Kubernetes Networking CNI NetworkPolicy and Service Mesh"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "href": "/compendium/kubernetes/configuration-secrets-serviceaccounts-and-runtime-identity",
+      "label": "06 Configuration Secrets ServiceAccounts and Runtime Identity"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "href": "/compendium/kubernetes/configuration-secrets-serviceaccounts-and-runtime-identity",
+      "label": "06 Configuration Secrets ServiceAccounts and Runtime Identity"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/07 Storage Volumes PVCs StorageClasses CSI and Stateful Data.md",
+      "href": "/compendium/kubernetes/storage-volumes-pvcs-storageclasses-csi-and-stateful-data",
+      "label": "07 Storage Volumes PVCs StorageClasses CSI and Stateful Data"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/09 Security RBAC Pod Security Admission and Supply Chain.md",
+      "href": "/compendium/kubernetes/security-rbac-pod-security-admission-and-supply-chain",
+      "label": "09 Security RBAC Pod Security Admission and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "href": "/compendium/kubernetes/observability-logging-metrics-tracing-events-and-probes",
+      "label": "10 Observability Logging Metrics Tracing Events and Probes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "href": "/compendium/kubernetes/observability-logging-metrics-tracing-events-and-probes",
+      "label": "10 Observability Logging Metrics Tracing Events and Probes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "href": "/compendium/kubernetes/observability-logging-metrics-tracing-events-and-probes",
+      "label": "10 Observability Logging Metrics Tracing Events and Probes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "href": "/compendium/kubernetes/troubleshooting-debugging-and-incident-response",
+      "label": "11 Troubleshooting Debugging and Incident Response"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/10 Observability Logging Metrics Tracing Events and Probes.md",
+      "href": "/compendium/kubernetes/observability-logging-metrics-tracing-events-and-probes",
+      "label": "10 Observability Logging Metrics Tracing Events and Probes"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "href": "/compendium/kubernetes/troubleshooting-debugging-and-incident-response",
+      "label": "11 Troubleshooting Debugging and Incident Response"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "href": "/compendium/kubernetes/troubleshooting-debugging-and-incident-response",
+      "label": "11 Troubleshooting Debugging and Incident Response"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "href": "/compendium/kubernetes/troubleshooting-debugging-and-incident-response",
+      "label": "11 Troubleshooting Debugging and Incident Response"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "href": "/compendium/kubernetes/troubleshooting-debugging-and-incident-response",
+      "label": "11 Troubleshooting Debugging and Incident Response"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "href": "/compendium/kubernetes/troubleshooting-debugging-and-incident-response",
+      "label": "11 Troubleshooting Debugging and Incident Response"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "href": "/compendium/kubernetes/troubleshooting-debugging-and-incident-response",
+      "label": "11 Troubleshooting Debugging and Incident Response"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/11 Troubleshooting Debugging and Incident Response.md",
+      "href": "/compendium/kubernetes/troubleshooting-debugging-and-incident-response",
+      "label": "11 Troubleshooting Debugging and Incident Response"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "href": "/compendium/kubernetes/helm-kustomize-manifests-and-release-engineering",
+      "label": "12 Helm Kustomize Manifests and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "href": "/compendium/kubernetes/helm-kustomize-manifests-and-release-engineering",
+      "label": "12 Helm Kustomize Manifests and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "href": "/compendium/kubernetes/helm-kustomize-manifests-and-release-engineering",
+      "label": "12 Helm Kustomize Manifests and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "href": "/compendium/kubernetes/helm-kustomize-manifests-and-release-engineering",
+      "label": "12 Helm Kustomize Manifests and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/13 GitOps Controllers Operators CRDs and Platform APIs.md",
+      "href": "/compendium/kubernetes/gitops-controllers-operators-crds-and-platform-apis",
+      "label": "13 GitOps Controllers Operators CRDs and Platform APIs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/13 GitOps Controllers Operators CRDs and Platform APIs.md",
+      "href": "/compendium/kubernetes/gitops-controllers-operators-crds-and-platform-apis",
+      "label": "13 GitOps Controllers Operators CRDs and Platform APIs"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/14 Cluster Operations Upgrades Backup Restore and Disaster Recovery.md",
+      "href": "/compendium/kubernetes/cluster-operations-upgrades-backup-restore-and-disaster-recovery",
+      "label": "14 Cluster Operations Upgrades Backup Restore and Disaster Recovery"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "href": "/compendium/kubernetes/kubernetes-mastery-roadmap",
+      "label": "00 Kubernetes Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/01 Kubernetes Mental Model and Architecture.md",
+      "href": "/compendium/kubernetes/kubernetes-mental-model-and-architecture",
+      "label": "01 Kubernetes Mental Model and Architecture"
+    },
+    {
+      "from": "Knowledge base/kubernetes/Kubernetes.md",
+      "to": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
+      "href": "/compendium/kubernetes/kubernetes-mastery-roadmap",
+      "label": "00 Kubernetes Mastery Roadmap"
     }
   ],
   "externalReferences": [
@@ -3565,11 +4815,6 @@
       "from": "Knowledge base/Software Engineering/05 Distributed Systems.md",
       "target": "Event-Driven Architectures and Event Sourcing",
       "label": "Event-Driven Architectures and Event Sourcing"
-    },
-    {
-      "from": "Knowledge base/Software Engineering/05 Distributed Systems.md",
-      "target": "kubernetes/Kubernetes",
-      "label": "kubernetes/Kubernetes"
     },
     {
       "from": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
@@ -3595,11 +4840,6 @@
       "from": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
       "target": "kubernetes/Sections/8. Observability and Health Checks",
       "label": "kubernetes/Sections/8. Observability and Health Checks"
-    },
-    {
-      "from": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
-      "target": "kubernetes/Kubernetes",
-      "label": "kubernetes/Kubernetes"
     },
     {
       "from": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
@@ -3660,11 +4900,6 @@
       "from": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
       "target": "Software Supply Chain Security",
       "label": "Software Supply Chain Security"
-    },
-    {
-      "from": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
-      "target": "kubernetes/Kubernetes",
-      "label": "kubernetes/Kubernetes"
     },
     {
       "from": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
@@ -3738,11 +4973,6 @@
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
-      "target": "kubernetes/Kubernetes",
-      "label": "kubernetes/Kubernetes"
-    },
-    {
-      "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "target": "AI-Enhanced Software Development",
       "label": "AI-Enhanced Software Development"
     },
@@ -3773,11 +5003,6 @@
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
-      "target": "kubernetes/Kubernetes",
-      "label": "kubernetes/Kubernetes"
-    },
-    {
-      "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "target": "Littles law and efficient queue strategy",
       "label": "Littles law and efficient queue strategy"
     },
@@ -3790,11 +5015,6 @@
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "target": "Software Supply Chain Security",
       "label": "Software Supply Chain Security"
-    },
-    {
-      "from": "Knowledge base/Software Engineering/Software Engineering.md",
-      "target": "kubernetes/Kubernetes",
-      "label": "kubernetes/Kubernetes"
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
@@ -3850,11 +5070,6 @@
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "target": "Software Supply Chain Security",
       "label": "Software Supply Chain Security"
-    },
-    {
-      "from": "Knowledge base/Software Engineering/Software Engineering.md",
-      "target": "kubernetes/Kubernetes",
-      "label": "kubernetes/Kubernetes"
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
@@ -3918,11 +5133,6 @@
     },
     {
       "from": "Knowledge base/Software Engineering/Software Engineering.md",
-      "target": "kubernetes/Kubernetes",
-      "label": "kubernetes/Kubernetes"
-    },
-    {
-      "from": "Knowledge base/Software Engineering/Software Engineering.md",
       "target": "kubernetes/One-Day Kubernetes Crash Course",
       "label": "kubernetes/One-Day Kubernetes Crash Course"
     },
@@ -3950,6 +5160,56 @@
       "from": "Knowledge base/Data Structures/AVL Trees.md",
       "target": "Splay Trees",
       "label": "Splay Trees"
+    },
+    {
+      "from": "Knowledge base/kubernetes/04 Services DNS Ingress Gateway API and Traffic Routing.md",
+      "target": "Networking",
+      "label": "Networking"
+    },
+    {
+      "from": "Knowledge base/kubernetes/05 Kubernetes Networking CNI NetworkPolicy and Service Mesh.md",
+      "target": "Networking",
+      "label": "Networking"
+    },
+    {
+      "from": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/kubernetes/06 Configuration Secrets ServiceAccounts and Runtime Identity.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/kubernetes/12 Helm Kustomize Manifests and Release Engineering.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/kubernetes/13 GitOps Controllers Operators CRDs and Platform APIs.md",
+      "target": "Event-Driven Architectures and Event Sourcing",
+      "label": "Event-Driven Architectures and Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/kubernetes/13 GitOps Controllers Operators CRDs and Platform APIs.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/kubernetes/15 Multi Tenancy Policy Governance and Cost Management.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/kubernetes/16 Production Patterns Anti Patterns and Reference Architectures.md",
+      "target": "Littles law and efficient queue strategy",
+      "label": "Littles law and efficient queue strategy"
     }
   ],
   "unresolvedReferences": [],
@@ -4228,5 +5488,5 @@
       "fallbackHref": "/compendium/software-engineering/distributed-systems"
     }
   ],
-  "mermaidBlocks": 94
+  "mermaidBlocks": 134
 }

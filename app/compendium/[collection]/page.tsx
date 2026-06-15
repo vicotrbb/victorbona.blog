@@ -27,8 +27,16 @@ type CollectionPageProps = {
   };
 };
 
-function getSoftwareEngineeringStudyIndex() {
-  return getCompendiumNote("software-engineering", "software-engineering");
+function getStudyIndex(collectionId: string) {
+  if (collectionId === "software-engineering") {
+    return getCompendiumNote("software-engineering", "software-engineering");
+  }
+
+  if (collectionId === "kubernetes") {
+    return getCompendiumNote("kubernetes", "kubernetes");
+  }
+
+  return undefined;
 }
 
 function withoutLeadingTitle(content: string, title: string) {
@@ -82,10 +90,7 @@ export default function CompendiumCollectionPage({
   }
 
   const notes = getCompendiumNotes(collection.id);
-  const studyIndex =
-    collection.id === "software-engineering"
-      ? getSoftwareEngineeringStudyIndex()
-      : undefined;
+  const studyIndex = getStudyIndex(collection.id);
   const importReport = getCompendiumImportReport();
   const summary = getCompendiumCollectionSummary({
     collection,

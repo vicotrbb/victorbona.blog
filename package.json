@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "test:seo": "node scripts/seo-smoke.mjs",
+    "test:compendium": "node scripts/compendium-smoke.mjs",
     "import:compendium": "node scripts/import-compendium.mjs",
     "start": "next start"
   },

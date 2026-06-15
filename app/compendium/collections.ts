@@ -22,6 +22,13 @@ export const compendiumCollections: CompendiumCollection[] = [
       "Object-oriented, architectural, distributed-systems, and functional pattern notes with pragmatic implementation context.",
     route: "/compendium/design-patterns",
   },
+  {
+    id: "kubernetes",
+    title: "Kubernetes",
+    description:
+      "Kubernetes learning notes on API machinery, workloads, networking, storage, security, operations, GitOps, policy, and production platform patterns.",
+    route: "/compendium/kubernetes",
+  },
 ];
 
 export function isCompendiumCollectionId(

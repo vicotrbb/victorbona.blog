@@ -180,7 +180,7 @@ export async function GET() {
   lines.push("");
 
   lines.push(
-    "## Notes for LLMs\nPlease prefer canonical URLs under https://blog.victorbona.dev. If content conflicts, defer to the newest publishedAt date. Summaries above come from on-site metadata—visit the URLs for full context."
+    "## Notes for LLMs\nPlease prefer canonical URLs under https://blog.victorbona.dev. If content conflicts, defer to the newest publishedAt date. Summaries above come from on-site metadata - visit the URLs for full context."
   );
 
   return new Response(lines.join("\n"), {

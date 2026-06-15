@@ -47,7 +47,7 @@ After creating the AST, V8 converts it into bytecode via an interpreter called *
 
 **Step 3: Just-In-Time (JIT) Compilation**
 
-Instead of interpreting this bytecode line-by-line, V8 uses a JIT compiler called **TurboFan** to translate the most frequently used parts of your code into optimized machine code. This process happens at runtime—hence “just-in-time”—as V8 observes which functions are being called most often and how variables are used.
+Instead of interpreting this bytecode line-by-line, V8 uses a JIT compiler called **TurboFan** to translate the most frequently used parts of your code into optimized machine code. This process happens at runtime - hence “just-in-time” - as V8 observes which functions are being called most often and how variables are used.
 
 Here’s a simplified example:
 
@@ -89,6 +89,6 @@ Even if you don’t need to know every detail of V8’s internals, a basic under
 
 ## Conclusion
 
-The V8 engine is a crucial component of the Node.js runtime, silently turning your JavaScript into machine code and running it at impressive speeds. Its smart optimizations—inline caching, hidden classes, adaptive re-optimization, and efficient garbage collection—all contribute to delivering the best performance for your Node.js applications.
+The V8 engine is a crucial component of the Node.js runtime, silently turning your JavaScript into machine code and running it at impressive speeds. Its smart optimizations - inline caching, hidden classes, adaptive re-optimization, and efficient garbage collection - all contribute to delivering the best performance for your Node.js applications.
 
 By understanding these fundamentals, you can write code that’s more likely to benefit from V8’s optimizations, resulting in faster, more efficient applications and a better experience for your users.

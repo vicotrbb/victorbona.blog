@@ -1,5 +1,5 @@
 export async function register() {
-  // Only run OTEL setup in Node.js runtime — Edge runtime has no
+  // Only run OTEL setup in Node.js runtime - Edge runtime has no
   // support for @opentelemetry/sdk-trace-node and its dependencies
   // reference `navigator` which crashes the edge bundle.
   if (process.env.NEXT_RUNTIME !== 'nodejs') {
@@ -12,7 +12,7 @@ export async function register() {
     return
   }
 
-  // Dynamic imports — only loaded in Node.js runtime, never bundled into edge
+  // Dynamic imports - only loaded in Node.js runtime, never bundled into edge
   const { registerOTel } = await import('@vercel/otel')
   const { TraceIdRatioBasedSampler, ParentBasedSampler } = await import(
     '@opentelemetry/sdk-trace-node'

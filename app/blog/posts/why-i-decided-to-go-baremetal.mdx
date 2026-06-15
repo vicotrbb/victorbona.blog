@@ -176,7 +176,7 @@ Redis follows a similar pattern, with Sentinel available for high availability w
 
 ### Observability: Seeing Everything
 
-You can't operate what you can't observe. My observability stack is built to give me visibility across every layer, covering all three pillars—and more:
+You can't operate what you can't observe. My observability stack is built to give me visibility across every layer, covering all three pillars - and more:
 
 **Metrics** with Prometheus and Grafana. Every component exposes metrics, Prometheus scrapes them, and Grafana visualizes them. I have dashboards for cluster health, PostgreSQL performance, application latency, and resource utilization.
 
@@ -184,7 +184,7 @@ You can't operate what you can't observe. My observability stack is built to giv
 
 **Traces** with Tempo. Distributed tracing shows how requests flow through the system, where time is spent, and where bottlenecks occur. This is essential for understanding microservices behavior.
 
-**Real User Monitoring (RUM)** with Grafana Faro. Faro runs on my frontends, capturing real browser and interaction telemetry—things like page load times, frontend errors, and user navigation patterns. RUM offers direct insight into how real users experience the system, bridging the gap between backend signals and actual user-perceived performance.
+**Real User Monitoring (RUM)** with Grafana Faro. Faro runs on my frontends, capturing real browser and interaction telemetry - things like page load times, frontend errors, and user navigation patterns. RUM offers direct insight into how real users experience the system, bridging the gap between backend signals and actual user-perceived performance.
 
 Grafana Alloy ties everything together as a unified telemetry collector, gathering metrics, logs, and traces from across the cluster and routing them to the appropriate backends, including supporting Faro's RUM data.
 

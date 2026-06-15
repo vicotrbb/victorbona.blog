@@ -626,7 +626,7 @@ Safe sequence:
 ## Related notes
 
 - <span className="compendium-external-reference" title="Vault-only reference">Software Supply Chain Security</span>
-- <span className="compendium-external-reference" title="Vault-only reference">kubernetes/Kubernetes</span>
+- [kubernetes/Kubernetes](/compendium/kubernetes/kubernetes)
 - <span className="compendium-external-reference" title="Vault-only reference">kubernetes/Sections/4. Pods, Deployments, and ReplicaSets</span>
 - <span className="compendium-external-reference" title="Vault-only reference">kubernetes/Sections/9. Advanced Topics &amp; Appendix</span>
 - [04 Databases Storage and Transactions](/compendium/software-engineering/databases-storage-and-transactions)

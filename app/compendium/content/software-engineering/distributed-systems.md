@@ -1016,7 +1016,7 @@ Pattern: classify fields by invariant instead of assigning one consistency model
 - <span className="compendium-external-reference" title="Vault-only reference">Event-Driven Architectures and Event Sourcing</span>
 - [Design Patterns/Outbox Pattern](/compendium/design-patterns/outbox-pattern)
 - [Design Patterns/Saga Pattern for Distributed Transactions](/compendium/design-patterns/saga-pattern-for-distributed-transactions)
-- <span className="compendium-external-reference" title="Vault-only reference">kubernetes/Kubernetes</span>
+- [kubernetes/Kubernetes](/compendium/kubernetes/kubernetes)
 - [06 Caching Queues and Streaming](/compendium/software-engineering/caching-queues-and-streaming)
 - [08 Reliability Observability and Operations](/compendium/software-engineering/reliability-observability-and-operations)
 - [10 Testing Verification and Quality Bars](/compendium/software-engineering/testing-verification-and-quality-bars)

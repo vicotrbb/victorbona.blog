@@ -16,7 +16,7 @@ import { getCompendiumImportReport, getCompendiumNotes } from "./utils";
 
 const title = "Compendium";
 const description =
-  "Indexed software engineering, data structures, and design patterns notes from Victor Bona's technical compendium.";
+  "Indexed software engineering, data structures, design patterns, and Kubernetes notes from Victor Bona's technical compendium.";
 
 export const metadata: Metadata = {
   title,
@@ -79,7 +79,7 @@ export default function CompendiumPage() {
           </h1>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--color-muted-foreground)]">
             Durable notes organized as an archive: software engineering, data
-            structures, and design patterns.
+            structures, design patterns, and Kubernetes.
           </p>
         </div>
       </div>

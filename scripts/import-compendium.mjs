@@ -25,6 +25,11 @@ const collections = [
     title: "Design Patterns",
     sourceDir: path.join(vaultRoot, "Knowledge base", "Design Patterns"),
   },
+  {
+    id: "kubernetes",
+    title: "Kubernetes",
+    sourceDir: path.join(vaultRoot, "Knowledge base", "kubernetes"),
+  },
 ];
 
 function slugify(value) {
@@ -444,6 +449,10 @@ function escapeMdxComparisons(segment) {
     );
 }
 
+function replaceEmDash(content) {
+  return content.replace(/\u2014/g, " - ");
+}
+
 function countMatches(content, pattern) {
   return (content.match(pattern) || []).length;
 }
@@ -481,7 +490,8 @@ function importCompendium() {
       const linked = transformOutsideFences(original, (segment) =>
         rewriteWikilinks(segment, note, index, report)
       );
-      const body = transformOutsideFences(linked, escapeMdxComparisons);
+      const escaped = transformOutsideFences(linked, escapeMdxComparisons);
+      const body = replaceEmDash(escaped);
       const remainingWikilinks = findRemainingWikilinksOutsideFences(body);
       if (remainingWikilinks.length > 0) {
         remainingWikilinks.forEach((target) => {

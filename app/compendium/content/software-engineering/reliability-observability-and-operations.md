@@ -1311,7 +1311,7 @@ Reliability has costs. The goal is not maximum reliability everywhere, but appro
 ## Related notes
 
 - <span className="compendium-external-reference" title="Vault-only reference">kubernetes/Sections/8. Observability and Health Checks</span>
-- <span className="compendium-external-reference" title="Vault-only reference">kubernetes/Kubernetes</span>
+- [kubernetes/Kubernetes](/compendium/kubernetes/kubernetes)
 - <span className="compendium-external-reference" title="Vault-only reference">Software Supply Chain Security</span>
 - [05 Distributed Systems](/compendium/software-engineering/distributed-systems)
 - [11 Performance Capacity and Cost](/compendium/software-engineering/performance-capacity-and-cost)
