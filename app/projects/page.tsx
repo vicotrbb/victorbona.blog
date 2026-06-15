@@ -3,7 +3,12 @@ import { SystemRow } from "app/components/SystemRow";
 import { projects } from "./projects";
 import { baseUrl } from "app/sitemap";
 import type { Metadata } from "next";
-import { getBreadcrumbJsonLd, getItemListJsonLd } from "app/lib/seo";
+import {
+  getBreadcrumbJsonLd,
+  getItemListJsonLd,
+  withDefaultOpenGraphImage,
+  withDefaultTwitterImage,
+} from "app/lib/seo";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -11,16 +16,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${baseUrl}/projects`,
   },
-  openGraph: {
+  openGraph: withDefaultOpenGraphImage({
     title: "Projects - Victor Bona",
     description: "Explore my software projects and open source contributions.",
     url: `${baseUrl}/projects`,
-  },
-  twitter: {
+  }),
+  twitter: withDefaultTwitterImage({
     card: "summary_large_image",
     title: "Projects - Victor Bona",
     description: "Explore my software projects and open source contributions.",
-  },
+  }),
 };
 
 export default function ProjectsPage() {

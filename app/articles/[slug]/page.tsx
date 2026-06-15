@@ -7,6 +7,8 @@ import { MetadataLine } from "app/components/MetadataLine";
 import {
   getBreadcrumbJsonLd,
   getScholarlyArticleJsonLd,
+  withDefaultOpenGraphImage,
+  withDefaultTwitterImage,
 } from "app/lib/seo";
 
 type ArticlePageProps = {
@@ -48,7 +50,7 @@ export async function generateMetadata({
     description: article.abstract,
     authors: article.authors.map((name) => ({ name })),
     keywords: [...article.tags, "research", "paper", "academic"],
-    openGraph: {
+    openGraph: withDefaultOpenGraphImage({
       title: article.title,
       description: article.abstract,
       type: "article",
@@ -57,13 +59,13 @@ export async function generateMetadata({
       authors: article.authors,
       tags: article.tags,
       siteName: "Victor Bona Blog",
-    },
-    twitter: {
-      card: "summary",
+    }),
+    twitter: withDefaultTwitterImage({
+      card: "summary_large_image",
       title: article.title,
       description: article.abstract,
       creator: "@BonaVictor",
-    },
+    }),
     alternates: {
       canonical: `${baseUrl}/articles/${article.slug}`,
     },

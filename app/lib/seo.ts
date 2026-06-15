@@ -1,5 +1,18 @@
 import { baseUrl } from "app/sitemap";
 import type { CompendiumCollection, CompendiumNote } from "app/compendium/types";
+import type { Metadata } from "next";
+
+export const defaultOpenGraphImage = {
+  url: `${baseUrl}/logos/og-image.png`,
+  width: 1200,
+  height: 630,
+  alt: "Victor Bona monogram and site identity",
+};
+
+export const defaultTwitterImage = defaultOpenGraphImage.url;
+
+type OpenGraphMetadata = NonNullable<Metadata["openGraph"]>;
+type TwitterMetadata = NonNullable<Metadata["twitter"]>;
 
 export const seoIds = {
   person: `${baseUrl}/#victor-bona`,
@@ -12,6 +25,24 @@ export function absoluteUrl(value?: string) {
   if (!value) return baseUrl;
   if (/^https?:\/\//i.test(value)) return value;
   return new URL(value, baseUrl).toString();
+}
+
+export function withDefaultOpenGraphImage(
+  openGraph: OpenGraphMetadata
+): OpenGraphMetadata {
+  return {
+    ...openGraph,
+    images: openGraph.images ?? [defaultOpenGraphImage],
+  };
+}
+
+export function withDefaultTwitterImage(
+  twitter: TwitterMetadata
+): TwitterMetadata {
+  return {
+    ...twitter,
+    images: twitter.images ?? [defaultTwitterImage],
+  };
 }
 
 export function getPersonJsonLd() {

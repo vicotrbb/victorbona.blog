@@ -8,6 +8,18 @@ function read(file) {
   return fs.readFileSync(path.join(root, file), "utf8");
 }
 
+function listFiles(dir) {
+  return fs.readdirSync(path.join(root, dir), { withFileTypes: true }).flatMap((entry) => {
+    const entryPath = path.join(dir, entry.name);
+
+    if (entry.isDirectory()) {
+      return listFiles(entryPath);
+    }
+
+    return entry.isFile() ? [entryPath] : [];
+  });
+}
+
 function assertIncludes(file, expected) {
   const content = read(file);
   assert(
@@ -21,6 +33,33 @@ function assertNotIncludes(file, unexpected) {
   assert(
     !content.includes(unexpected),
     `${file} should not include ${JSON.stringify(unexpected)}`
+  );
+}
+
+function assertRouteMetadataUsesDefaultImages(file) {
+  const content = read(file);
+
+  if (content.includes("openGraph:")) {
+    assert(
+      content.includes("withDefaultOpenGraphImage("),
+      `${file} should wrap openGraph metadata with withDefaultOpenGraphImage`
+    );
+  }
+
+  if (content.includes("twitter:")) {
+    assert(
+      content.includes("withDefaultTwitterImage("),
+      `${file} should wrap twitter metadata with withDefaultTwitterImage`
+    );
+  }
+}
+
+function hasRouteMetadata(file) {
+  const content = read(file);
+
+  return (
+    content.includes("export const metadata") ||
+    content.includes("function generateMetadata")
   );
 }
 
@@ -80,6 +119,16 @@ for (const routeFile of [
 ]) {
   assertIncludes(routeFile, "application/ld+json");
 }
+
+for (const routeFile of listFiles("app")
+  .filter((file) => file.endsWith(".tsx"))
+  .filter(hasRouteMetadata)) {
+  assertRouteMetadataUsesDefaultImages(routeFile);
+}
+
+assertIncludes("app/lib/seo.ts", "defaultOpenGraphImage");
+assertIncludes("app/lib/seo.ts", "withDefaultOpenGraphImage");
+assertIncludes("app/lib/seo.ts", "withDefaultTwitterImage");
 
 assertIncludes("app/llms.txt/route.ts", "Canonical Topics");
 assertIncludes("app/llms.txt/route.ts", "Best First-Hand Sources");

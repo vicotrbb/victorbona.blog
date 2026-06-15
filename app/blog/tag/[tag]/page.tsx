@@ -3,7 +3,12 @@ import { BlogPosts } from "app/components/posts";
 import { baseUrl } from "app/sitemap";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getBreadcrumbJsonLd, getItemListJsonLd } from "app/lib/seo";
+import {
+  getBreadcrumbJsonLd,
+  getItemListJsonLd,
+  withDefaultOpenGraphImage,
+  withDefaultTwitterImage,
+} from "app/lib/seo";
 
 export async function generateStaticParams() {
   return getTags().map((tag) => ({
@@ -17,11 +22,16 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   return {
     title: `Posts tagged with "${tag}"`,
     description: `Browse all articles about ${tag}`,
-    openGraph: {
+    openGraph: withDefaultOpenGraphImage({
       title: `Posts tagged with "${tag}"`,
       description: `Browse all articles about ${tag}`,
       url: `${baseUrl}/blog/tag/${params.tag}`,
-    },
+    }),
+    twitter: withDefaultTwitterImage({
+      card: "summary_large_image",
+      title: `Posts tagged with "${tag}"`,
+      description: `Browse all articles about ${tag}`,
+    }),
     alternates: {
       canonical: `${baseUrl}/blog/tag/${params.tag}`,
     },

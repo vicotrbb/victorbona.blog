@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { SectionHeader } from "app/components/SectionHeader";
-import { getBreadcrumbJsonLd, getItemListJsonLd } from "app/lib/seo";
+import {
+  getBreadcrumbJsonLd,
+  getItemListJsonLd,
+  withDefaultOpenGraphImage,
+  withDefaultTwitterImage,
+} from "app/lib/seo";
 import { baseUrl } from "app/sitemap";
 import { compendiumCollections } from "./collections";
 import {
@@ -19,17 +24,17 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${baseUrl}/compendium`,
   },
-  openGraph: {
+  openGraph: withDefaultOpenGraphImage({
     title: `${title} - Victor Bona`,
     description,
     type: "website",
     url: `${baseUrl}/compendium`,
-  },
-  twitter: {
+  }),
+  twitter: withDefaultTwitterImage({
     card: "summary_large_image",
     title: `${title} - Victor Bona`,
     description,
-  },
+  }),
 };
 
 export default function CompendiumPage() {

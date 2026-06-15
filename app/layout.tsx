@@ -8,7 +8,13 @@ import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
 import Script from "next/script";
 import { PageViewTracker } from "./components/page-view-tracker";
-import { getBlogJsonLd, getPersonJsonLd, getWebsiteJsonLd } from "./lib/seo";
+import {
+  getBlogJsonLd,
+  getPersonJsonLd,
+  getWebsiteJsonLd,
+  withDefaultOpenGraphImage,
+  withDefaultTwitterImage,
+} from "./lib/seo";
 
 const display = Libre_Caslon_Text({
   subsets: ["latin"],
@@ -58,7 +64,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Victor Bona" }],
   creator: "Victor Bona",
-  openGraph: {
+  openGraph: withDefaultOpenGraphImage({
     title: "Victor Bona Blog",
     description:
       "Victor Bona writes about production software, architecture, infrastructure, security, AI systems, and the tradeoffs behind shipped engineering work.",
@@ -66,23 +72,14 @@ export const metadata: Metadata = {
     siteName: "Victor Bona Blog",
     locale: "en_US",
     type: "website",
-    images: [
-      {
-        url: `${baseUrl}/logos/og-image.png`,
-        width: 1200,
-        height: 630,
-        alt: "Victor Bona monogram and site identity",
-      },
-    ],
-  },
-  twitter: {
+  }),
+  twitter: withDefaultTwitterImage({
     card: "summary_large_image",
     title: "Victor Bona Blog",
     description:
       "Victor Bona writes about production software, architecture, infrastructure, security, AI systems, and the tradeoffs behind shipped engineering work.",
     creator: "@BonaVictor",
-    images: [`${baseUrl}/logos/og-image.png`],
-  },
+  }),
   robots: {
     index: true,
     follow: true,

@@ -2,7 +2,12 @@ import { BlogPosts } from "app/components/posts";
 import { SectionHeader } from "app/components/SectionHeader";
 import { baseUrl } from "app/sitemap";
 import { getBlogPosts } from "./utils";
-import { getBreadcrumbJsonLd, getItemListJsonLd } from "app/lib/seo";
+import {
+  getBreadcrumbJsonLd,
+  getItemListJsonLd,
+  withDefaultOpenGraphImage,
+  withDefaultTwitterImage,
+} from "app/lib/seo";
 
 export const metadata = {
   title: "Victor Bona Blog",
@@ -11,19 +16,19 @@ export const metadata = {
   alternates: {
     canonical: `${baseUrl}/blog`,
   },
-  openGraph: {
+  openGraph: withDefaultOpenGraphImage({
     title: "Victor Bona Blog",
     description:
       "Explore articles about software engineering, web development, and technology written by Victor Bona.",
     type: "website",
     url: `${baseUrl}/blog`,
-  },
-  twitter: {
+  }),
+  twitter: withDefaultTwitterImage({
     card: "summary_large_image",
     title: "Victor Bona Blog",
     description:
       "Explore articles about software engineering, web development, and technology written by Victor Bona.",
-  },
+  }),
 };
 
 export default function Page() {

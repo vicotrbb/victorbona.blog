@@ -8,7 +8,13 @@ import { CustomMDX } from "app/components/mdx";
 import { Tag } from "app/components/Tag";
 import { RelatedPosts } from "app/components/RelatedPosts";
 import { ReadingProgress } from "app/components/ReadingProgress";
-import { getBlogPostingJsonLd, getBreadcrumbJsonLd } from "app/lib/seo";
+import {
+  absoluteUrl,
+  getBlogPostingJsonLd,
+  getBreadcrumbJsonLd,
+  withDefaultOpenGraphImage,
+  withDefaultTwitterImage,
+} from "app/lib/seo";
 
 export async function generateStaticParams() {
   let posts = getBlogPosts();
@@ -32,6 +38,9 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     summary: post.metadata.summary,
     tags: post.metadata.tags,
   }).toString();
+  const imageUrl = post.metadata.image
+    ? absoluteUrl(post.metadata.image)
+    : `${baseUrl}/og?${ogImageUrl}`;
 
   const tags = post.metadata.tags.split(",").map((tag) => tag.trim());
 
@@ -40,7 +49,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     description: post.metadata.summary,
     authors: [{ name: "Victor Bona", url: baseUrl }],
     keywords: [...tags, "blog", "tech", "software development"],
-    openGraph: {
+    openGraph: withDefaultOpenGraphImage({
       title: post.metadata.title,
       description: post.metadata.summary,
       type: "article",
@@ -51,24 +60,22 @@ export async function generateMetadata({ params }): Promise<Metadata> {
       tags: tags,
       images: [
         {
-          url: post.metadata.image
-            ? `${baseUrl}${post.metadata.image}`
-            : `${baseUrl}/og?${ogImageUrl}`,
+          url: imageUrl,
           width: 1200,
           height: 630,
           alt: post.metadata.title,
         },
       ],
       siteName: "Victor Bona Blog",
-    },
-    twitter: {
+    }),
+    twitter: withDefaultTwitterImage({
       card: "summary_large_image",
       title: post.metadata.title,
       description: post.metadata.summary,
       creator: "@BonaVictor",
       site: "@BonaVictor",
-      images: [post.metadata.image || `${baseUrl}/og?${ogImageUrl}`],
-    },
+      images: [imageUrl],
+    }),
     alternates: {
       canonical: `${baseUrl}/blog/${post.slug}`,
     },

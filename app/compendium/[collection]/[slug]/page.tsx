@@ -1,6 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getBreadcrumbJsonLd, getCompendiumNoteJsonLd } from "app/lib/seo";
+import {
+  getBreadcrumbJsonLd,
+  getCompendiumNoteJsonLd,
+  withDefaultOpenGraphImage,
+  withDefaultTwitterImage,
+} from "app/lib/seo";
 import { baseUrl } from "app/sitemap";
 import {
   compendiumCollections,
@@ -60,19 +65,19 @@ export function generateMetadata({
     alternates: {
       canonical: url,
     },
-    openGraph: {
+    openGraph: withDefaultOpenGraphImage({
       title,
       description: note.excerpt,
       type: "article",
       url,
       siteName: "Victor Bona Blog",
-    },
-    twitter: {
-      card: "summary",
+    }),
+    twitter: withDefaultTwitterImage({
+      card: "summary_large_image",
       title,
       description: note.excerpt,
       creator: "@BonaVictor",
-    },
+    }),
   };
 }
 

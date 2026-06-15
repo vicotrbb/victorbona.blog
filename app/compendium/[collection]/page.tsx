@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SectionHeader } from "app/components/SectionHeader";
-import { getBreadcrumbJsonLd, getItemListJsonLd } from "app/lib/seo";
+import {
+  getBreadcrumbJsonLd,
+  getItemListJsonLd,
+  withDefaultOpenGraphImage,
+  withDefaultTwitterImage,
+} from "app/lib/seo";
 import { baseUrl } from "app/sitemap";
 import { compendiumCollections, getCompendiumCollection } from "../collections";
 import {
@@ -53,17 +58,17 @@ export function generateMetadata({ params }: CollectionPageProps): Metadata {
     alternates: {
       canonical: `${baseUrl}${collection.route}`,
     },
-    openGraph: {
+    openGraph: withDefaultOpenGraphImage({
       title: `${collection.title} Compendium - Victor Bona`,
       description: collection.description,
       type: "website",
       url: `${baseUrl}${collection.route}`,
-    },
-    twitter: {
+    }),
+    twitter: withDefaultTwitterImage({
       card: "summary_large_image",
       title: `${collection.title} Compendium - Victor Bona`,
       description: collection.description,
-    },
+    }),
   };
 }
 

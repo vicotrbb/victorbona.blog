@@ -3,7 +3,12 @@ import { PaperRow, EmptyPaperArchive } from "app/components/PaperRow";
 import { SectionHeader } from "app/components/SectionHeader";
 import { baseUrl } from "app/sitemap";
 import type { Metadata } from "next";
-import { getBreadcrumbJsonLd, getItemListJsonLd } from "app/lib/seo";
+import {
+  getBreadcrumbJsonLd,
+  getItemListJsonLd,
+  withDefaultOpenGraphImage,
+  withDefaultTwitterImage,
+} from "app/lib/seo";
 
 export const metadata: Metadata = {
   title: "Articles & Papers",
@@ -11,16 +16,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: `${baseUrl}/articles`,
   },
-  openGraph: {
+  openGraph: withDefaultOpenGraphImage({
     title: "Articles & Papers - Victor Bona",
     description: "Academic papers and technical articles on software engineering, distributed systems, and modern web development.",
     url: `${baseUrl}/articles`,
-  },
-  twitter: {
+  }),
+  twitter: withDefaultTwitterImage({
     card: "summary_large_image",
     title: "Articles & Papers - Victor Bona",
     description: "Academic papers and technical articles on software engineering, distributed systems, and modern web development.",
-  },
+  }),
 };
 
 export default function ArticlesPage() {
