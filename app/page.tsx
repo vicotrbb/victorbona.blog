@@ -34,7 +34,7 @@ export default function Page() {
 
   const featured =
     posts.find((post) =>
-      post.slug.includes("durable-execution-youre-already-building-it-badly"),
+      post.slug.includes("status-is-a-distributed-system"),
     ) ?? posts[0];
   const fieldNotes = posts
     .filter((post) => post.slug !== featured.slug)
