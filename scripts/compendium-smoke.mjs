@@ -48,6 +48,17 @@ assertIncludes("scripts/import-compendium.mjs", 'id: "kubernetes"');
 assertIncludes("app/compendium/types.ts", '"kubernetes"');
 assertIncludes("app/compendium/collections.ts", 'id: "kubernetes"');
 assertIncludes("app/compendium/page.tsx", "Kubernetes");
+assertIncludes("app/global.css", "color-scheme: light;");
+assertIncludes("app/global.css", ".compendium-mermaid svg text");
+assertIncludes("app/global.css", ".compendium-mermaid svg foreignObject");
+assertIncludes("app/global.css", "fill: #111827 !important;");
+assertIncludes("app/global.css", "color: #111827 !important;");
+assertIncludes("app/compendium/components/MermaidDiagram.tsx", "darkMode: false");
+assertIncludes("app/compendium/components/MermaidDiagram.tsx", "textColor: \"#111827\"");
+assertIncludes(
+  "app/compendium/components/MermaidDiagram.tsx",
+  "edgeLabelBackground: \"#f8fafc\""
+);
 assertIncludes(
   "app/compendium/[collection]/page.tsx",
   'collectionId === "kubernetes"'

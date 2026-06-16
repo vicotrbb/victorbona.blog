@@ -283,9 +283,10 @@ table {
   max-width: 100%;
   min-width: 0;
   overflow-x: auto;
-  border: 1px solid var(--color-border);
+  color-scheme: light;
+  border: 1px solid #cbd5e1;
   border-radius: var(--radius-md);
-  background: color-mix(in oklch, var(--color-surface) 84%, transparent);
+  background: #f8fafc;
   padding: var(--space-md);
 }
 
@@ -300,7 +301,31 @@ table {
   max-width: 100%;
   height: auto;
   min-height: 1rem;
-  color: var(--color-foreground);
+  color: #111827;
+}
+
+.compendium-mermaid svg text,
+.compendium-mermaid svg .label,
+.compendium-mermaid svg .nodeLabel,
+.compendium-mermaid svg .edgeLabel,
+.compendium-mermaid svg .cluster-label,
+.compendium-mermaid svg .messageText,
+.compendium-mermaid svg .actor,
+.compendium-mermaid svg foreignObject,
+.compendium-mermaid svg foreignObject * {
+  fill: #111827 !important;
+  color: #111827 !important;
+}
+
+.compendium-mermaid svg .edgeLabel,
+.compendium-mermaid svg .labelBkg {
+  background-color: #f8fafc !important;
+}
+
+.compendium-mermaid svg .flowchart-link,
+.compendium-mermaid svg .edgePath path,
+.compendium-mermaid svg .marker {
+  stroke: #334155 !important;
 }
 
 .compendium-mermaid__loading {
