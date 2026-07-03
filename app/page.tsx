@@ -39,7 +39,7 @@ export default function Page() {
   const fieldNotes = posts
     .filter((post) => post.slug !== featured.slug)
     .slice(0, 6);
-  const selectedProjects = ["Guara Cloud", "Purple Wolf", "SQLTemple"]
+  const selectedProjects = ["Guara Cloud", "Purple Wolf", "Nidus"]
     .map((name) => projects.find((project) => project.name === name))
     .filter(isProject);
   const selectedArticles = articles.slice(0, 2);

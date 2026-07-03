@@ -21,6 +21,11 @@
       "id": "kubernetes",
       "title": "Kubernetes",
       "noteCount": 19
+    },
+    {
+      "id": "linux-systems-engineering",
+      "title": "Linux Systems Engineering",
+      "noteCount": 20
     }
   ],
   "copiedNotes": [
@@ -751,6 +756,186 @@
       "sourcePath": "Knowledge base/kubernetes/Kubernetes.md",
       "outputPath": "app/compendium/content/kubernetes/kubernetes.md",
       "order": 19,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Linux Systems Mastery Roadmap",
+      "collection": "linux-systems-engineering",
+      "slug": "linux-systems-mastery-roadmap",
+      "sourcePath": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/linux-systems-mastery-roadmap.md",
+      "order": 0,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Linux Mental Model User Space Kernel and Hardware",
+      "collection": "linux-systems-engineering",
+      "slug": "linux-mental-model-user-space-kernel-and-hardware",
+      "sourcePath": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware.md",
+      "order": 1,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Processes Threads Scheduling Signals and Jobs",
+      "collection": "linux-systems-engineering",
+      "slug": "processes-threads-scheduling-signals-and-jobs",
+      "sourcePath": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs.md",
+      "order": 2,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Memory Virtual Memory Paging Allocators and OOM",
+      "collection": "linux-systems-engineering",
+      "slug": "memory-virtual-memory-paging-allocators-and-oom",
+      "sourcePath": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom.md",
+      "order": 3,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Filesystems VFS Block IO Page Cache and Storage",
+      "collection": "linux-systems-engineering",
+      "slug": "filesystems-vfs-block-io-page-cache-and-storage",
+      "sourcePath": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage.md",
+      "order": 4,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Linux Networking TCP IP Routing Firewalling and DNS",
+      "collection": "linux-systems-engineering",
+      "slug": "linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "sourcePath": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns.md",
+      "order": 5,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "System Calls ABI libc and User Kernel Boundaries",
+      "collection": "linux-systems-engineering",
+      "slug": "system-calls-abi-libc-and-user-kernel-boundaries",
+      "sourcePath": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries.md",
+      "order": 6,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "systemd Boot Init Units Timers Journald and Services",
+      "collection": "linux-systems-engineering",
+      "slug": "systemd-boot-init-units-timers-journald-and-services",
+      "sourcePath": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/systemd-boot-init-units-timers-journald-and-services.md",
+      "order": 7,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Permissions Users Groups Capabilities and LSMs",
+      "collection": "linux-systems-engineering",
+      "slug": "permissions-users-groups-capabilities-and-lsms",
+      "sourcePath": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/permissions-users-groups-capabilities-and-lsms.md",
+      "order": 8,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "cgroups Namespaces Containers and Runtime Isolation",
+      "collection": "linux-systems-engineering",
+      "slug": "cgroups-namespaces-containers-and-runtime-isolation",
+      "sourcePath": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation.md",
+      "order": 9,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Observability Logs Metrics Tracing and Debugging",
+      "collection": "linux-systems-engineering",
+      "slug": "observability-logs-metrics-tracing-and-debugging",
+      "sourcePath": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/observability-logs-metrics-tracing-and-debugging.md",
+      "order": 10,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Performance Engineering perf Flamegraphs and Capacity",
+      "collection": "linux-systems-engineering",
+      "slug": "performance-engineering-perf-flamegraphs-and-capacity",
+      "sourcePath": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/performance-engineering-perf-flamegraphs-and-capacity.md",
+      "order": 11,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Linux Security Hardening Secrets and Incident Response",
+      "collection": "linux-systems-engineering",
+      "slug": "linux-security-hardening-secrets-and-incident-response",
+      "sourcePath": "Knowledge base/linux-systems-engineering/12 Linux Security Hardening Secrets and Incident Response.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/linux-security-hardening-secrets-and-incident-response.md",
+      "order": 12,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Kernel Architecture Modules Drivers and Device Model",
+      "collection": "linux-systems-engineering",
+      "slug": "kernel-architecture-modules-drivers-and-device-model",
+      "sourcePath": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/kernel-architecture-modules-drivers-and-device-model.md",
+      "order": 13,
+      "mermaidBlocks": 9
+    },
+    {
+      "title": "eBPF Fundamentals Verifier Maps Programs and Helpers",
+      "collection": "linux-systems-engineering",
+      "slug": "ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "sourcePath": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers.md",
+      "order": 14,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "eBPF Networking XDP TC Cilium and Service Dataplanes",
+      "collection": "linux-systems-engineering",
+      "slug": "ebpf-networking-xdp-tc-cilium-and-service-dataplanes",
+      "sourcePath": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/ebpf-networking-xdp-tc-cilium-and-service-dataplanes.md",
+      "order": 15,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "eBPF Observability Uprobes Kprobes Tracepoints and CO-RE",
+      "collection": "linux-systems-engineering",
+      "slug": "ebpf-observability-uprobes-kprobes-tracepoints-and-co-re",
+      "sourcePath": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/ebpf-observability-uprobes-kprobes-tracepoints-and-co-re.md",
+      "order": 16,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Production Operations Troubleshooting and Runbooks",
+      "collection": "linux-systems-engineering",
+      "slug": "production-operations-troubleshooting-and-runbooks",
+      "sourcePath": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/production-operations-troubleshooting-and-runbooks.md",
+      "order": 17,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Linux Ecosystem Tools and Learning Projects",
+      "collection": "linux-systems-engineering",
+      "slug": "linux-ecosystem-tools-and-learning-projects",
+      "sourcePath": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/linux-ecosystem-tools-and-learning-projects.md",
+      "order": 18,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Linux Systems Engineering",
+      "collection": "linux-systems-engineering",
+      "slug": "linux-systems-engineering",
+      "sourcePath": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "outputPath": "app/compendium/content/linux-systems-engineering/linux-systems-engineering.md",
+      "order": 20,
       "mermaidBlocks": 1
     }
   ],
@@ -4798,6 +4983,1398 @@
       "to": "Knowledge base/kubernetes/00 Kubernetes Mastery Roadmap.md",
       "href": "/compendium/kubernetes/kubernetes-mastery-roadmap",
       "label": "00 Kubernetes Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "href": "/compendium/linux-systems-engineering/systemd-boot-init-units-timers-journald-and-services",
+      "label": "07 systemd Boot Init Units Timers Journald and Services"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "href": "/compendium/linux-systems-engineering/permissions-users-groups-capabilities-and-lsms",
+      "label": "08 Permissions Users Groups Capabilities and LSMs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/12 Linux Security Hardening Secrets and Incident Response.md",
+      "href": "/compendium/linux-systems-engineering/linux-security-hardening-secrets-and-incident-response",
+      "label": "12 Linux Security Hardening Secrets and Incident Response"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "href": "/compendium/linux-systems-engineering/observability-logs-metrics-tracing-and-debugging",
+      "label": "10 Observability Logs Metrics Tracing and Debugging"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "href": "/compendium/linux-systems-engineering/performance-engineering-perf-flamegraphs-and-capacity",
+      "label": "11 Performance Engineering perf Flamegraphs and Capacity"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "href": "/compendium/linux-systems-engineering/kernel-architecture-modules-drivers-and-device-model",
+      "label": "13 Kernel Architecture Modules Drivers and Device Model"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "label": "14 eBPF Fundamentals Verifier Maps Programs and Helpers"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-networking-xdp-tc-cilium-and-service-dataplanes",
+      "label": "15 eBPF Networking XDP TC Cilium and Service Dataplanes"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-observability-uprobes-kprobes-tracepoints-and-co-re",
+      "label": "16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-engineering",
+      "label": "Linux Systems Engineering"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "href": "/compendium/linux-systems-engineering/linux-ecosystem-tools-and-learning-projects",
+      "label": "18 Linux Ecosystem Tools and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "to": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-engineering",
+      "label": "Linux Systems Engineering"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "to": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-mastery-roadmap",
+      "label": "00 Linux Systems Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "to": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-engineering",
+      "label": "Linux Systems Engineering"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "to": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-mastery-roadmap",
+      "label": "00 Linux Systems Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "to": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-engineering",
+      "label": "Linux Systems Engineering"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "to": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-mastery-roadmap",
+      "label": "00 Linux Systems Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "to": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-engineering",
+      "label": "Linux Systems Engineering"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "to": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-mastery-roadmap",
+      "label": "00 Linux Systems Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "to": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "href": "/compendium/linux-systems-engineering/permissions-users-groups-capabilities-and-lsms",
+      "label": "08 Permissions Users Groups Capabilities and LSMs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "to": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "href": "/compendium/linux-systems-engineering/permissions-users-groups-capabilities-and-lsms",
+      "label": "08 Permissions Users Groups Capabilities and LSMs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "to": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "href": "/compendium/linux-systems-engineering/permissions-users-groups-capabilities-and-lsms",
+      "label": "08 Permissions Users Groups Capabilities and LSMs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "to": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "href": "/compendium/linux-systems-engineering/systemd-boot-init-units-timers-journald-and-services",
+      "label": "07 systemd Boot Init Units Timers Journald and Services"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "to": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "href": "/compendium/linux-systems-engineering/systemd-boot-init-units-timers-journald-and-services",
+      "label": "07 systemd Boot Init Units Timers Journald and Services"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "to": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "href": "/compendium/linux-systems-engineering/systemd-boot-init-units-timers-journald-and-services",
+      "label": "07 systemd Boot Init Units Timers Journald and Services"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "to": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "href": "/compendium/linux-systems-engineering/linux-ecosystem-tools-and-learning-projects",
+      "label": "18 Linux Ecosystem Tools and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "href": "/compendium/linux-systems-engineering/systemd-boot-init-units-timers-journald-and-services",
+      "label": "07 systemd Boot Init Units Timers Journald and Services"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "href": "/compendium/linux-systems-engineering/performance-engineering-perf-flamegraphs-and-capacity",
+      "label": "11 Performance Engineering perf Flamegraphs and Capacity"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/12 Linux Security Hardening Secrets and Incident Response.md",
+      "href": "/compendium/linux-systems-engineering/linux-security-hardening-secrets-and-incident-response",
+      "label": "12 Linux Security Hardening Secrets and Incident Response"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "href": "/compendium/linux-systems-engineering/performance-engineering-perf-flamegraphs-and-capacity",
+      "label": "11 Performance Engineering perf Flamegraphs and Capacity"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "to": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "href": "/compendium/linux-systems-engineering/observability-logs-metrics-tracing-and-debugging",
+      "label": "10 Observability Logs Metrics Tracing and Debugging"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/12 Linux Security Hardening Secrets and Incident Response.md",
+      "to": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "href": "/compendium/linux-systems-engineering/permissions-users-groups-capabilities-and-lsms",
+      "label": "08 Permissions Users Groups Capabilities and LSMs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/12 Linux Security Hardening Secrets and Incident Response.md",
+      "to": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "href": "/compendium/linux-systems-engineering/systemd-boot-init-units-timers-journald-and-services",
+      "label": "07 systemd Boot Init Units Timers Journald and Services"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/12 Linux Security Hardening Secrets and Incident Response.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/12 Linux Security Hardening Secrets and Incident Response.md",
+      "to": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "href": "/compendium/linux-systems-engineering/observability-logs-metrics-tracing-and-debugging",
+      "label": "10 Observability Logs Metrics Tracing and Debugging"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/12 Linux Security Hardening Secrets and Incident Response.md",
+      "to": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "href": "/compendium/linux-systems-engineering/performance-engineering-perf-flamegraphs-and-capacity",
+      "label": "11 Performance Engineering perf Flamegraphs and Capacity"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/12 Linux Security Hardening Secrets and Incident Response.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/12 Linux Security Hardening Secrets and Incident Response.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/12 Linux Security Hardening Secrets and Incident Response.md",
+      "to": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "href": "/compendium/linux-systems-engineering/permissions-users-groups-capabilities-and-lsms",
+      "label": "08 Permissions Users Groups Capabilities and LSMs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "to": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-engineering",
+      "label": "Linux Systems Engineering"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "to": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-engineering",
+      "label": "Linux Systems Engineering"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "to": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "href": "/compendium/linux-systems-engineering/permissions-users-groups-capabilities-and-lsms",
+      "label": "08 Permissions Users Groups Capabilities and LSMs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "to": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-networking-xdp-tc-cilium-and-service-dataplanes",
+      "label": "15 eBPF Networking XDP TC Cilium and Service Dataplanes"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "to": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-observability-uprobes-kprobes-tracepoints-and-co-re",
+      "label": "16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "to": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "href": "/compendium/linux-systems-engineering/linux-ecosystem-tools-and-learning-projects",
+      "label": "18 Linux Ecosystem Tools and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "to": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-engineering",
+      "label": "Linux Systems Engineering"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "to": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "label": "14 eBPF Fundamentals Verifier Maps Programs and Helpers"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "to": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-observability-uprobes-kprobes-tracepoints-and-co-re",
+      "label": "16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "to": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "href": "/compendium/linux-systems-engineering/linux-ecosystem-tools-and-learning-projects",
+      "label": "18 Linux Ecosystem Tools and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "to": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-engineering",
+      "label": "Linux Systems Engineering"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "to": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "label": "14 eBPF Fundamentals Verifier Maps Programs and Helpers"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "to": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-networking-xdp-tc-cilium-and-service-dataplanes",
+      "label": "15 eBPF Networking XDP TC Cilium and Service Dataplanes"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "to": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "href": "/compendium/linux-systems-engineering/linux-ecosystem-tools-and-learning-projects",
+      "label": "18 Linux Ecosystem Tools and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "to": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "href": "/compendium/linux-systems-engineering/linux-ecosystem-tools-and-learning-projects",
+      "label": "18 Linux Ecosystem Tools and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "to": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "href": "/compendium/linux-systems-engineering/linux-ecosystem-tools-and-learning-projects",
+      "label": "18 Linux Ecosystem Tools and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "href": "/compendium/linux-systems-engineering/systemd-boot-init-units-timers-journald-and-services",
+      "label": "07 systemd Boot Init Units Timers Journald and Services"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "href": "/compendium/linux-systems-engineering/permissions-users-groups-capabilities-and-lsms",
+      "label": "08 Permissions Users Groups Capabilities and LSMs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/12 Linux Security Hardening Secrets and Incident Response.md",
+      "href": "/compendium/linux-systems-engineering/linux-security-hardening-secrets-and-incident-response",
+      "label": "12 Linux Security Hardening Secrets and Incident Response"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "href": "/compendium/linux-systems-engineering/observability-logs-metrics-tracing-and-debugging",
+      "label": "10 Observability Logs Metrics Tracing and Debugging"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "href": "/compendium/linux-systems-engineering/performance-engineering-perf-flamegraphs-and-capacity",
+      "label": "11 Performance Engineering perf Flamegraphs and Capacity"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "href": "/compendium/linux-systems-engineering/kernel-architecture-modules-drivers-and-device-model",
+      "label": "13 Kernel Architecture Modules Drivers and Device Model"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "label": "14 eBPF Fundamentals Verifier Maps Programs and Helpers"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-networking-xdp-tc-cilium-and-service-dataplanes",
+      "label": "15 eBPF Networking XDP TC Cilium and Service Dataplanes"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-observability-uprobes-kprobes-tracepoints-and-co-re",
+      "label": "16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "href": "/compendium/linux-systems-engineering/linux-ecosystem-tools-and-learning-projects",
+      "label": "18 Linux Ecosystem Tools and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "href": "/compendium/linux-systems-engineering/systemd-boot-init-units-timers-journald-and-services",
+      "label": "07 systemd Boot Init Units Timers Journald and Services"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "href": "/compendium/linux-systems-engineering/permissions-users-groups-capabilities-and-lsms",
+      "label": "08 Permissions Users Groups Capabilities and LSMs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "label": "14 eBPF Fundamentals Verifier Maps Programs and Helpers"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-observability-uprobes-kprobes-tracepoints-and-co-re",
+      "label": "16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "href": "/compendium/linux-systems-engineering/linux-ecosystem-tools-and-learning-projects",
+      "label": "18 Linux Ecosystem Tools and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/02 Processes Threads Scheduling Signals and Jobs.md",
+      "href": "/compendium/linux-systems-engineering/processes-threads-scheduling-signals-and-jobs",
+      "label": "02 Processes Threads Scheduling Signals and Jobs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/07 systemd Boot Init Units Timers Journald and Services.md",
+      "href": "/compendium/linux-systems-engineering/systemd-boot-init-units-timers-journald-and-services",
+      "label": "07 systemd Boot Init Units Timers Journald and Services"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "href": "/compendium/linux-systems-engineering/permissions-users-groups-capabilities-and-lsms",
+      "label": "08 Permissions Users Groups Capabilities and LSMs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "href": "/compendium/linux-systems-engineering/permissions-users-groups-capabilities-and-lsms",
+      "label": "08 Permissions Users Groups Capabilities and LSMs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/08 Permissions Users Groups Capabilities and LSMs.md",
+      "href": "/compendium/linux-systems-engineering/permissions-users-groups-capabilities-and-lsms",
+      "label": "08 Permissions Users Groups Capabilities and LSMs"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "href": "/compendium/linux-systems-engineering/kernel-architecture-modules-drivers-and-device-model",
+      "label": "13 Kernel Architecture Modules Drivers and Device Model"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "href": "/compendium/linux-systems-engineering/observability-logs-metrics-tracing-and-debugging",
+      "label": "10 Observability Logs Metrics Tracing and Debugging"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "href": "/compendium/linux-systems-engineering/observability-logs-metrics-tracing-and-debugging",
+      "label": "10 Observability Logs Metrics Tracing and Debugging"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/10 Observability Logs Metrics Tracing and Debugging.md",
+      "href": "/compendium/linux-systems-engineering/observability-logs-metrics-tracing-and-debugging",
+      "label": "10 Observability Logs Metrics Tracing and Debugging"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "href": "/compendium/linux-systems-engineering/kernel-architecture-modules-drivers-and-device-model",
+      "label": "13 Kernel Architecture Modules Drivers and Device Model"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "href": "/compendium/linux-systems-engineering/kernel-architecture-modules-drivers-and-device-model",
+      "label": "13 Kernel Architecture Modules Drivers and Device Model"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "href": "/compendium/linux-systems-engineering/kernel-architecture-modules-drivers-and-device-model",
+      "label": "13 Kernel Architecture Modules Drivers and Device Model"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "href": "/compendium/linux-systems-engineering/kernel-architecture-modules-drivers-and-device-model",
+      "label": "13 Kernel Architecture Modules Drivers and Device Model"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "label": "14 eBPF Fundamentals Verifier Maps Programs and Helpers"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "label": "14 eBPF Fundamentals Verifier Maps Programs and Helpers"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "label": "14 eBPF Fundamentals Verifier Maps Programs and Helpers"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-observability-uprobes-kprobes-tracepoints-and-co-re",
+      "label": "16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "label": "14 eBPF Fundamentals Verifier Maps Programs and Helpers"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "label": "14 eBPF Fundamentals Verifier Maps Programs and Helpers"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "label": "14 eBPF Fundamentals Verifier Maps Programs and Helpers"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-networking-xdp-tc-cilium-and-service-dataplanes",
+      "label": "15 eBPF Networking XDP TC Cilium and Service Dataplanes"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-networking-xdp-tc-cilium-and-service-dataplanes",
+      "label": "15 eBPF Networking XDP TC Cilium and Service Dataplanes"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/15 eBPF Networking XDP TC Cilium and Service Dataplanes.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-networking-xdp-tc-cilium-and-service-dataplanes",
+      "label": "15 eBPF Networking XDP TC Cilium and Service Dataplanes"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-observability-uprobes-kprobes-tracepoints-and-co-re",
+      "label": "16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-observability-uprobes-kprobes-tracepoints-and-co-re",
+      "label": "16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-observability-uprobes-kprobes-tracepoints-and-co-re",
+      "label": "16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-observability-uprobes-kprobes-tracepoints-and-co-re",
+      "label": "16 eBPF Observability Uprobes Kprobes Tracepoints and CO-RE"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/00 Linux Systems Mastery Roadmap.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-mastery-roadmap",
+      "label": "00 Linux Systems Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/17 Production Operations Troubleshooting and Runbooks.md",
+      "href": "/compendium/linux-systems-engineering/production-operations-troubleshooting-and-runbooks",
+      "label": "17 Production Operations Troubleshooting and Runbooks"
+    },
+    {
+      "from": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
+      "href": "/compendium/linux-systems-engineering/linux-ecosystem-tools-and-learning-projects",
+      "label": "18 Linux Ecosystem Tools and Learning Projects"
     }
   ],
   "externalReferences": [
@@ -5488,5 +7065,5 @@
       "fallbackHref": "/compendium/software-engineering/distributed-systems"
     }
   ],
-  "mermaidBlocks": 134
+  "mermaidBlocks": 181
 }

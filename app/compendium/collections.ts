@@ -29,6 +29,13 @@ export const compendiumCollections: CompendiumCollection[] = [
       "Kubernetes learning notes on API machinery, workloads, networking, storage, security, operations, GitOps, policy, and production platform patterns.",
     route: "/compendium/kubernetes",
   },
+  {
+    id: "linux-systems-engineering",
+    title: "Linux Systems Engineering",
+    description:
+      "Linux systems notes on kernel boundaries, processes, memory, storage, networking, systemd, permissions, containers, observability, performance, security, and eBPF.",
+    route: "/compendium/linux-systems-engineering",
+  },
 ];
 
 export function isCompendiumCollectionId(

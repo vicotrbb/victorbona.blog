@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 const root = process.cwd();
-const vaultRoot = "/Users/victorbona/Documents/Obsidian Vault";
+const vaultRoot = "/Users/victorbona/Documents/Personal";
 const outputRoot = path.join(root, "app", "compendium", "content");
 
 const collections = [
@@ -29,6 +29,15 @@ const collections = [
     id: "kubernetes",
     title: "Kubernetes",
     sourceDir: path.join(vaultRoot, "Knowledge base", "kubernetes"),
+  },
+  {
+    id: "linux-systems-engineering",
+    title: "Linux Systems Engineering",
+    sourceDir: path.join(
+      vaultRoot,
+      "Knowledge base",
+      "linux-systems-engineering"
+    ),
   },
 ];
 

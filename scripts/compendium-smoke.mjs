@@ -45,9 +45,19 @@ function readReport() {
 }
 
 assertIncludes("scripts/import-compendium.mjs", 'id: "kubernetes"');
+assertIncludes(
+  "scripts/import-compendium.mjs",
+  'id: "linux-systems-engineering"'
+);
 assertIncludes("app/compendium/types.ts", '"kubernetes"');
+assertIncludes("app/compendium/types.ts", '"linux-systems-engineering"');
 assertIncludes("app/compendium/collections.ts", 'id: "kubernetes"');
+assertIncludes(
+  "app/compendium/collections.ts",
+  'id: "linux-systems-engineering"'
+);
 assertIncludes("app/compendium/page.tsx", "Kubernetes");
+assertIncludes("app/compendium/page.tsx", "Linux systems engineering");
 assertIncludes("app/global.css", "color-scheme: light;");
 assertIncludes("app/global.css", ".compendium-mermaid svg text");
 assertIncludes("app/global.css", ".compendium-mermaid svg foreignObject");
@@ -67,23 +77,49 @@ assertIncludes(
   "app/compendium/[collection]/page.tsx",
   'getCompendiumNote("kubernetes", "kubernetes")'
 );
+assertIncludes(
+  "app/compendium/[collection]/page.tsx",
+  'collectionId === "linux-systems-engineering"'
+);
+assertIncludes(
+  "app/compendium/[collection]/page.tsx",
+  'getCompendiumNote(\n      "linux-systems-engineering",\n      "linux-systems-engineering"\n    )'
+);
 
 const report = readReport();
 const kubernetesCollection = report.collections.find(
   (collection) => collection.id === "kubernetes"
 );
+const linuxCollection = report.collections.find(
+  (collection) => collection.id === "linux-systems-engineering"
+);
 
 assert(kubernetesCollection, "import report should include Kubernetes");
 assert.equal(kubernetesCollection.noteCount, 19);
+assert(
+  linuxCollection,
+  "import report should include Linux Systems Engineering"
+);
+assert.equal(linuxCollection.noteCount, 20);
 
 const kubernetesNotes = report.copiedNotes.filter(
   (note) => note.collection === "kubernetes"
 );
+const linuxNotes = report.copiedNotes.filter(
+  (note) => note.collection === "linux-systems-engineering"
+);
 assert.equal(kubernetesNotes.length, 19);
+assert.equal(linuxNotes.length, 20);
 assert.equal(report.unresolvedReferences.length, 0);
 assert.equal(
   report.invalidHeadingReferences.filter((reference) =>
     reference.from.startsWith("Knowledge base/kubernetes/")
+  ).length,
+  0
+);
+assert.equal(
+  report.invalidHeadingReferences.filter((reference) =>
+    reference.from.startsWith("Knowledge base/linux-systems-engineering/")
   ).length,
   0
 );
@@ -108,9 +144,13 @@ assert(
 const kubernetesFiles = listFiles("app/compendium/content/kubernetes").filter(
   (file) => file.endsWith(".md")
 );
+const linuxFiles = listFiles(
+  "app/compendium/content/linux-systems-engineering"
+).filter((file) => file.endsWith(".md"));
 assert.equal(kubernetesFiles.length, 19);
+assert.equal(linuxFiles.length, 20);
 
-for (const file of kubernetesFiles) {
+for (const file of [...kubernetesFiles, ...linuxFiles]) {
   assertNotIncludes(file, "[[");
   assertNotIncludes(file, emDash);
 }

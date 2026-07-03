@@ -36,6 +36,13 @@ function getStudyIndex(collectionId: string) {
     return getCompendiumNote("kubernetes", "kubernetes");
   }
 
+  if (collectionId === "linux-systems-engineering") {
+    return getCompendiumNote(
+      "linux-systems-engineering",
+      "linux-systems-engineering"
+    );
+  }
+
   return undefined;
 }
 

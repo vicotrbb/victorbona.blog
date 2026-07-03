@@ -2,7 +2,8 @@ export type CompendiumCollectionId =
   | "software-engineering"
   | "data-structures"
   | "design-patterns"
-  | "kubernetes";
+  | "kubernetes"
+  | "linux-systems-engineering";
 
 export type CompendiumFrontmatter = {
   title: string;

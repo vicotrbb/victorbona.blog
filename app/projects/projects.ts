@@ -65,6 +65,78 @@ export const projects: Project[] = [
     },
   },
   {
+    name: "E-Navigator",
+    description:
+      "A Rust and eBPF signal plane for Linux and Kubernetes runtime observability, profiling, security, and diagnostics.",
+    longDescription:
+      "E-Navigator is a pre-release Rust/eBPF node-local agent that turns Linux and Kubernetes workload observations into bounded, versioned signals. It uses a static Source -> Processor -> Generator -> Sink pipeline for process, TCP, DNS, HTTP/request, profiling, host resource, Kubernetes attribution, dependency graph, metrics, request span, profile-window, and runtime-security foundations. The project includes JSON stdout export, tested Prometheus and OTLP HTTP sinks, Kubernetes DaemonSet packaging, Helm chart rendering, signed release artifacts, SBOMs, proof reports, benchmarks, and explicit non-claims around production collector replacement.",
+    repository: "https://github.com/guaracloud/e-navigator",
+    website: "https://guaracloud.github.io/e-navigator/",
+    tags: ["Rust", "eBPF", "Linux", "Kubernetes", "Observability", "Security"],
+    status: "in-progress",
+    publiclyShared: true,
+    license: "Apache-2.0",
+    startDate: "2026-06-12",
+    tech: {
+      backend: ["Rust", "Aya", "eBPF", "Tokio"],
+      deployment: ["Kubernetes", "DaemonSet", "Helm OCI", "Prometheus", "OTLP"],
+    },
+  },
+  {
+    name: "Locus",
+    description:
+      "An experimental Rust memory-locality runtime for AI inference workloads, NUMA placement, and KV-cache memory foundations.",
+    longDescription:
+      "Locus explores explicit memory locality for AI inference workloads without replacing the process-wide allocator. The current foundation includes safe Rust APIs for memory class, placement, and lifetime; Linux topology discovery for NUMA nodes and PCI device locality; placement policy models; locality evidence parsers; narrow unsafe Linux memory-policy probes; node-tagged scratch arenas; request scratch pools; KV block foundations; host page-locked scratch pools; and validation gates that avoid claiming successful placement without matching page-touch and locality evidence.",
+    repository: "https://github.com/vicotrbb/locus",
+    website: undefined,
+    tags: ["Rust", "AI", "NUMA", "Memory", "Inference", "Linux"],
+    status: "in-progress",
+    publiclyShared: true,
+    license: "Apache-2.0",
+    startDate: "2026-07-02",
+    tech: {
+      backend: ["Rust", "Linux sysfs", "NUMA", "Benchmarking"],
+      deployment: ["Docker", "Linux"],
+    },
+  },
+  {
+    name: "Gromaq",
+    description:
+      "A native Rust GPU-rendered terminal emulator built with winit, wgpu, real PTYs, and a proof-boundary release process.",
+    longDescription:
+      "Gromaq is a native terminal emulator foundation focused on performance, correctness, and a polished developer experience without Electron, webviews, React, or a browser runtime. The public alpha/beta release supports terminal grid state, scrollback, resize reflow, alternate screen, selection and clipboard boundaries, OSC handling, ANSI/VT parsing, Unicode wide and emoji clusters, native PTY runtime, live config reload, text zoom, frame scheduling, FPS overlay, swash-backed font rasterization, glyph atlas caching, wgpu rendering paths, theme presets, and release automation for Linux tarballs, Debian packages, Arch metadata, and macOS app bundles.",
+    repository: "https://github.com/vicotrbb/gromaq",
+    website: "https://gromaq.dev",
+    tags: ["Rust", "Terminal", "GPU", "wgpu", "PTY", "CLI"],
+    status: "maintained",
+    publiclyShared: true,
+    license: "MIT",
+    startDate: "2026-06-22",
+    tech: {
+      backend: ["Rust", "winit", "wgpu", "Swash", "PTY"],
+      deployment: ["macOS", "Linux", "Debian", "Arch", "GitHub Releases"],
+    },
+  },
+  {
+    name: "Nidus",
+    description:
+      "A modular Rust backend framework inspired by NestJS ergonomics and built on Axum, Tower, Tokio, typed DI, OpenAPI, and observability.",
+    longDescription:
+      "Nidus is a Rust application framework for explicit, production-ready services. It provides typed dependency injection, module graphs, Axum-backed controllers and routes, Tower middleware, guards, pipes, validation, OpenAPI, typed configuration, production HTTP defaults, observability, events, jobs, testing helpers, and optional dashboard introspection. The facade composes normal Rust ecosystem crates instead of replacing them, with official SQLx and cache adapters kept as separately installable crates.",
+    repository: "https://github.com/vicotrbb/nidus",
+    website: "https://rustnidus.com",
+    tags: ["Rust", "Axum", "Tower", "Tokio", "Framework", "OpenAPI"],
+    status: "maintained",
+    publiclyShared: true,
+    license: "MIT OR Apache-2.0",
+    startDate: "2026-06-23",
+    tech: {
+      backend: ["Rust", "Axum", "Tower", "Tokio", "SQLx", "OpenTelemetry"],
+      deployment: ["crates.io", "GitHub Pages"],
+    },
+  },
+  {
     name: "Victor Bona Blog",
     description:
       "My personal blog built with Next.js, MDX, and Tailwind CSS. Features dark mode, RSS feed, and more.",
