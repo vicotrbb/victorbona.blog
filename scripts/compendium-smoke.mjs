@@ -53,9 +53,11 @@ assertIncludes(
   "scripts/import-compendium.mjs",
   'id: "nodejs-v8-runtime-engineering"'
 );
+assertIncludes("scripts/import-compendium.mjs", 'id: "cpu-llm-inference"');
 assertIncludes("app/compendium/types.ts", '"kubernetes"');
 assertIncludes("app/compendium/types.ts", '"linux-systems-engineering"');
 assertIncludes("app/compendium/types.ts", '"nodejs-v8-runtime-engineering"');
+assertIncludes("app/compendium/types.ts", '"cpu-llm-inference"');
 assertIncludes("app/compendium/collections.ts", 'id: "kubernetes"');
 assertIncludes(
   "app/compendium/collections.ts",
@@ -65,9 +67,11 @@ assertIncludes(
   "app/compendium/collections.ts",
   'id: "nodejs-v8-runtime-engineering"'
 );
+assertIncludes("app/compendium/collections.ts", 'id: "cpu-llm-inference"');
 assertIncludes("app/compendium/page.tsx", "Kubernetes");
 assertIncludes("app/compendium/page.tsx", "Linux systems engineering");
 assertIncludes("app/compendium/page.tsx", "Node.js V8 runtime");
+assertIncludes("app/compendium/page.tsx", "CPU LLM inference");
 assertIncludes("app/global.css", "color-scheme: light;");
 assertIncludes("app/global.css", ".compendium-mermaid svg text");
 assertIncludes("app/global.css", ".compendium-mermaid svg foreignObject");
@@ -114,6 +118,9 @@ const linuxCollection = report.collections.find(
 const nodeRuntimeCollection = report.collections.find(
   (collection) => collection.id === "nodejs-v8-runtime-engineering"
 );
+const cpuLlmCollection = report.collections.find(
+  (collection) => collection.id === "cpu-llm-inference"
+);
 
 assert(kubernetesCollection, "import report should include Kubernetes");
 assert.equal(kubernetesCollection.noteCount, 19);
@@ -127,6 +134,8 @@ assert(
   "import report should include Node.js V8 Runtime Engineering"
 );
 assert.equal(nodeRuntimeCollection.noteCount, 20);
+assert(cpuLlmCollection, "import report should include CPU LLM Inference");
+assert.equal(cpuLlmCollection.noteCount, 11);
 
 const kubernetesNotes = report.copiedNotes.filter(
   (note) => note.collection === "kubernetes"
@@ -137,9 +146,13 @@ const linuxNotes = report.copiedNotes.filter(
 const nodeRuntimeNotes = report.copiedNotes.filter(
   (note) => note.collection === "nodejs-v8-runtime-engineering"
 );
+const cpuLlmNotes = report.copiedNotes.filter(
+  (note) => note.collection === "cpu-llm-inference"
+);
 assert.equal(kubernetesNotes.length, 19);
 assert.equal(linuxNotes.length, 20);
 assert.equal(nodeRuntimeNotes.length, 20);
+assert.equal(cpuLlmNotes.length, 11);
 assert.equal(report.unresolvedReferences.length, 0);
 assert.equal(
   report.invalidHeadingReferences.filter((reference) =>
@@ -156,6 +169,12 @@ assert.equal(
 assert.equal(
   report.invalidHeadingReferences.filter((reference) =>
     reference.from.startsWith("Knowledge base/nodejs-v8-runtime-engineering/")
+  ).length,
+  0
+);
+assert.equal(
+  report.invalidHeadingReferences.filter((reference) =>
+    reference.from.startsWith("Knowledge base/Research on CPU LLM Inference/")
   ).length,
   0
 );
@@ -186,11 +205,32 @@ const linuxFiles = listFiles(
 const nodeRuntimeFiles = listFiles(
   "app/compendium/content/nodejs-v8-runtime-engineering"
 ).filter((file) => file.endsWith(".md"));
+const cpuLlmFiles = listFiles("app/compendium/content/cpu-llm-inference").filter(
+  (file) => file.endsWith(".md")
+);
 assert.equal(kubernetesFiles.length, 19);
 assert.equal(linuxFiles.length, 20);
 assert.equal(nodeRuntimeFiles.length, 20);
+assert.equal(cpuLlmFiles.length, 11);
+assertIncludes(
+  "app/compendium/content/cpu-llm-inference/state-of-the-art.md",
+  'title: "State of the Art - Open-Source CPU Inference Engines"'
+);
+assertNotIncludes(
+  "app/compendium/content/cpu-llm-inference/state-of-the-art.md",
+  "# Document 1:"
+);
+assertIncludes(
+  "app/compendium/content/cpu-llm-inference/benchmarks-and-baselines.md",
+  "&#36;0.001/1K tokens"
+);
 
-for (const file of [...kubernetesFiles, ...linuxFiles, ...nodeRuntimeFiles]) {
+for (const file of [
+  ...kubernetesFiles,
+  ...linuxFiles,
+  ...nodeRuntimeFiles,
+  ...cpuLlmFiles,
+]) {
   assertNotIncludes(file, "[[");
   assertNotIncludes(file, emDash);
 }

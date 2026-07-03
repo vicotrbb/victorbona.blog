@@ -31,6 +31,11 @@
       "id": "nodejs-v8-runtime-engineering",
       "title": "Node.js V8 Runtime Engineering",
       "noteCount": 20
+    },
+    {
+      "id": "cpu-llm-inference",
+      "title": "CPU LLM Inference Research",
+      "noteCount": 11
     }
   ],
   "copiedNotes": [
@@ -1122,6 +1127,105 @@
       "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering.md",
       "order": 20,
       "mermaidBlocks": 1
+    },
+    {
+      "title": "State of the Art - Open-Source CPU Inference Engines",
+      "collection": "cpu-llm-inference",
+      "slug": "state-of-the-art",
+      "sourcePath": "Knowledge base/Research on CPU LLM Inference/01-state-of-the-art.md",
+      "outputPath": "app/compendium/content/cpu-llm-inference/state-of-the-art.md",
+      "order": 1,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Memory Architecture for a 9B Model under 6 GB RAM",
+      "collection": "cpu-llm-inference",
+      "slug": "memory-architecture",
+      "sourcePath": "Knowledge base/Research on CPU LLM Inference/02-memory-architecture.md",
+      "outputPath": "app/compendium/content/cpu-llm-inference/memory-architecture.md",
+      "order": 2,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Quantization - Formats, Algorithms, and Quality Tradeoffs",
+      "collection": "cpu-llm-inference",
+      "slug": "quantization-pipeline",
+      "sourcePath": "Knowledge base/Research on CPU LLM Inference/03-quantization-pipeline.md",
+      "outputPath": "app/compendium/content/cpu-llm-inference/quantization-pipeline.md",
+      "order": 3,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "CPU Compute Kernels - SIMD, Threading, and Throughput",
+      "collection": "cpu-llm-inference",
+      "slug": "compute-kernels",
+      "sourcePath": "Knowledge base/Research on CPU LLM Inference/04-compute-kernels.md",
+      "outputPath": "app/compendium/content/cpu-llm-inference/compute-kernels.md",
+      "order": 4,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Runtime Architecture - Scheduling, Batching, and Request Handling",
+      "collection": "cpu-llm-inference",
+      "slug": "inference-engine-architecture",
+      "sourcePath": "Knowledge base/Research on CPU LLM Inference/05-inference-engine-architecture.md",
+      "outputPath": "app/compendium/content/cpu-llm-inference/inference-engine-architecture.md",
+      "order": 5,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Target Model Architectures - 9B Class Models in Detail",
+      "collection": "cpu-llm-inference",
+      "slug": "model-architecture-compatibility",
+      "sourcePath": "Knowledge base/Research on CPU LLM Inference/06-model-architecture-compatibility.md",
+      "outputPath": "app/compendium/content/cpu-llm-inference/model-architecture-compatibility.md",
+      "order": 6,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Benchmarking Landscape and Realistic Performance Targets",
+      "collection": "cpu-llm-inference",
+      "slug": "benchmarks-and-baselines",
+      "sourcePath": "Knowledge base/Research on CPU LLM Inference/07-benchmarks-and-baselines.md",
+      "outputPath": "app/compendium/content/cpu-llm-inference/benchmarks-and-baselines.md",
+      "order": 7,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Implementation Roadmap and Open Problems",
+      "collection": "cpu-llm-inference",
+      "slug": "implementation-roadmap",
+      "sourcePath": "Knowledge base/Research on CPU LLM Inference/08-implementation-roadmap.md",
+      "outputPath": "app/compendium/content/cpu-llm-inference/implementation-roadmap.md",
+      "order": 8,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Rust for LLM Inference - Ecosystem Readiness, Crate Landscape, and Gap Analysis",
+      "collection": "cpu-llm-inference",
+      "slug": "rust-ecosystem",
+      "sourcePath": "Knowledge base/Research on CPU LLM Inference/09-rust-ecosystem.md",
+      "outputPath": "app/compendium/content/cpu-llm-inference/rust-ecosystem.md",
+      "order": 9,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Theoretical Frontiers - Novel Methods and Unprecedented Approaches for CPU LLM Inference",
+      "collection": "cpu-llm-inference",
+      "slug": "theoretical-frontiers",
+      "sourcePath": "Knowledge base/Research on CPU LLM Inference/10-theoretical-frontiers.md",
+      "outputPath": "app/compendium/content/cpu-llm-inference/theoretical-frontiers.md",
+      "order": 10,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Testing Model Registry - From Tiny to Maximum",
+      "collection": "cpu-llm-inference",
+      "slug": "testing-model-registry",
+      "sourcePath": "Knowledge base/Research on CPU LLM Inference/11-testing-model-registry.md",
+      "outputPath": "app/compendium/content/cpu-llm-inference/testing-model-registry.md",
+      "order": 11,
+      "mermaidBlocks": 0
     }
   ],
   "convertedLinks": [

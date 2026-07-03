@@ -48,6 +48,19 @@ const collections = [
       "nodejs-v8-runtime-engineering"
     ),
   },
+  {
+    id: "cpu-llm-inference",
+    title: "CPU LLM Inference Research",
+    sourceDir: path.join(
+      vaultRoot,
+      "Knowledge base",
+      "Research on CPU LLM Inference"
+    ),
+    titleFromFirstHeading: true,
+    slugFromFilename: true,
+    stripTitlePrefix: /^Document\s+\d+:\s*/i,
+    stripTrailingWhitespace: true,
+  },
 ];
 
 function slugify(value) {
@@ -136,12 +149,60 @@ function readMarkdownFiles(dir) {
 }
 
 function stripNumericPrefix(value) {
-  return value.replace(/^\d+\s+/, "").trim();
+  return value.replace(/^\d+[\s._-]+/, "").trim();
 }
 
-function noteTitleFromFile(filePath) {
+function stripTitlePrefix(value, collection) {
+  const stripped = collection.stripTitlePrefix
+    ? value.replace(collection.stripTitlePrefix, "")
+    : value;
+
+  return replaceEmDash(stripped).replace(/\s+-\s+/g, " - ").trim();
+}
+
+function firstMarkdownHeading(content) {
+  let inCodeFence = false;
+  let fenceMarker = "";
+
+  for (const line of content.split(/\r?\n/)) {
+    const fenceMatch = line.match(/^(\s*)(`{3,}|~{3,})/);
+    if (fenceMatch) {
+      const marker = fenceMatch[2][0];
+      if (!inCodeFence) {
+        inCodeFence = true;
+        fenceMarker = marker;
+      } else if (marker === fenceMarker) {
+        inCodeFence = false;
+        fenceMarker = "";
+      }
+      continue;
+    }
+
+    if (inCodeFence) continue;
+
+    const match = /^#\s+(.+)$/.exec(line);
+    if (match) return stripHeadingMarkdown(match[1]);
+  }
+
+  return "";
+}
+
+function noteTitleFromFile(filePath, collection) {
+  if (collection.titleFromFirstHeading) {
+    const heading = firstMarkdownHeading(fs.readFileSync(filePath, "utf8"));
+    if (heading) return stripTitlePrefix(heading, collection);
+  }
+
   const basename = path.basename(filePath, ".md");
-  return stripNumericPrefix(basename);
+  return stripTitlePrefix(stripNumericPrefix(basename), collection);
+}
+
+function noteSlugFromFile(filePath, title, collection) {
+  if (collection.slugFromFilename) {
+    return slugify(stripNumericPrefix(path.basename(filePath, ".md")));
+  }
+
+  return slugify(title);
 }
 
 function noteOrderFromFile(filePath, fallback) {
@@ -207,8 +268,8 @@ function buildImportedNoteIndex() {
   for (const collection of collections) {
     readMarkdownFiles(collection.sourceDir).forEach((filePath, index) => {
       const sourcePath = publicSourcePath(filePath);
-      const title = noteTitleFromFile(filePath);
-      const slug = slugify(title);
+      const title = noteTitleFromFile(filePath, collection);
+      const slug = noteSlugFromFile(filePath, title, collection);
       const note = {
         title,
         slug,
@@ -467,8 +528,62 @@ function escapeMdxComparisons(segment) {
     );
 }
 
+function escapeCurrencyDollars(segment) {
+  return segment.replace(/\$(?=\d)/g, "&#36;");
+}
+
 function replaceEmDash(content) {
   return content.replace(/\u2014/g, " - ");
+}
+
+function normalizeTrailingNewlines(content) {
+  return content.replace(/\s+$/, "\n");
+}
+
+function stripTrailingWhitespace(content) {
+  return content
+    .split(/\r?\n/)
+    .map((line) => line.replace(/[ \t]+$/, ""))
+    .join("\n");
+}
+
+function normalizeFirstHeading(content, collection) {
+  if (!collection.stripTitlePrefix) return content;
+
+  let replaced = false;
+  let inCodeFence = false;
+  let fenceMarker = "";
+
+  return content
+    .split(/(\r?\n)/)
+    .map((segment) => {
+      if (segment === "\n" || segment === "\r\n") return segment;
+
+      const fenceMatch = segment.match(/^(\s*)(`{3,}|~{3,})/);
+      if (fenceMatch) {
+        const marker = fenceMatch[2][0];
+        if (!inCodeFence) {
+          inCodeFence = true;
+          fenceMarker = marker;
+        } else if (marker === fenceMarker) {
+          inCodeFence = false;
+          fenceMarker = "";
+        }
+        return segment;
+      }
+
+      if (replaced || inCodeFence) return segment;
+
+      const headingMatch = /^(#\s+)(.+)$/.exec(segment);
+      if (!headingMatch) return segment;
+
+      replaced = true;
+      return `${headingMatch[1]}${stripTitlePrefix(
+        headingMatch[2],
+        collection
+      )}`;
+    })
+    .join("");
 }
 
 function countMatches(content, pattern) {
@@ -509,7 +624,20 @@ function importCompendium() {
         rewriteWikilinks(segment, note, index, report)
       );
       const escaped = transformOutsideFences(linked, escapeMdxComparisons);
-      const body = replaceEmDash(escaped);
+      const escapedCurrency = transformOutsideFences(
+        escaped,
+        escapeCurrencyDollars
+      );
+      const normalizedHeadings = normalizeFirstHeading(
+        escapedCurrency,
+        collection
+      );
+      const withoutEmDashes = replaceEmDash(normalizedHeadings);
+      const body = normalizeTrailingNewlines(
+        collection.stripTrailingWhitespace
+          ? stripTrailingWhitespace(withoutEmDashes)
+          : withoutEmDashes
+      );
       const remainingWikilinks = findRemainingWikilinksOutsideFences(body);
       if (remainingWikilinks.length > 0) {
         remainingWikilinks.forEach((target) => {

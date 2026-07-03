@@ -363,4 +363,3 @@ Learning goals:
 - Can describe when to use CRDs, operators, and platform APIs.
 - Can connect costs to requests, storage, load balancers, and labels.
 - Can design a minimal production service manifest set.
-

@@ -17,7 +17,7 @@ order: 11
 * **Integration:** The event log can serve as a source of truth to publish events to other systems or services (since events are stored, other subscribers can consume them to keep their own data in sync).
 * Pairs naturally with CQRS: The write model is just storing events, and the read model builds projections from those events.
 
-**Example:** Imagine a bank account in an event-sourced system. Instead of storing a balance that gets updated, you store events like “Deposited \$100”, “Withdrew \$30”, “Deposited \$50”. The current balance isn’t stored directly – you calculate it by summing those transactions. If needed, you might store a snapshot like “Balance was \$120 at time T” to avoid replaying years of events every time (then apply recent events after T).
+**Example:** Imagine a bank account in an event-sourced system. Instead of storing a balance that gets updated, you store events like “Deposited \&#36;100”, “Withdrew \&#36;30”, “Deposited \&#36;50”. The current balance isn’t stored directly – you calculate it by summing those transactions. If needed, you might store a snapshot like “Balance was \&#36;120 at time T” to avoid replaying years of events every time (then apply recent events after T).
 
 In code pseudo-form:
 

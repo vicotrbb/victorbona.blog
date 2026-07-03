@@ -4,7 +4,8 @@ export type CompendiumCollectionId =
   | "design-patterns"
   | "kubernetes"
   | "linux-systems-engineering"
-  | "nodejs-v8-runtime-engineering";
+  | "nodejs-v8-runtime-engineering"
+  | "cpu-llm-inference";
 
 export type CompendiumFrontmatter = {
   title: string;

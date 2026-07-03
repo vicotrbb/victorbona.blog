@@ -306,4 +306,3 @@ kubectl describe node worker-3
 - GitOps or release pipeline is the production write path.
 - Observability covers metrics, logs, traces, events, and alerts.
 - Runbooks explain rollback, drain behavior, dependency failure, and scaling.
-

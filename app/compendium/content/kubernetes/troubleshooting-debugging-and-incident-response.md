@@ -532,4 +532,3 @@ Avoid printing full environment variables in shared incident channels because th
 - [ ] Admission denials and RBAC failures are observable.
 - [ ] Node maintenance uses cordon, drain, and PDB review.
 - [ ] Incident response includes evidence capture before destructive actions.
-

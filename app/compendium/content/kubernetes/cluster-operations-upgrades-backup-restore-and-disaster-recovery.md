@@ -371,4 +371,3 @@ Useful evidence:
 - CNI, CSI, ingress, and policy engines have compatibility reviews.
 - Node lifecycle is automated or scripted.
 - Restore drills produce measured RPO and RTO evidence.
-

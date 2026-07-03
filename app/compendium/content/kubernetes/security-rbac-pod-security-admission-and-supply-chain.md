@@ -580,4 +580,3 @@ Pod security denied:
 - [ ] Image signature, SBOM, and vulnerability scan evidence exist.
 - [ ] Secrets are not present in labels, annotations, command args, or logs.
 - [ ] Admission policy failures are monitored and routed to owning teams.
-

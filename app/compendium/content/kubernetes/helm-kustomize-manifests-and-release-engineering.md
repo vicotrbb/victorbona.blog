@@ -431,4 +431,3 @@ Debug questions:
 ## Production Guidance
 
 Prefer a small number of supported release paths. A mature platform usually offers a golden path such as Helm chart plus GitOps, or Kustomize overlays plus GitOps, with exceptions reviewed by platform owners. The key is not which tool wins. The key is that every production change is reproducible, reviewed, diffed, validated, observable, and reversible at the right layer.
-

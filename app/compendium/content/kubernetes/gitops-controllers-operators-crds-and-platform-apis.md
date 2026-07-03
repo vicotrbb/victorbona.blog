@@ -420,4 +420,3 @@ Questions:
 - Progressive delivery uses real health metrics, not only pod readiness.
 - Platform APIs define ownership, support, status, and escape hatches.
 - Portals link to source truth and operational evidence.
-

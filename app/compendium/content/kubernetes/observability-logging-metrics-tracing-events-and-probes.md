@@ -446,4 +446,3 @@ kubectl logs deploy/payments-api -n payments --since=10m --tail=500
 - [ ] Audit logs capture RBAC, Secret, exec, and workload change activity.
 - [ ] Alerts page on user impact or imminent impact, not normal churn.
 - [ ] Every page has a concrete runbook.
-

@@ -220,4 +220,3 @@ Consumers must be idempotent - but the event is never lost.
 The **Outbox Pattern** provides a dependable way to synchronize local state changes and event publication without relying on fragile distributed transactions. By turning event recording into part of a single local transaction, services avoid the dual-write problem and gain robust, replayable, crash-resistant messaging semantics. Whether implemented through polling, CDC, or triggers, the pattern stands as one of the backbone strategies for resilient microservice communication and distributed consistency.
 
 It enables systems to evolve gracefully, integrate cleanly, and recover from failure modes that are otherwise inevitable in distributed architectures.
-

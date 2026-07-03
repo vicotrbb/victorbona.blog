@@ -43,6 +43,13 @@ export const compendiumCollections: CompendiumCollection[] = [
       "Node.js and V8 runtime notes on the event loop, JavaScript execution, V8 internals, memory, modules, packages, streams, networking, diagnostics, performance, security, and production operations.",
     route: "/compendium/nodejs-v8-runtime-engineering",
   },
+  {
+    id: "cpu-llm-inference",
+    title: "CPU LLM Inference Research",
+    description:
+      "Research notes on CPU-native LLM inference, memory budgets, quantization, SIMD kernels, runtime architecture, model compatibility, benchmarks, Rust implementation strategy, and testing ladders.",
+    route: "/compendium/cpu-llm-inference",
+  },
 ];
 
 export function isCompendiumCollectionId(
