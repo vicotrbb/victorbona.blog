@@ -3,7 +3,8 @@ export type CompendiumCollectionId =
   | "data-structures"
   | "design-patterns"
   | "kubernetes"
-  | "linux-systems-engineering";
+  | "linux-systems-engineering"
+  | "nodejs-v8-runtime-engineering";
 
 export type CompendiumFrontmatter = {
   title: string;

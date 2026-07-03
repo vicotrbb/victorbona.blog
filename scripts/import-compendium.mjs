@@ -39,6 +39,15 @@ const collections = [
       "linux-systems-engineering"
     ),
   },
+  {
+    id: "nodejs-v8-runtime-engineering",
+    title: "Node.js V8 Runtime Engineering",
+    sourceDir: path.join(
+      vaultRoot,
+      "Knowledge base",
+      "nodejs-v8-runtime-engineering"
+    ),
+  },
 ];
 
 function slugify(value) {

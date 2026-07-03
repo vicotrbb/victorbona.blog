@@ -26,6 +26,11 @@
       "id": "linux-systems-engineering",
       "title": "Linux Systems Engineering",
       "noteCount": 20
+    },
+    {
+      "id": "nodejs-v8-runtime-engineering",
+      "title": "Node.js V8 Runtime Engineering",
+      "noteCount": 20
     }
   ],
   "copiedNotes": [
@@ -935,6 +940,186 @@
       "slug": "linux-systems-engineering",
       "sourcePath": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
       "outputPath": "app/compendium/content/linux-systems-engineering/linux-systems-engineering.md",
+      "order": 20,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Node.js Runtime Mastery Roadmap",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "node-js-runtime-mastery-roadmap",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/node-js-runtime-mastery-roadmap.md",
+      "order": 0,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Node.js Mental Model JavaScript Runtime V8 libuv and OS",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "node-js-mental-model-javascript-runtime-v8-libuv-and-os",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/node-js-mental-model-javascript-runtime-v8-libuv-and-os.md",
+      "order": 1,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "javascript-execution-model-call-stack-jobs-microtasks-and-event-loop",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/javascript-execution-model-call-stack-jobs-microtasks-and-event-loop.md",
+      "order": 2,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "v8-engine-internals-parsing-ignition-turbofan-jit-and-deoptimization",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/v8-engine-internals-parsing-ignition-turbofan-jit-and-deoptimization.md",
+      "order": 3,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "V8 Memory Heap Garbage Collection Shapes and Performance",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "v8-memory-heap-garbage-collection-shapes-and-performance",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/v8-memory-heap-garbage-collection-shapes-and-performance.md",
+      "order": 4,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Node.js Core Architecture Bootstrapping Bindings and Native Boundaries",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "node-js-core-architecture-bootstrapping-bindings-and-native-boundaries",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/node-js-core-architecture-bootstrapping-bindings-and-native-boundaries.md",
+      "order": 5,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Modules CommonJS ESM Resolution Package Exports and TypeScript Interop",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "modules-commonjs-esm-resolution-package-exports-and-typescript-interop",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/modules-commonjs-esm-resolution-package-exports-and-typescript-interop.md",
+      "order": 6,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "npm-pnpm-yarn-packages-lockfiles-supply-chain-and-monorepos",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/npm-pnpm-yarn-packages-lockfiles-supply-chain-and-monorepos.md",
+      "order": 7,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Async Programming Promises Async Await Timers and Cancellation",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "async-programming-promises-async-await-timers-and-cancellation",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/async-programming-promises-async-await-timers-and-cancellation.md",
+      "order": 8,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Streams Buffers Backpressure and Binary Data",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "streams-buffers-backpressure-and-binary-data",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/streams-buffers-backpressure-and-binary-data.md",
+      "order": 9,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Filesystem Processes Signals Workers Cluster and Child Processes",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "filesystem-processes-signals-workers-cluster-and-child-processes",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/filesystem-processes-signals-workers-cluster-and-child-processes.md",
+      "order": 10,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Networking HTTP TLS DNS Sockets Undici and Fetch",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "networking-http-tls-dns-sockets-undici-and-fetch",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch.md",
+      "order": 11,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "web-platform-apis-in-node-js-url-blob-web-streams-abortcontroller-and-test-runner",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/web-platform-apis-in-node-js-url-blob-web-streams-abortcontroller-and-test-runner.md",
+      "order": 12,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Native Addons N-API WASM FFI and Embedding",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "native-addons-n-api-wasm-ffi-and-embedding",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/native-addons-n-api-wasm-ffi-and-embedding.md",
+      "order": 13,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Observability Diagnostics Inspector Tracing Profiling and Core Dumps",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "observability-diagnostics-inspector-tracing-profiling-and-core-dumps",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/observability-diagnostics-inspector-tracing-profiling-and-core-dumps.md",
+      "order": 14,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "performance-engineering-benchmarking-flamegraphs-gc-and-event-loop-latency",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/performance-engineering-benchmarking-flamegraphs-gc-and-event-loop-latency.md",
+      "order": 15,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Security Permissions Crypto Secrets Sandboxing and Dependency Risk",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk.md",
+      "order": 16,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Production Operations Deployment Containers Scaling and Runbooks",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "production-operations-deployment-containers-scaling-and-runbooks",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/production-operations-deployment-containers-scaling-and-runbooks.md",
+      "order": 17,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Node.js Ecosystem Frameworks Tooling and Learning Projects",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "node-js-ecosystem-frameworks-tooling-and-learning-projects",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/node-js-ecosystem-frameworks-tooling-and-learning-projects.md",
+      "order": 18,
+      "mermaidBlocks": 0
+    },
+    {
+      "title": "Node.js V8 Runtime Engineering",
+      "collection": "nodejs-v8-runtime-engineering",
+      "slug": "node-js-v8-runtime-engineering",
+      "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering.md",
       "order": 20,
       "mermaidBlocks": 1
     }
@@ -6375,6 +6560,1206 @@
       "to": "Knowledge base/linux-systems-engineering/18 Linux Ecosystem Tools and Learning Projects.md",
       "href": "/compendium/linux-systems-engineering/linux-ecosystem-tools-and-learning-projects",
       "label": "18 Linux Ecosystem Tools and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-mental-model-javascript-runtime-v8-libuv-and-os",
+      "label": "01 Node.js Mental Model JavaScript Runtime V8 libuv and OS"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/javascript-execution-model-call-stack-jobs-microtasks-and-event-loop",
+      "label": "02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-core-architecture-bootstrapping-bindings-and-native-boundaries",
+      "label": "05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-engine-internals-parsing-ignition-turbofan-jit-and-deoptimization",
+      "label": "03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-memory-heap-garbage-collection-shapes-and-performance",
+      "label": "04 V8 Memory Heap Garbage Collection Shapes and Performance"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/async-programming-promises-async-await-timers-and-cancellation",
+      "label": "08 Async Programming Promises Async Await Timers and Cancellation"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/modules-commonjs-esm-resolution-package-exports-and-typescript-interop",
+      "label": "06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/npm-pnpm-yarn-packages-lockfiles-supply-chain-and-monorepos",
+      "label": "07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-ecosystem-frameworks-tooling-and-learning-projects",
+      "label": "18 Node.js Ecosystem Frameworks Tooling and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/streams-buffers-backpressure-and-binary-data",
+      "label": "09 Streams Buffers Backpressure and Binary Data"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/filesystem-processes-signals-workers-cluster-and-child-processes",
+      "label": "10 Filesystem Processes Signals Workers Cluster and Child Processes"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch",
+      "label": "11 Networking HTTP TLS DNS Sockets Undici and Fetch"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/web-platform-apis-in-node-js-url-blob-web-streams-abortcontroller-and-test-runner",
+      "label": "12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/native-addons-n-api-wasm-ffi-and-embedding",
+      "label": "13 Native Addons N-API WASM FFI and Embedding"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "label": "16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/observability-diagnostics-inspector-tracing-profiling-and-core-dumps",
+      "label": "14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/performance-engineering-benchmarking-flamegraphs-gc-and-event-loop-latency",
+      "label": "15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "label": "16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/production-operations-deployment-containers-scaling-and-runbooks",
+      "label": "17 Production Operations Deployment Containers Scaling and Runbooks"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/streams-buffers-backpressure-and-binary-data",
+      "label": "09 Streams Buffers Backpressure and Binary Data"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch",
+      "label": "11 Networking HTTP TLS DNS Sockets Undici and Fetch"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-memory-heap-garbage-collection-shapes-and-performance",
+      "label": "04 V8 Memory Heap Garbage Collection Shapes and Performance"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/observability-diagnostics-inspector-tracing-profiling-and-core-dumps",
+      "label": "14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/native-addons-n-api-wasm-ffi-and-embedding",
+      "label": "13 Native Addons N-API WASM FFI and Embedding"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "label": "16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/production-operations-deployment-containers-scaling-and-runbooks",
+      "label": "17 Production Operations Deployment Containers Scaling and Runbooks"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-ecosystem-frameworks-tooling-and-learning-projects",
+      "label": "18 Node.js Ecosystem Frameworks Tooling and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/modules-commonjs-esm-resolution-package-exports-and-typescript-interop",
+      "label": "06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/npm-pnpm-yarn-packages-lockfiles-supply-chain-and-monorepos",
+      "label": "07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/performance-engineering-benchmarking-flamegraphs-gc-and-event-loop-latency",
+      "label": "15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/production-operations-deployment-containers-scaling-and-runbooks",
+      "label": "17 Production Operations Deployment Containers Scaling and Runbooks"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/javascript-execution-model-call-stack-jobs-microtasks-and-event-loop",
+      "label": "02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-engine-internals-parsing-ignition-turbofan-jit-and-deoptimization",
+      "label": "03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-memory-heap-garbage-collection-shapes-and-performance",
+      "label": "04 V8 Memory Heap Garbage Collection Shapes and Performance"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/javascript-execution-model-call-stack-jobs-microtasks-and-event-loop",
+      "label": "02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-engine-internals-parsing-ignition-turbofan-jit-and-deoptimization",
+      "label": "03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-memory-heap-garbage-collection-shapes-and-performance",
+      "label": "04 V8 Memory Heap Garbage Collection Shapes and Performance"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-mental-model-javascript-runtime-v8-libuv-and-os",
+      "label": "01 Node.js Mental Model JavaScript Runtime V8 libuv and OS"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-engine-internals-parsing-ignition-turbofan-jit-and-deoptimization",
+      "label": "03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-memory-heap-garbage-collection-shapes-and-performance",
+      "label": "04 V8 Memory Heap Garbage Collection Shapes and Performance"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-mental-model-javascript-runtime-v8-libuv-and-os",
+      "label": "01 Node.js Mental Model JavaScript Runtime V8 libuv and OS"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/javascript-execution-model-call-stack-jobs-microtasks-and-event-loop",
+      "label": "02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-memory-heap-garbage-collection-shapes-and-performance",
+      "label": "04 V8 Memory Heap Garbage Collection Shapes and Performance"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-memory-heap-garbage-collection-shapes-and-performance",
+      "label": "04 V8 Memory Heap Garbage Collection Shapes and Performance"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-mental-model-javascript-runtime-v8-libuv-and-os",
+      "label": "01 Node.js Mental Model JavaScript Runtime V8 libuv and OS"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/javascript-execution-model-call-stack-jobs-microtasks-and-event-loop",
+      "label": "02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-engine-internals-parsing-ignition-turbofan-jit-and-deoptimization",
+      "label": "03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-engine-internals-parsing-ignition-turbofan-jit-and-deoptimization",
+      "label": "03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/modules-commonjs-esm-resolution-package-exports-and-typescript-interop",
+      "label": "06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/npm-pnpm-yarn-packages-lockfiles-supply-chain-and-monorepos",
+      "label": "07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-core-architecture-bootstrapping-bindings-and-native-boundaries",
+      "label": "05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/npm-pnpm-yarn-packages-lockfiles-supply-chain-and-monorepos",
+      "label": "07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-core-architecture-bootstrapping-bindings-and-native-boundaries",
+      "label": "05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/modules-commonjs-esm-resolution-package-exports-and-typescript-interop",
+      "label": "06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/streams-buffers-backpressure-and-binary-data",
+      "label": "09 Streams Buffers Backpressure and Binary Data"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/filesystem-processes-signals-workers-cluster-and-child-processes",
+      "label": "10 Filesystem Processes Signals Workers Cluster and Child Processes"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/filesystem-processes-signals-workers-cluster-and-child-processes",
+      "label": "10 Filesystem Processes Signals Workers Cluster and Child Processes"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/streams-buffers-backpressure-and-binary-data",
+      "label": "09 Streams Buffers Backpressure and Binary Data"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/filesystem-processes-signals-workers-cluster-and-child-processes",
+      "label": "10 Filesystem Processes Signals Workers Cluster and Child Processes"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/filesystem-processes-signals-workers-cluster-and-child-processes",
+      "label": "10 Filesystem Processes Signals Workers Cluster and Child Processes"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/async-programming-promises-async-await-timers-and-cancellation",
+      "label": "08 Async Programming Promises Async Await Timers and Cancellation"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/filesystem-processes-signals-workers-cluster-and-child-processes",
+      "label": "10 Filesystem Processes Signals Workers Cluster and Child Processes"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/async-programming-promises-async-await-timers-and-cancellation",
+      "label": "08 Async Programming Promises Async Await Timers and Cancellation"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/filesystem-processes-signals-workers-cluster-and-child-processes",
+      "label": "10 Filesystem Processes Signals Workers Cluster and Child Processes"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/async-programming-promises-async-await-timers-and-cancellation",
+      "label": "08 Async Programming Promises Async Await Timers and Cancellation"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/streams-buffers-backpressure-and-binary-data",
+      "label": "09 Streams Buffers Backpressure and Binary Data"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/streams-buffers-backpressure-and-binary-data",
+      "label": "09 Streams Buffers Backpressure and Binary Data"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/async-programming-promises-async-await-timers-and-cancellation",
+      "label": "08 Async Programming Promises Async Await Timers and Cancellation"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/streams-buffers-backpressure-and-binary-data",
+      "label": "09 Streams Buffers Backpressure and Binary Data"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/web-platform-apis-in-node-js-url-blob-web-streams-abortcontroller-and-test-runner",
+      "label": "12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/native-addons-n-api-wasm-ffi-and-embedding",
+      "label": "13 Native Addons N-API WASM FFI and Embedding"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/web-platform-apis-in-node-js-url-blob-web-streams-abortcontroller-and-test-runner",
+      "label": "12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/native-addons-n-api-wasm-ffi-and-embedding",
+      "label": "13 Native Addons N-API WASM FFI and Embedding"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "Software Engineering/05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "Software Engineering/08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
+      "label": "Software Engineering/09 Security and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch",
+      "label": "11 Networking HTTP TLS DNS Sockets Undici and Fetch"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/native-addons-n-api-wasm-ffi-and-embedding",
+      "label": "13 Native Addons N-API WASM FFI and Embedding"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch",
+      "label": "11 Networking HTTP TLS DNS Sockets Undici and Fetch"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch",
+      "label": "11 Networking HTTP TLS DNS Sockets Undici and Fetch"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/native-addons-n-api-wasm-ffi-and-embedding",
+      "label": "13 Native Addons N-API WASM FFI and Embedding"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "Software Engineering/10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
+      "label": "Software Engineering/09 Security and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch",
+      "label": "11 Networking HTTP TLS DNS Sockets Undici and Fetch"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/web-platform-apis-in-node-js-url-blob-web-streams-abortcontroller-and-test-runner",
+      "label": "12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch",
+      "label": "11 Networking HTTP TLS DNS Sockets Undici and Fetch"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/web-platform-apis-in-node-js-url-blob-web-streams-abortcontroller-and-test-runner",
+      "label": "12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
+      "label": "Software Engineering/09 Security and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/performance-engineering-benchmarking-flamegraphs-gc-and-event-loop-latency",
+      "label": "15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/performance-engineering-benchmarking-flamegraphs-gc-and-event-loop-latency",
+      "label": "15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/performance-engineering-benchmarking-flamegraphs-gc-and-event-loop-latency",
+      "label": "15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/observability-diagnostics-inspector-tracing-profiling-and-core-dumps",
+      "label": "14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/observability-diagnostics-inspector-tracing-profiling-and-core-dumps",
+      "label": "14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/observability-diagnostics-inspector-tracing-profiling-and-core-dumps",
+      "label": "14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "label": "16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/production-operations-deployment-containers-scaling-and-runbooks",
+      "label": "17 Production Operations Deployment Containers Scaling and Runbooks"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-ecosystem-frameworks-tooling-and-learning-projects",
+      "label": "18 Node.js Ecosystem Frameworks Tooling and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/npm-pnpm-yarn-packages-lockfiles-supply-chain-and-monorepos",
+      "label": "07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/filesystem-processes-signals-workers-cluster-and-child-processes",
+      "label": "10 Filesystem Processes Signals Workers Cluster and Child Processes"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch",
+      "label": "11 Networking HTTP TLS DNS Sockets Undici and Fetch"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/web-platform-apis-in-node-js-url-blob-web-streams-abortcontroller-and-test-runner",
+      "label": "12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "label": "16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-ecosystem-frameworks-tooling-and-learning-projects",
+      "label": "18 Node.js Ecosystem Frameworks Tooling and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "label": "16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/production-operations-deployment-containers-scaling-and-runbooks",
+      "label": "17 Production Operations Deployment Containers Scaling and Runbooks"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-ecosystem-frameworks-tooling-and-learning-projects",
+      "label": "18 Node.js Ecosystem Frameworks Tooling and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/filesystem-processes-signals-workers-cluster-and-child-processes",
+      "label": "10 Filesystem Processes Signals Workers Cluster and Child Processes"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch",
+      "label": "11 Networking HTTP TLS DNS Sockets Undici and Fetch"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/observability-diagnostics-inspector-tracing-profiling-and-core-dumps",
+      "label": "14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/performance-engineering-benchmarking-flamegraphs-gc-and-event-loop-latency",
+      "label": "15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "label": "16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/production-operations-deployment-containers-scaling-and-runbooks",
+      "label": "17 Production Operations Deployment Containers Scaling and Runbooks"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering",
+      "label": "Node.js V8 Runtime Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "label": "16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/production-operations-deployment-containers-scaling-and-runbooks",
+      "label": "17 Production Operations Deployment Containers Scaling and Runbooks"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-ecosystem-frameworks-tooling-and-learning-projects",
+      "label": "18 Node.js Ecosystem Frameworks Tooling and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/modules-commonjs-esm-resolution-package-exports-and-typescript-interop",
+      "label": "06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/npm-pnpm-yarn-packages-lockfiles-supply-chain-and-monorepos",
+      "label": "07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/web-platform-apis-in-node-js-url-blob-web-streams-abortcontroller-and-test-runner",
+      "label": "12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/observability-diagnostics-inspector-tracing-profiling-and-core-dumps",
+      "label": "14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch",
+      "label": "11 Networking HTTP TLS DNS Sockets Undici and Fetch"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/production-operations-deployment-containers-scaling-and-runbooks",
+      "label": "17 Production Operations Deployment Containers Scaling and Runbooks"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "label": "16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/web-platform-apis-in-node-js-url-blob-web-streams-abortcontroller-and-test-runner",
+      "label": "12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/npm-pnpm-yarn-packages-lockfiles-supply-chain-and-monorepos",
+      "label": "07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "label": "16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/performance-engineering-benchmarking-flamegraphs-gc-and-event-loop-latency",
+      "label": "15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/production-operations-deployment-containers-scaling-and-runbooks",
+      "label": "17 Production Operations Deployment Containers Scaling and Runbooks"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/async-programming-promises-async-await-timers-and-cancellation",
+      "label": "08 Async Programming Promises Async Await Timers and Cancellation"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/production-operations-deployment-containers-scaling-and-runbooks",
+      "label": "17 Production Operations Deployment Containers Scaling and Runbooks"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "label": "16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/filesystem-processes-signals-workers-cluster-and-child-processes",
+      "label": "10 Filesystem Processes Signals Workers Cluster and Child Processes"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-mental-model-javascript-runtime-v8-libuv-and-os",
+      "label": "01 Node.js Mental Model JavaScript Runtime V8 libuv and OS"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-memory-heap-garbage-collection-shapes-and-performance",
+      "label": "04 V8 Memory Heap Garbage Collection Shapes and Performance"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/modules-commonjs-esm-resolution-package-exports-and-typescript-interop",
+      "label": "06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/npm-pnpm-yarn-packages-lockfiles-supply-chain-and-monorepos",
+      "label": "07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/00 Node.js Runtime Mastery Roadmap.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-runtime-mastery-roadmap",
+      "label": "00 Node.js Runtime Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-mental-model-javascript-runtime-v8-libuv-and-os",
+      "label": "01 Node.js Mental Model JavaScript Runtime V8 libuv and OS"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/javascript-execution-model-call-stack-jobs-microtasks-and-event-loop",
+      "label": "02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-engine-internals-parsing-ignition-turbofan-jit-and-deoptimization",
+      "label": "03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-memory-heap-garbage-collection-shapes-and-performance",
+      "label": "04 V8 Memory Heap Garbage Collection Shapes and Performance"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-core-architecture-bootstrapping-bindings-and-native-boundaries",
+      "label": "05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/modules-commonjs-esm-resolution-package-exports-and-typescript-interop",
+      "label": "06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/npm-pnpm-yarn-packages-lockfiles-supply-chain-and-monorepos",
+      "label": "07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/08 Async Programming Promises Async Await Timers and Cancellation.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/async-programming-promises-async-await-timers-and-cancellation",
+      "label": "08 Async Programming Promises Async Await Timers and Cancellation"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/streams-buffers-backpressure-and-binary-data",
+      "label": "09 Streams Buffers Backpressure and Binary Data"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/10 Filesystem Processes Signals Workers Cluster and Child Processes.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/filesystem-processes-signals-workers-cluster-and-child-processes",
+      "label": "10 Filesystem Processes Signals Workers Cluster and Child Processes"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch",
+      "label": "11 Networking HTTP TLS DNS Sockets Undici and Fetch"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/web-platform-apis-in-node-js-url-blob-web-streams-abortcontroller-and-test-runner",
+      "label": "12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/native-addons-n-api-wasm-ffi-and-embedding",
+      "label": "13 Native Addons N-API WASM FFI and Embedding"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/observability-diagnostics-inspector-tracing-profiling-and-core-dumps",
+      "label": "14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/performance-engineering-benchmarking-flamegraphs-gc-and-event-loop-latency",
+      "label": "15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "label": "16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/production-operations-deployment-containers-scaling-and-runbooks",
+      "label": "17 Production Operations Deployment Containers Scaling and Runbooks"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/18 Node.js Ecosystem Frameworks Tooling and Learning Projects.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-ecosystem-frameworks-tooling-and-learning-projects",
+      "label": "18 Node.js Ecosystem Frameworks Tooling and Learning Projects"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-engine-internals-parsing-ignition-turbofan-jit-and-deoptimization",
+      "label": "03 V8 Engine Internals Parsing Ignition TurboFan JIT and Deoptimization"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/performance-engineering-benchmarking-flamegraphs-gc-and-event-loop-latency",
+      "label": "15 Performance Engineering Benchmarking Flamegraphs GC and Event Loop Latency"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/04 V8 Memory Heap Garbage Collection Shapes and Performance.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/v8-memory-heap-garbage-collection-shapes-and-performance",
+      "label": "04 V8 Memory Heap Garbage Collection Shapes and Performance"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/09 Streams Buffers Backpressure and Binary Data.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/streams-buffers-backpressure-and-binary-data",
+      "label": "09 Streams Buffers Backpressure and Binary Data"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/javascript-execution-model-call-stack-jobs-microtasks-and-event-loop",
+      "label": "02 JavaScript Execution Model Call Stack Jobs Microtasks and Event Loop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/11 Networking HTTP TLS DNS Sockets Undici and Fetch.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch",
+      "label": "11 Networking HTTP TLS DNS Sockets Undici and Fetch"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-core-architecture-bootstrapping-bindings-and-native-boundaries",
+      "label": "05 Node.js Core Architecture Bootstrapping Bindings and Native Boundaries"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/observability-diagnostics-inspector-tracing-profiling-and-core-dumps",
+      "label": "14 Observability Diagnostics Inspector Tracing Profiling and Core Dumps"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/modules-commonjs-esm-resolution-package-exports-and-typescript-interop",
+      "label": "06 Modules CommonJS ESM Resolution Package Exports and TypeScript Interop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/npm-pnpm-yarn-packages-lockfiles-supply-chain-and-monorepos",
+      "label": "07 npm pnpm yarn Packages Lockfiles Supply Chain and Monorepos"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/security-permissions-crypto-secrets-sandboxing-and-dependency-risk",
+      "label": "16 Security Permissions Crypto Secrets Sandboxing and Dependency Risk"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/17 Production Operations Deployment Containers Scaling and Runbooks.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/production-operations-deployment-containers-scaling-and-runbooks",
+      "label": "17 Production Operations Deployment Containers Scaling and Runbooks"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/Software Engineering/Software Engineering.md",
+      "href": "/compendium/software-engineering/software-engineering",
+      "label": "Software Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/linux-systems-engineering/Linux Systems Engineering.md",
+      "href": "/compendium/linux-systems-engineering/linux-systems-engineering",
+      "label": "Linux Systems Engineering"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "Kubernetes"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
+      "href": "/compendium/nodejs-v8-runtime-engineering/node-js-mental-model-javascript-runtime-v8-libuv-and-os",
+      "label": "01 Node.js Mental Model JavaScript Runtime V8 libuv and OS"
     }
   ],
   "externalReferences": [
@@ -6787,6 +8172,26 @@
       "from": "Knowledge base/kubernetes/16 Production Patterns Anti Patterns and Reference Architectures.md",
       "target": "Littles law and efficient queue strategy",
       "label": "Littles law and efficient queue strategy"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "target": "09 Unsafe Rust and the Rust Memory Model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "target": "14 FFI Embedded WebAssembly and Interop",
+      "label": "14 FFI Embedded WebAssembly and Interop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "target": "Rust",
+      "label": "Rust"
     }
   ],
   "unresolvedReferences": [],
@@ -7065,5 +8470,5 @@
       "fallbackHref": "/compendium/software-engineering/distributed-systems"
     }
   ],
-  "mermaidBlocks": 181
+  "mermaidBlocks": 183
 }

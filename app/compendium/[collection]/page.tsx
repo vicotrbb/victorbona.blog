@@ -43,6 +43,13 @@ function getStudyIndex(collectionId: string) {
     );
   }
 
+  if (collectionId === "nodejs-v8-runtime-engineering") {
+    return getCompendiumNote(
+      "nodejs-v8-runtime-engineering",
+      "node-js-v8-runtime-engineering"
+    );
+  }
+
   return undefined;
 }
 

@@ -49,15 +49,25 @@ assertIncludes(
   "scripts/import-compendium.mjs",
   'id: "linux-systems-engineering"'
 );
+assertIncludes(
+  "scripts/import-compendium.mjs",
+  'id: "nodejs-v8-runtime-engineering"'
+);
 assertIncludes("app/compendium/types.ts", '"kubernetes"');
 assertIncludes("app/compendium/types.ts", '"linux-systems-engineering"');
+assertIncludes("app/compendium/types.ts", '"nodejs-v8-runtime-engineering"');
 assertIncludes("app/compendium/collections.ts", 'id: "kubernetes"');
 assertIncludes(
   "app/compendium/collections.ts",
   'id: "linux-systems-engineering"'
 );
+assertIncludes(
+  "app/compendium/collections.ts",
+  'id: "nodejs-v8-runtime-engineering"'
+);
 assertIncludes("app/compendium/page.tsx", "Kubernetes");
 assertIncludes("app/compendium/page.tsx", "Linux systems engineering");
+assertIncludes("app/compendium/page.tsx", "Node.js V8 runtime");
 assertIncludes("app/global.css", "color-scheme: light;");
 assertIncludes("app/global.css", ".compendium-mermaid svg text");
 assertIncludes("app/global.css", ".compendium-mermaid svg foreignObject");
@@ -85,6 +95,14 @@ assertIncludes(
   "app/compendium/[collection]/page.tsx",
   'getCompendiumNote(\n      "linux-systems-engineering",\n      "linux-systems-engineering"\n    )'
 );
+assertIncludes(
+  "app/compendium/[collection]/page.tsx",
+  'collectionId === "nodejs-v8-runtime-engineering"'
+);
+assertIncludes(
+  "app/compendium/[collection]/page.tsx",
+  'getCompendiumNote(\n      "nodejs-v8-runtime-engineering",\n      "node-js-v8-runtime-engineering"\n    )'
+);
 
 const report = readReport();
 const kubernetesCollection = report.collections.find(
@@ -92,6 +110,9 @@ const kubernetesCollection = report.collections.find(
 );
 const linuxCollection = report.collections.find(
   (collection) => collection.id === "linux-systems-engineering"
+);
+const nodeRuntimeCollection = report.collections.find(
+  (collection) => collection.id === "nodejs-v8-runtime-engineering"
 );
 
 assert(kubernetesCollection, "import report should include Kubernetes");
@@ -101,6 +122,11 @@ assert(
   "import report should include Linux Systems Engineering"
 );
 assert.equal(linuxCollection.noteCount, 20);
+assert(
+  nodeRuntimeCollection,
+  "import report should include Node.js V8 Runtime Engineering"
+);
+assert.equal(nodeRuntimeCollection.noteCount, 20);
 
 const kubernetesNotes = report.copiedNotes.filter(
   (note) => note.collection === "kubernetes"
@@ -108,8 +134,12 @@ const kubernetesNotes = report.copiedNotes.filter(
 const linuxNotes = report.copiedNotes.filter(
   (note) => note.collection === "linux-systems-engineering"
 );
+const nodeRuntimeNotes = report.copiedNotes.filter(
+  (note) => note.collection === "nodejs-v8-runtime-engineering"
+);
 assert.equal(kubernetesNotes.length, 19);
 assert.equal(linuxNotes.length, 20);
+assert.equal(nodeRuntimeNotes.length, 20);
 assert.equal(report.unresolvedReferences.length, 0);
 assert.equal(
   report.invalidHeadingReferences.filter((reference) =>
@@ -120,6 +150,12 @@ assert.equal(
 assert.equal(
   report.invalidHeadingReferences.filter((reference) =>
     reference.from.startsWith("Knowledge base/linux-systems-engineering/")
+  ).length,
+  0
+);
+assert.equal(
+  report.invalidHeadingReferences.filter((reference) =>
+    reference.from.startsWith("Knowledge base/nodejs-v8-runtime-engineering/")
   ).length,
   0
 );
@@ -147,10 +183,14 @@ const kubernetesFiles = listFiles("app/compendium/content/kubernetes").filter(
 const linuxFiles = listFiles(
   "app/compendium/content/linux-systems-engineering"
 ).filter((file) => file.endsWith(".md"));
+const nodeRuntimeFiles = listFiles(
+  "app/compendium/content/nodejs-v8-runtime-engineering"
+).filter((file) => file.endsWith(".md"));
 assert.equal(kubernetesFiles.length, 19);
 assert.equal(linuxFiles.length, 20);
+assert.equal(nodeRuntimeFiles.length, 20);
 
-for (const file of [...kubernetesFiles, ...linuxFiles]) {
+for (const file of [...kubernetesFiles, ...linuxFiles, ...nodeRuntimeFiles]) {
   assertNotIncludes(file, "[[");
   assertNotIncludes(file, emDash);
 }
