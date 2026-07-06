@@ -85,19 +85,19 @@ export const projects: Project[] = [
   {
     name: "Locus",
     description:
-      "An experimental Rust memory-locality runtime for AI inference workloads, NUMA placement, and KV-cache memory foundations.",
+      "A parameterless, owner-drained chunk-mailbox KV-block pool for CPU LLM inference serving, published as the Rust crate locus-alloc with a committed, falsification-first benchmark record.",
     longDescription:
-      "Locus explores explicit memory locality for AI inference workloads without replacing the process-wide allocator. The current foundation includes safe Rust APIs for memory class, placement, and lifetime; Linux topology discovery for NUMA nodes and PCI device locality; placement policy models; locality evidence parsers; narrow unsafe Linux memory-policy probes; node-tagged scratch arenas; request scratch pools; KV block foundations; host page-locked scratch pools; and validation gates that avoid claiming successful placement without matching page-touch and locality evidence.",
+      "Locus is a domain memory pool for CPU LLM serving whose remote-free path is a per-worker lock-free chunk mailbox: workers return a finished request's KV blocks as one atomic push, and the pool owner drains every mailbox off the allocation hot path, so freeing never contends on a shared queue and the design carries zero tuning parameters. It sits on a flat LIFO block pool with generation-validated handles and optional mapped-region backing. On LOCUS-EVAL v1, a frozen four-workload suite of deterministic serving-shaped KV traces on Apple Silicon, the mailbox ranks first against jemalloc, mimalloc, and system malloc; at an audited one-byte-per-block touch parity the advantage is 1.6x to 2.7x over mimalloc on the three trace workloads and about 1.15x over system malloc once full KV writes dominate. The whole research record ships in-repo, including falsified postulates and a self-corrected headline. NUMA locality is designed and syscall-validated but unmeasured, and end-to-end integration into a CPU inference engine is future work; the crate is published on crates.io as locus-alloc v0.1.0 (import name locus_alloc).",
     repository: "https://github.com/vicotrbb/locus",
-    website: undefined,
-    tags: ["Rust", "AI", "NUMA", "Memory", "Inference", "Linux"],
+    website: "https://crates.io/crates/locus-alloc",
+    tags: ["Rust", "LLM Inference", "KV Cache", "Memory Pool", "Allocators", "NUMA"],
     status: "in-progress",
     publiclyShared: true,
     license: "Apache-2.0",
     startDate: "2026-07-02",
     tech: {
-      backend: ["Rust", "Linux sysfs", "NUMA", "Benchmarking"],
-      deployment: ["Docker", "Linux"],
+      backend: ["Rust", "Criterion", "Linux sysfs", "NUMA"],
+      deployment: ["crates.io", "Linux", "Docker"],
     },
   },
   {

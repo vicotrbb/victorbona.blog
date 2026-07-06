@@ -15,6 +15,27 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "locus-whitepaper",
+    title:
+      "Locus: Owner-Drained Chunk Mailboxes for KV-Block Recycling in CPU LLM Inference",
+    abstract:
+      "A technical white paper on Locus, a domain memory pool for CPU LLM serving whose remote-free path is a per-worker lock-free chunk mailbox: a finished request's KV blocks are returned as one atomic push, and the pool owner drains every mailbox off the allocation hot path, so freeing never contends on a shared queue and the design carries zero tuning parameters. Developed under a falsification-first methodology, it is evaluated on LOCUS-EVAL v1, a frozen four-workload suite of deterministic serving-shaped KV traces run against jemalloc, mimalloc, and system malloc on Apple Silicon, where the mailbox ranks first on every workload. A self-critical touch-parity audit corrects the headline: at a one-byte-per-block parity the advantage is 1.6x to 2.7x over mimalloc on the three trace workloads and compresses to about 1.15x over system malloc once full KV writes dominate, with a transient burst-cancellation footprint of up to 1.5x the theoretical peak. The scope is deliberately narrow (a single macOS host, synthetic traces, an allocator-level measurement), with NUMA locality and end-to-end serving integration stated as future work.",
+    authors: ["Victor Bona"],
+    publishedAt: "2026-07-06",
+    tags: [
+      "Rust",
+      "LLM Inference",
+      "KV Cache",
+      "Memory Pool",
+      "Allocators",
+      "Benchmarks",
+    ],
+    type: "paper",
+    status: "independently published",
+    pdfUrl: "/papers/locus-whitepaper.pdf",
+    citationKey: "bona2026locus",
+  },
+  {
     slug: "purple-wolf-whitepaper",
     title:
       "Purple Wolf: A Technical White Paper on a Low-Latency Traefik Web Application Firewall and Audit Relay",
