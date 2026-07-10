@@ -5,6 +5,7 @@ export type CompendiumCollectionId =
   | "kubernetes"
   | "linux-systems-engineering"
   | "nodejs-v8-runtime-engineering"
+  | "rust"
   | "cpu-llm-inference";
 
 export type CompendiumFrontmatter = {

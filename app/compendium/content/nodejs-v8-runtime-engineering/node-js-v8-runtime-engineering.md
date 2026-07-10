@@ -100,7 +100,7 @@ You should be able to:
 - [Software Engineering](/compendium/software-engineering/software-engineering)
 - [Linux Systems Engineering](/compendium/linux-systems-engineering/linux-systems-engineering)
 - [Kubernetes](/compendium/kubernetes/kubernetes)
-- <span className="compendium-external-reference" title="Vault-only reference">Rust</span>
+- [Rust](/compendium/rust/rust)
 
 ## Strict Topic Ledger
 

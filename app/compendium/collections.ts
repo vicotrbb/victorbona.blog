@@ -44,6 +44,13 @@ export const compendiumCollections: CompendiumCollection[] = [
     route: "/compendium/nodejs-v8-runtime-engineering",
   },
   {
+    id: "rust",
+    title: "Rust",
+    description:
+      "Production-oriented Rust notes on ownership, types, traits, Cargo, performance, concurrency, async runtimes, unsafe code, macros, testing, architecture, systems programming, interoperability, and operations.",
+    route: "/compendium/rust",
+  },
+  {
     id: "cpu-llm-inference",
     title: "CPU LLM Inference Research",
     description:

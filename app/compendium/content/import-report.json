@@ -33,6 +33,11 @@
       "noteCount": 20
     },
     {
+      "id": "rust",
+      "title": "Rust",
+      "noteCount": 18
+    },
+    {
       "id": "cpu-llm-inference",
       "title": "CPU LLM Inference Research",
       "noteCount": 11
@@ -1126,6 +1131,168 @@
       "sourcePath": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
       "outputPath": "app/compendium/content/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering.md",
       "order": 20,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Rust Mastery Roadmap",
+      "collection": "rust",
+      "slug": "rust-mastery-roadmap",
+      "sourcePath": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "outputPath": "app/compendium/content/rust/rust-mastery-roadmap.md",
+      "order": 0,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Rust Language Fundamentals",
+      "collection": "rust",
+      "slug": "rust-language-fundamentals",
+      "sourcePath": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "outputPath": "app/compendium/content/rust/rust-language-fundamentals.md",
+      "order": 1,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Ownership, Borrowing, and Lifetimes",
+      "collection": "rust",
+      "slug": "ownership-borrowing-and-lifetimes",
+      "sourcePath": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "outputPath": "app/compendium/content/rust/ownership-borrowing-and-lifetimes.md",
+      "order": 2,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Types, Traits, and Generics",
+      "collection": "rust",
+      "slug": "types-traits-and-generics",
+      "sourcePath": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "outputPath": "app/compendium/content/rust/types-traits-and-generics.md",
+      "order": 3,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Error Handling and API Design",
+      "collection": "rust",
+      "slug": "error-handling-and-api-design",
+      "sourcePath": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "outputPath": "app/compendium/content/rust/error-handling-and-api-design.md",
+      "order": 4,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Modules, Crates, Cargo, and Workspaces",
+      "collection": "rust",
+      "slug": "modules-crates-cargo-and-workspaces",
+      "sourcePath": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "outputPath": "app/compendium/content/rust/modules-crates-cargo-and-workspaces.md",
+      "order": 5,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Memory Layout, Performance, and Zero-Cost Abstractions",
+      "collection": "rust",
+      "slug": "memory-layout-performance-and-zero-cost-abstractions",
+      "sourcePath": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "outputPath": "app/compendium/content/rust/memory-layout-performance-and-zero-cost-abstractions.md",
+      "order": 6,
+      "mermaidBlocks": 4
+    },
+    {
+      "title": "Concurrency, Parallelism, and Synchronization",
+      "collection": "rust",
+      "slug": "concurrency-parallelism-and-synchronization",
+      "sourcePath": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "outputPath": "app/compendium/content/rust/concurrency-parallelism-and-synchronization.md",
+      "order": 7,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Async Rust, Futures, Tokio, and Runtimes",
+      "collection": "rust",
+      "slug": "async-rust-futures-tokio-and-runtimes",
+      "sourcePath": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "outputPath": "app/compendium/content/rust/async-rust-futures-tokio-and-runtimes.md",
+      "order": 8,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Unsafe Rust and the Rust Memory Model",
+      "collection": "rust",
+      "slug": "unsafe-rust-and-the-rust-memory-model",
+      "sourcePath": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "outputPath": "app/compendium/content/rust/unsafe-rust-and-the-rust-memory-model.md",
+      "order": 9,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Macros, Metaprogramming, and Procedural Macros",
+      "collection": "rust",
+      "slug": "macros-metaprogramming-and-proc-macros",
+      "sourcePath": "Knowledge base/Rust/10 Macros Metaprogramming and Proc Macros.md",
+      "outputPath": "app/compendium/content/rust/macros-metaprogramming-and-proc-macros.md",
+      "order": 10,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Testing, Verification, Benchmarking, and Tooling",
+      "collection": "rust",
+      "slug": "testing-verification-benchmarking-and-tooling",
+      "sourcePath": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "outputPath": "app/compendium/content/rust/testing-verification-benchmarking-and-tooling.md",
+      "order": 11,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Rust Design Patterns and Architecture",
+      "collection": "rust",
+      "slug": "rust-design-patterns-and-architecture",
+      "sourcePath": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "outputPath": "app/compendium/content/rust/rust-design-patterns-and-architecture.md",
+      "order": 12,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Systems Programming, Networking, and I/O",
+      "collection": "rust",
+      "slug": "systems-programming-networking-and-io",
+      "sourcePath": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "outputPath": "app/compendium/content/rust/systems-programming-networking-and-io.md",
+      "order": 13,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "FFI, Embedded Rust, WebAssembly, and Interoperability",
+      "collection": "rust",
+      "slug": "ffi-embedded-webassembly-and-interop",
+      "sourcePath": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "outputPath": "app/compendium/content/rust/ffi-embedded-webassembly-and-interop.md",
+      "order": 14,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Production Rust Operations, Security, and Observability",
+      "collection": "rust",
+      "slug": "production-rust-operations-security-and-observability",
+      "sourcePath": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "outputPath": "app/compendium/content/rust/production-rust-operations-security-and-observability.md",
+      "order": 15,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Rust Ecosystem Crates and Project Templates",
+      "collection": "rust",
+      "slug": "rust-ecosystem-crates-and-project-templates",
+      "sourcePath": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "outputPath": "app/compendium/content/rust/rust-ecosystem-crates-and-project-templates.md",
+      "order": 16,
+      "mermaidBlocks": 1
+    },
+    {
+      "title": "Rust",
+      "collection": "rust",
+      "slug": "rust",
+      "sourcePath": "Knowledge base/Rust/Rust.md",
+      "outputPath": "app/compendium/content/rust/rust.md",
+      "order": 18,
       "mermaidBlocks": 1
     },
     {
@@ -7309,6 +7476,18 @@
     },
     {
       "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
+      "to": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "href": "/compendium/rust/ffi-embedded-webassembly-and-interop",
+      "label": "14 FFI Embedded WebAssembly and Interop"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
       "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
       "href": "/compendium/software-engineering/security-and-supply-chain",
       "label": "Software Engineering/09 Security and Supply Chain"
@@ -7861,9 +8040,1299 @@
     },
     {
       "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
+      "to": "Knowledge base/Rust/Rust.md",
+      "href": "/compendium/rust/rust",
+      "label": "Rust"
+    },
+    {
+      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
       "to": "Knowledge base/nodejs-v8-runtime-engineering/01 Node.js Mental Model JavaScript Runtime V8 libuv and OS.md",
       "href": "/compendium/nodejs-v8-runtime-engineering/node-js-mental-model-javascript-runtime-v8-libuv-and-os",
       "label": "01 Node.js Mental Model JavaScript Runtime V8 libuv and OS"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/Rust.md",
+      "href": "/compendium/rust/rust",
+      "label": "Rust"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Data Structures/Data Structures.md",
+      "href": "/compendium/data-structures/data-structures",
+      "label": "Data Structures/Data Structures"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "href": "/compendium/software-engineering/data-structures-algorithms-and-complexity",
+      "label": "Software Engineering/03 Data Structures Algorithms and Complexity"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "Software Engineering/10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
+      "label": "Software Engineering/07 APIs Contracts and Integration"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "Software Engineering/08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "href": "/compendium/rust/rust-language-fundamentals",
+      "label": "01 Rust Language Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/Rust.md",
+      "href": "/compendium/rust/rust",
+      "label": "Rust"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "href": "/compendium/rust/ownership-borrowing-and-lifetimes",
+      "label": "02 Ownership Borrowing and Lifetimes"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "href": "/compendium/rust/modules-crates-cargo-and-workspaces",
+      "label": "05 Modules Crates Cargo and Workspaces"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "href": "/compendium/rust/memory-layout-performance-and-zero-cost-abstractions",
+      "label": "06 Memory Layout Performance and Zero Cost Abstractions"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "href": "/compendium/rust/memory-layout-performance-and-zero-cost-abstractions",
+      "label": "06 Memory Layout Performance and Zero Cost Abstractions"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "Software Engineering/10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "href": "/compendium/rust/rust-design-patterns-and-architecture",
+      "label": "12 Rust Design Patterns and Architecture"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "href": "/compendium/rust/systems-programming-networking-and-io",
+      "label": "13 Systems Programming Networking and IO"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "href": "/compendium/rust/ffi-embedded-webassembly-and-interop",
+      "label": "14 FFI Embedded WebAssembly and Interop"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "href": "/compendium/rust/modules-crates-cargo-and-workspaces",
+      "label": "05 Modules Crates Cargo and Workspaces"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/10 Macros Metaprogramming and Proc Macros.md",
+      "href": "/compendium/rust/macros-metaprogramming-and-proc-macros",
+      "label": "10 Macros Metaprogramming and Proc Macros"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "href": "/compendium/rust/production-rust-operations-security-and-observability",
+      "label": "15 Production Rust Operations Security and Observability"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "href": "/compendium/rust/rust-ecosystem-crates-and-project-templates",
+      "label": "16 Rust Ecosystem Crates and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Software Engineering/00 Staff Principal Software Engineering.md",
+      "href": "/compendium/software-engineering/staff-principal-software-engineering",
+      "label": "Software Engineering/00 Staff Principal Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Software Engineering/13 Technical Leadership and Execution.md",
+      "href": "/compendium/software-engineering/technical-leadership-and-execution",
+      "label": "Software Engineering/13 Technical Leadership and Execution"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "href": "/compendium/rust/rust-ecosystem-crates-and-project-templates",
+      "label": "16 Rust Ecosystem Crates and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "to": "Knowledge base/Software Engineering/Software Engineering.md",
+      "href": "/compendium/software-engineering/software-engineering",
+      "label": "Software Engineering/Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "to": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "href": "/compendium/rust/ownership-borrowing-and-lifetimes",
+      "label": "02 Ownership Borrowing and Lifetimes"
+    },
+    {
+      "from": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "to": "Knowledge base/Data Structures/Data Structures.md",
+      "href": "/compendium/data-structures/data-structures",
+      "label": "Data Structures/Data Structures"
+    },
+    {
+      "from": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "to": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "href": "/compendium/rust/ownership-borrowing-and-lifetimes",
+      "label": "02 Ownership Borrowing and Lifetimes"
+    },
+    {
+      "from": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "to": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "href": "/compendium/rust/ownership-borrowing-and-lifetimes",
+      "label": "02 Ownership Borrowing and Lifetimes"
+    },
+    {
+      "from": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "to": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "href": "/compendium/rust/rust-language-fundamentals",
+      "label": "01 Rust Language Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "to": "Knowledge base/Data Structures/Data Structures.md",
+      "href": "/compendium/data-structures/data-structures",
+      "label": "Data Structures/Data Structures"
+    },
+    {
+      "from": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization#lock-free-programming-concepts",
+      "label": "07 Concurrency Parallelism and Synchronization#Lock-free programming concepts"
+    },
+    {
+      "from": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
+      "label": "01 Engineering Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "to": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "href": "/compendium/software-engineering/data-structures-algorithms-and-complexity",
+      "label": "03 Data Structures Algorithms and Complexity"
+    },
+    {
+      "from": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
+      "label": "07 APIs Contracts and Integration"
+    },
+    {
+      "from": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "to": "Knowledge base/Design Patterns/Adapter Pattern.md",
+      "href": "/compendium/design-patterns/adapter-pattern",
+      "label": "Design Patterns/Adapter Pattern"
+    },
+    {
+      "from": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "to": "Knowledge base/Design Patterns/Decorator Pattern.md",
+      "href": "/compendium/design-patterns/decorator-pattern",
+      "label": "Design Patterns/Decorator Pattern"
+    },
+    {
+      "from": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
+      "label": "07 APIs Contracts and Integration"
+    },
+    {
+      "from": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "to": "Knowledge base/Design Patterns/Facade Pattern.md",
+      "href": "/compendium/design-patterns/facade-pattern",
+      "label": "Design Patterns/Facade Pattern"
+    },
+    {
+      "from": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "to": "Knowledge base/Design Patterns/Adapter Pattern.md",
+      "href": "/compendium/design-patterns/adapter-pattern",
+      "label": "Design Patterns/Adapter Pattern"
+    },
+    {
+      "from": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "to": "Knowledge base/Rust/Rust.md",
+      "href": "/compendium/rust/rust",
+      "label": "Rust"
+    },
+    {
+      "from": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "to": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "href": "/compendium/rust/ownership-borrowing-and-lifetimes",
+      "label": "02 Ownership Borrowing and Lifetimes"
+    },
+    {
+      "from": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "to": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "href": "/compendium/rust/rust-language-fundamentals",
+      "label": "01 Rust Language Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "to": "Knowledge base/Software Engineering/12 Delivery Migrations and Release Engineering.md",
+      "href": "/compendium/software-engineering/delivery-migrations-and-release-engineering",
+      "label": "Software Engineering/12 Delivery Migrations and Release Engineering"
+    },
+    {
+      "from": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "to": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "href": "/compendium/rust/ownership-borrowing-and-lifetimes",
+      "label": "02 Ownership Borrowing and Lifetimes"
+    },
+    {
+      "from": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "to": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "href": "/compendium/rust/rust-language-fundamentals",
+      "label": "01 Rust Language Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "Rust/09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "to": "Knowledge base/Data Structures/Data Structures.md",
+      "href": "/compendium/data-structures/data-structures",
+      "label": "Data Structures/Data Structures"
+    },
+    {
+      "from": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "to": "Knowledge base/Design Patterns/Design patterns.md",
+      "href": "/compendium/design-patterns/design-patterns",
+      "label": "Design Patterns/Design patterns"
+    },
+    {
+      "from": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "Rust/09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "to": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "href": "/compendium/rust/ownership-borrowing-and-lifetimes",
+      "label": "02 Ownership Borrowing and Lifetimes"
+    },
+    {
+      "from": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "to": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "href": "/compendium/rust/memory-layout-performance-and-zero-cost-abstractions",
+      "label": "06 Memory Layout Performance and Zero Cost Abstractions"
+    },
+    {
+      "from": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "to": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "href": "/compendium/rust/ownership-borrowing-and-lifetimes",
+      "label": "02 Ownership Borrowing and Lifetimes"
+    },
+    {
+      "from": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "to": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "href": "/compendium/rust/systems-programming-networking-and-io",
+      "label": "13 Systems Programming Networking and IO"
+    },
+    {
+      "from": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "to": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "href": "/compendium/rust/memory-layout-performance-and-zero-cost-abstractions",
+      "label": "06 Memory Layout Performance and Zero Cost Abstractions"
+    },
+    {
+      "from": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "to": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "href": "/compendium/rust/ownership-borrowing-and-lifetimes",
+      "label": "02 Ownership Borrowing and Lifetimes"
+    },
+    {
+      "from": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "to": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "href": "/compendium/rust/memory-layout-performance-and-zero-cost-abstractions",
+      "label": "Rust/06 Memory Layout Performance and Zero Cost Abstractions"
+    },
+    {
+      "from": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "to": "Knowledge base/Data Structures/Data Structures.md",
+      "href": "/compendium/data-structures/data-structures",
+      "label": "Data Structures/Data Structures"
+    },
+    {
+      "from": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "to": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "href": "/compendium/rust/memory-layout-performance-and-zero-cost-abstractions",
+      "label": "Rust/06 Memory Layout Performance and Zero Cost Abstractions"
+    },
+    {
+      "from": "Knowledge base/Rust/10 Macros Metaprogramming and Proc Macros.md",
+      "to": "Knowledge base/Rust/Rust.md",
+      "href": "/compendium/rust/rust",
+      "label": "Rust"
+    },
+    {
+      "from": "Knowledge base/Rust/10 Macros Metaprogramming and Proc Macros.md",
+      "to": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "href": "/compendium/rust/rust-language-fundamentals",
+      "label": "01 Rust Language Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Rust/10 Macros Metaprogramming and Proc Macros.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/10 Macros Metaprogramming and Proc Macros.md",
+      "to": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "href": "/compendium/rust/modules-crates-cargo-and-workspaces",
+      "label": "05 Modules Crates Cargo and Workspaces"
+    },
+    {
+      "from": "Knowledge base/Rust/10 Macros Metaprogramming and Proc Macros.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/10 Macros Metaprogramming and Proc Macros.md",
+      "to": "Knowledge base/Design Patterns/Design patterns.md",
+      "href": "/compendium/design-patterns/design-patterns",
+      "label": "Design Patterns/Design patterns"
+    },
+    {
+      "from": "Knowledge base/Rust/10 Macros Metaprogramming and Proc Macros.md",
+      "to": "Knowledge base/Software Engineering/01 Engineering Fundamentals.md",
+      "href": "/compendium/software-engineering/engineering-fundamentals",
+      "label": "Software Engineering/01 Engineering Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "to": "Knowledge base/Rust/Rust.md",
+      "href": "/compendium/rust/rust",
+      "label": "Rust"
+    },
+    {
+      "from": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "to": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "href": "/compendium/rust/modules-crates-cargo-and-workspaces",
+      "label": "05 Modules Crates Cargo and Workspaces"
+    },
+    {
+      "from": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "to": "Knowledge base/Rust/10 Macros Metaprogramming and Proc Macros.md",
+      "href": "/compendium/rust/macros-metaprogramming-and-proc-macros",
+      "label": "10 Macros Metaprogramming and Proc Macros"
+    },
+    {
+      "from": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "Software Engineering/10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "to": "Knowledge base/Software Engineering/11 Performance Capacity and Cost.md",
+      "href": "/compendium/software-engineering/performance-capacity-and-cost",
+      "label": "Software Engineering/11 Performance Capacity and Cost"
+    },
+    {
+      "from": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "to": "Knowledge base/Rust/Rust.md",
+      "href": "/compendium/rust/rust",
+      "label": "Rust"
+    },
+    {
+      "from": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "to": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "href": "/compendium/rust/rust-mastery-roadmap",
+      "label": "00 Rust Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "to": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "href": "/compendium/rust/modules-crates-cargo-and-workspaces",
+      "label": "05 Modules Crates Cargo and Workspaces"
+    },
+    {
+      "from": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "to": "Knowledge base/Design Patterns/Design patterns.md",
+      "href": "/compendium/design-patterns/design-patterns",
+      "label": "Design Patterns/Design patterns"
+    },
+    {
+      "from": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "to": "Knowledge base/Software Engineering/07 APIs Contracts and Integration.md",
+      "href": "/compendium/software-engineering/apis-contracts-and-integration",
+      "label": "Software Engineering/07 APIs Contracts and Integration"
+    },
+    {
+      "from": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "to": "Knowledge base/Rust/Rust.md",
+      "href": "/compendium/rust/rust",
+      "label": "Rust"
+    },
+    {
+      "from": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "to": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "href": "/compendium/rust/modules-crates-cargo-and-workspaces",
+      "label": "05 Modules Crates Cargo and Workspaces"
+    },
+    {
+      "from": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "Software Engineering/05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
+      "label": "Software Engineering/06 Caching Queues and Streaming"
+    },
+    {
+      "from": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "Software Engineering/08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "to": "Knowledge base/Rust/Rust.md",
+      "href": "/compendium/rust/rust",
+      "label": "Rust"
+    },
+    {
+      "from": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "to": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "href": "/compendium/rust/ownership-borrowing-and-lifetimes",
+      "label": "02 Ownership Borrowing and Lifetimes"
+    },
+    {
+      "from": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "to": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "href": "/compendium/rust/memory-layout-performance-and-zero-cost-abstractions",
+      "label": "06 Memory Layout Performance and Zero Cost Abstractions"
+    },
+    {
+      "from": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "to": "Knowledge base/Rust/Rust.md",
+      "href": "/compendium/rust/rust",
+      "label": "Rust"
+    },
+    {
+      "from": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "to": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "href": "/compendium/rust/rust-design-patterns-and-architecture",
+      "label": "12 Rust Design Patterns and Architecture"
+    },
+    {
+      "from": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "Software Engineering/08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
+      "label": "Software Engineering/09 Security and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "to": "Knowledge base/Rust/Rust.md",
+      "href": "/compendium/rust/rust",
+      "label": "Rust"
+    },
+    {
+      "from": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "to": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "href": "/compendium/rust/rust-mastery-roadmap",
+      "label": "00 Rust Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "to": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "href": "/compendium/rust/modules-crates-cargo-and-workspaces",
+      "label": "05 Modules Crates Cargo and Workspaces"
+    },
+    {
+      "from": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "to": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "href": "/compendium/rust/systems-programming-networking-and-io",
+      "label": "13 Systems Programming Networking and IO"
+    },
+    {
+      "from": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "to": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "href": "/compendium/rust/ffi-embedded-webassembly-and-interop",
+      "label": "14 FFI Embedded WebAssembly and Interop"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "href": "/compendium/rust/rust-mastery-roadmap",
+      "label": "00 Rust Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "href": "/compendium/rust/rust-language-fundamentals",
+      "label": "01 Rust Language Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "href": "/compendium/rust/ownership-borrowing-and-lifetimes",
+      "label": "02 Ownership Borrowing and Lifetimes"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "href": "/compendium/rust/modules-crates-cargo-and-workspaces",
+      "label": "05 Modules Crates Cargo and Workspaces"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/10 Macros Metaprogramming and Proc Macros.md",
+      "href": "/compendium/rust/macros-metaprogramming-and-proc-macros",
+      "label": "10 Macros Metaprogramming and Proc Macros"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "href": "/compendium/rust/memory-layout-performance-and-zero-cost-abstractions",
+      "label": "06 Memory Layout Performance and Zero Cost Abstractions"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "href": "/compendium/rust/rust-design-patterns-and-architecture",
+      "label": "12 Rust Design Patterns and Architecture"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "href": "/compendium/rust/systems-programming-networking-and-io",
+      "label": "13 Systems Programming Networking and IO"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "href": "/compendium/rust/ffi-embedded-webassembly-and-interop",
+      "label": "14 FFI Embedded WebAssembly and Interop"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "href": "/compendium/rust/production-rust-operations-security-and-observability",
+      "label": "15 Production Rust Operations Security and Observability"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "href": "/compendium/rust/rust-ecosystem-crates-and-project-templates",
+      "label": "16 Rust Ecosystem Crates and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Data Structures/Data Structures.md",
+      "href": "/compendium/data-structures/data-structures",
+      "label": "Data Structures/Data Structures"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Design Patterns/Design patterns.md",
+      "href": "/compendium/design-patterns/design-patterns",
+      "label": "Design Patterns/Design patterns"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Software Engineering/Software Engineering.md",
+      "href": "/compendium/software-engineering/software-engineering",
+      "label": "Software Engineering/Software Engineering"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Software Engineering/03 Data Structures Algorithms and Complexity.md",
+      "href": "/compendium/software-engineering/data-structures-algorithms-and-complexity",
+      "label": "Software Engineering/03 Data Structures Algorithms and Complexity"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Software Engineering/05 Distributed Systems.md",
+      "href": "/compendium/software-engineering/distributed-systems",
+      "label": "Software Engineering/05 Distributed Systems"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Software Engineering/06 Caching Queues and Streaming.md",
+      "href": "/compendium/software-engineering/caching-queues-and-streaming",
+      "label": "Software Engineering/06 Caching Queues and Streaming"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Software Engineering/08 Reliability Observability and Operations.md",
+      "href": "/compendium/software-engineering/reliability-observability-and-operations",
+      "label": "Software Engineering/08 Reliability Observability and Operations"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
+      "label": "Software Engineering/09 Security and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Software Engineering/10 Testing Verification and Quality Bars.md",
+      "href": "/compendium/software-engineering/testing-verification-and-quality-bars",
+      "label": "Software Engineering/10 Testing Verification and Quality Bars"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "href": "/compendium/rust/rust-mastery-roadmap",
+      "label": "00 Rust Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "href": "/compendium/rust/rust-language-fundamentals",
+      "label": "01 Rust Language Fundamentals"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "href": "/compendium/rust/ownership-borrowing-and-lifetimes",
+      "label": "02 Ownership Borrowing and Lifetimes"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "href": "/compendium/rust/types-traits-and-generics",
+      "label": "03 Types Traits and Generics"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "href": "/compendium/rust/modules-crates-cargo-and-workspaces",
+      "label": "05 Modules Crates Cargo and Workspaces"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "href": "/compendium/rust/memory-layout-performance-and-zero-cost-abstractions",
+      "label": "06 Memory Layout Performance and Zero Cost Abstractions"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "href": "/compendium/rust/modules-crates-cargo-and-workspaces",
+      "label": "05 Modules Crates Cargo and Workspaces"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/kubernetes/Kubernetes.md",
+      "href": "/compendium/kubernetes/kubernetes",
+      "label": "kubernetes/Kubernetes"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "href": "/compendium/rust/testing-verification-benchmarking-and-tooling",
+      "label": "11 Testing Verification Benchmarking and Tooling"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Software Engineering/09 Security and Supply Chain.md",
+      "href": "/compendium/software-engineering/security-and-supply-chain",
+      "label": "Software Engineering/09 Security and Supply Chain"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "href": "/compendium/rust/rust-design-patterns-and-architecture",
+      "label": "12 Rust Design Patterns and Architecture"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "href": "/compendium/rust/error-handling-and-api-design",
+      "label": "04 Error Handling and API Design"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "href": "/compendium/rust/systems-programming-networking-and-io",
+      "label": "13 Systems Programming Networking and IO"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "href": "/compendium/rust/production-rust-operations-security-and-observability",
+      "label": "15 Production Rust Operations Security and Observability"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "href": "/compendium/rust/ffi-embedded-webassembly-and-interop",
+      "label": "14 FFI Embedded WebAssembly and Interop"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "href": "/compendium/rust/rust-ecosystem-crates-and-project-templates",
+      "label": "16 Rust Ecosystem Crates and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "href": "/compendium/rust/modules-crates-cargo-and-workspaces",
+      "label": "05 Modules Crates Cargo and Workspaces"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "to": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "href": "/compendium/rust/rust-mastery-roadmap",
+      "label": "00 Rust Mastery Roadmap"
     }
   ],
   "externalReferences": [
@@ -8283,19 +9752,139 @@
       "label": "Software testing"
     },
     {
-      "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
-      "target": "09 Unsafe Rust and the Rust Memory Model",
-      "label": "09 Unsafe Rust and the Rust Memory Model"
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "target": "Software testing",
+      "label": "Software testing"
     },
     {
-      "from": "Knowledge base/nodejs-v8-runtime-engineering/13 Native Addons N-API WASM FFI and Embedding.md",
-      "target": "14 FFI Embedded WebAssembly and Interop",
-      "label": "14 FFI Embedded WebAssembly and Interop"
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
     },
     {
-      "from": "Knowledge base/nodejs-v8-runtime-engineering/Node.js V8 Runtime Engineering.md",
-      "target": "Rust",
-      "label": "Rust"
+      "from": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
+      "target": "Littles law and efficient queue strategy",
+      "label": "Littles law and efficient queue strategy"
+    },
+    {
+      "from": "Knowledge base/Rust/01 Rust Language Fundamentals.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/Rust/02 Ownership Borrowing and Lifetimes.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/Rust/03 Types Traits and Generics.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/Rust/04 Error Handling and API Design.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/Rust/05 Modules Crates Cargo and Workspaces.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Rust/06 Memory Layout Performance and Zero Cost Abstractions.md",
+      "target": "Littles law and efficient queue strategy",
+      "label": "Littles law and efficient queue strategy"
+    },
+    {
+      "from": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Rust/11 Testing Verification Benchmarking and Tooling.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Rust/12 Rust Design Patterns and Architecture.md",
+      "target": "Event-Driven Architectures and Event Sourcing",
+      "label": "Event-Driven Architectures and Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "target": "Littles law and efficient queue strategy",
+      "label": "Littles law and efficient queue strategy"
+    },
+    {
+      "from": "Knowledge base/Rust/15 Production Rust Operations Security and Observability.md",
+      "target": "Event-Driven Architectures and Event Sourcing",
+      "label": "Event-Driven Architectures and Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Rust/16 Rust Ecosystem Crates and Project Templates.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "target": "Littles law and efficient queue strategy",
+      "label": "Littles law and efficient queue strategy"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "target": "Software testing",
+      "label": "Software testing"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "target": "Event-Driven Architectures and Event Sourcing",
+      "label": "Event-Driven Architectures and Event Sourcing"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
+    },
+    {
+      "from": "Knowledge base/Rust/Rust.md",
+      "target": "Software Supply Chain Security",
+      "label": "Software Supply Chain Security"
     }
   ],
   "unresolvedReferences": [],
@@ -8574,5 +10163,5 @@
       "fallbackHref": "/compendium/software-engineering/distributed-systems"
     }
   ],
-  "mermaidBlocks": 183
+  "mermaidBlocks": 215
 }

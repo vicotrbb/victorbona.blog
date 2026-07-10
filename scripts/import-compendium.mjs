@@ -49,6 +49,14 @@ const collections = [
     ),
   },
   {
+    id: "rust",
+    title: "Rust",
+    sourceDir: path.join(vaultRoot, "Knowledge base", "Rust"),
+    titleFromFirstHeading: true,
+    slugFromFilename: true,
+    stripSourceFrontmatter: true,
+  },
+  {
     id: "cpu-llm-inference",
     title: "CPU LLM Inference Research",
     sourceDir: path.join(
@@ -160,6 +168,22 @@ function stripTitlePrefix(value, collection) {
   return replaceEmDash(stripped).replace(/\s+-\s+/g, " - ").trim();
 }
 
+function readSourceMarkdown(filePath, collection) {
+  const content = fs.readFileSync(filePath, "utf8");
+
+  if (!collection.stripSourceFrontmatter) return content;
+
+  const frontmatter = /^---\s*\r?\n[\s\S]*?\r?\n---\s*(?:\r?\n|$)/.exec(
+    content
+  );
+
+  if (!frontmatter) {
+    throw new Error(`Expected source frontmatter in ${filePath}`);
+  }
+
+  return content.slice(frontmatter[0].length);
+}
+
 function firstMarkdownHeading(content) {
   let inCodeFence = false;
   let fenceMarker = "";
@@ -189,7 +213,9 @@ function firstMarkdownHeading(content) {
 
 function noteTitleFromFile(filePath, collection) {
   if (collection.titleFromFirstHeading) {
-    const heading = firstMarkdownHeading(fs.readFileSync(filePath, "utf8"));
+    const heading = firstMarkdownHeading(
+      readSourceMarkdown(filePath, collection)
+    );
     if (heading) return stripTitlePrefix(heading, collection);
   }
 
@@ -279,7 +305,9 @@ function buildImportedNoteIndex() {
         sourcePath,
         outputFile: path.join(outputRoot, collection.id, `${slug}.md`),
         order: noteOrderFromFile(filePath, index + 1),
-        headingIds: collectRenderedHeadingIds(fs.readFileSync(filePath, "utf8")),
+        headingIds: collectRenderedHeadingIds(
+          readSourceMarkdown(filePath, collection)
+        ),
       };
 
       notes.push(note);
@@ -619,7 +647,7 @@ function importCompendium() {
     });
 
     for (const note of notes) {
-      const original = fs.readFileSync(note.sourceFile, "utf8");
+      const original = readSourceMarkdown(note.sourceFile, collection);
       const linked = transformOutsideFences(original, (segment) =>
         rewriteWikilinks(segment, note, index, report)
       );

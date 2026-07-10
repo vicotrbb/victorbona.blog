@@ -50,6 +50,10 @@ function getStudyIndex(collectionId: string) {
     );
   }
 
+  if (collectionId === "rust") {
+    return getCompendiumNote("rust", "rust");
+  }
+
   return undefined;
 }
 

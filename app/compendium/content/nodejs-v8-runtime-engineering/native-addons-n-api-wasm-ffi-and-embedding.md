@@ -419,8 +419,8 @@ Operational controls:
 - [Node.js V8 Runtime Engineering](/compendium/nodejs-v8-runtime-engineering/node-js-v8-runtime-engineering)
 - [11 Networking HTTP TLS DNS Sockets Undici and Fetch](/compendium/nodejs-v8-runtime-engineering/networking-http-tls-dns-sockets-undici-and-fetch)
 - [12 Web Platform APIs in Node.js URL Blob Web Streams AbortController and Test Runner](/compendium/nodejs-v8-runtime-engineering/web-platform-apis-in-node-js-url-blob-web-streams-abortcontroller-and-test-runner)
-- <span className="compendium-external-reference" title="Vault-only reference">09 Unsafe Rust and the Rust Memory Model</span>
-- <span className="compendium-external-reference" title="Vault-only reference">14 FFI Embedded WebAssembly and Interop</span>
+- [09 Unsafe Rust and the Rust Memory Model](/compendium/rust/unsafe-rust-and-the-rust-memory-model)
+- [14 FFI Embedded WebAssembly and Interop](/compendium/rust/ffi-embedded-webassembly-and-interop)
 - [Software Engineering/09 Security and Supply Chain](/compendium/software-engineering/security-and-supply-chain)
 
 ## Official reference anchors checked
