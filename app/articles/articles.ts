@@ -15,6 +15,28 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "bfs-avoidance-frontier",
+    title:
+      "Rigidity of Pattern-Avoiding Breadth-First Reading Words of Increasing Trees",
+    abstract:
+      "Two rigidity theorems for pattern-avoiding breadth-first reading words of increasing trees resolve three conjectures recorded in the OEIS. For 312-avoiding permutations, realizability on an increasing unary-binary tree is equivalent to the binary-heap inequality, with the identity map giving the conjectured bijection. For 231-avoiding words of odd length, unary-binary realizability implies full binary realizability. Both collapses fail for the pattern 321, with explicit minimal counterexamples. The proofs rely on a promotion cascade lemma that holds without a pattern hypothesis. The paper also extends six OEIS sequences by 28 new terms and accompanies the results with self-contained proofs, exhaustive computation, and complete Lean 4 formalizations over genuine inductive trees.",
+    authors: ["Victor Bona"],
+    publishedAt: "2026-07-24",
+    tags: [
+      "Combinatorics",
+      "Pattern Avoidance",
+      "Increasing Trees",
+      "Binary Heaps",
+      "OEIS",
+      "Lean 4",
+      "Formal Verification",
+    ],
+    type: "paper",
+    status: "independently published",
+    pdfUrl: "/papers/bfs-avoidance-frontier.pdf",
+    citationKey: "bona2026bfsavoidance",
+  },
+  {
     slug: "locus-whitepaper",
     title:
       "Locus: Owner-Drained Chunk Mailboxes for KV-Block Recycling in CPU LLM Inference",
