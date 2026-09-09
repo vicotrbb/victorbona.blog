@@ -15,6 +15,26 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "nidus-whitepaper",
+    title:
+      "Nidus: Explicit Application Composition for Rust Backend Services",
+    abstract:
+      "A backend application needs a composition model as well as a request handler. Its components must declare dependencies, initialize shared resources, expose routes, and coordinate operational behavior. Nidus organizes these responsibilities through explicit modules, typed providers, and controller metadata, while retaining Axum routing, Tower middleware, and Tokio execution. This paper explains the design through three separate stages: generated Rust declarations, application construction, and request execution. It describes the guarantees provided at each stage, follows a small feature from module declaration to handler invocation, and identifies the costs and limits of the abstraction. The implementation uses a runtime container keyed by Rust types and validates module structure during bootstrap. Module exports describe composition contracts; they do not enforce runtime access isolation. The account is anchored to Nidus 1.0.17 and supported by source inspection and focused executable checks.",
+    authors: ["Victor Bona"],
+    publishedAt: "2026-09-08",
+    tags: [
+      "Rust",
+      "Application Architecture",
+      "Dependency Injection",
+      "Axum",
+      "Tower",
+    ],
+    type: "paper",
+    status: "independently published",
+    pdfUrl: "/papers/nidus-whitepaper.pdf",
+    citationKey: "bona2026nidus",
+  },
+  {
     slug: "capacity-replay",
     title:
       "The Exact Price of Mergeability for Capacity-Parametric Counter Replay",
