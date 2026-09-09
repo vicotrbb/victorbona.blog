@@ -15,6 +15,27 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "capacity-replay",
+    title:
+      "The Exact Price of Mergeability for Capacity-Parametric Counter Replay",
+    abstract:
+      "An exact characterization of the information needed to summarize saturating counter logs when the replay capacity is chosen later from the integers 0 through N. Final-value queries from zero have 2^N observational equivalence classes and require exactly N logical bits. Supporting the ordered merge of independently summarized chunks raises the necessary state count to N·2^N + 1, attained by a canonical, associative summary. For N ≥ 1, the minimum fixed-width information content is N + floor(log₂ N) + 1 bits: at N = 64, merging costs seven additional bits. The lower bound requires only correctness after one binary merge. Semantic, reachability, counting, and lower-bound results are checked in Lean 4. These are logical information bounds, with no claim of an optimized packed implementation or throughput improvement; historical novelty remains unestablished in light of related work on saturation and hysteresis.",
+    authors: ["Victor Bona"],
+    publishedAt: "2026-09-08",
+    tags: [
+      "Saturating Counters",
+      "Log Compression",
+      "Mergeability",
+      "State Complexity",
+      "Lean 4",
+      "Formal Verification",
+    ],
+    type: "paper",
+    status: "independently published",
+    pdfUrl: "/papers/capacity-replay.pdf",
+    citationKey: "bona2026capacityreplay",
+  },
+  {
     slug: "bfs-avoidance-frontier",
     title:
       "Rigidity of Pattern-Avoiding Breadth-First Reading Words of Increasing Trees",
