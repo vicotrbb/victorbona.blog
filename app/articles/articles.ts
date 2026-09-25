@@ -15,6 +15,30 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "redis-jetstream-reliability",
+    title:
+      "An Empirical Evaluation of Message Delivery Reliability and Recovery Characteristics in Redis Streams and NATS JetStream",
+    abstract:
+      "Consumer-progress acknowledgments in Redis Streams and NATS JetStream have different persistence implications even under always-synchronize append policies. We evaluate that distinction alongside recovery timing, consumer concurrency and publication cost using single-replica deployments on a two-node Kubernetes homelab. The study compares Redis 7.4.2/8.10.2 and NATS Server 2.10.24/2.15.0, preserving an original campaign and adding three deployments with fresh broker processes and stores, matched publication durations, CPU sensitivity and storage diagnostics. All 240 active follow-up recovery episodes completed, including live, deliberately unacknowledging consumers; twelve plain Redis read controls remained pending. Receipt timing followed residual eligibility plus policy-dependent excess. Redis's integrated CLAIM path exhibited greater excess than the tested explicit reclamation loop in this quiet, one-message workload. Sixteen consumers increased current memory/periodic drain throughput by 10.43–14.49 times across deployment-specific comparisons, while cycle p99 increased and driver capacity affected rates. At sixteen publishers, current periodic/memory publication ratios averaged 0.8257 for Redis and 0.8207 for JetStream. Ten of 72 planned always-profile publication trials failed (13.9%), including four warm-up failures, compared with one of 72 periodic trials and none of 72 memory trials. Timed failures returned five-second client timeouts with unknown confirmation outcomes. A compact analytical model and selected Lean-checked statements delimit the claims; full proofs and detailed results are included in the appendices. The licensed artifact retains timings, failures, configurations and reproducible analysis. These observations characterize specified policies and acknowledgment costs; they do not establish equal durability contracts, power-loss survival or hardware-independent rankings.",
+    authors: ["Victor Bona"],
+    publishedAt: "2026-09-25",
+    journal: "Zenodo",
+    doi: "10.5281/zenodo.22950140",
+    tags: [
+      "Redis Streams",
+      "NATS JetStream",
+      "Message Recovery",
+      "Durability",
+      "Empirical Evaluation",
+      "Kubernetes",
+      "Lean 4",
+    ],
+    type: "paper",
+    status: "preprint",
+    pdfUrl: "/papers/redis-jetstream-reliability.pdf",
+    citationKey: "bona2026redisjetstream",
+  },
+  {
     slug: "nidus-whitepaper",
     title:
       "Nidus: Explicit Application Composition for Rust Backend Services",
@@ -33,49 +57,6 @@ export const articles: Article[] = [
     status: "independently published",
     pdfUrl: "/papers/nidus-whitepaper.pdf",
     citationKey: "bona2026nidus",
-  },
-  {
-    slug: "capacity-replay",
-    title:
-      "The Exact Price of Mergeability for Capacity-Parametric Counter Replay",
-    abstract:
-      "An exact characterization of the information needed to summarize saturating counter logs when the replay capacity is chosen later from the integers 0 through N. Final-value queries from zero have 2^N observational equivalence classes and require exactly N logical bits. Supporting the ordered merge of independently summarized chunks raises the necessary state count to N·2^N + 1, attained by a canonical, associative summary. For N ≥ 1, the minimum fixed-width information content is N + floor(log₂ N) + 1 bits: at N = 64, merging costs seven additional bits. The lower bound requires only correctness after one binary merge. Semantic, reachability, counting, and lower-bound results are checked in Lean 4. These are logical information bounds, with no claim of an optimized packed implementation or throughput improvement; historical novelty remains unestablished in light of related work on saturation and hysteresis.",
-    authors: ["Victor Bona"],
-    publishedAt: "2026-09-08",
-    tags: [
-      "Saturating Counters",
-      "Log Compression",
-      "Mergeability",
-      "State Complexity",
-      "Lean 4",
-      "Formal Verification",
-    ],
-    type: "paper",
-    status: "independently published",
-    pdfUrl: "/papers/capacity-replay.pdf",
-    citationKey: "bona2026capacityreplay",
-  },
-  {
-    slug: "bfs-avoidance-frontier",
-    title:
-      "Rigidity of Pattern-Avoiding Breadth-First Reading Words of Increasing Trees",
-    abstract:
-      "Two rigidity theorems for pattern-avoiding breadth-first reading words of increasing trees resolve three conjectures recorded in the OEIS. For 312-avoiding permutations, realizability on an increasing unary-binary tree is equivalent to the binary-heap inequality, with the identity map giving the conjectured bijection. For 231-avoiding words of odd length, unary-binary realizability implies full binary realizability. Both collapses fail for the pattern 321, with explicit minimal counterexamples. The proofs rely on a promotion cascade lemma that holds without a pattern hypothesis. The paper also extends six OEIS sequences by 28 new terms and accompanies the results with self-contained proofs, exhaustive computation, and complete Lean 4 formalizations over genuine inductive trees.",
-    authors: ["Victor Bona"],
-    publishedAt: "2026-07-24",
-    tags: [
-      "Combinatorics",
-      "Pattern Avoidance",
-      "Increasing Trees",
-      "Binary Heaps",
-      "OEIS",
-      "Lean 4",
-      "Formal Verification",
-    ],
-    type: "paper",
-    status: "independently published",
-    pdfUrl: "/papers/bfs-avoidance-frontier.pdf",
-    citationKey: "bona2026bfsavoidance",
   },
   {
     slug: "locus-whitepaper",
