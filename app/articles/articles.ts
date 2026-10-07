@@ -15,6 +15,34 @@ export interface Article {
 
 export const articles: Article[] = [
   {
+    slug: "bfs-avoidance-frontier",
+    title: "Rigidity of Pattern-Avoiding Breadth-First Reading Words of Increasing Trees",
+    abstract: "We study permutations obtained by reading increasing ordered trees in breadth-first order. For every integer k >= 2, a 312-avoiding permutation is realizable on a tree of maximum outdegree k if and only if it is realizable on the complete k-ary heap shape. A 231-avoiding permutation of length congruent to 1 modulo k is realizable with maximum outdegree k if and only if it is realizable on a full k-ary tree. Both proofs use the nondecreasing sequence of BFS parent positions. The binary specializations prove three identities between OEIS sequences, including A245899 = A246747. For 321, heap collapse first fails at length 4, while full binary collapse first fails at odd length 11, with 8095 unary-binary words and 8048 full binary words. The artifact supplies 28 additional sequence entries relative to the recorded baseline, the complete 47-word counterexample set, executable enumeration and verification programs, and Lean 4 proofs. The binary results are formalized on inductive trees; the arbitrary-k arguments are formalized over parent sequences. Exponential growth rate 4 follows from Defant's heap-growth theorem.",
+    authors: ["Victor Bona"],
+    publishedAt: "2026-09-29",
+    journal: "Zenodo",
+    doi: "10.5281/zenodo.23042420",
+    tags: ["enumerative combinatorics", "permutation patterns", "increasing trees", "breadth-first search", "k-ary heaps", "OEIS", "Lean 4", "formal verification", "reproducibility"],
+    type: "paper",
+    status: "preprint",
+    pdfUrl: "/papers/bfs-avoidance-frontier.pdf",
+    citationKey: "bona2026bfsavoidance",
+  },
+  {
+    slug: "trace-sampling-strategies",
+    title: "Trace Sampling at the Collector Boundary: Costs and Diagnostic Evidence",
+    abstract: "Trace retention is an incomplete predictor of observability cost: a sampler changes where work is avoided, how spans are grouped for export, and which evidence remains available. We study these effects in OpenTelemetry Collector Contrib v0.136.0 on one shared node with loopback transport. Five randomized blocks cross sampler placement with export path at 40,000 offered spans/s. Native uniform sampling at nominal 10% retention increases Collector CPU by 3.2% with JSON-only export and reduces it by 24.2% with JSON plus Jaeger. A pre-ingress gate retains identical trace IDs but avoids ingestion and excludes selection work from the Collector endpoint. Retain-all controls show that stateful release changes batching and CPU without discarding traces. A short-timeout CPU reduction at 250 spans/s disappears at 5,000 spans/s, where tail increases CPU at both tested timeouts. A separate SDK comparison, load sweep, and delivery probes distinguish application work, Collector resources, and complete evidence delivery. An illustrative localization task uses measured HTTP timings and ideal offline sampling without an SDK or Collector. Its results show how window size and selection-dependent reference evidence affect a fixed median-change scorer, conditional on the observed corpus. The study supports evaluating sampling at explicit component boundaries, measuring batching and serialization alongside trace counts, and defining the diagnostic evidence objective before selecting a rate. The research archive preserves frozen protocols, raw observations, failed attempts, and executable checks.",
+    authors: ["Victor Bona"],
+    publishedAt: "2026-09-29",
+    journal: "Zenodo",
+    doi: "10.5281/zenodo.23032245",
+    tags: ["distributed tracing", "head sampling", "tail sampling", "diagnostic evidence", "OpenTelemetry", "reproducible evaluation"],
+    type: "paper",
+    status: "preprint",
+    pdfUrl: "/papers/trace-sampling-strategies.pdf",
+    citationKey: "bona2026tracesampling",
+  },
+  {
     slug: "redis-jetstream-reliability",
     title:
       "An Empirical Evaluation of Message Delivery Reliability and Recovery Characteristics in Redis Streams and NATS JetStream",
