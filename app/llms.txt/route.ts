@@ -96,7 +96,7 @@ function formatCompendiumNoteLine(note) {
 }
 
 export async function GET() {
-  const posts = getBlogPosts().sort((a, b) => {
+  const posts = [...getBlogPosts()].sort((a, b) => {
     if (new Date(a.metadata.publishedAt) > new Date(b.metadata.publishedAt)) {
       return -1;
     }

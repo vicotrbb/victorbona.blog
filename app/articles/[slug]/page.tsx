@@ -4,6 +4,7 @@ import { getArticles, getArticleBySlug, toBibtex } from "../articles";
 import { baseUrl } from "app/sitemap";
 import type { Metadata } from "next";
 import { Tag } from "app/components/Tag";
+import { getTags } from "app/blog/utils";
 import { ContactCommand } from "app/components/ContactCommand";
 import { profile } from "app/lib/profile";
 import {
@@ -76,6 +77,7 @@ export default async function ArticlePage(props: ArticlePageProps) {
     notFound();
   }
 
+  const blogTags = new Set(getTags());
   const lit = Boolean(article.doi && article.status === "preprint");
   const bibtex = toBibtex(article, article.pdfUrl && absoluteUrl(article.pdfUrl));
   const jsonLd = [
@@ -154,9 +156,13 @@ export default async function ArticlePage(props: ArticlePageProps) {
                 <span aria-hidden="true">$ </span>ls index-terms/
               </h2>
               <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-base">
-                {article.tags.map((tag) => (
-                  <Tag key={tag} name={tag} />
-                ))}
+                {article.tags.map((tag) =>
+                  blogTags.has(tag.trim().toLowerCase()) ? (
+                    <Tag key={tag} name={tag} />
+                  ) : (
+                    <span key={tag} className="font-mono text-[var(--dim)]">{tag.trim()}</span>
+                  )
+                )}
               </p>
             </>
           )}

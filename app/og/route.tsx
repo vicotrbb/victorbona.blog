@@ -20,15 +20,28 @@ const fonts = Promise.all([
   readFile(path.join(fontDir, "MartianMono-400.ttf")),
 ]);
 
+// Public endpoint: clip free-text params so oversized queries cannot blow up the layout.
+const maxTextLength = 200;
+
+function safeFormatDate(value: string | null) {
+  if (!value) return null;
+  try {
+    return formatDate(value);
+  } catch {
+    return null; // invalid date: omit it rather than 500
+  }
+}
+
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const title = url.searchParams.get("title") || "Victor Bona";
-  const kicker = url.searchParams.get("kicker") || "P100 Home";
-  const publishedAt = url.searchParams.get("publishedAt");
-  const readingTime = url.searchParams.get("readingTime");
-  const summary = url.searchParams.get("summary");
+  const param = (name: string) => url.searchParams.get(name)?.slice(0, maxTextLength) || null;
+  const title = param("title") || "Victor Bona";
+  const kicker = param("kicker") || "P100 Home";
+  const publishedAt = param("publishedAt");
+  const readingTime = param("readingTime");
+  const summary = param("summary");
   const meta = [
-    publishedAt && formatDate(publishedAt),
+    safeFormatDate(publishedAt),
     readingTime && `${readingTime} min read`,
   ].filter(Boolean);
 

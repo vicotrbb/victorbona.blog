@@ -19,7 +19,7 @@ export function BlogPosts({ filter }: BlogPostsProps) {
     );
   }
 
-  const sorted = allBlogs.sort((a, b) => String(b.metadata.publishedAt).localeCompare(String(a.metadata.publishedAt)));
+  const sorted = [...allBlogs].sort((a, b) => String(b.metadata.publishedAt).localeCompare(String(a.metadata.publishedAt)));
 
   if (sorted.length === 0) {
     return <p className="font-mono text-sm text-[var(--dim)]">No posts match this view yet.</p>;

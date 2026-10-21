@@ -16,7 +16,7 @@ const newestFirst = (a: string, b: string) => b.localeCompare(a);
 
 export default function Page() {
   const counts = getSiteCounts();
-  const posts = getBlogPosts().sort((a, b) => newestFirst(a.metadata.publishedAt, b.metadata.publishedAt));
+  const posts = [...getBlogPosts()].sort((a, b) => newestFirst(a.metadata.publishedAt, b.metadata.publishedAt));
   const papers = [...articles].sort((a, b) => newestFirst(a.publishedAt, b.publishedAt));
 
   const rings = layoutRings(

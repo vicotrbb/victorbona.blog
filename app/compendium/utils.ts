@@ -188,12 +188,19 @@ export function readCompendiumNote(
   };
 }
 
+// Content is baked into the image, so parse once in production; dev stays fresh for edits.
+const notesCache = new Map<string, CompendiumNote[]>();
+
 export function getCompendiumNotes(collection?: CompendiumCollectionId) {
+  const key = collection ?? "*";
+  const cached = notesCache.get(key);
+  if (cached) return cached;
+
   const ids = collection
     ? [collection]
     : compendiumCollections.map((item) => item.id);
 
-  return ids
+  const notes = ids
     .flatMap((id) =>
       getMarkdownFiles(id).map((file) => readCompendiumNote(id, file))
     )
@@ -204,6 +211,9 @@ export function getCompendiumNotes(collection?: CompendiumCollectionId) {
 
       return a.order - b.order || a.title.localeCompare(b.title);
     });
+
+  if (process.env.NODE_ENV === "production") notesCache.set(key, notes);
+  return notes;
 }
 
 export function getCompendiumNote(collection: string, slug: string) {

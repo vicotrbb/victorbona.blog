@@ -17,6 +17,22 @@ export function ogImage(title: string, kicker: string) {
   return { url: `${baseUrl}/og?${query}`, width: 1200, height: 630, alt: title };
 }
 
+// Shared by the post's og:image and its BlogPosting JSON-LD so both point at the same card.
+export function blogPostImageUrl(
+  metadata: { title: string; publishedAt: string; summary: string; image?: string },
+  readingTime: number
+) {
+  if (metadata.image) return absoluteUrl(metadata.image);
+  const query = new URLSearchParams({
+    title: metadata.title,
+    publishedAt: metadata.publishedAt,
+    readingTime: readingTime.toString(),
+    summary: metadata.summary,
+    kicker: "P500 Writing",
+  }).toString();
+  return `${baseUrl}/og?${query}`;
+}
+
 export const defaultTwitterImage = defaultOpenGraphImage.url;
 
 type OpenGraphMetadata = NonNullable<Metadata["openGraph"]>;
@@ -161,9 +177,7 @@ export function getBlogPostingJsonLd({
     datePublished: post.metadata.publishedAt,
     dateModified: post.metadata.updatedAt || post.metadata.publishedAt,
     description: post.metadata.summary,
-    image: post.metadata.image
-      ? absoluteUrl(post.metadata.image)
-      : ogImage(post.metadata.title, "P500 Writing").url,
+    image: blogPostImageUrl(post.metadata, readingTime),
     url,
     inLanguage: "en-US",
     author: { "@id": seoIds.person },

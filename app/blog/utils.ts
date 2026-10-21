@@ -52,8 +52,14 @@ function getMDXData(dir) {
   });
 }
 
+// Content is baked into the image, so parse once in production; dev stays fresh for MDX edits.
+let cachedPosts: ReturnType<typeof getMDXData> | undefined;
+
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), "app", "blog", "posts"));
+  if (cachedPosts) return cachedPosts;
+  const posts = getMDXData(path.join(process.cwd(), "app", "blog", "posts"));
+  if (process.env.NODE_ENV === "production") cachedPosts = posts;
+  return posts;
 }
 
 export function getTags(posts = getBlogPosts()) {

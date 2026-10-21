@@ -12,7 +12,7 @@ import { TableOfContents } from "app/components/TableOfContents";
 import { ContactCommand } from "app/components/ContactCommand";
 import { profile } from "app/lib/profile";
 import {
-  absoluteUrl,
+  blogPostImageUrl,
   getBlogPostingJsonLd,
   getBreadcrumbJsonLd,
   withDefaultOpenGraphImage,
@@ -35,16 +35,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   }
 
   const readingTime = getReadingTime(post.content);
-  const ogImageUrl = new URLSearchParams({
-    title: post.metadata.title,
-    publishedAt: post.metadata.publishedAt,
-    readingTime: readingTime.toString(),
-    summary: post.metadata.summary,
-    kicker: "P500 Writing",
-  }).toString();
-  const imageUrl = post.metadata.image
-    ? absoluteUrl(post.metadata.image)
-    : `${baseUrl}/og?${ogImageUrl}`;
+  const imageUrl = blogPostImageUrl(post.metadata, readingTime);
 
   const tags = post.metadata.tags.split(",").map((tag) => tag.trim());
 

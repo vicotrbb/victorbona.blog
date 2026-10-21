@@ -49,8 +49,8 @@ function CustomLink(props) {
   return <a target="_blank" rel="noopener noreferrer" {...props} />;
 }
 
-function RoundedImage(props) {
-  return <Image alt={props.alt} className="rounded-lg" {...props} />;
+function PostImage(props) {
+  return <Image alt={props.alt} {...props} />;
 }
 
 function getTextContent(node: ReactNode): string {
@@ -127,7 +127,7 @@ function createHeading(level: number, counts: Map<string, number>) {
 }
 
 let components = {
-  Image: RoundedImage,
+  Image: PostImage,
   a: CustomLink,
   code: Code,
   pre: Pre,

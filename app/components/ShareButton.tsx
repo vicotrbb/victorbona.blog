@@ -1,7 +1,7 @@
 "use client";
 
 import { track } from "@vercel/analytics/react";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function ShareButton({
   url,
@@ -14,6 +14,21 @@ export function ShareButton({
 }) {
   const [copied, setCopied] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!showDropdown) return;
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && setShowDropdown(false);
+    const onPointer = (e: PointerEvent) => {
+      if (!rootRef.current?.contains(e.target as Node)) setShowDropdown(false);
+    };
+    document.addEventListener("keydown", onKey);
+    document.addEventListener("pointerdown", onPointer);
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.removeEventListener("pointerdown", onPointer);
+    };
+  }, [showDropdown]);
 
   const shareToSocial = (platform: string) => {
     let shareUrl = "";
@@ -72,7 +87,7 @@ export function ShareButton({
     "block w-full px-4 py-2 text-left text-[var(--dim)] transition-colors duration-150 hover:bg-[var(--line)] hover:text-[var(--text)]";
 
   return (
-    <div className="relative">
+    <div ref={rootRef} className="relative">
       <button
         type="button"
         onClick={share}

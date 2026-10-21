@@ -31,7 +31,7 @@ export const metadata = {
 };
 
 export default function Page() {
-  const posts = getBlogPosts()
+  const posts = [...getBlogPosts()]
     .sort(
       (a, b) =>
         new Date(b.metadata.publishedAt).getTime() -
