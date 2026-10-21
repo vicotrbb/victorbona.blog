@@ -142,5 +142,7 @@ assertIncludes("app/llms.txt/route.ts", "absoluteUrl");
 
 assertIncludes("app/rss/route.ts", "<guid isPermaLink=\"true\">");
 assertIncludes("app/rss/route.ts", "escapeXml");
+assertIncludes("app/components/ControlPlane.tsx", "<ol");
+assertIncludes("app/components/ControlPlane.tsx", "prefers-reduced-motion");
 
 console.log("SEO smoke checks passed");
