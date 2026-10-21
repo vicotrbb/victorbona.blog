@@ -69,7 +69,7 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
   ];
 
   return (
-    <section>
+    <section className="w-full">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -77,14 +77,28 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
           __html: JSON.stringify(jsonLd),
         }}
       />
-      <div className="mb-8">
-        <h1 className="text-2xl font-semibold tracking-tighter mb-4">
-          Posts tagged with "{tag}"
-        </h1>
-        <p className="text-neutral-600 dark:text-neutral-400">
-          {posts.length} {posts.length === 1 ? "post" : "posts"} found
-        </p>
-      </div>
+      <header className="border-b border-[var(--line)] pb-8">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+          <h1 className="flex flex-wrap items-baseline gap-x-4 gap-y-2 text-[clamp(2rem,4vw,3rem)] font-semibold leading-none tracking-[-0.03em] text-[var(--text)]">
+            <span className="font-mono text-sm font-normal tracking-normal text-[var(--dim)]">P500</span>
+            <span>
+              Writing <span className="text-[var(--dim)]">/ {tag}</span>
+            </span>
+          </h1>
+          <p className="font-mono text-sm tabular-nums text-[var(--dim)]">
+            <span className="text-[var(--text)]">{posts.length}</span> {posts.length === 1 ? "post" : "posts"}
+          </p>
+        </div>
+        <a
+          href="/blog"
+          className="mt-4 inline-block font-mono text-sm text-[var(--dim)] transition-colors duration-150 hover:text-[var(--text)]"
+        >
+          <span aria-hidden="true">$ </span>cd /blog
+        </a>
+      </header>
+      <h2 className="mb-6 mt-10 font-mono text-sm text-[var(--dim)]">
+        <span aria-hidden="true">$ </span>ls writing/ --tag="{tag}"
+      </h2>
       <BlogPosts filter={{ tag }} />
     </section>
   );

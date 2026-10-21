@@ -1,5 +1,4 @@
 import { BlogPosts } from "app/components/posts";
-import { SectionHeader } from "app/components/SectionHeader";
 import { baseUrl } from "app/sitemap";
 import { getBlogPosts } from "./utils";
 import {
@@ -52,7 +51,7 @@ export default function Page() {
   ];
 
   return (
-    <section className="space-y-5">
+    <section className="w-full">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -60,19 +59,24 @@ export default function Page() {
           __html: JSON.stringify(jsonLd),
         }}
       />
-      <div className="grid gap-3 border-b border-[var(--color-rule)] pb-4 md:grid-cols-[12rem_1fr]">
-        <p className="metadata-type text-[var(--color-accent)]">Field notes</p>
-        <div>
-          <h1 className="display-type text-2xl font-semibold text-[var(--color-foreground)]">
-            Writing archive
+      <header className="border-b border-[var(--line)] pb-8">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+          <h1 className="flex items-baseline gap-4 text-[clamp(2rem,4vw,3rem)] font-semibold leading-none tracking-[-0.03em] text-[var(--text)]">
+            <span className="font-mono text-sm font-normal tracking-normal text-[var(--dim)]">P500</span>
+            Writing
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-            Essays and working notes on software architecture, infrastructure,
-            AI tooling, APIs, and the tradeoffs behind production systems.
+          <p className="font-mono text-sm tabular-nums text-[var(--dim)]">
+            <span className="text-[var(--text)]">{posts.length}</span> posts
           </p>
         </div>
-      </div>
-      <SectionHeader index="ALL" title="All notes" />
+        <p className="mt-4 max-w-[60ch] text-[var(--dim)]">
+          Essays and working notes on software architecture, infrastructure,
+          AI tooling, APIs, and the tradeoffs behind production systems.
+        </p>
+      </header>
+      <h2 className="mb-6 mt-10 font-mono text-sm text-[var(--dim)]">
+        <span aria-hidden="true">$ </span>ls writing/ --sort=newest --group-by=year
+      </h2>
       <BlogPosts />
     </section>
   );

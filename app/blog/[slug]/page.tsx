@@ -1,5 +1,5 @@
 import { notFound } from "next/navigation";
-import { formatDate, getBlogPosts, getReadingTime } from "app/blog/utils";
+import { getBlogPosts, getReadingTime } from "app/blog/utils";
 import { baseUrl } from "app/sitemap";
 import { ShareButton } from "app/components/ShareButton";
 import type { Metadata } from "next";
@@ -8,6 +8,9 @@ import { CustomMDX } from "app/components/mdx";
 import { Tag } from "app/components/Tag";
 import { RelatedPosts } from "app/components/RelatedPosts";
 import { ReadingProgress } from "app/components/ReadingProgress";
+import { TableOfContents } from "app/components/TableOfContents";
+import { ContactCommand } from "app/components/ContactCommand";
+import { profile } from "app/lib/profile";
 import {
   absoluteUrl,
   getBlogPostingJsonLd,
@@ -108,7 +111,7 @@ export default async function Blog(props: { params: Promise<{ slug: string }> })
   ];
 
   return (
-    <section>
+    <section className="w-full">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -116,74 +119,72 @@ export default async function Blog(props: { params: Promise<{ slug: string }> })
           __html: JSON.stringify(jsonLd),
         }}
       />
+      <ReadingProgress />
 
-      <div className="mx-auto max-w-[var(--max-reading)]">
-        <article itemScope itemType="https://schema.org/BlogPosting">
-          <ReadingProgress />
-
-          <header className="mb-8 border-b border-[var(--color-rule)] pb-5">
-            <h1
-              className="display-type text-2xl font-semibold leading-tight text-[var(--color-foreground)] sm:text-3xl lg:text-4xl"
-              itemProp="headline"
-            >
+      {/* Same font size as .prose so 68ch here equals the body's measure. */}
+      <div className="mx-auto max-w-[var(--measure)] text-[clamp(1.0625rem,1rem+0.25vw,1.125rem)]">
+        <article className="relative">
+          <header className="border-b border-[var(--line)] pb-8">
+            <h1 className="text-[clamp(2rem,1.4rem+2.4vw,3rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-balance text-[var(--text)]">
               {post.metadata.title}
             </h1>
-
-            <div className="mt-4 flex flex-col gap-3 text-sm text-[var(--color-muted-foreground)] sm:flex-row sm:items-center sm:justify-between">
-              <div className="flex items-center flex-wrap gap-4">
-                <time
-                  dateTime={post.metadata.publishedAt}
-                  itemProp="datePublished"
-                  className="font-medium"
-                >
-                  {formatDate(post.metadata.publishedAt, true)}
-                </time>
-                <span className="hidden sm:inline">•</span>
-                <span className="hidden sm:inline font-medium">
-                  {readingTime} min read
+            {post.metadata.summary && (
+              <p className="mt-5 text-lg leading-relaxed text-[var(--dim)] sm:text-xl">{post.metadata.summary}</p>
+            )}
+            <div className="mt-6 flex flex-wrap items-baseline gap-x-2 gap-y-1 font-mono text-xs text-[var(--dim)] sm:text-sm">
+              <time dateTime={post.metadata.publishedAt} className="tabular-nums text-[var(--text)]">
+                {String(post.metadata.publishedAt).slice(0, 10)}
+              </time>
+              <span aria-hidden="true">·</span>
+              <span className="tabular-nums">{readingTime} min</span>
+              <span aria-hidden="true">·</span>
+              {tags.map((tag, index) => (
+                <span key={tag}>
+                  <Tag name={tag} />
+                  {index < tags.length - 1 && ","}
                 </span>
-                <span className="hidden sm:inline">•</span>
-              </div>
+              ))}
+              <span aria-hidden="true">·</span>
               <ShareButton
                 url={`${baseUrl}/blog/${post.slug}`}
                 title={post.metadata.title}
                 slug={post.slug}
               />
             </div>
-
-            {post.metadata.summary && (
-              <div className="mb-6 border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
-                <p className="text-base leading-relaxed text-[var(--color-muted-foreground)]">
-                  {post.metadata.summary}
-                </p>
-              </div>
-            )}
           </header>
 
-          <div
-            className="prose prose-neutral dark:prose-invert prose-lg max-w-none"
-            itemProp="articleBody"
-          >
-            <ArticleWrapper>
-              <CustomMDX source={post.content} />
-            </ArticleWrapper>
-          </div>
+          <aside className="absolute left-full top-0 ml-10 hidden h-full w-56 xl:block">
+            <div className="sticky top-24">
+              <TableOfContents />
+            </div>
+          </aside>
 
-          {post.metadata.tags && (
-            <footer className="mt-8 border-t border-[var(--color-border)] pt-5">
-              <h3 className="text-sm font-medium text-neutral-700 dark:text-neutral-300 mb-4">
-                Filed under
-              </h3>
-              <div className="flex flex-wrap gap-2 mb-8">
-                {tags.map((tag) => (
-                  <Tag key={tag} name={tag} />
-                ))}
-              </div>
-
-              <RelatedPosts currentSlug={post.slug} tags={tags} />
-            </footer>
-          )}
+          <ArticleWrapper>
+            <CustomMDX source={post.content} />
+          </ArticleWrapper>
         </article>
+
+        <section
+          aria-labelledby="contact"
+          className="mt-16 border border-[var(--line-strong)] bg-[var(--panel)] px-6 py-10 sm:px-10"
+        >
+          <h2 id="contact" className="max-w-[24ch] text-2xl font-semibold tracking-[-0.02em] text-balance text-[var(--text)] sm:text-3xl">
+            Questions about this post, or building something like it?
+          </h2>
+          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+            <ContactCommand variant="inline" />
+            <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer" className="text-[var(--dim)] transition-colors duration-150 hover:text-[var(--text)]">
+              LinkedIn
+            </a>
+            <a href={profile.links.x} target="_blank" rel="noopener noreferrer" className="text-[var(--dim)] transition-colors duration-150 hover:text-[var(--text)]">
+              X
+            </a>
+          </div>
+        </section>
+
+        <div className="mt-16">
+          <RelatedPosts currentSlug={post.slug} tags={tags} />
+        </div>
       </div>
     </section>
   );

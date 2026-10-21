@@ -100,20 +100,26 @@ function Pre({ children, ...props }: React.HTMLAttributes<HTMLPreElement>) {
   return <pre {...props}>{children}</pre>;
 }
 
-function slugify(str) {
-  return str
-    .toString()
+// Same slug rules as app/compendium so heading ids and TOC links agree.
+function slugifyHeading(value: string) {
+  return value
     .toLowerCase()
     .trim()
     .replace(/\s+/g, "-")
     .replace(/&/g, "-and-")
-    .replace(/[^\w\-]+/g, "")
-    .replace(/\-\-+/g, "-");
+    .replace(/[^\w-]+/g, "")
+    .replace(/--+/g, "-")
+    .replace(/^-+|-+$/g, "");
 }
 
-function createHeading(level) {
-  const Heading = ({ children }) => {
-    let slug = slugify(children);
+function createHeading(level: number, counts: Map<string, number>) {
+  const Heading = ({ children }: { children?: ReactNode }) => {
+    const text = getTextContent(children);
+    const baseId = slugifyHeading(text);
+    const count = counts.get(baseId) ?? 0;
+    counts.set(baseId, count + 1);
+    const slug = count === 0 ? baseId : `${baseId}-${count}`;
+
     return React.createElement(
       `h${level}`,
       { id: slug },
@@ -122,6 +128,7 @@ function createHeading(level) {
           href: `#${slug}`,
           key: `link-${slug}`,
           className: "anchor",
+          "aria-label": `Link to ${text}`,
         }),
       ],
       children
@@ -134,18 +141,18 @@ function createHeading(level) {
 }
 
 let components = {
-  h1: createHeading(1),
-  h2: createHeading(2),
-  h3: createHeading(3),
-  h4: createHeading(4),
-  h5: createHeading(5),
-  h6: createHeading(6),
   Image: RoundedImage,
   a: CustomLink,
   code: Code,
   pre: Pre,
   Table,
 };
+
+// Fresh counts per render so duplicate headings get stable -1, -2 suffixes.
+function headings() {
+  const counts = new Map<string, number>();
+  return Object.fromEntries([1, 2, 3, 4, 5, 6].map((level) => [`h${level}`, createHeading(level, counts)]));
+}
 
 export function CustomMDX(props) {
   return (
@@ -157,7 +164,7 @@ export function CustomMDX(props) {
           rehypePlugins: [rehypeKatex],
         },
       }}
-      components={{ ...components, ...(props.components || {}) }}
+      components={{ ...components, ...headings(), ...(props.components || {}) }}
     />
   );
 }

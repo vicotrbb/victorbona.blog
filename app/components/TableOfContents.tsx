@@ -2,40 +2,53 @@
 
 import React, { useEffect, useState } from "react";
 
+type Heading = { id: string; text: string; level: number };
+
 export function TableOfContents() {
-  const [headings, setHeadings] = useState<
-    Array<{ id: string; text: string; level: number }>
-  >([]);
+  const [headings, setHeadings] = useState<Heading[]>([]);
   const [activeId, setActiveId] = useState("");
 
   useEffect(() => {
-    const elements = Array.from(document.querySelectorAll("h2, h3")).map(
-      (elem) => ({
+    const elements = Array.from(
+      document.querySelectorAll<HTMLElement>("[data-toc-root] h2[id], [data-toc-root] h3[id]")
+    );
+    setHeadings(
+      elements.map((elem) => ({
         id: elem.id,
         text: elem.textContent || "",
         level: Number(elem.tagName.charAt(1)),
-      })
+      }))
     );
-    setHeadings(elements);
+
+    // The heading nearest the top third of the viewport is the active one.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries.find((entry) => entry.isIntersecting);
+        if (visible) setActiveId(visible.target.id);
+      },
+      { rootMargin: "0px 0px -66% 0px" }
+    );
+    elements.forEach((elem) => observer.observe(elem));
+    return () => observer.disconnect();
   }, []);
 
+  if (headings.length < 2) return null;
+
   return (
-    <nav className="hidden lg:block sticky top-8 ml-8 w-64">
-      <h2 className="text-sm font-semibold mb-4 text-neutral-900 dark:text-neutral-100">
-        Table of Contents
-      </h2>
-      <ul className="space-y-2 text-sm">
+    <nav aria-label="Table of contents" className="max-h-[calc(100vh-6rem)] overflow-y-auto">
+      <h2 className="mb-3 font-mono text-xs text-[var(--dim)]">contents</h2>
+      <ul className="border-l border-[var(--line)] text-sm leading-snug">
         {headings.map((heading) => (
-          <li
-            key={heading.id}
-            style={{ paddingLeft: `${(heading.level - 2) * 1}rem` }}
-          >
+          <li key={heading.id}>
             <a
               href={`#${heading.id}`}
-              className={`block py-1 hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+              aria-current={activeId === heading.id ? "location" : undefined}
+              className={`-ml-px block border-l py-1.5 pr-2 transition-colors duration-150 hover:text-[var(--text)] ${
+                heading.level === 3 ? "pl-7" : "pl-4"
+              } ${
                 activeId === heading.id
-                  ? "text-blue-600 dark:text-blue-400"
-                  : "text-neutral-600 dark:text-neutral-400"
+                  ? "border-[var(--lit)] text-[var(--text)]"
+                  : "border-transparent text-[var(--dim)]"
               }`}
             >
               {heading.text}

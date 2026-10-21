@@ -68,40 +68,33 @@ export function ShareButton({
     }
   };
 
+  const itemClass =
+    "block w-full px-4 py-2 text-left text-[var(--dim)] transition-colors duration-150 hover:bg-[var(--line)] hover:text-[var(--text)]";
+
   return (
     <div className="relative">
       <button
+        type="button"
         onClick={share}
-        className="text-sm text-neutral-600 dark:text-neutral-400 hover:text-neutral-800 dark:hover:text-neutral-200 transition-colors"
+        aria-expanded={showDropdown}
+        className="font-mono text-[var(--dim)] transition-colors duration-150 hover:text-[var(--text)]"
       >
-        {copied ? "Copied!" : "Share"}
+        {copied ? "link copied" : "share"}
       </button>
 
       {showDropdown && !navigator.share && (
-        <div className="absolute right-0 mt-2 py-2 w-48 bg-white dark:bg-neutral-800 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
-          <button
-            onClick={() => shareToSocial("twitter")}
-            className="block w-full px-4 py-2 text-sm text-left text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700"
-          >
-            Share on Twitter
+        <div className="absolute right-0 z-20 mt-2 w-44 border border-[var(--line-strong)] bg-[var(--panel)] py-1 font-mono text-xs">
+          <button type="button" onClick={() => shareToSocial("twitter")} className={itemClass}>
+            share on X
           </button>
-          <button
-            onClick={() => shareToSocial("facebook")}
-            className="block w-full px-4 py-2 text-sm text-left text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700"
-          >
-            Share on Facebook
+          <button type="button" onClick={() => shareToSocial("facebook")} className={itemClass}>
+            share on Facebook
           </button>
-          <button
-            onClick={() => shareToSocial("linkedin")}
-            className="block w-full px-4 py-2 text-sm text-left text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700"
-          >
-            Share on LinkedIn
+          <button type="button" onClick={() => shareToSocial("linkedin")} className={itemClass}>
+            share on LinkedIn
           </button>
-          <button
-            onClick={copyToClipboard}
-            className="block w-full px-4 py-2 text-sm text-left text-neutral-700 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-700"
-          >
-            Copy Link
+          <button type="button" onClick={copyToClipboard} className={itemClass}>
+            copy link
           </button>
         </div>
       )}

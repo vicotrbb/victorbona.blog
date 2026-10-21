@@ -19,24 +19,21 @@ export function RelatedPosts({
   if (posts.length === 0) return null;
 
   return (
-    <div className="mt-8 border-t border-[var(--color-border)] pt-5">
-      <h2 className="metadata-type mb-2 text-[var(--color-accent)]">
-        Related field notes
+    <section aria-labelledby="related-posts">
+      <h2 id="related-posts" className="mb-4 font-mono text-sm text-[var(--dim)]">
+        <span aria-hidden="true">$ </span>ls writing/ --related
       </h2>
-      <div className="border border-[var(--color-border)] px-3">
+      <ol className="border-b border-[var(--line)]">
         {posts.map((post) => (
           <WritingRow
             key={post.slug}
             slug={post.slug}
             title={post.metadata.title}
-            summary={post.metadata.summary}
             publishedAt={post.metadata.publishedAt}
             tags={post.metadata.tags}
-            content={post.content}
-            compact
           />
         ))}
-      </div>
-    </div>
+      </ol>
+    </section>
   );
 }

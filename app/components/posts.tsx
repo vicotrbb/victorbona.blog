@@ -2,17 +2,15 @@ import { getBlogPosts } from "app/blog/utils";
 import { WritingRow } from "./WritingRow";
 
 interface BlogPostsProps {
-  limit?: number;
   filter?: {
     tag?: string;
   };
 }
 
-export function BlogPosts({ limit, filter }: BlogPostsProps) {
+export function BlogPosts({ filter }: BlogPostsProps) {
   let allBlogs = getBlogPosts();
 
-  // Apply tag filter if specified
-  if (!!filter?.tag) {
+  if (filter?.tag) {
     allBlogs = allBlogs.filter((post) =>
       post.metadata.tags
         ?.split(",")
@@ -21,36 +19,37 @@ export function BlogPosts({ limit, filter }: BlogPostsProps) {
     );
   }
 
-  const visibleBlogs = allBlogs
-    .sort(
-      (a, b) =>
-        new Date(b.metadata.publishedAt).getTime() -
-        new Date(a.metadata.publishedAt).getTime()
-    )
-    .slice(0, limit);
+  const sorted = allBlogs.sort((a, b) => String(b.metadata.publishedAt).localeCompare(String(a.metadata.publishedAt)));
 
-  if (visibleBlogs.length === 0) {
-    return (
-      <div className="border border-[var(--color-border)] bg-[var(--color-surface)] p-4">
-        <p className="text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-          No writing matches this archive view yet.
-        </p>
-      </div>
-    );
+  if (sorted.length === 0) {
+    return <p className="font-mono text-sm text-[var(--dim)]">No posts match this view yet.</p>;
+  }
+
+  const years = new Map<string, typeof sorted>();
+  for (const post of sorted) {
+    const year = String(post.metadata.publishedAt).slice(0, 4);
+    years.set(year, [...(years.get(year) ?? []), post]);
   }
 
   return (
-    <div className="border border-[var(--color-border)] px-3">
-      {visibleBlogs.map((post) => (
-        <WritingRow
-          key={post.slug}
-          slug={post.slug}
-          title={post.metadata.title}
-          summary={post.metadata.summary}
-          publishedAt={post.metadata.publishedAt}
-          tags={post.metadata.tags}
-          content={post.content}
-        />
+    <div className="space-y-12">
+      {Array.from(years).map(([year, posts]) => (
+        <section key={year} aria-labelledby={`year-${year}`} className="grid gap-x-8 gap-y-3 md:grid-cols-[6rem_minmax(0,1fr)]">
+          <h2 id={`year-${year}`} className="font-mono text-sm tabular-nums text-[var(--dim)] md:pt-3">
+            {year}
+          </h2>
+          <ol className="border-b border-[var(--line)]">
+            {posts.map((post) => (
+              <WritingRow
+                key={post.slug}
+                slug={post.slug}
+                title={post.metadata.title}
+                publishedAt={post.metadata.publishedAt}
+                tags={post.metadata.tags}
+              />
+            ))}
+          </ol>
+        </section>
       ))}
     </div>
   );

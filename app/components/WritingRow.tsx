@@ -1,49 +1,33 @@
 import Link from "next/link";
-import { formatDate, getReadingTime } from "app/blog/utils";
-import { MetadataLine } from "./MetadataLine";
 
 type WritingRowProps = {
   slug: string;
   title: string;
-  summary: string;
   publishedAt: string;
   tags?: string;
-  content?: string;
-  compact?: boolean;
 };
 
-export function WritingRow({
-  slug,
-  title,
-  summary,
-  publishedAt,
-  tags,
-  content,
-  compact = false,
-}: WritingRowProps) {
-  const primaryTag = tags?.split(",")[0]?.trim();
-  const readingTime = content ? `${getReadingTime(content)} min` : undefined;
+export function WritingRow({ slug, title, publishedAt, tags }: WritingRowProps) {
+  const tagList = tags?.split(",").map((t) => t.trim()).filter(Boolean).slice(0, 3) ?? [];
 
   return (
-    <Link
-      href={`/blog/${slug}`}
-      className="group block border-b border-[var(--color-border)] py-3 last:border-b-0"
-    >
-      <article className="grid gap-2 sm:grid-cols-[8.5rem_1fr] sm:gap-4">
-        <MetadataLine
-          items={[formatDate(publishedAt), primaryTag, readingTime]}
-        />
-        <div className="min-w-0">
-          <h3 className="text-base font-semibold leading-snug text-[var(--color-foreground)] group-hover:text-[var(--color-accent)]">
-            {title}
-          </h3>
-          {!compact && (
-            <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-              {summary}
-            </p>
-          )}
-        </div>
-      </article>
-    </Link>
+    <li className="border-t border-[var(--line)]">
+      <Link
+        href={`/blog/${slug}`}
+        className="group grid gap-x-6 gap-y-1 py-3 sm:grid-cols-[6.5rem_minmax(0,1fr)_auto] sm:items-baseline"
+      >
+        <time dateTime={publishedAt} className="font-mono text-xs tabular-nums text-[var(--dim)]">
+          {publishedAt.slice(0, 10)}
+        </time>
+        <span className="text-[var(--text)] decoration-[var(--lit)] decoration-1 underline-offset-4 group-hover:underline">
+          {title}
+        </span>
+        {tagList.length > 0 && (
+          <span className="font-mono text-xs text-[var(--dim)] sm:max-w-[22rem] sm:truncate sm:text-right">
+            {tagList.join(", ")}
+          </span>
+        )}
+      </Link>
+    </li>
   );
 }
