@@ -29,8 +29,8 @@ export const profile: Profile = {
     github: "https://github.com/vicotrbb",
   },
   headshot: "/profile/headshot.webp",
-  // Counted from the first engineering role on LinkedIn (Philips R&D, October 2019).
-  yearsExperience: 7,
+  // Stated by Victor.
+  yearsExperience: 8,
   timeline: [
     { org: "Hopper", role: "Senior Software Engineer", start: "2026-03", end: null, summary: "Senior software engineer at Hopper." },
     { org: "Deel", role: "Software Engineer", start: "2025-01", end: "2026-03", summary: "Built features and APIs across teams for Deel's global payroll and HR platform, and took part in product planning." },
@@ -46,7 +46,7 @@ export const profile: Profile = {
   scale: [
     { label: "base", value: "Blumenau, Brazil" },
     { label: "domains", value: "fintech, payroll, banking-as-a-service" },
-    { label: "education", value: "BS Computer Science, FURB (2018–2022)" },
+    { label: "education", value: "Computer Science, FURB (2018–2022, not completed)" },
     { label: "languages", value: "pt native · en full professional · de elementary" },
   ],
   worksFor: "Hopper",
