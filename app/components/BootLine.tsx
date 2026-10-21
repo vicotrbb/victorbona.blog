@@ -56,7 +56,7 @@ export function BootLine({ systems, papers }: { systems: number; papers: number 
           {shown === text.length ? (
             <>
               {text.slice(0, -"ready".length)}
-              <span className="terminal-glow text-[var(--lit)]">ready</span>
+              <span className="text-[var(--lit)]">ready</span>
             </>
           ) : (
             <>

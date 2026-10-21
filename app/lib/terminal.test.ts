@@ -71,10 +71,17 @@ test("empty, blank and unknown input print help without throwing", () => {
   assert.equal((runCommand("rm -rf /", index) as { lines: string[] }).lines[0], "unknown command: rm");
 });
 
-test("open counts slug and title matches together, listing slugs to disambiguate", () => {
-  const withSystem: IndexEntry[] = [...index, { slug: "nidus", title: "Nidus", href: "/projects", kind: "system" }];
-  const r = runCommand("open nidus", withSystem) as { kind: string; lines: string[] };
+
+test("every slug printed in an ambiguity list opens its own entry", () => {
+  const collision: IndexEntry[] = [
+    { slug: "nidus-whitepaper", title: "Nidus: Explicit Application Composition", href: "/articles/nidus-whitepaper", kind: "paper" },
+    { slug: "nidus", title: "Nidus", href: "/projects", kind: "system" },
+  ];
+  const r = runCommand("open nid", collision) as { kind: string; lines: string[] };
   assert.equal(r.kind, "print");
-  assert.ok(r.lines.some((l) => l.includes("nidus-whitepaper")));
-  assert.equal((runCommand("open nidus-whitepaper", withSystem) as { href: string }).href, "/articles/nidus-whitepaper");
+  for (const e of collision) {
+    assert.ok(r.lines.some((l) => l.includes(` ${e.slug} `)), e.slug);
+    assert.deepEqual(runCommand(`open ${e.slug}`, collision), { kind: "navigate", href: e.href, echo: `→ ${e.title}` });
+  }
+  assert.equal((runCommand("open NIDUS", collision) as { href: string }).href, "/projects");
 });

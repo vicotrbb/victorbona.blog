@@ -29,7 +29,9 @@ function cd(arg: string): TerminalResult {
 function open(query: string, index: IndexEntry[]): TerminalResult {
   if (!query) return { kind: "print", lines: ["open: missing query", "usage: open <slug|title>"] };
   const q = query.toLowerCase();
-  const hits = index.filter((e) => e.slug === query || e.title.toLowerCase().startsWith(q));
+  // A unique exact slug wins, so every slug printed in a candidate list stays reachable.
+  const exact = index.filter((e) => e.slug.toLowerCase() === q);
+  const hits = exact.length === 1 ? exact : index.filter((e) => e.slug.toLowerCase() === q || e.title.toLowerCase().startsWith(q));
   if (hits.length === 1) return { kind: "navigate", href: hits[0].href, echo: `→ ${hits[0].title}` };
   if (!hits.length) return { kind: "print", lines: [`not found: ${query}`] };
   return {
