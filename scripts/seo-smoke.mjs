@@ -70,6 +70,7 @@ assertNotIncludes(
 assertNotIncludes("app/articles/[slug]/page.tsx", "title: `${article.title} | Victor Bona`");
 
 for (const route of [
+  '"/about"',
   '"/projects"',
   '"/articles"',
   '"/compendium"',
@@ -102,6 +103,7 @@ for (const schema of [
   "getBlogPostingJsonLd",
   "getCompendiumNoteJsonLd",
   "getItemListJsonLd",
+  "ProfilePage",
 ]) {
   assertIncludes("app/lib/seo.ts", schema);
 }
@@ -115,6 +117,7 @@ for (const routeFile of [
   "app/blog/[slug]/page.tsx",
   "app/articles/[slug]/page.tsx",
   "app/blog/page.tsx",
+  "app/about/page.tsx",
   "app/projects/page.tsx",
   "app/articles/page.tsx",
   "app/compendium/page.tsx",

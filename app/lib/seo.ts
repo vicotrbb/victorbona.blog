@@ -50,6 +50,19 @@ export function getPersonJsonLd() {
   return personJsonLd(profile, baseUrl);
 }
 
+export function getProfilePageJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    "@id": `${baseUrl}/about#profile`,
+    url: `${baseUrl}/about`,
+    name: `${profile.name} profile`,
+    inLanguage: "en-US",
+    mainEntity: { "@id": seoIds.person },
+    isPartOf: { "@id": seoIds.website },
+  };
+}
+
 export function getWebsiteJsonLd() {
   return {
     "@context": "https://schema.org",
