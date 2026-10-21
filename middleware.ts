@@ -19,6 +19,8 @@ const STATIC_EXTENSIONS = [
   '.woff2',
   '.ttf',
   '.eot',
+  '.json',
+  '.webp',
 ]
 
 // Paths to exclude from page view tracking

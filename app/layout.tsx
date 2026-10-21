@@ -5,7 +5,6 @@ import { Martian_Mono, Schibsted_Grotesk } from "next/font/google";
 import { Navbar } from "./components/nav";
 import { Terminal } from "./components/Terminal";
 import { BootLine } from "./components/BootLine";
-import { getTerminalIndex } from "./lib/terminal-index";
 import { getSiteCounts } from "./lib/counts";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "./components/footer";
@@ -163,7 +162,7 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
-        <Terminal index={getTerminalIndex()} />
+        <Terminal />
         <Analytics />
       </body>
     </html>

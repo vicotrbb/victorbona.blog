@@ -67,7 +67,7 @@ export default function AboutPage() {
   // Identity rows, then real output counts (index 3 starts the counts, under a rule).
   const readout = [
     { key: "node", value: "victor-bona" },
-    { key: "role", value: "leader" },
+    { key: "role", value: `${profile.timeline[0].role} @ ${profile.worksFor}` },
     { key: "uptime", value: profile.yearsExperience !== null ? `${profile.yearsExperience} yrs` : pending },
     ...output.map((fact) => ({
       key: fact.label,
@@ -115,7 +115,7 @@ export default function AboutPage() {
               priority
               className="object-cover [filter:grayscale(1)_contrast(1.1)]"
             />
-            <span aria-hidden="true" className="absolute inset-0 bg-[var(--lit)] mix-blend-multiply" />
+            <span aria-hidden="true" className="absolute inset-0 bg-[var(--lit)] opacity-30 mix-blend-multiply" />
           </div>
         ) : (
           <div className="flex aspect-square w-40 items-center justify-center p-3 text-center border border-dashed border-[var(--line-strong)] bg-[var(--panel)] md:w-48">
@@ -177,29 +177,14 @@ export default function AboutPage() {
 
       <section aria-labelledby="talks" className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-8">
         <div>
-          <SectionCommand id="talks">get talks</SectionCommand>
-          {isPending(profile.talks) ? (
-            <div className="border-t border-[var(--line)] pt-3">
-              <Pending what="talks and appearances" />
-            </div>
-          ) : (
-            <ul>
-              {profile.talks.map((talk) => (
-                <li key={`${talk.title}:${talk.date}`} className="border-t border-[var(--line)] py-3">
-                  {talk.url ? (
-                    <a href={talk.url} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                      {talk.title}
-                    </a>
-                  ) : (
-                    <span className="text-[var(--text)]">{talk.title}</span>
-                  )}
-                  <p className="mt-1 font-mono text-xs tabular-nums text-[var(--dim)]">
-                    {talk.venue} · {talk.date}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          )}
+          <SectionCommand id="talks">get certifications</SectionCommand>
+          <ul>
+            {profile.certifications.map((cert) => (
+              <li key={cert} className="border-t border-[var(--line)] py-3 text-[var(--text)]">
+                {cert}
+              </li>
+            ))}
+          </ul>
         </div>
         <div>
           <h2 className="mb-4 cmd">

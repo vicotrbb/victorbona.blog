@@ -18,7 +18,7 @@ test("one-liner is verbatim", () => {
 });
 
 test("personJsonLd has no nulls and senior identity", () => {
-  const ld = personJsonLd(profile, "https://example.com");
+  const ld = personJsonLd({ ...profile, headshot: null }, "https://example.com");
   const json = JSON.stringify(ld);
   assert.ok(!json.includes("null"));
   assert.ok(json.includes('"jobTitle":"Senior Software Engineer"'));

@@ -12,7 +12,19 @@ function typingInField(el: Element | null) {
   return el instanceof HTMLElement && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
 }
 
-export function Terminal({ index }: { index: IndexEntry[] }) {
+// Fetched on first open, then shared for the rest of the visit.
+let indexPromise: Promise<IndexEntry[]> | null = null;
+function loadIndex(): Promise<IndexEntry[]> {
+  indexPromise ??= fetch("/terminal-index.json")
+    .then((r) => (r.ok ? r.json() : []))
+    .catch(() => {
+      indexPromise = null;
+      return [];
+    });
+  return indexPromise;
+}
+
+export function Terminal() {
   const router = useRouter();
   const dialog = useRef<HTMLDialogElement>(null);
   const input = useRef<HTMLInputElement>(null);
@@ -26,6 +38,7 @@ export function Terminal({ index }: { index: IndexEntry[] }) {
     const d = dialog.current;
     if (d && !d.open) d.showModal();
     input.current?.focus();
+    void loadIndex();
   };
   const close = () => dialog.current?.close();
 
@@ -55,9 +68,9 @@ export function Terminal({ index }: { index: IndexEntry[] }) {
     scroll.current?.scrollTo({ top: scroll.current.scrollHeight });
   }, [lines]);
 
-  const submit = () => {
+  const submit = async () => {
     const cmd = value;
-    const result = runCommand(cmd, index);
+    const result = runCommand(cmd, await loadIndex());
     const echo: Line = { text: cmd, input: true };
     if (cmd.trim()) setHistory((h) => [...h, cmd]);
     setCursor(-1);
