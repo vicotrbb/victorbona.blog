@@ -1,33 +1,70 @@
-import Link from "next/link";
+"use client";
 
-const navItems = [
-  { href: "/blog", label: "Writing" },
-  { href: "/projects", label: "Systems" },
-  { href: "/articles", label: "Papers" },
-  { href: "/compendium", label: "Compendium" },
-];
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useEffect, useRef } from "react";
+import { addresses } from "app/lib/addresses";
+
+const isCurrent = (pathname: string, href: string) =>
+  href === "/" ? pathname === "/" : pathname === href || pathname.startsWith(`${href}/`);
 
 export function Navbar() {
+  const pathname = usePathname() ?? "/";
+  const row = useRef<HTMLUListElement>(null);
+
+  // On narrow screens the address row scrolls; keep the current page in view.
+  useEffect(() => {
+    const el = row.current?.querySelector<HTMLElement>('[aria-current="page"]');
+    if (row.current && el) row.current.scrollLeft = el.offsetLeft - 16;
+  }, [pathname]);
+
   return (
-    <header className="mb-6 border-b border-[var(--color-border)] pb-3">
-      <nav className="flex items-center justify-between gap-4">
+    <header className="border-b border-[var(--line)]">
+      <nav
+        aria-label="Primary"
+        className="mx-auto flex w-full max-w-[var(--max-shell)] flex-wrap items-center gap-x-8 px-4 sm:px-6 lg:px-8"
+      >
         <Link
           href="/"
-          className="display-type text-lg font-semibold text-[var(--color-foreground)]"
+          className="order-1 py-4 font-mono text-sm font-semibold tracking-tight text-[var(--text)] hover:text-[var(--lit)]"
         >
-          Victor Bona
+          victor-bona
         </Link>
-        <div className="flex flex-wrap items-center justify-end gap-1 text-sm">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="rounded-sm px-2 py-1 text-[var(--color-muted-foreground)] transition-colors hover:bg-[var(--color-muted)] hover:text-[var(--color-foreground)]"
-            >
-              {item.label}
-            </Link>
-          ))}
-        </div>
+        <ul ref={row} className="relative order-3 -mx-4 flex w-[calc(100%+2rem)] overflow-x-auto border-t border-[var(--line)] px-4 [scrollbar-width:none] sm:-mx-6 sm:w-[calc(100%+3rem)] sm:px-6 lg:order-2 lg:mx-0 lg:w-auto lg:flex-1 lg:border-t-0 lg:px-0">
+          {addresses.map(({ code, label, href }) => {
+            const current = isCurrent(pathname, href);
+            return (
+              <li key={code} className="shrink-0">
+                <Link
+                  href={href}
+                  aria-current={current ? "page" : undefined}
+                  className={`-mb-px flex items-baseline gap-2 border-b px-3 py-3 text-sm transition-colors duration-150 lg:py-4 ${
+                    current
+                      ? "border-[var(--lit)] text-[var(--text)]"
+                      : "border-transparent text-[var(--dim)] hover:text-[var(--text)]"
+                  }`}
+                >
+                  <span
+                    className={`font-mono text-xs ${
+                      current ? "font-bold text-[var(--lit)]" : "font-normal"
+                    }`}
+                  >
+                    {code}
+                  </span>
+                  <span>{label}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+        <button
+          type="button"
+          data-terminal-open
+          aria-label="Open terminal"
+          className="order-2 ml-auto border border-[var(--line)] px-2 py-1 font-mono text-xs text-[var(--dim)] transition-colors duration-150 hover:border-[var(--line-strong)] hover:text-[var(--text)] lg:order-3"
+        >
+          <kbd>⌘K</kbd>
+        </button>
       </nav>
     </header>
   );

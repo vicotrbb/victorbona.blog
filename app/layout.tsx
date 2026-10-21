@@ -1,7 +1,7 @@
 import "katex/dist/katex.min.css";
 import "./global.css";
 import type { Metadata } from "next";
-import { Atkinson_Hyperlegible, Libre_Caslon_Text } from "next/font/google";
+import { Martian_Mono, Schibsted_Grotesk } from "next/font/google";
 import { Navbar } from "./components/nav";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "./components/footer";
@@ -17,16 +17,15 @@ import {
   withDefaultTwitterImage,
 } from "./lib/seo";
 
-const display = Libre_Caslon_Text({
+const sans = Schibsted_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-display-serif",
+  variable: "--font-sans",
 });
 
-const body = Atkinson_Hyperlegible({
+const mono = Martian_Mono({
   subsets: ["latin"],
-  weight: ["400", "700"],
-  variable: "--font-body-sans",
+  weight: "variable",
+  variable: "--font-mono",
 });
 
 export const metadata: Metadata = {
@@ -112,8 +111,6 @@ export const viewport = {
   initialScale: 1,
 };
 
-const cx = (...classes) => classes.filter(Boolean).join(" ");
-
 export default function RootLayout({
   children,
 }: {
@@ -122,7 +119,7 @@ export default function RootLayout({
   const siteJsonLd = [getPersonJsonLd(), getWebsiteJsonLd(), getBlogJsonLd()];
 
   return (
-    <html lang="en" className={cx(display.variable, body.variable)}>
+    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -144,14 +141,20 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
       </head>
-      <body className="antialiased">
+      <body className="flex min-h-screen flex-col antialiased">
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-[var(--bg)] focus:px-3 focus:py-2 focus:font-mono focus:text-sm focus:text-[var(--lit)]"
+        >
+          Skip to content
+        </a>
         <PageViewTracker />
-        <main className="mx-auto flex min-h-screen w-full max-w-[var(--max-shell)] flex-col px-4 py-4 sm:px-6 lg:px-8">
-          <Navbar />
-          <div className="flex-auto">{children}</div>
-          <Footer />
-          <Analytics />
+        <Navbar />
+        <main id="main" className="w-full flex-auto">
+          {children}
         </main>
+        <Footer />
+        <Analytics />
       </body>
     </html>
   );

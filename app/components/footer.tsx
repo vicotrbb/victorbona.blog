@@ -1,32 +1,28 @@
+import { profile } from "app/lib/profile";
+import { ContactCommand } from "./ContactCommand";
+
 const links = [
+  { href: profile.links.linkedin, label: "LinkedIn", external: true },
+  { href: profile.links.x, label: "X", external: true },
+  { href: profile.links.github, label: "GitHub", external: true },
   { href: "/rss", label: "RSS", external: false },
-  {
-    href: "https://github.com/vicotrbb/victorbona.blog",
-    label: "Source",
-    external: true,
-  },
-  {
-    href: "https://www.linkedin.com/in/vicotrbb/",
-    label: "LinkedIn",
-    external: true,
-  },
-  { href: "https://x.com/BonaVictor", label: "X", external: true },
   { href: "/llms.txt", label: "llms.txt", external: false },
+  { href: "https://github.com/vicotrbb/victorbona.blog", label: "Source", external: true },
 ];
 
 export default function Footer() {
   return (
-    <footer className="mt-10 border-t border-[var(--color-border)] py-5 text-sm text-[var(--color-muted-foreground)]">
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p>Victor Bona / {new Date().getFullYear()} / MIT</p>
-        <ul className="flex flex-wrap gap-x-3 gap-y-1">
+    <footer className="mt-24 border-t border-[var(--line)]">
+      <div className="mx-auto flex w-full max-w-[var(--max-shell)] flex-col gap-6 px-4 py-8 text-sm sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+        <ContactCommand variant="inline" />
+        <ul className="flex flex-wrap gap-x-5 gap-y-2">
           {links.map((link) => (
             <li key={link.href}>
               <a
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
-                className="text-[var(--color-muted-foreground)] hover:text-[var(--color-foreground)]"
+                className="text-[var(--dim)] transition-colors duration-150 hover:text-[var(--text)]"
               >
                 {link.label}
               </a>
@@ -34,6 +30,9 @@ export default function Footer() {
           ))}
         </ul>
       </div>
+      <p className="mx-auto w-full max-w-[var(--max-shell)] px-4 pb-8 font-mono text-xs text-[var(--dim)] sm:px-6 lg:px-8">
+        © {new Date().getFullYear()} Victor Bona · status: <span className="text-[var(--lit)]">Ready</span>
+      </p>
     </footer>
   );
 }
