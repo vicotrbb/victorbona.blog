@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MetadataLine } from "app/components/MetadataLine";
+import { getAnnexLetter } from "../collections";
 import type { CompendiumCollection, CompendiumNote } from "../types";
 
 type ImportReference = {
@@ -11,6 +11,7 @@ type CompendiumImportReport = {
 };
 
 export type CompendiumCollectionSummary = CompendiumCollection & {
+  annex: string;
   noteCount: number;
   readingTime: number;
   referenceCount: number;
@@ -45,6 +46,7 @@ export function getCompendiumCollectionSummary({
 }): CompendiumCollectionSummary {
   return {
     ...collection,
+    annex: getAnnexLetter(collection.id),
     noteCount: notes.length,
     readingTime: notes.reduce((total, note) => total + note.readingTime, 0),
     referenceCount:
@@ -78,30 +80,28 @@ export function CollectionRow({
   collection: CompendiumCollectionSummary;
 }) {
   return (
-    <Link
-      href={collection.route}
-      className="group block border-b border-[var(--color-border)] py-3 last:border-b-0"
-    >
-      <article className="grid gap-2 sm:grid-cols-[11rem_1fr] sm:gap-4">
-        <MetadataLine
-          items={[
-            formatCount(collection.noteCount, "note"),
-            `${collection.readingTime} min`,
-            collection.diagramCount > 0
-              ? formatCount(collection.diagramCount, "diagram")
-              : undefined,
-          ]}
-        />
-        <div className="min-w-0">
-          <h3 className="text-base font-semibold leading-snug text-[var(--color-foreground)] group-hover:text-[var(--color-accent)]">
+    <li className="border-t border-[var(--line)]">
+      <Link href={collection.route} className="group block py-4">
+        <p className="font-mono text-sm">
+          <span className="text-[var(--dim)]">Annex {collection.annex} — </span>
+          <span className="text-[var(--text)] decoration-[var(--lit)] decoration-1 underline-offset-4 group-hover:underline">
             {collection.title}
-          </h3>
-          <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-            {collection.description}
-          </p>
-        </div>
-      </article>
-    </Link>
+          </span>
+          <span className="tabular-nums text-[var(--dim)]">
+            {" "}
+            · {formatCount(collection.noteCount, "note")}
+          </span>
+        </p>
+        <p className="mt-1.5 line-clamp-2 max-w-[68ch] text-sm leading-relaxed text-[var(--dim)]">
+          {collection.description}
+        </p>
+        <p className="mt-1.5 font-mono text-xs tabular-nums text-[var(--dim)]">
+          {collection.readingTime} min
+          {collection.diagramCount > 0 &&
+            ` · ${formatCount(collection.diagramCount, "diagram")}`}
+        </p>
+      </Link>
+    </li>
   );
 }
 
@@ -111,50 +111,49 @@ export function CollectionRows({
   collections: CompendiumCollectionSummary[];
 }) {
   return (
-    <div className="border border-[var(--color-border)] px-3">
+    <ul className="border-b border-[var(--line)]">
       {collections.map((collection) => (
         <CollectionRow key={collection.id} collection={collection} />
       ))}
-    </div>
+    </ul>
   );
 }
 
 export function NoteRow({ note }: { note: CompendiumNote }) {
   return (
-    <Link
-      href={`/compendium/${note.collection}/${note.slug}`}
-      className="group block border-b border-[var(--color-border)] py-3 outline-none transition-colors last:border-b-0 hover:bg-[var(--color-surface)] focus-visible:bg-[var(--color-surface)] focus-visible:ring-2 focus-visible:ring-[var(--color-accent)] focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--color-background)]"
-    >
-      <div className="grid gap-2 sm:grid-cols-[11rem_1fr] sm:gap-4">
-        <MetadataLine
-          items={[
-            `No. ${note.order + 1}`,
-            `${note.readingTime} min`,
-            note.diagramCount > 0
-              ? formatCount(note.diagramCount, "diagram")
-              : undefined,
-          ]}
-        />
-        <div className="min-w-0">
-          <h3 className="text-base font-semibold leading-snug text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] group-focus-visible:text-[var(--color-accent)]">
+    <li className="border-t border-[var(--line)]">
+      <Link
+        href={`/compendium/${note.collection}/${note.slug}`}
+        className="group grid gap-x-6 gap-y-1 py-3 sm:grid-cols-[4rem_minmax(0,1fr)_auto] sm:items-baseline"
+      >
+        <span className="font-mono text-xs tabular-nums text-[var(--dim)]">
+          No. {note.order + 1}
+        </span>
+        <span className="min-w-0">
+          <span className="block text-[var(--text)] decoration-[var(--lit)] decoration-1 underline-offset-4 group-hover:underline group-focus-visible:underline">
             {note.title}
-          </h3>
-          <p className="mt-1 line-clamp-2 text-sm leading-relaxed text-[var(--color-muted-foreground)]">
+          </span>
+          <span className="mt-1 line-clamp-2 block text-sm leading-relaxed text-[var(--dim)]">
             {note.excerpt}
-          </p>
-        </div>
-      </div>
-    </Link>
+          </span>
+        </span>
+        <span className="font-mono text-xs tabular-nums text-[var(--dim)] sm:text-right">
+          {note.readingTime} min
+          {note.diagramCount > 0 &&
+            ` · ${formatCount(note.diagramCount, "diagram")}`}
+        </span>
+      </Link>
+    </li>
   );
 }
 
 export function NoteRows({ notes }: { notes: CompendiumNote[] }) {
   return (
-    <div className="border border-[var(--color-border)] px-3">
+    <ul className="border-b border-[var(--line)]">
       {notes.map((note) => (
         <NoteRow key={`${note.collection}-${note.slug}`} note={note} />
       ))}
-    </div>
+    </ul>
   );
 }
 
@@ -166,32 +165,21 @@ export function CompendiumStats({
     "noteCount" | "readingTime" | "referenceCount" | "diagramCount"
   >;
 }) {
+  const stats = [
+    ["notes", summary.noteCount],
+    ["minutes", summary.readingTime],
+    ["references", summary.referenceCount],
+    ["diagrams", summary.diagramCount],
+  ] as const;
+
   return (
-    <dl className="grid gap-3 border border-[var(--color-border)] bg-[var(--color-surface)] p-3 sm:grid-cols-4">
-      <div>
-        <dt className="metadata-type text-[var(--color-accent)]">Notes</dt>
-        <dd className="mt-1 text-sm font-semibold text-[var(--color-foreground)]">
-          {summary.noteCount}
-        </dd>
-      </div>
-      <div>
-        <dt className="metadata-type text-[var(--color-accent)]">Reading</dt>
-        <dd className="mt-1 text-sm font-semibold text-[var(--color-foreground)]">
-          {summary.readingTime} min
-        </dd>
-      </div>
-      <div>
-        <dt className="metadata-type text-[var(--color-accent)]">References</dt>
-        <dd className="mt-1 text-sm font-semibold text-[var(--color-foreground)]">
-          {summary.referenceCount}
-        </dd>
-      </div>
-      <div>
-        <dt className="metadata-type text-[var(--color-accent)]">Diagrams</dt>
-        <dd className="mt-1 text-sm font-semibold text-[var(--color-foreground)]">
-          {summary.diagramCount}
-        </dd>
-      </div>
+    <dl className="flex flex-wrap gap-x-8 gap-y-2 border border-[var(--line)] bg-[var(--panel)] px-4 py-3 font-mono text-sm">
+      {stats.map(([label, value]) => (
+        <div key={label} className="flex items-baseline gap-2">
+          <dd className="tabular-nums text-[var(--text)]">{value}</dd>
+          <dt className="text-[var(--dim)]">{label}</dt>
+        </div>
+      ))}
     </dl>
   );
 }

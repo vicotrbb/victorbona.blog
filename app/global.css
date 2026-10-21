@@ -166,6 +166,11 @@ table {
   margin-inline: 0;
 }
 
+/* Text keeps the reading measure; tables, code and diagrams use the full column. */
+.compendium-content > :where(p, ul, ol, blockquote, h1, h2, h3, h4, h5, h6) {
+  max-width: var(--measure);
+}
+
 .prose > :first-child {
   /* Override removing top margin, causing layout shift */
   margin-top: 1.25em !important;
@@ -400,9 +405,8 @@ table {
   max-width: 100%;
   min-width: 0;
   overflow-x: auto;
-  color-scheme: light;
-  border: 1px solid #cbd5e1;
-  background: #f8fafc;
+  border: 1px solid var(--line);
+  background: var(--panel);
   padding: 1rem;
 }
 
@@ -417,40 +421,6 @@ table {
   max-width: 100%;
   height: auto;
   min-height: 1rem;
-  color: #111827;
-}
-
-.compendium-mermaid svg text,
-.compendium-mermaid svg .label,
-.compendium-mermaid svg .nodeLabel,
-.compendium-mermaid svg .edgeLabel,
-.compendium-mermaid svg .cluster-label,
-.compendium-mermaid svg .messageText,
-.compendium-mermaid svg text.actor,
-.compendium-mermaid svg foreignObject,
-.compendium-mermaid svg foreignObject * {
-  fill: #111827 !important;
-  color: #111827 !important;
-}
-
-.compendium-mermaid svg rect.actor {
-  fill: #f8fafc !important;
-  stroke: #475569 !important;
-}
-
-.compendium-mermaid svg .actor-line {
-  stroke: #475569 !important;
-}
-
-.compendium-mermaid svg .edgeLabel,
-.compendium-mermaid svg .labelBkg {
-  background-color: #f8fafc !important;
-}
-
-.compendium-mermaid svg .flowchart-link,
-.compendium-mermaid svg .edgePath path,
-.compendium-mermaid svg .marker {
-  stroke: #334155 !important;
 }
 
 .compendium-mermaid__loading {

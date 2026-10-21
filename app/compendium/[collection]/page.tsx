@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
-import { SectionHeader } from "app/components/SectionHeader";
 import {
   getBreadcrumbJsonLd,
   getItemListJsonLd,
@@ -136,7 +136,7 @@ export default async function CompendiumCollectionPage(
   ];
 
   return (
-    <section className="space-y-5">
+    <section className="w-full">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -144,23 +144,33 @@ export default async function CompendiumCollectionPage(
           __html: JSON.stringify(jsonLd),
         }}
       />
-      <div className="grid gap-3 border-b border-[var(--color-rule)] pb-4 md:grid-cols-[12rem_1fr]">
-        <p className="metadata-type text-[var(--color-accent)]">
-          Compendium
-        </p>
-        <div>
-          <h1 className="display-type text-2xl font-semibold text-[var(--color-foreground)]">
+      <header className="border-b border-[var(--line)] pb-8">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+          <h1 className="flex items-baseline gap-4 text-[clamp(2rem,4vw,3rem)] font-semibold leading-none tracking-[-0.03em] text-[var(--text)]">
+            <Link
+              href="/compendium"
+              className="font-mono text-sm font-normal tracking-normal text-[var(--dim)] hover:text-[var(--text)]"
+            >
+              P600
+            </Link>
             {collection.title}
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-            {collection.description}
+          <p className="font-mono text-sm tabular-nums text-[var(--dim)]">
+            Annex {summary.annex} · <span className="text-[var(--text)]">{summary.noteCount}</span> notes
           </p>
         </div>
+        <p className="mt-4 max-w-[60ch] text-[var(--dim)]">
+          {collection.description}
+        </p>
+      </header>
+      <div className="mt-8">
+        <CompendiumStats summary={summary} />
       </div>
-      <CompendiumStats summary={summary} />
       {studyIndex && (
-        <section className="space-y-4">
-          <SectionHeader index="INDEX" title="Study map" />
+        <section className="mt-10">
+          <h2 className="mb-6 font-mono text-sm text-[var(--dim)]">
+            <span aria-hidden="true">$ </span>cat study-map
+          </h2>
           <div className="prose compendium-content">
             <CompendiumMdx
               source={withoutLeadingTitle(studyIndex.content, studyIndex.title)}
@@ -168,7 +178,9 @@ export default async function CompendiumCollectionPage(
           </div>
         </section>
       )}
-      <SectionHeader index="NOTES" title="Ordered notes" />
+      <h2 className="mb-6 mt-10 font-mono text-sm text-[var(--dim)]">
+        <span aria-hidden="true">$ </span>ls {collection.id}/ --order=reading
+      </h2>
       <NoteRows notes={notes} />
     </section>
   );

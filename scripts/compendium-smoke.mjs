@@ -106,17 +106,13 @@ assertIncludes("app/compendium/page.tsx", "Linux systems engineering");
 assertIncludes("app/compendium/page.tsx", "Node.js V8 runtime");
 assertIncludes("app/compendium/page.tsx", "CPU LLM inference");
 assertIncludes("app/compendium/page.tsx", "Rust");
-assertIncludes("app/global.css", "color-scheme: light;");
-assertIncludes("app/global.css", ".compendium-mermaid svg text");
-assertIncludes("app/global.css", ".compendium-mermaid svg foreignObject");
-assertIncludes("app/global.css", "fill: #111827 !important;");
-assertIncludes("app/global.css", "color: #111827 !important;");
-assertIncludes("app/compendium/components/MermaidDiagram.tsx", "darkMode: false");
-assertIncludes("app/compendium/components/MermaidDiagram.tsx", "textColor: \"#111827\"");
-assertIncludes(
-  "app/compendium/components/MermaidDiagram.tsx",
-  "edgeLabelBackground: \"#f8fafc\""
-);
+assertNotIncludes("app/global.css", "color-scheme: light;");
+assertNotIncludes("app/global.css", "#111827");
+assertIncludes("app/compendium/components/MermaidDiagram.tsx", 'theme: "base"');
+assertIncludes("app/compendium/components/MermaidDiagram.tsx", 'background: "#08110c"');
+assertIncludes("app/compendium/components/MermaidDiagram.tsx", 'primaryTextColor: "#d8e8de"');
+assertIncludes("app/compendium/components/MermaidDiagram.tsx", 'lineColor: "#1f5c3a"');
+assertIncludes("app/compendium/components/MermaidDiagram.tsx", 'primaryBorderColor: "#4dff8f"');
 assertIncludes(
   "app/compendium/[collection]/page.tsx",
   'collectionId === "kubernetes"'

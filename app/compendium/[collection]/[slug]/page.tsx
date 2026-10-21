@@ -9,6 +9,7 @@ import {
 import { baseUrl } from "app/sitemap";
 import {
   compendiumCollections,
+  getAnnexLetter,
   getCompendiumCollection,
 } from "../../collections";
 import { CompendiumMdx } from "../../components/CompendiumMdx";
@@ -119,6 +120,7 @@ export default async function CompendiumNotePage(
       <CompendiumShell
         note={note}
         collectionTitle={collection.title}
+        annex={getAnnexLetter(collection.id)}
         collectionNotes={collectionNotes}
         relatedNotes={relatedNotes}
         previous={adjacent.previous}

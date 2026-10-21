@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { ContactCommand } from "app/components/ContactCommand";
 import type { CompendiumNote } from "../types";
 
 function noteHref(note: CompendiumNote) {
@@ -22,10 +23,10 @@ function NoteLink({
       href={noteHref(note)}
       aria-current={active ? "page" : undefined}
       className={[
-        "block border-l-2 py-1.5 pl-3 leading-snug outline-none transition-colors",
+        "block border-l py-1.5 pl-3 leading-snug outline-none transition-colors focus-visible:border-[var(--lit)] focus-visible:text-[var(--text)]",
         active
-          ? "border-[var(--color-accent)] font-semibold text-[var(--color-foreground)]"
-          : "border-transparent text-[var(--color-muted-foreground)] hover:border-[var(--color-border)] hover:text-[var(--color-foreground)] focus-visible:border-[var(--color-accent)] focus-visible:text-[var(--color-foreground)]",
+          ? "border-[var(--lit)] text-[var(--text)]"
+          : "border-[var(--line)] text-[var(--dim)] hover:border-[var(--line-strong)] hover:text-[var(--text)]",
       ].join(" ")}
     >
       {note.title}
@@ -36,6 +37,7 @@ function NoteLink({
 export function CompendiumShell({
   note,
   collectionTitle,
+  annex,
   collectionNotes,
   relatedNotes,
   previous,
@@ -44,6 +46,7 @@ export function CompendiumShell({
 }: {
   note: CompendiumNote;
   collectionTitle: string;
+  annex: string;
   collectionNotes: CompendiumNote[];
   relatedNotes: CompendiumNote[];
   previous?: CompendiumNote;
@@ -53,9 +56,11 @@ export function CompendiumShell({
   return (
     <article className="compendium-grid">
       <aside className="compendium-sidebar">
-        <p className="metadata-type text-[var(--color-accent)]">
-          {collectionTitle}
+        <p className="font-mono text-xs text-[var(--dim)]">
+          <Link href="/compendium" className="hover:text-[var(--text)]">P600</Link>
+          {" / "}Annex {annex}
         </p>
+        <p className="mt-1 font-semibold text-[var(--text)]">{collectionTitle}</p>
         <nav
           aria-label={`${collectionTitle} notes`}
           className="mt-3 grid gap-1 text-sm"
@@ -71,51 +76,41 @@ export function CompendiumShell({
       </aside>
 
       <div className="min-w-0">
-        <header className="border-b border-[var(--color-rule)] pb-5">
-          <p className="metadata-type text-[var(--color-accent)]">
-            Compendium note
-          </p>
-          <h1 className="display-type mt-2 text-3xl font-semibold leading-tight text-[var(--color-foreground)] md:text-4xl">
+        <header className="border-b border-[var(--line)] pb-6">
+          <h1 className="max-w-[var(--measure)] text-[clamp(2rem,1.4rem+2.4vw,3rem)] font-semibold leading-[1.08] tracking-[-0.03em] text-balance text-[var(--text)]">
             {note.title}
           </h1>
-          <dl className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm text-[var(--color-muted-foreground)]">
-            <div className="flex gap-1">
-              <dt className="sr-only">Reading time</dt>
-              <dd>{note.readingTime} min read</dd>
-            </div>
-            <div className="flex gap-1">
-              <dt className="sr-only">Word count</dt>
-              <dd>{formatCount(note.wordCount, "word")}</dd>
-            </div>
-            <div className="flex gap-1">
-              <dt className="sr-only">Diagram count</dt>
-              <dd>{formatCount(note.diagramCount, "diagram")}</dd>
-            </div>
-          </dl>
-          <p className="mt-3 text-xs leading-relaxed text-[var(--color-muted-foreground)]">
+          <p className="mt-5 flex flex-wrap gap-x-2 gap-y-1 font-mono text-xs tabular-nums text-[var(--dim)] sm:text-sm">
+            <span>{note.readingTime} min</span>
+            <span aria-hidden="true">·</span>
+            <span>{formatCount(note.wordCount, "word")}</span>
+            <span aria-hidden="true">·</span>
+            <span>{formatCount(note.diagramCount, "diagram")}</span>
+          </p>
+          <p className="mt-3 text-xs leading-relaxed text-[var(--dim)]">
             Source: Victor Bona&apos;s Obsidian Compendium snapshot,{" "}
             <span className="break-words">{note.sourcePath}</span>.
           </p>
         </header>
 
-        <div className="prose compendium-content mt-6">{children}</div>
+        <div className="prose compendium-content mt-8">{children}</div>
 
         {(relatedNotes.length > 0 || previous || next) && (
-          <footer className="mt-10 border-t border-[var(--color-rule)] pt-5">
+          <footer className="mt-10 border-t border-[var(--line)] pt-6">
             {relatedNotes.length > 0 && (
               <section aria-labelledby="compendium-related-notes">
                 <h2
                   id="compendium-related-notes"
-                  className="metadata-type text-[var(--color-muted-foreground)]"
+                  className="font-mono text-sm text-[var(--dim)]"
                 >
-                  Related notes
+                  <span aria-hidden="true">$ </span>ls related/
                 </h2>
                 <div className="mt-3 flex flex-wrap gap-2">
                   {relatedNotes.map((related) => (
                     <Link
                       key={`${related.collection}-${related.slug}`}
                       href={noteHref(related)}
-                      className="border border-[var(--color-border)] px-2 py-1 text-sm text-[var(--color-muted-foreground)] transition-colors hover:border-[var(--color-accent)] hover:text-[var(--color-foreground)] focus-visible:border-[var(--color-accent)] focus-visible:text-[var(--color-foreground)]"
+                      className="border border-[var(--line)] px-2 py-1 text-sm text-[var(--dim)] transition-colors hover:border-[var(--line-strong)] hover:text-[var(--text)] focus-visible:border-[var(--lit)] focus-visible:text-[var(--text)]"
                     >
                       {related.title}
                     </Link>
@@ -127,15 +122,15 @@ export function CompendiumShell({
             {(previous || next) && (
               <nav
                 aria-label="Adjacent Compendium notes"
-                className="mt-6 grid gap-3 border-t border-[var(--color-border)] pt-5 text-sm md:grid-cols-2"
+                className="mt-6 grid gap-3 border-t border-[var(--line)] pt-5 text-sm md:grid-cols-2"
               >
                 <div>
                   {previous && (
                     <Link
                       href={noteHref(previous)}
-                      className="group block text-[var(--color-muted-foreground)] transition-colors hover:text-[var(--color-foreground)] focus-visible:text-[var(--color-foreground)]"
+                      className="group block text-[var(--dim)] transition-colors hover:text-[var(--text)] focus-visible:text-[var(--text)]"
                     >
-                      <span className="metadata-type block text-[var(--color-accent)]">
+                      <span className="block font-mono text-xs text-[var(--dim)]">
                         Previous
                       </span>
                       <span className="mt-1 block leading-snug">
@@ -148,9 +143,9 @@ export function CompendiumShell({
                   {next && (
                     <Link
                       href={noteHref(next)}
-                      className="group block text-[var(--color-muted-foreground)] transition-colors hover:text-[var(--color-foreground)] focus-visible:text-[var(--color-foreground)]"
+                      className="group block text-[var(--dim)] transition-colors hover:text-[var(--text)] focus-visible:text-[var(--text)]"
                     >
-                      <span className="metadata-type block text-[var(--color-accent)]">
+                      <span className="block font-mono text-xs text-[var(--dim)]">
                         Next
                       </span>
                       <span className="mt-1 block leading-snug">
@@ -163,8 +158,14 @@ export function CompendiumShell({
             )}
           </footer>
         )}
-      </div>
 
+        <section
+          aria-label="Contact"
+          className="mt-12 flex flex-wrap items-center gap-x-6 gap-y-3 border border-[var(--line-strong)] bg-[var(--panel)] px-6 py-5 text-sm"
+        >
+          <ContactCommand variant="inline" />
+        </section>
+      </div>
     </article>
   );
 }

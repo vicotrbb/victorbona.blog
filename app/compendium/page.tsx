@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { SectionHeader } from "app/components/SectionHeader";
 import {
   getBreadcrumbJsonLd,
   getItemListJsonLd,
@@ -61,7 +60,7 @@ export default function CompendiumPage() {
   ];
 
   return (
-    <section className="space-y-5">
+    <section className="w-full">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -69,22 +68,26 @@ export default function CompendiumPage() {
           __html: JSON.stringify(jsonLd),
         }}
       />
-      <div className="grid gap-3 border-b border-[var(--color-rule)] pb-4 md:grid-cols-[12rem_1fr]">
-        <p className="metadata-type text-[var(--color-accent)]">
-          Technical index
-        </p>
-        <div>
-          <h1 className="display-type text-2xl font-semibold text-[var(--color-foreground)]">
+      <header className="border-b border-[var(--line)] pb-8">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+          <h1 className="flex items-baseline gap-4 text-[clamp(2rem,4vw,3rem)] font-semibold leading-none tracking-[-0.03em] text-[var(--text)]">
+            <span className="font-mono text-sm font-normal tracking-normal text-[var(--dim)]">P600</span>
             Compendium
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-            Durable notes organized as an archive: software engineering, data
-            structures, design patterns, Kubernetes, Linux systems engineering,
-            Node.js V8 runtime engineering, Rust, and CPU LLM inference.
+          <p className="font-mono text-sm tabular-nums text-[var(--dim)]">
+            <span className="text-[var(--text)]">{notes.length}</span> notes ·{" "}
+            <span className="text-[var(--text)]">{collections.length}</span> annexes
           </p>
         </div>
-      </div>
-      <SectionHeader index="COLLECTIONS" title="Collections" />
+        <p className="mt-4 max-w-[60ch] text-[var(--dim)]">
+          Durable notes organized as an archive: software engineering, data
+          structures, design patterns, Kubernetes, Linux systems engineering,
+          Node.js V8 runtime engineering, Rust, and CPU LLM inference.
+        </p>
+      </header>
+      <h2 className="mb-6 mt-10 font-mono text-sm text-[var(--dim)]">
+        <span aria-hidden="true">$ </span>ls compendium/ --annex
+      </h2>
       <CollectionRows collections={collections} />
     </section>
   );

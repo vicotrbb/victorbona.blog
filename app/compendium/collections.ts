@@ -68,3 +68,10 @@ export function isCompendiumCollectionId(
 export function getCompendiumCollection(id: string) {
   return compendiumCollections.find((collection) => collection.id === id);
 }
+
+// Annex letters follow collection order: A, B, C...
+export function getAnnexLetter(id: CompendiumCollectionId) {
+  return String.fromCharCode(
+    65 + compendiumCollections.findIndex((collection) => collection.id === id)
+  );
+}
