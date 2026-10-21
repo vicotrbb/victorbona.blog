@@ -156,7 +156,10 @@ export default function RootLayout({
         <PageViewTracker />
         <Navbar />
         <BootLine systems={counts.systems} papers={counts.papers} />
-        <main id="main" className="w-full flex-auto">
+        <main
+          id="main"
+          className="mx-auto w-full max-w-[var(--max-shell)] flex-auto px-4 pt-8 sm:px-6 lg:px-8"
+        >
           {children}
         </main>
         <Footer />

@@ -1,19 +1,5 @@
 @import 'tailwindcss';
 
-@theme {
-  --animate-fade-in: fade-in 0.3s ease-out forwards;
-  @keyframes fade-in {
-    0% {
-      opacity: 0;
-      transform: translateY(10px) translateX(-50%);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) translateX(-50%);
-    }
-  }
-}
-
 :root {
   color-scheme: dark;
 
@@ -42,48 +28,6 @@
   --sh-entity: #6fd8c8;
 }
 
-/* Transitional aliases for pages not yet restyled; removed in Task 11. */
-@custom-variant dark (&);
-:root {
-  --color-background: var(--bg);
-  --color-foreground: var(--text);
-  --color-muted: var(--panel);
-  --color-muted-foreground: var(--dim);
-  --color-border: var(--line);
-  --color-rule: var(--line-strong);
-  --color-accent: var(--lit);
-  --color-accent-foreground: var(--bg);
-  --color-surface: var(--panel);
-  --color-surface-strong: var(--line);
-  --max-reading: var(--measure);
-}
-@layer base {
-  :where(#main > *) {
-    width: 100%;
-    max-width: var(--max-shell);
-    margin-inline: auto;
-    padding: 2rem 1rem 0;
-  }
-  @media (min-width: 40rem) {
-    :where(#main > *) { padding-inline: 1.5rem; }
-  }
-  @media (min-width: 64rem) {
-    :where(#main > *) { padding-inline: 2rem; }
-  }
-}
-.display-type {
-  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-.metadata-type {
-  font-family: var(--font-mono), ui-monospace, monospace;
-  font-size: 0.6875rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-/* End transitional aliases. */
-
 html {
   min-width: 320px;
   background: var(--bg);
@@ -93,12 +37,6 @@ html {
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .animate-fade-in {
-    animation: none;
   }
 }
 
@@ -145,10 +83,6 @@ table {
   max-width: fit-content;
   overflow-x: auto;
   white-space: nowrap;
-}
-
-.title {
-  text-wrap: balance;
 }
 
 /* Reading column */
