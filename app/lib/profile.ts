@@ -13,7 +13,6 @@ type Profile = {
   timeline: TimelineEntry[];
   talks: Talk[];
   scale: ScaleFact[];
-  certifications: string[];
   worksFor: string;
   alumniOf: string;
   location: string;
@@ -49,13 +48,6 @@ export const profile: Profile = {
     { label: "domains", value: "fintech, payroll, banking-as-a-service" },
     { label: "education", value: "BS Computer Science, FURB (2018–2022)" },
     { label: "languages", value: "pt native · en full professional · de elementary" },
-  ],
-  certifications: [
-    "Microsoft Azure",
-    "Cloud Services Practices Using Node",
-    "Microservices Architecture - The Complete Guide",
-    "Python for Data Science and AI",
-    "Python para Finanças: Investimentos & Análise de Dados",
   ],
   worksFor: "Hopper",
   alumniOf: "FURB - Universidade de Blumenau",

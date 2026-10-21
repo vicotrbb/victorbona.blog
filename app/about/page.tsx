@@ -11,6 +11,7 @@ import {
   withDefaultTwitterImage,
 } from "app/lib/seo";
 import { ContactCommand } from "app/components/ContactCommand";
+import { articles } from "app/articles/articles";
 
 const description = `${profile.name}: ${profile.oneLiner}.`;
 
@@ -177,13 +178,23 @@ export default function AboutPage() {
 
       <section aria-labelledby="talks" className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-8">
         <div>
-          <SectionCommand id="talks">get certifications</SectionCommand>
+          <SectionCommand id="talks">get papers --with-doi</SectionCommand>
           <ul>
-            {profile.certifications.map((cert) => (
-              <li key={cert} className="border-t border-[var(--line)] py-3 text-[var(--text)]">
-                {cert}
-              </li>
-            ))}
+            {articles
+              .filter((a) => a.doi)
+              .map((a) => (
+                <li key={a.slug} className="border-t border-[var(--line)] py-3">
+                  <a href={`/articles/${a.slug}`} className={linkClass}>
+                    {a.title}
+                  </a>
+                  <p className="mt-1 font-mono text-xs tabular-nums text-[var(--dim)]">
+                    {a.publishedAt.slice(0, 4)} ·{" "}
+                    <a href={`https://doi.org/${a.doi}`} target="_blank" rel="noopener noreferrer" className="hover:text-[var(--text)] hover:underline">
+                      doi:{a.doi}
+                    </a>
+                  </p>
+                </li>
+              ))}
           </ul>
         </div>
         <div>
