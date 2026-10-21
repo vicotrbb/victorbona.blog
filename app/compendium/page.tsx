@@ -88,7 +88,7 @@ export default function CompendiumPage() {
           Node.js V8 runtime engineering, Rust, and CPU LLM inference.
         </p>
       </header>
-      <h2 className="mb-6 mt-10 font-mono text-sm text-[var(--dim)]">
+      <h2 className="mb-6 mt-10 cmd">
         <span aria-hidden="true">$ </span>ls compendium/ --annex
       </h2>
       <CollectionRows collections={collections} />

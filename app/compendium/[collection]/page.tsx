@@ -171,7 +171,7 @@ export default async function CompendiumCollectionPage(
       </div>
       {studyIndex && (
         <section className="mt-10">
-          <h2 className="mb-6 font-mono text-sm text-[var(--dim)]">
+          <h2 className="mb-6 cmd">
             <span aria-hidden="true">$ </span>cat study-map
           </h2>
           <div className="prose compendium-content">
@@ -181,7 +181,7 @@ export default async function CompendiumCollectionPage(
           </div>
         </section>
       )}
-      <h2 className="mb-6 mt-10 font-mono text-sm text-[var(--dim)]">
+      <h2 className="mb-6 mt-10 cmd">
         <span aria-hidden="true">$ </span>ls {collection.id}/ --order=reading
       </h2>
       <NoteRows notes={notes} />

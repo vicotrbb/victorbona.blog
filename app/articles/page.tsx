@@ -74,7 +74,7 @@ export default function ArticlesPage() {
           with its PDF; preprints carry a DOI.
         </p>
       </header>
-      <h2 className="mb-2 mt-10 font-mono text-sm text-[var(--dim)]">
+      <h2 className="mb-2 mt-10 cmd">
         <span aria-hidden="true">$ </span>ls papers/ --format=references
       </h2>
       <ol className="border-b border-[var(--line)]">

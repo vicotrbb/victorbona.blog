@@ -40,7 +40,7 @@ export default async function NotFound() {
   return (
     <section className="font-mono">
       <h1 className="[overflow-wrap:anywhere] text-base font-normal leading-relaxed text-[var(--text)] sm:text-lg">
-        <span className="text-[var(--err)]">panic:</span> route not found: {path}
+        <span className="text-[var(--warn)]">panic:</span> route not found: {path}
       </h1>
       <ol className="mt-8 space-y-3 border-l border-[var(--line)] pl-5 text-sm">
         <li>

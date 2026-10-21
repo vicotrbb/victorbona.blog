@@ -73,7 +73,7 @@ export default function ProjectsPage() {
           shape to judge.
         </p>
       </header>
-      <h2 className="mb-2 mt-10 font-mono text-sm text-[var(--dim)]">
+      <h2 className="mb-2 mt-10 cmd">
         <span aria-hidden="true">$ </span>get systems -o wide
       </h2>
       <ul className="border-b border-[var(--line)]">

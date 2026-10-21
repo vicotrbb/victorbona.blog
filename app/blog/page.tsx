@@ -74,7 +74,7 @@ export default function Page() {
           AI tooling, APIs, and the tradeoffs behind production systems.
         </p>
       </header>
-      <h2 className="mb-6 mt-10 font-mono text-sm text-[var(--dim)]">
+      <h2 className="mb-6 mt-10 cmd">
         <span aria-hidden="true">$ </span>ls writing/ --sort=newest --group-by=year
       </h2>
       <BlogPosts />

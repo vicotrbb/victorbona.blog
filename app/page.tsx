@@ -74,13 +74,8 @@ export default function Page() {
   return (
     <div className="space-y-24">
       <section className="grid items-center gap-12 md:grid-cols-12 md:gap-8">
-        <div className="md:col-span-5">
-          <p className="font-mono text-xs text-[var(--dim)] sm:text-sm">
-            leader: <span className="text-[var(--text)]">victor-bona</span> · status:{" "}
-            <span className="text-[var(--lit)] [text-shadow:0_0_10px_rgb(77_255_143/0.5)]">Ready</span>
-            {profile.yearsExperience !== null && <> · uptime: {profile.yearsExperience} yrs</>}
-          </p>
-          <h1 className="mt-6 text-[clamp(2.4rem,5vw,4.5rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-balance text-[var(--text)]">
+        <div className="md:col-span-6">
+          <h1 className="max-w-[14ch] text-[clamp(2.4rem,4.4vw,3.75rem)] font-semibold leading-[1.04] tracking-[-0.035em] text-balance text-[var(--text)]">
             {profile.oneLiner}
           </h1>
           <div className="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
@@ -93,13 +88,13 @@ export default function Page() {
             </a>
           </div>
         </div>
-        <div className="md:col-span-7">
+        <div className="md:col-span-6">
           <ControlPlane rings={rings} size={RING_SIZE} />
         </div>
       </section>
 
       <section aria-labelledby="recent-work">
-        <h2 id="recent-work" className="mb-4 font-mono text-sm text-[var(--dim)]">
+        <h2 id="recent-work" className="mb-4 cmd">
           <span aria-hidden="true">$ </span>get work --sort-by=updated
         </h2>
         <StatusTable rows={recent} />
@@ -107,7 +102,7 @@ export default function Page() {
 
       {featured && (
         <section aria-labelledby="featured-paper" className="grid gap-4 border-y border-[var(--line)] py-8 md:grid-cols-12 md:gap-8">
-          <h2 id="featured-paper" className="font-mono text-sm text-[var(--dim)] md:col-span-4">
+          <h2 id="featured-paper" className="cmd md:col-span-4">
             <span aria-hidden="true">$ </span>describe paper/latest
           </h2>
           <div className="md:col-span-8">

@@ -143,14 +143,14 @@ export default async function ArticlePage(props: ArticlePageProps) {
         </dl>
 
         <div className="min-w-0 text-[clamp(1.0625rem,1rem+0.25vw,1.125rem)]">
-          <h2 className="font-mono text-sm text-[var(--dim)]">
+          <h2 className="cmd">
             <span aria-hidden="true">$ </span>cat abstract
           </h2>
           <p className="mt-4 leading-relaxed text-[var(--text)]">{article.abstract}</p>
 
           {article.tags.length > 0 && (
             <>
-              <h2 className="mt-10 font-mono text-sm text-[var(--dim)]">
+              <h2 className="mt-10 cmd">
                 <span aria-hidden="true">$ </span>ls index-terms/
               </h2>
               <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-base">
@@ -162,7 +162,7 @@ export default async function ArticlePage(props: ArticlePageProps) {
           )}
 
           <section aria-labelledby="cite" className="mt-10">
-            <h2 id="cite" className="font-mono text-sm text-[var(--dim)]">
+            <h2 id="cite" className="cmd">
               <span aria-hidden="true">$ </span>cite --format=bibtex
             </h2>
             <pre className="mt-3 whitespace-pre-wrap break-words border border-[var(--line)] bg-[var(--panel)] p-4 font-mono text-xs leading-relaxed text-[var(--text)] sm:text-sm">

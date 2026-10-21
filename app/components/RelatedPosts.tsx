@@ -20,7 +20,7 @@ export function RelatedPosts({
 
   return (
     <section aria-labelledby="related-posts">
-      <h2 id="related-posts" className="mb-4 font-mono text-sm text-[var(--dim)]">
+      <h2 id="related-posts" className="mb-4 cmd">
         <span aria-hidden="true">$ </span>ls writing/ --related
       </h2>
       <ol className="border-b border-[var(--line)]">

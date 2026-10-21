@@ -20,8 +20,8 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: { params: Promise<{ tag: string }> }): Promise<Metadata> {
   const params = await props.params;
   const tag = decodeURIComponent(params.tag);
-  // Same encoding as the sitemap, whatever form the param arrived in.
-  const canonical = `${baseUrl}/blog/tag/${encodeURIComponent(tag)}`;
+  // Same form as the sitemap (lowercased, encoded), whatever form the param arrived in.
+  const canonical = `${baseUrl}/blog/tag/${encodeURIComponent(tag.toLowerCase())}`;
 
   return {
     title: `Posts tagged with "${tag}"`,
@@ -61,7 +61,7 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
     getBreadcrumbJsonLd([
       { name: "Home", item: baseUrl },
       { name: "Blog", item: `${baseUrl}/blog` },
-      { name: tag, item: `${baseUrl}/blog/tag/${encodeURIComponent(tag)}` },
+      { name: tag, item: `${baseUrl}/blog/tag/${encodeURIComponent(tag.toLowerCase())}` },
     ]),
     getItemListJsonLd(
       `Posts tagged with ${tag}`,
@@ -101,7 +101,7 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
           <span aria-hidden="true">$ </span>cd /blog
         </a>
       </header>
-      <h2 className="mb-6 mt-10 font-mono text-sm text-[var(--dim)]">
+      <h2 className="mb-6 mt-10 cmd">
         <span aria-hidden="true">$ </span>ls writing/ --tag="{tag}"
       </h2>
       <BlogPosts filter={{ tag }} />

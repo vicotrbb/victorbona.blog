@@ -56,11 +56,16 @@ export function CompendiumShell({
   return (
     <article className="compendium-grid">
       <aside className="compendium-sidebar">
-        <p className="font-mono text-xs text-[var(--dim)]">
+        <nav aria-label="Breadcrumb" className="font-mono text-xs leading-relaxed text-[var(--dim)]">
           <Link href="/compendium" className="hover:text-[var(--text)]">P600</Link>
-          {" / "}Annex {annex}
-        </p>
-        <p className="mt-1 font-semibold text-[var(--text)]">{collectionTitle}</p>
+          {" / "}Annex {annex}{" / "}
+          <Link
+            href={`/compendium/${note.collection}`}
+            className="font-sans text-sm font-semibold text-[var(--text)] hover:text-[var(--lit)]"
+          >
+            {collectionTitle}
+          </Link>
+        </nav>
         <nav
           aria-label={`${collectionTitle} notes`}
           className="mt-3 grid gap-1 text-sm"
@@ -101,7 +106,7 @@ export function CompendiumShell({
               <section aria-labelledby="compendium-related-notes">
                 <h2
                   id="compendium-related-notes"
-                  className="font-mono text-sm text-[var(--dim)]"
+                  className="cmd"
                 >
                   <span aria-hidden="true">$ </span>ls related/
                 </h2>

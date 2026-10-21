@@ -44,7 +44,7 @@ function Pending({ what }: { what: string }) {
 
 function SectionCommand({ id, children }: { id: string; children: string }) {
   return (
-    <h2 id={id} className="mb-4 font-mono text-sm text-[var(--dim)]">
+    <h2 id={id} className="mb-4 cmd">
       <span aria-hidden="true">$ </span>
       {children}
     </h2>
@@ -61,6 +61,26 @@ export default function AboutPage() {
     { label: "papers", value: counts.papers, href: "/articles" },
     { label: "posts", value: counts.writing, href: "/blog" },
     { label: "notes", value: counts.compendium, href: "/compendium" },
+  ];
+  const pending = <span className="text-[var(--warn)]">[pending]</span>;
+  const rule = "mt-2 border-t border-dashed border-[var(--line)] pt-2";
+  // Identity rows, then real output counts (index 3 starts the counts, under a rule).
+  const readout = [
+    { key: "node", value: "victor-bona" },
+    { key: "role", value: "leader" },
+    { key: "uptime", value: profile.yearsExperience !== null ? `${profile.yearsExperience} yrs` : pending },
+    ...output.map((fact) => ({
+      key: fact.label,
+      value: (
+        <a href={fact.href} className={linkClass}>
+          {fact.value}
+        </a>
+      ),
+    })),
+    ...profile.scale.map((fact) => ({ key: fact.label, value: fact.value })),
+    ...(isPending(profile.scale)
+      ? [{ key: "scale", value: <>{pending} <span className="text-[var(--dim)]">traffic, team size, systems owned</span></> }]
+      : []),
   ];
   const links = [
     { label: "linkedin", href: profile.links.linkedin },
@@ -103,15 +123,7 @@ export default function AboutPage() {
           </div>
         )}
         <div>
-          <p className="font-mono text-xs text-[var(--dim)] sm:text-sm">
-            node: <span className="text-[var(--text)]">victor-bona</span> · role: leader · uptime:{" "}
-            {profile.yearsExperience !== null ? (
-              <span className="text-[var(--text)]">{profile.yearsExperience} yrs</span>
-            ) : (
-              <span className="text-[var(--warn)]">[pending]</span>
-            )}
-          </p>
-          <h1 className="mt-4 text-[clamp(2.4rem,6vw,4rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-[var(--text)]">
+          <h1 className="text-[clamp(2.4rem,6vw,4rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-[var(--text)]">
             {profile.name}
           </h1>
           <p className="mt-4 max-w-[40ch] text-lg leading-snug text-balance text-[var(--dim)] sm:text-xl">
@@ -125,28 +137,14 @@ export default function AboutPage() {
 
       <section aria-labelledby="scale">
         <SectionCommand id="scale">describe node/victor-bona --scale</SectionCommand>
-        <dl className="grid grid-cols-2 border-t border-l border-[var(--line)] font-mono sm:grid-cols-4">
-          {output.map((fact) => (
-            <div key={fact.label} className="border-r border-b border-[var(--line)] p-4 sm:p-5">
-              <dt className="text-xs text-[var(--dim)]">{fact.label}</dt>
-              <dd className="mt-2">
-                <a href={fact.href} className={`text-2xl tabular-nums sm:text-3xl ${linkClass}`}>
-                  {fact.value}
-                </a>
-              </dd>
+        {/* One status readout in terminal grammar (key, value), not hero numbers. */}
+        <dl className="grid max-w-xl grid-cols-[auto_1fr] gap-x-10 border border-[var(--line)] bg-[var(--panel)] px-5 py-4 font-mono text-sm leading-7 sm:px-6">
+          {readout.map((row, i) => (
+            <div key={row.key} className="contents">
+              <dt className={`text-[var(--dim)] ${i === 3 ? rule : ""}`}>{row.key}</dt>
+              <dd className={`tabular-nums text-[var(--text)] ${i === 3 ? rule : ""}`}>{row.value}</dd>
             </div>
           ))}
-          {profile.scale.map((fact) => (
-            <div key={fact.label} className="border-r border-b border-[var(--line)] p-4 sm:p-5">
-              <dt className="text-xs text-[var(--dim)]">{fact.label}</dt>
-              <dd className="mt-2 text-2xl tabular-nums text-[var(--text)] sm:text-3xl">{fact.value}</dd>
-            </div>
-          ))}
-          {isPending(profile.scale) && (
-            <div className="col-span-2 border-r border-b border-[var(--line)] p-4 sm:col-span-4 sm:p-5">
-              <Pending what="production scale: traffic, team size and systems owned" />
-            </div>
-          )}
         </dl>
       </section>
 
@@ -204,7 +202,7 @@ export default function AboutPage() {
           )}
         </div>
         <div>
-          <h2 className="mb-4 font-mono text-sm text-[var(--dim)]">
+          <h2 className="mb-4 cmd">
             <span aria-hidden="true">$ </span>get links
           </h2>
           <ul className="font-mono text-sm">

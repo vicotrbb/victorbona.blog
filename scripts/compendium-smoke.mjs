@@ -111,8 +111,8 @@ assertNotIncludes("app/global.css", "#111827");
 assertIncludes("app/compendium/components/MermaidDiagram.tsx", 'theme: "base"');
 assertIncludes("app/compendium/components/MermaidDiagram.tsx", 'background: "#08110c"');
 assertIncludes("app/compendium/components/MermaidDiagram.tsx", 'primaryTextColor: "#d8e8de"');
-assertIncludes("app/compendium/components/MermaidDiagram.tsx", 'lineColor: "#1f5c3a"');
-assertIncludes("app/compendium/components/MermaidDiagram.tsx", 'primaryBorderColor: "#4dff8f"');
+assertIncludes("app/compendium/components/MermaidDiagram.tsx", 'lineColor: "#6f8f7c"');
+assertIncludes("app/compendium/components/MermaidDiagram.tsx", 'primaryBorderColor: "#1f5c3a"');
 assertIncludes(
   "app/compendium/[collection]/page.tsx",
   'collectionId === "kubernetes"'
