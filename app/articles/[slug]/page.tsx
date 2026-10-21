@@ -1,10 +1,13 @@
 import { notFound } from "next/navigation";
-import { getArticles, getArticleBySlug } from "../articles";
+import Link from "next/link";
+import { getArticles, getArticleBySlug, toBibtex } from "../articles";
 import { baseUrl } from "app/sitemap";
 import type { Metadata } from "next";
 import { Tag } from "app/components/Tag";
-import { MetadataLine } from "app/components/MetadataLine";
+import { ContactCommand } from "app/components/ContactCommand";
+import { profile } from "app/lib/profile";
 import {
+  absoluteUrl,
   getBreadcrumbJsonLd,
   getScholarlyArticleJsonLd,
   withDefaultOpenGraphImage,
@@ -17,19 +20,8 @@ type ArticlePageProps = {
   }>;
 };
 
-function formatDate(date: string): string {
-  const [year, month, day] = date.split("-").map(Number);
-
-  return new Intl.DateTimeFormat("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(new Date(year, month - 1, day));
-}
-
-function formatStatus(status: string): string {
-  return status.replace(/-/g, " ");
-}
+const monoLink =
+  "text-[var(--text)] decoration-1 underline-offset-4 transition-colors duration-150 hover:underline";
 
 export async function generateStaticParams() {
   return getArticles().map((article) => ({
@@ -81,7 +73,8 @@ export default async function ArticlePage(props: ArticlePageProps) {
     notFound();
   }
 
-  const publishedYear = new Date(article.publishedAt).getFullYear();
+  const lit = Boolean(article.doi && article.status === "preprint");
+  const bibtex = toBibtex(article, article.pdfUrl && absoluteUrl(article.pdfUrl));
   const jsonLd = [
     getScholarlyArticleJsonLd(article),
     getBreadcrumbJsonLd([
@@ -90,9 +83,32 @@ export default async function ArticlePage(props: ArticlePageProps) {
       { name: article.title, item: `${baseUrl}/articles/${article.slug}` },
     ]),
   ];
+  const meta: Array<[string, React.ReactNode]> = [
+    ["authors", article.authors.join(", ")],
+    ["status", <span className={lit ? "text-[var(--lit)]" : undefined}>{article.status}</span>],
+    ["published", <time dateTime={article.publishedAt} className="tabular-nums">{article.publishedAt}</time>],
+  ];
+  if (article.journal) meta.push(["venue", article.journal]);
+  if (article.doi) {
+    meta.push([
+      "doi",
+      <a href={`https://doi.org/${article.doi}`} target="_blank" rel="noopener noreferrer" className={`break-all ${monoLink}`}>
+        {article.doi}
+      </a>,
+    ]);
+  }
+  if (article.pdfUrl) {
+    meta.push([
+      "pdf",
+      <a href={article.pdfUrl} target="_blank" rel="noopener noreferrer" className={monoLink}>
+        open pdf
+      </a>,
+    ]);
+  }
+  if (article.citationKey) meta.push(["cite key", <span className="break-all">{article.citationKey}</span>]);
 
   return (
-    <article className="space-y-6">
+    <article className="w-full">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -101,94 +117,75 @@ export default async function ArticlePage(props: ArticlePageProps) {
         }}
       />
 
-      <header className="grid gap-4 border-b border-[var(--color-rule)] pb-5 md:grid-cols-[12rem_1fr]">
-        <MetadataLine
-          items={[
-            formatStatus(article.status),
-            article.type,
-            formatDate(article.publishedAt),
-          ]}
-          className="text-[var(--color-accent)]"
-        />
-        <div>
-          <h1 className="display-type max-w-3xl text-3xl font-semibold leading-tight text-[var(--color-foreground)] md:text-4xl">
-            {article.title}
-          </h1>
-          <p className="mt-3 text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-            {article.authors.join(", ")}
-          </p>
-        </div>
+      <header className="border-b border-[var(--line)] pb-8">
+        <Link
+          href="/articles"
+          className="font-mono text-sm text-[var(--dim)] decoration-1 underline-offset-4 transition-colors duration-150 hover:text-[var(--text)] hover:underline"
+        >
+          P300 Papers
+        </Link>
+        <h1 className="mt-4 max-w-[30ch] text-[clamp(1.75rem,1.3rem+2vw,2.75rem)] font-semibold leading-[1.1] tracking-[-0.03em] text-balance text-[var(--text)]">
+          {article.title}
+        </h1>
       </header>
 
-      <section className="grid gap-4 md:grid-cols-[12rem_1fr]">
-        <p className="metadata-type text-[var(--color-muted-foreground)]">
-          Abstract
-        </p>
-        <p className="max-w-3xl text-base leading-relaxed text-[var(--color-foreground)]">
-          {article.abstract}
-        </p>
-      </section>
+      <div className="mt-10 grid gap-10 md:grid-cols-[17rem_minmax(0,var(--measure))] md:gap-12">
+        <dl className="grid h-fit grid-cols-[6rem_minmax(0,1fr)] gap-x-3 gap-y-3 font-mono text-xs text-[var(--text)] sm:text-sm md:grid-cols-1 md:gap-y-1">
+          {meta.map(([label, value]) => (
+            <div key={label} className="contents md:mb-3 md:block">
+              <dt className="text-[var(--dim)]">{label}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
 
-      {article.tags.length > 0 && (
-        <section className="grid gap-4 md:grid-cols-[12rem_1fr]">
-          <p className="metadata-type text-[var(--color-muted-foreground)]">
-            Index terms
-          </p>
-          <div className="flex flex-wrap gap-2">
-            {article.tags.map((tag) => (
-              <Tag key={tag} name={tag} />
-            ))}
-          </div>
-        </section>
-      )}
+        <div className="min-w-0 text-[clamp(1.0625rem,1rem+0.25vw,1.125rem)]">
+          <h2 className="font-mono text-sm text-[var(--dim)]">
+            <span aria-hidden="true">$ </span>cat abstract
+          </h2>
+          <p className="mt-4 leading-relaxed text-[var(--text)]">{article.abstract}</p>
 
-      <section className="grid gap-4 border-y border-[var(--color-rule)] py-5 md:grid-cols-[12rem_1fr]">
-        <p className="metadata-type text-[var(--color-muted-foreground)]">
-          Access
-        </p>
-        <div className="flex flex-wrap gap-4">
-          {article.pdfUrl && (
-            <a
-              href={article.pdfUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="metadata-type text-[var(--color-accent)] transition-colors hover:text-[var(--color-foreground)]"
-            >
-              Open PDF
-            </a>
+          {article.tags.length > 0 && (
+            <>
+              <h2 className="mt-10 font-mono text-sm text-[var(--dim)]">
+                <span aria-hidden="true">$ </span>ls index-terms/
+              </h2>
+              <p className="mt-3 flex flex-wrap gap-x-4 gap-y-1 text-base">
+                {article.tags.map((tag) => (
+                  <Tag key={tag} name={tag} />
+                ))}
+              </p>
+            </>
           )}
-          {article.doi && (
-            <a
-              href={`https://doi.org/${article.doi}`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="metadata-type text-[var(--color-accent)] transition-colors hover:text-[var(--color-foreground)]"
-            >
-              DOI
-            </a>
-          )}
+
+          <section aria-labelledby="cite" className="mt-10">
+            <h2 id="cite" className="font-mono text-sm text-[var(--dim)]">
+              <span aria-hidden="true">$ </span>cite --format=bibtex
+            </h2>
+            <pre className="mt-3 whitespace-pre-wrap break-words border border-[var(--line)] bg-[var(--panel)] p-4 font-mono text-xs leading-relaxed text-[var(--text)] sm:text-sm">
+              <code>{bibtex}</code>
+            </pre>
+          </section>
+        </div>
+      </div>
+
+      <section
+        aria-labelledby="contact"
+        className="mt-16 border border-[var(--line-strong)] bg-[var(--panel)] px-6 py-10 sm:px-10"
+      >
+        <h2 id="contact" className="max-w-[24ch] text-2xl font-semibold tracking-[-0.02em] text-balance text-[var(--text)] sm:text-3xl">
+          Questions about this paper, or working on something close to it?
+        </h2>
+        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
+          <ContactCommand variant="inline" />
+          <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer" className="text-[var(--dim)] transition-colors duration-150 hover:text-[var(--text)]">
+            LinkedIn
+          </a>
+          <a href={profile.links.x} target="_blank" rel="noopener noreferrer" className="text-[var(--dim)] transition-colors duration-150 hover:text-[var(--text)]">
+            X
+          </a>
         </div>
       </section>
-
-      <footer className="grid gap-4 md:grid-cols-[12rem_1fr]">
-        <p className="metadata-type text-[var(--color-muted-foreground)]">
-          Citation
-        </p>
-        <div className="space-y-2 text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-          <p>
-            {article.authors.join(", ")}. ({publishedYear}). {article.title}.{" "}
-            {formatStatus(article.status)}.
-          </p>
-          {article.citationKey && (
-            <p>
-              BibTeX key:{" "}
-              <code className="text-[var(--color-foreground)]">
-                {article.citationKey}
-              </code>
-            </p>
-          )}
-        </div>
-      </footer>
     </article>
   );
 }

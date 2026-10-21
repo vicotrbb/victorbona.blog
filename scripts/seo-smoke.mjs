@@ -104,6 +104,7 @@ for (const schema of [
   "getCompendiumNoteJsonLd",
   "getItemListJsonLd",
   "ProfilePage",
+  "SoftwareSourceCode",
 ]) {
   assertIncludes("app/lib/seo.ts", schema);
 }

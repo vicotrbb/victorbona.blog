@@ -171,3 +171,30 @@ export function getArticlesByTag(tag: string): Article[] {
 export function getPublishedArticles(): Article[] {
   return articles.filter((article) => article.status === "published");
 }
+
+const bibMonths = ["jan", "feb", "mar", "apr", "may", "jun", "jul", "aug", "sep", "oct", "nov", "dec"];
+const bibEscape = (value: string) => value.replace(/([&%$#_])/g, "\\$1");
+
+// pdfUrl must be absolute; it is the url field when there is no DOI.
+export function toBibtex(
+  article: Pick<Article, "slug" | "title" | "authors" | "publishedAt" | "status" | "journal" | "doi" | "citationKey">,
+  pdfUrl?: string,
+): string {
+  const [year, month] = article.publishedAt.split("-");
+  const url = article.doi ? `https://doi.org/${article.doi}` : pdfUrl;
+  const fields: Array<[string, string | undefined]> = [
+    ["author", article.authors.join(" and ")],
+    ["title", bibEscape(article.title)],
+    ["year", year],
+    ["month", bibMonths[Number(month) - 1]],
+    ["publisher", article.journal],
+    ["doi", article.doi],
+    ["url", url],
+    ["note", article.status[0].toUpperCase() + article.status.slice(1)],
+  ];
+  const body = fields
+    .filter(([, value]) => value)
+    .map(([key, value]) => `  ${key} = {${value}}`)
+    .join(",\n");
+  return `@misc{${article.citationKey ?? article.slug},\n${body}\n}`;
+}

@@ -1,6 +1,5 @@
 import { getArticles } from "./articles";
-import { PaperRow, EmptyPaperArchive } from "app/components/PaperRow";
-import { SectionHeader } from "app/components/SectionHeader";
+import { PaperRow } from "app/components/PaperRow";
 import { baseUrl } from "app/sitemap";
 import type { Metadata } from "next";
 import {
@@ -30,6 +29,7 @@ export const metadata: Metadata = {
 
 export default function ArticlesPage() {
   const articles = getArticles();
+  const doiCount = articles.filter((article) => article.doi).length;
   const jsonLd = [
     getBreadcrumbJsonLd([
       { name: "Home", item: baseUrl },
@@ -46,7 +46,7 @@ export default function ArticlesPage() {
   ];
 
   return (
-    <section className="space-y-5">
+    <section className="w-full">
       <script
         type="application/ld+json"
         suppressHydrationWarning
@@ -54,28 +54,31 @@ export default function ArticlesPage() {
           __html: JSON.stringify(jsonLd),
         }}
       />
-      <div className="grid gap-3 border-b border-[var(--color-rule)] pb-4 md:grid-cols-[12rem_1fr]">
-        <p className="metadata-type text-[var(--color-accent)]">Longer work</p>
-        <div>
-          <h1 className="display-type text-2xl font-semibold text-[var(--color-foreground)]">
-            Papers and articles
+      <header className="border-b border-[var(--line)] pb-8">
+        <div className="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+          <h1 className="flex items-baseline gap-4 text-[clamp(2rem,4vw,3rem)] font-semibold leading-none tracking-[-0.03em] text-[var(--text)]">
+            <span className="font-mono text-sm font-normal tracking-normal text-[var(--dim)]">P300</span>
+            Papers
           </h1>
-          <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--color-muted-foreground)]">
-            Slower-form research and technical writing. This section stays
-            sparse until the work deserves the space.
+          <p className="font-mono text-sm tabular-nums text-[var(--dim)]">
+            <span className="text-[var(--text)]">{articles.length}</span> papers ·{" "}
+            <span className="text-[var(--text)]">{doiCount}</span> with DOI
           </p>
         </div>
-      </div>
-      <SectionHeader index="PAPERS" title="Indexed work" />
-      {articles.length > 0 ? (
-        <div className="border border-[var(--color-border)] px-3">
-          {articles.map((article) => (
-            <PaperRow key={article.slug} article={article} />
-          ))}
-        </div>
-      ) : (
-        <EmptyPaperArchive />
-      )}
+        <p className="mt-4 max-w-[60ch] text-[var(--dim)]">
+          Preprints and technical white papers on distributed systems,
+          observability, memory allocation, and protocol design. Each one ships
+          with its PDF; preprints carry a DOI.
+        </p>
+      </header>
+      <h2 className="mb-2 mt-10 font-mono text-sm text-[var(--dim)]">
+        <span aria-hidden="true">$ </span>ls papers/ --format=references
+      </h2>
+      <ol className="border-b border-[var(--line)]">
+        {articles.map((article, index) => (
+          <PaperRow key={article.slug} article={article} index={index + 1} />
+        ))}
+      </ol>
     </section>
   );
 }

@@ -2,6 +2,7 @@ import { baseUrl } from "app/sitemap";
 import type { CompendiumCollection, CompendiumNote } from "app/compendium/types";
 import type { Metadata } from "next";
 import { personJsonLd, profile } from "app/lib/profile";
+import type { Project } from "app/projects/projects";
 
 export const defaultOpenGraphImage = {
   url: `${baseUrl}/logos/og-image.png`,
@@ -107,7 +108,7 @@ export function getBreadcrumbJsonLd(
 
 export function getItemListJsonLd(
   name: string,
-  items: Array<{ name: string; url: string; description?: string }>
+  items: Array<{ name: string; url: string; description?: string; item?: object }>
 ) {
   return {
     "@context": "https://schema.org",
@@ -119,6 +120,7 @@ export function getItemListJsonLd(
       url: absoluteUrl(item.url),
       name: item.name,
       ...(item.description ? { description: item.description } : {}),
+      ...(item.item ? { item: item.item } : {}),
     })),
   };
 }
@@ -250,5 +252,21 @@ export function getScholarlyArticleJsonLd(article: {
       sameAs: `https://doi.org/${article.doi}`,
     }),
     keywords: article.tags.join(", "),
+  };
+}
+
+// Nested inside the projects ItemList, so no @context of its own.
+export function getProjectJsonLd(project: Project) {
+  const url = project.website || project.repository;
+
+  return {
+    "@type": project.repository ? "SoftwareSourceCode" : "CreativeWork",
+    name: project.name,
+    description: project.longDescription || project.description,
+    ...(url && { url }),
+    ...(project.repository && { codeRepository: project.repository }),
+    keywords: project.tags.join(", "),
+    license: project.license,
+    author: { "@id": seoIds.person },
   };
 }
