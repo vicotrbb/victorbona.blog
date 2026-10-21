@@ -153,7 +153,7 @@ export default async function Blog(props: { params: Promise<{ slug: string }> })
             </div>
           </header>
 
-          <aside className="absolute left-full top-0 ml-10 hidden h-full w-56 xl:block">
+          <aside className="absolute left-full top-0 ml-8 hidden h-full w-52 xl:block">
             <div className="sticky top-24">
               <TableOfContents />
             </div>

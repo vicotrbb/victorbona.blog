@@ -6,6 +6,7 @@ import Image from "next/image";
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { highlight } from "sugar-high";
 import React, { Children, isValidElement, type ReactNode } from "react";
+import { getUniqueHeadingId } from "app/lib/slug";
 import { MermaidDiagram } from "app/compendium/components/MermaidDiagram";
 
 function Table({ data }) {
@@ -100,25 +101,10 @@ function Pre({ children, ...props }: React.HTMLAttributes<HTMLPreElement>) {
   return <pre {...props}>{children}</pre>;
 }
 
-// Same slug rules as app/compendium so heading ids and TOC links agree.
-function slugifyHeading(value: string) {
-  return value
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, "-")
-    .replace(/&/g, "-and-")
-    .replace(/[^\w-]+/g, "")
-    .replace(/--+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
 function createHeading(level: number, counts: Map<string, number>) {
   const Heading = ({ children }: { children?: ReactNode }) => {
     const text = getTextContent(children);
-    const baseId = slugifyHeading(text);
-    const count = counts.get(baseId) ?? 0;
-    counts.set(baseId, count + 1);
-    const slug = count === 0 ? baseId : `${baseId}-${count}`;
+    const slug = getUniqueHeadingId(text, counts);
 
     return React.createElement(
       `h${level}`,

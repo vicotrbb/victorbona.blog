@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import { compendiumCollections, isCompendiumCollectionId } from "./collections";
+import { getUniqueHeadingId } from "app/lib/slug";
 import type {
   CompendiumCollectionId,
   CompendiumFrontmatter,
@@ -91,18 +92,6 @@ function getMarkdownFiles(collection: CompendiumCollectionId) {
     .sort((a, b) => a.localeCompare(b));
 }
 
-function slugifyHeading(value: string) {
-  return value
-    .toString()
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, "-")
-    .replace(/&/g, "-and-")
-    .replace(/[^\w-]+/g, "")
-    .replace(/--+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
 function stripMarkdown(value: string) {
   return value
     .replace(/```[\s\S]*?```/g, " ")
@@ -125,14 +114,6 @@ function getExcerpt(content: string) {
 
   const clipped = text.slice(0, 220).trim();
   return `${clipped.replace(/\s+\S*$/, "")}...`;
-}
-
-function getUniqueHeadingId(heading: string, counts: Map<string, number>) {
-  const baseId = slugifyHeading(heading);
-  const count = counts.get(baseId) ?? 0;
-  counts.set(baseId, count + 1);
-
-  return count === 0 ? baseId : `${baseId}-${count}`;
 }
 
 export function getReadingTime(content: string) {

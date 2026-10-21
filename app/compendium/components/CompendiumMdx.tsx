@@ -5,6 +5,7 @@ import remarkGfm from "remark-gfm";
 import remarkMath from "remark-math";
 import { highlight } from "sugar-high";
 import React, { Children, isValidElement, type ReactNode } from "react";
+import { getUniqueHeadingId, slugifyHeading } from "app/lib/slug";
 import { MermaidDiagram } from "./MermaidDiagram";
 
 type CompendiumMdxProps = {
@@ -27,26 +28,6 @@ function getTextContent(node: ReactNode): string {
   }
 
   return "";
-}
-
-function slugifyHeading(value: string) {
-  return value
-    .toString()
-    .toLowerCase()
-    .trim()
-    .replace(/\s+/g, "-")
-    .replace(/&/g, "-and-")
-    .replace(/[^\w-]+/g, "")
-    .replace(/--+/g, "-")
-    .replace(/^-+|-+$/g, "");
-}
-
-function getUniqueHeadingId(heading: string, counts: Map<string, number>) {
-  const baseId = slugifyHeading(heading);
-  const count = counts.get(baseId) ?? 0;
-  counts.set(baseId, count + 1);
-
-  return count === 0 ? baseId : `${baseId}-${count}`;
 }
 
 function createHeading(
