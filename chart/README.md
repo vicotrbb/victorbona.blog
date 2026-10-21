@@ -10,7 +10,7 @@ by ArgoCD and Renovate.
 - Optional internal dependencies (Postgres, Redis, MinIO)
 - External service wiring (your cluster resources)
 - Infisical-friendly env injection (via existing K8s Secrets)
-- Observability hooks (OTEL + ServiceMonitor/PodMonitor)
+- Observability hooks (ServiceMonitor/PodMonitor)
 - Ingress that can target internal Nginx or external Cloudflare
 - Simple, elegant, and easy to modify
 
@@ -96,7 +96,6 @@ into all components automatically:
 
 ### `observability`
 
-- `otel`: emits standard OTEL env vars for traces/logs
 - `serviceMonitor` and `podMonitor`: integrates with Prometheus Operator
 
 ### `networkPolicy`
@@ -135,16 +134,6 @@ Per component you can set:
 This lets you route internal-only apps to your local Nginx, and public apps to Cloudflare.
 
 ## Observability integration
-
-To enable OTEL env vars:
-
-```text
-observability:
-  otel:
-    enabled: true
-    endpoint: http://alloy.observability-system.svc.cluster.local:4318
-    protocol: http/protobuf
-```
 
 To enable ServiceMonitor or PodMonitor:
 

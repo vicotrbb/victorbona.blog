@@ -51,29 +51,6 @@ app.kubernetes.io/component: {{ $component }}
 {{- join "," $pairs -}}
 {{- end -}}
 
-{{- define "app-template.otelEnv" -}}
-{{- if .Values.observability.otel.enabled -}}
-- name: OTEL_SERVICE_NAME
-  value: "{{ default (include "app-template.name" .) .Values.observability.otel.serviceName }}"
-{{- if .Values.observability.otel.endpoint }}
-- name: OTEL_EXPORTER_OTLP_ENDPOINT
-  value: "{{ .Values.observability.otel.endpoint }}"
-{{- end }}
-{{- if .Values.observability.otel.protocol }}
-- name: OTEL_EXPORTER_OTLP_PROTOCOL
-  value: "{{ .Values.observability.otel.protocol }}"
-{{- end }}
-{{- if .Values.observability.otel.headers }}
-- name: OTEL_EXPORTER_OTLP_HEADERS
-  value: "{{ .Values.observability.otel.headers }}"
-{{- end }}
-{{- if .Values.observability.otel.resourceAttributes }}
-- name: OTEL_RESOURCE_ATTRIBUTES
-  value: "{{ include "app-template.kvToList" .Values.observability.otel.resourceAttributes }}"
-{{- end }}
-{{- end -}}
-{{- end -}}
-
 {{- define "app-template.externalEnv" -}}
 {{- $ext := .Values.externalServices -}}
 

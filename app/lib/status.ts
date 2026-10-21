@@ -4,6 +4,8 @@ const strokes: Record<string, "live" | "maintained" | "archived"> = {
   "in-progress": "live",
   maintained: "maintained",
   stopped: "archived",
+  // Sold systems are no longer operated by Victor, so they draw as archived.
+  sold: "archived",
   published: "live",
   preprint: "live",
   "independently published": "live",

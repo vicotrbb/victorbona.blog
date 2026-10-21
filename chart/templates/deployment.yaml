@@ -95,8 +95,7 @@ spec:
           {{- $envGlobal := default (list) $.Values.global.env }}
           {{- $envComponent := default (list) $component.env }}
           {{- $externalEnv := include "app-template.externalEnv" $ | trim }}
-          {{- $otelEnv := include "app-template.otelEnv" $ | trim }}
-          {{- if or $envGlobal $envComponent $externalEnv $otelEnv }}
+          {{- if or $envGlobal $envComponent $externalEnv }}
           env:
             {{- if $envGlobal }}
             {{- toYaml $envGlobal | nindent 12 }}
@@ -106,9 +105,6 @@ spec:
             {{- end }}
             {{- if $externalEnv }}
             {{- $externalEnv | nindent 12 }}
-            {{- end }}
-            {{- if $otelEnv }}
-            {{- $otelEnv | nindent 12 }}
             {{- end }}
           {{- end }}
 

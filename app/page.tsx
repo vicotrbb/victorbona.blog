@@ -128,21 +128,6 @@ export default function Page() {
           </div>
         </section>
       )}
-
-      <section aria-labelledby="contact" className="border border-[var(--line-strong)] bg-[var(--panel)] px-6 py-10 sm:px-10">
-        <h2 id="contact" className="max-w-[24ch] text-2xl font-semibold tracking-[-0.02em] text-balance text-[var(--text)] sm:text-3xl">
-          Building something distributed, or making AI hold up in production?
-        </h2>
-        <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
-          <ContactCommand variant="inline" />
-          <a href={profile.links.linkedin} target="_blank" rel="noopener noreferrer" className="text-[var(--dim)] transition-colors duration-150 hover:text-[var(--text)]">
-            LinkedIn
-          </a>
-          <a href={profile.links.x} target="_blank" rel="noopener noreferrer" className="text-[var(--dim)] transition-colors duration-150 hover:text-[var(--text)]">
-            X
-          </a>
-        </div>
-      </section>
     </div>
   );
 }

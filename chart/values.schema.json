@@ -52,18 +52,6 @@
       "type": "object",
       "additionalProperties": true,
       "properties": {
-        "otel": {
-          "type": "object",
-          "additionalProperties": true,
-          "properties": {
-            "enabled": { "type": "boolean" },
-            "serviceName": { "type": "string" },
-            "endpoint": { "type": "string" },
-            "protocol": { "type": "string" },
-            "headers": { "type": "string" },
-            "resourceAttributes": { "type": "object" }
-          }
-        },
         "serviceMonitor": {
           "type": "object",
           "additionalProperties": true,

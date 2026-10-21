@@ -5,7 +5,7 @@ export interface Project {
   repository?: string;
   website?: string;
   tags: string[];
-  status: "completed" | "in-progress" | "maintained" | "stopped";
+  status: "completed" | "in-progress" | "maintained" | "stopped" | "sold";
   publiclyShared: boolean;
   license: string;
   images?: string[];
@@ -36,7 +36,7 @@ export const projects: Project[] = [
       "Stripe",
       "GitOps",
     ],
-    status: "maintained",
+    status: "sold",
     publiclyShared: false,
     license: "Proprietary",
     gifs: ["/projects/guaracloud/gif_1.gif"],
@@ -137,11 +137,81 @@ export const projects: Project[] = [
     },
   },
   {
+    name: "Positron",
+    description:
+      "An observability database for native logs and traces, written in Rust.",
+    repository: "https://github.com/vicotrbb/positron",
+    website: "https://vicotrbb.github.io/positron/",
+    tags: ["Rust", "Observability", "Logs", "Traces", "Database"],
+    status: "in-progress",
+    publiclyShared: true,
+    license: "MIT",
+    startDate: "2026-07-26",
+  },
+  {
+    name: "Ferrite",
+    description:
+      "A CPU-native LLM inference engine in Rust: GGUF models, quantized SIMD kernels, a CLI, and an OpenAI-compatible HTTP server.",
+    longDescription:
+      "Ferrite loads GGUF models and runs quantized inference with architecture-specific SIMD kernels. It supports Llama, Qwen2, and Phi-3 architectures with F32, F16, BF16, Q4_K, Q5_0, Q5_K, Q6_K, and Q8_0 tensors, and ships as verified release archives and an official server image. It is alpha software with a deliberately small, well-tested surface.",
+    repository: "https://github.com/vicotrbb/ferrite",
+    website: undefined,
+    tags: ["Rust", "LLM Inference", "SIMD", "GGUF", "AI"],
+    status: "in-progress",
+    publiclyShared: true,
+    license: "Apache-2.0",
+    startDate: "2026-06-27",
+  },
+  {
+    name: "Devboxes",
+    description:
+      "Self-hosted, ephemeral development environments on Kubernetes: create a box from the terminal, connect over SSH, and resume the same tmux session.",
+    longDescription:
+      "Devboxes turns Kubernetes capacity into ready-to-use development machines with disposable compute and a persistent home volume. It ships a Rust devbox CLI, a FastAPI controller with an authenticated API and browser workbench, a versioned Helm chart with namespace-scoped RBAC, optional namespace-per-tenant isolation with quotas and policy catalogs, operator-approved GPU profiles, and multi-architecture images.",
+    repository: "https://github.com/vicotrbb/devboxes",
+    website: undefined,
+    tags: ["Kubernetes", "Rust", "Python", "Helm", "Self-hosted"],
+    status: "maintained",
+    publiclyShared: true,
+    license: "Apache-2.0",
+    startDate: "2026-07-13",
+    tech: {
+      backend: ["Rust", "Python", "FastAPI"],
+      deployment: ["Kubernetes", "Helm"],
+    },
+  },
+  {
+    name: "Maximus",
+    description:
+      "A modular Rust HTTP server for Linux with one local executor per worker, io_uring and epoll, static routing, and optional TLS, HTTP/2, and HTTP/3.",
+    repository: "https://github.com/vicotrbb/maximus",
+    website: undefined,
+    tags: ["Rust", "HTTP", "io_uring", "HTTP/3", "Networking"],
+    status: "in-progress",
+    publiclyShared: true,
+    license: "Apache-2.0",
+    startDate: "2026-10-16",
+  },
+  {
+    name: "Imaginu",
+    description:
+      "An AI-drivable procedural 3D asset compiler: JSON recipes in, deterministic, game-ready GLB out.",
+    longDescription:
+      "Imaginu compiles a small JSON recipe into a GLB asset for Babylon.js, with meshes, vertex-color PBR, skeletal animation, and physics metadata. The same recipe and seed produce a byte-identical file on every OS, it is pure Rust with no C dependencies, and a built-in software renderer lets an AI agent inspect its output and iterate.",
+    repository: "https://github.com/vicotrbb/imaginu",
+    website: "https://vicotrbb.github.io/imaginu/",
+    tags: ["Rust", "3D", "glTF", "AI Agents", "Procedural"],
+    status: "maintained",
+    publiclyShared: true,
+    license: "MIT",
+    startDate: "2026-07-05",
+  },
+  {
     name: "Victor Bona Blog",
     description:
-      "My personal blog built with Next.js, MDX, and Tailwind CSS. Features dark mode, RSS feed, and more.",
+      "My personal site and blog built with Next.js, MDX, and Tailwind CSS: writing, papers, systems, and a 150-note compendium.",
     longDescription:
-      "A modern, minimalist blog platform built with cutting-edge web technologies. Features include server-side rendering, static generation, dark/light mode support, RSS feed generation, and comprehensive SEO optimization.",
+      "A modern, minimalist blog platform built with cutting-edge web technologies. Features include server-side rendering, static generation, a dark control-plane design, RSS feed generation, and comprehensive SEO optimization.",
     repository: "https://github.com/vicotrbb/victorbona.blog",
     website: "https://blog.victorbona.dev",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "MDX", "Postgres"],

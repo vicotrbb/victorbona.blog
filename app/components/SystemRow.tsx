@@ -58,7 +58,11 @@ export function SystemRow({ project }: { project: Project }) {
             <span className="w-6 shrink-0">
               <StatusStroke status={status} />
             </span>
-            <span className={statusText[status]}>{status}</span>
+            {project.status === "sold" ? (
+              <span className="text-[var(--text)]">exited (sold)</span>
+            ) : (
+              <span className={statusText[status]}>{status}</span>
+            )}
           </span>
           <span className="flex flex-wrap gap-x-4 gap-y-1 md:justify-end">
             {project.website && (

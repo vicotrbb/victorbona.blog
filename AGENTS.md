@@ -38,4 +38,4 @@ Pull requests should include a short summary, validation commands run, linked is
 
 ## Security & Configuration Tips
 
-Do not commit secrets. Runtime configuration includes observability variables such as `FARO_URL`, `APP_VERSION`, `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_SERVICE_NAME`, `OTEL_SERVICE_VERSION`, and `OTEL_TRACES_SAMPLER_ARG`; keep environment-specific values outside source control.
+Do not commit secrets. Keep environment-specific values outside source control.

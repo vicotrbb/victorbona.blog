@@ -35,7 +35,7 @@ The site is a Next.js App Router project deployed with Docker and Helm (see `cha
 - typed project data in `app/projects/projects.ts`;
 - compendium Markdown notes in `app/compendium/content/`.
 
-Observability (Prometheus page-view metrics via middleware headers and OTel tracing) and third-party analytics are part of the layout and must keep working.
+Observability (Prometheus page-view metrics via middleware headers) and third-party analytics are part of the layout and must keep working.
 
 ## Capabilities and Constraints
 

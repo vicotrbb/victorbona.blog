@@ -7,6 +7,7 @@ test("project statuses map to strokes", () => {
   assert.equal(toStroke("in-progress"), "live");
   assert.equal(toStroke("maintained"), "maintained");
   assert.equal(toStroke("stopped"), "archived");
+  assert.equal(toStroke("sold"), "archived");
 });
 
 test("published papers are live", () => {
