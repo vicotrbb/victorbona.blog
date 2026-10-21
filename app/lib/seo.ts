@@ -1,6 +1,7 @@
 import { baseUrl } from "app/sitemap";
 import type { CompendiumCollection, CompendiumNote } from "app/compendium/types";
 import type { Metadata } from "next";
+import { personJsonLd, profile } from "app/lib/profile";
 
 export const defaultOpenGraphImage = {
   url: `${baseUrl}/logos/og-image.png`,
@@ -46,30 +47,7 @@ export function withDefaultTwitterImage(
 }
 
 export function getPersonJsonLd() {
-  return {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "@id": seoIds.person,
-    name: "Victor Bona",
-    url: baseUrl,
-    email: "mailto:victor@victorbona.dev",
-    jobTitle: "Full-stack engineer",
-    sameAs: [
-      "https://github.com/vicotrbb",
-      "https://twitter.com/BonaVictor",
-      "https://www.linkedin.com/in/victorbona/",
-    ],
-    knowsAbout: [
-      "software architecture",
-      "platform engineering",
-      "Kubernetes",
-      "cloud infrastructure",
-      "security engineering",
-      "AI systems",
-      "developer tools",
-      "observability",
-    ],
-  };
+  return personJsonLd(profile, baseUrl);
 }
 
 export function getWebsiteJsonLd() {

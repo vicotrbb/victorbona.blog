@@ -3,6 +3,7 @@ import { getBlogPosts } from "app/blog/utils";
 import { projects } from "app/projects/projects";
 import { getArticles } from "app/articles/articles";
 import { absoluteUrl } from "app/lib/seo";
+import { profile } from "app/lib/profile";
 import { compendiumCollections } from "app/compendium/collections";
 import { getCompendiumNotes } from "app/compendium/utils";
 
@@ -10,7 +11,7 @@ const siteInfo = {
   name: "Victor Bona Blog",
   owner: "Victor Bona",
   description:
-    "Full-stack engineer sharing practical notes on software architecture, performance, cloud, and hands-on engineering.",
+    `${profile.oneLiner}. Practical notes on distributed systems, architecture, performance, cloud, and AI.`,
   topics: [
     "software engineering",
     "architecture",
@@ -32,7 +33,7 @@ const siteInfo = {
   contact: {
     twitter: "https://twitter.com/BonaVictor",
     github: "https://github.com/vicotrbb",
-    email: "victor@victorbona.dev",
+    email: profile.email,
   },
 };
 

@@ -106,6 +106,10 @@ for (const schema of [
   assertIncludes("app/lib/seo.ts", schema);
 }
 assertNotIncludes("app/lib/seo.ts", "articleBody: note.content");
+assertIncludes("app/lib/profile.ts", "victor.bona@hotmail.com");
+assertNotIncludes("app/lib/seo.ts", "victor@victorbona.dev");
+assertNotIncludes("app/llms.txt/route.ts", "victor@victorbona.dev");
+assertNotIncludes("app/lib/seo.ts", "Full-stack engineer");
 
 for (const routeFile of [
   "app/blog/[slug]/page.tsx",

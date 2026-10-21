@@ -6,6 +6,7 @@ import { Navbar } from "./components/nav";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
+import { profile } from "./lib/profile";
 import Script from "next/script";
 import { PageViewTracker } from "./components/page-view-tracker";
 import {
@@ -46,9 +47,12 @@ export const metadata: Metadata = {
   },
   manifest: "/logos/site.webmanifest",
   description:
-    "Victor Bona writes about production software, architecture, infrastructure, security, AI systems, and the tradeoffs behind shipped engineering work.",
+    `${profile.oneLiner}. Writing about production software, distributed systems, infrastructure, security, and AI systems.`,
   keywords: [
-    "full-stack developer",
+    "distributed systems",
+    "senior software engineer",
+    "AI systems",
+    "site reliability",
     "engineering",
     "software architecture",
     "cloud engineering",
@@ -56,10 +60,8 @@ export const metadata: Metadata = {
     "software",
     "software engineer",
     "web development",
-    "React",
     "TypeScript",
     "Node.js",
-    "portfolio",
     "blog",
   ],
   authors: [{ name: "Victor Bona" }],
@@ -67,7 +69,7 @@ export const metadata: Metadata = {
   openGraph: withDefaultOpenGraphImage({
     title: "Victor Bona Blog",
     description:
-      "Victor Bona writes about production software, architecture, infrastructure, security, AI systems, and the tradeoffs behind shipped engineering work.",
+      `${profile.oneLiner}. Writing about production software, distributed systems, infrastructure, security, and AI systems.`,
     url: baseUrl,
     siteName: "Victor Bona Blog",
     locale: "en_US",
@@ -77,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Victor Bona Blog",
     description:
-      "Victor Bona writes about production software, architecture, infrastructure, security, AI systems, and the tradeoffs behind shipped engineering work.",
+      `${profile.oneLiner}. Writing about production software, distributed systems, infrastructure, security, and AI systems.`,
     creator: "@BonaVictor",
   }),
   robots: {
