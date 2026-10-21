@@ -1,6 +1,6 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { runCommand, type IndexEntry } from "./terminal.ts";
+import { runCommand, searchIndex, type IndexEntry } from "./terminal.ts";
 
 const index: IndexEntry[] = [
   { slug: "nidus-whitepaper", title: "Nidus: Module Composition for Axum", href: "/articles/nidus-whitepaper", kind: "paper" },
@@ -58,7 +58,7 @@ test("mail", () => {
 test("ls prints the addresses", () => {
   const r = runCommand("ls", index) as { kind: string; lines: string[] };
   assert.equal(r.kind, "print");
-  assert.equal(r.lines.length, 6);
+  assert.equal(r.lines.length, 9);
   assert.match(r.lines[0], /P100/);
 });
 
@@ -84,4 +84,25 @@ test("every slug printed in an ambiguity list opens its own entry", () => {
     assert.deepEqual(runCommand(`open ${e.slug}`, collision), { kind: "navigate", href: e.href, echo: `→ ${e.title}` });
   }
   assert.equal((runCommand("open NIDUS", collision) as { href: string }).href, "/projects");
+});
+
+test("cd reaches the extra pages", () => {
+  assert.deepEqual(runCommand("cd now", index), { kind: "navigate", href: "/now", echo: "→ Now" });
+  assert.equal((runCommand("cd research", index) as { href: string }).href, "/research");
+});
+
+test("searchIndex needs every word, ranks title hits first", () => {
+  const withText: IndexEntry[] = [
+    ...index,
+    { slug: "rust-dsl", title: "A DSL", href: "/blog/rust-dsl", kind: "post", text: "axum modules in rust" },
+  ];
+  assert.deepEqual(searchIndex(withText, "axum").map((e) => e.slug), ["nidus-whitepaper", "rust-dsl"]);
+  assert.deepEqual(searchIndex(withText, "axum rust").map((e) => e.slug), ["rust-dsl"]);
+  assert.deepEqual(searchIndex(withText, "   "), []);
+});
+
+test("grep prints matches or a miss", () => {
+  const hit = runCommand("grep locus", index) as { lines: string[] };
+  assert.match(hit.lines[1], /locus-whitepaper/);
+  assert.deepEqual(runCommand("grep zzz", index), { kind: "print", lines: ["no matches for zzz"] });
 });

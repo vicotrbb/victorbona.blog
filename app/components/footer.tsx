@@ -2,6 +2,8 @@ import { profile } from "app/lib/profile";
 import { ContactCommand } from "./ContactCommand";
 
 const links = [
+  { href: "/now", label: "Now", external: false },
+  { href: "/research", label: "Research", external: false },
   { href: profile.links.linkedin, label: "LinkedIn", external: true },
   { href: profile.links.x, label: "X", external: true },
   { href: profile.links.github, label: "GitHub", external: true },

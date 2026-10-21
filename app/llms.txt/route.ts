@@ -1,6 +1,7 @@
 import { baseUrl } from "app/sitemap";
 import { getBlogPosts } from "app/blog/utils";
 import { projects } from "app/projects/projects";
+import { getCaseStudies } from "app/projects/case-studies";
 import { getArticles } from "app/articles/articles";
 import { absoluteUrl } from "app/lib/seo";
 import { profile } from "app/lib/profile";
@@ -157,6 +158,14 @@ export async function GET() {
   } else {
     projects.forEach((project) => lines.push(formatProjectLine(project)));
   }
+  lines.push("");
+
+  lines.push("## Case Studies");
+  getCaseStudies().forEach((s) =>
+    lines.push(`- [${s.metadata.system}: ${s.metadata.title}](${baseUrl}/projects/${s.slug}): ${s.metadata.summary}`)
+  );
+  lines.push(`- [Research by theme, with citations](${baseUrl}/research)`);
+  lines.push(`- [Now: current work and live GitHub activity](${baseUrl}/now)`);
   lines.push("");
 
   lines.push("## Articles & Papers");

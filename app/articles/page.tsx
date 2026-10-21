@@ -73,6 +73,12 @@ export default function ArticlesPage() {
           observability, memory allocation, and protocol design. Each one ships
           with its PDF; preprints carry a DOI.
         </p>
+        <p className="mt-4 font-mono text-sm">
+          <a href="/research" className="text-[var(--text)] decoration-[var(--lit)] decoration-1 underline-offset-4 hover:underline">
+            <span aria-hidden="true" className="text-[var(--dim)]">$ </span>cd /research
+          </a>
+          <span className="text-[var(--dim)]"> papers by theme, with citations</span>
+        </p>
       </header>
       <h2 className="mb-2 mt-10 cmd">
         <span aria-hidden="true">$ </span>ls papers/ --format=references

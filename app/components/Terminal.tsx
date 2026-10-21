@@ -2,7 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { runCommand, type IndexEntry } from "app/lib/terminal";
+import { runCommand } from "app/lib/terminal";
+import { loadIndex } from "app/lib/load-index";
 
 type Line = { text: string; input?: boolean };
 
@@ -10,18 +11,6 @@ const greeting: Line[] = [{ text: "type help for commands · esc to close" }];
 
 function typingInField(el: Element | null) {
   return el instanceof HTMLElement && (el.isContentEditable || /^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName));
-}
-
-// Fetched on first open, then shared for the rest of the visit.
-let indexPromise: Promise<IndexEntry[]> | null = null;
-function loadIndex(): Promise<IndexEntry[]> {
-  indexPromise ??= fetch("/terminal-index.json")
-    .then((r) => (r.ok ? r.json() : []))
-    .catch(() => {
-      indexPromise = null;
-      return [];
-    });
-  return indexPromise;
 }
 
 export function Terminal() {

@@ -1,5 +1,7 @@
 import { SystemRow } from "app/components/SystemRow";
 import { projects } from "./projects";
+import { caseStudyHrefs } from "./case-studies";
+import { getGitHubSnapshot, repoKey } from "app/lib/github";
 import { baseUrl } from "app/sitemap";
 import type { Metadata } from "next";
 import {
@@ -31,7 +33,9 @@ export const metadata: Metadata = {
   }),
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const github = await getGitHubSnapshot();
+  const studies = caseStudyHrefs();
   const jsonLd = [
     getBreadcrumbJsonLd([
       { name: "Home", item: baseUrl },
@@ -78,7 +82,12 @@ export default function ProjectsPage() {
       </h2>
       <ul className="border-b border-[var(--line)]">
         {projects.map((project) => (
-          <SystemRow key={project.name} project={project} />
+          <SystemRow
+            key={project.name}
+            project={project}
+            caseStudy={studies.get(project.name)}
+            github={github?.byRepo[repoKey(project.repository) ?? ""]}
+          />
         ))}
       </ul>
     </section>

@@ -10,3 +10,10 @@ export const addresses: Address[] = [
   { code: "P500", label: "Writing", href: "/blog", aliases: ["writing", "blog", "posts"] },
   { code: "P600", label: "Compendium", href: "/compendium", aliases: ["compendium", "notes"] },
 ];
+
+// Pages reachable by `cd` and links, but kept out of the primary address row.
+export const extraPages: Array<{ label: string; href: string; aliases: string[] }> = [
+  { label: "Now", href: "/now", aliases: ["now"] },
+  { label: "Research", href: "/research", aliases: ["research", "cite"] },
+  { label: "Search", href: "/search", aliases: ["search"] },
+];

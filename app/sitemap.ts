@@ -2,6 +2,7 @@ import { getBlogPosts, getTags } from "app/blog/utils";
 import { getArticles } from "app/articles/articles";
 import { compendiumCollections } from "app/compendium/collections";
 import { getCompendiumNotes } from "app/compendium/utils";
+import { getCaseStudies } from "app/projects/case-studies";
 
 export const baseUrl = "https://blog.victorbona.dev";
 
@@ -52,6 +53,11 @@ export default async function sitemap() {
     }))
   );
 
+  const caseStudies = getCaseStudies().map((s) => ({
+    url: `${baseUrl}/projects/${s.slug}`,
+    lastModified: s.metadata.publishedAt,
+  }));
+
   const indexDates: Record<string, string | undefined> = {
     "": latestContent,
     "/about": latestContent,
@@ -59,6 +65,8 @@ export default async function sitemap() {
     "/projects": latestContent,
     "/articles": latestArticle,
     "/compendium": undefined,
+    "/now": latestContent,
+    "/research": latestArticle,
     "/rss": latestContent,
     "/llms.txt": latestContent,
   };
@@ -73,6 +81,7 @@ export default async function sitemap() {
     ...blogs,
     ...tags,
     ...articles,
+    ...caseStudies,
     ...compendiumCollectionRoutes,
     ...compendiumNoteRoutes,
   ];

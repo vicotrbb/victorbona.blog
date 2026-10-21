@@ -62,11 +62,18 @@ export function Navbar() {
             );
           })}
         </ul>
+        <Link
+          href="/search"
+          aria-current={pathname === "/search" ? "page" : undefined}
+          className="order-2 ml-auto inline-flex min-h-8 items-center px-2 py-1 font-mono text-xs text-[var(--dim)] transition-colors duration-150 hover:text-[var(--text)] aria-[current=page]:text-[var(--text)] lg:order-3"
+        >
+          search
+        </Link>
         <button
           type="button"
           data-terminal-open
           aria-label="Open terminal"
-          className="order-2 ml-auto inline-flex min-h-8 min-w-8 items-center justify-center border border-[var(--line)] px-2 py-1 font-mono text-xs text-[var(--dim)] transition-colors duration-150 hover:border-[var(--line-strong)] hover:text-[var(--text)] lg:order-3"
+          className="order-2 -ml-6 inline-flex min-h-8 min-w-8 items-center justify-center border border-[var(--line)] px-2 py-1 font-mono text-xs text-[var(--dim)] transition-colors duration-150 hover:border-[var(--line-strong)] hover:text-[var(--text)] lg:order-3"
         >
           <kbd>{shortcut}</kbd>
         </button>

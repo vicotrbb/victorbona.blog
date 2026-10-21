@@ -83,7 +83,7 @@ export function CollectionRow({
     <li className="border-t border-[var(--line)]">
       <Link href={collection.route} className="group block py-4">
         <p className="font-mono text-sm">
-          <span className="text-[var(--dim)]">Annex {collection.annex} — </span>
+          <span className="text-[var(--dim)]">Annex {collection.annex}: </span>
           <span className="text-[var(--text)] decoration-[var(--lit)] decoration-1 underline-offset-4 group-hover:underline">
             {collection.title}
           </span>

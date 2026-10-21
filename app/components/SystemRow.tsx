@@ -3,7 +3,9 @@
 import type { Project } from "app/projects/projects";
 import { useId, useState } from "react";
 import { toStroke } from "app/lib/status";
+import type { RepoStats } from "app/lib/github";
 import { StatusStroke, type Status } from "./StatusStroke";
+import { Ago } from "./Ago";
 
 const statusText: Record<Status, string> = {
   live: "text-[var(--lit)]",
@@ -37,7 +39,7 @@ function TechGroup({ label, items }: { label: string; items?: string[] }) {
   );
 }
 
-export function SystemRow({ project }: { project: Project }) {
+export function SystemRow({ project, caseStudy, github }: { project: Project; caseStudy?: string; github?: RepoStats }) {
   const [expanded, setExpanded] = useState(false);
   const detailsId = useId();
   const status = toStroke(project.status);
@@ -49,7 +51,13 @@ export function SystemRow({ project }: { project: Project }) {
       <div className="grid gap-3 md:grid-cols-[minmax(0,1fr)_auto] md:gap-x-8">
         <div className="min-w-0">
           <h2 className="text-lg font-semibold leading-snug tracking-[-0.01em] text-[var(--text)]">
-            {project.name}
+            {caseStudy ? (
+              <a href={caseStudy} className="decoration-[var(--lit)] decoration-1 underline-offset-4 hover:underline">
+                {project.name}
+              </a>
+            ) : (
+              project.name
+            )}
           </h2>
           <p className="mt-2 max-w-[68ch] text-[var(--dim)]">{project.description}</p>
         </div>
@@ -65,6 +73,11 @@ export function SystemRow({ project }: { project: Project }) {
             )}
           </span>
           <span className="flex flex-wrap gap-x-4 gap-y-1 md:justify-end">
+            {caseStudy && (
+              <a href={caseStudy} className="text-[var(--lit)] decoration-1 underline-offset-4 hover:underline">
+                case study
+              </a>
+            )}
             {project.website && (
               <a href={project.website} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${project.name} site`} className={textLink}>
                 site
@@ -93,6 +106,11 @@ export function SystemRow({ project }: { project: Project }) {
       <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2">
         <MonoTags items={project.tags} />
         <span className="font-mono text-xs text-[var(--dim)]">{project.license}</span>
+        {github && (
+          <span className="font-mono text-xs text-[var(--dim)]">
+            <span className="tabular-nums text-[var(--text)]">{github.stars}</span> stars · pushed <Ago iso={github.pushedAt} />
+          </span>
+        )}
       </div>
 
       {canExpand && (

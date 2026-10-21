@@ -2,6 +2,7 @@ import { getBlogPosts } from "app/blog/utils";
 import { getCompendiumNotes } from "app/compendium/utils";
 import { articles } from "./articles/articles";
 import { projects } from "./projects/projects";
+import { caseStudyHrefs } from "./projects/case-studies";
 import { getSiteCounts } from "./lib/counts";
 import { profile } from "./lib/profile";
 import { layoutRings } from "./lib/rings";
@@ -9,13 +10,18 @@ import { toStroke } from "./lib/status";
 import { ContactCommand } from "./components/ContactCommand";
 import { ControlPlane } from "./components/ControlPlane";
 import { StatusTable, type StatusRow } from "./components/StatusTable";
+import { GitHubFeed } from "./components/GitHubFeed";
+import { getGitHubSnapshot } from "./lib/github";
 
 const RING_SIZE = 640;
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const newestFirst = (a: string, b: string) => b.localeCompare(a);
 
-export default function Page() {
+export default async function Page() {
+  const github = await getGitHubSnapshot();
   const counts = getSiteCounts();
+  const studies = caseStudyHrefs();
+  const systemHref = (name: string) => studies.get(name) ?? "/projects";
   const posts = [...getBlogPosts()].sort((a, b) => newestFirst(a.metadata.publishedAt, b.metadata.publishedAt));
   const papers = [...articles].sort((a, b) => newestFirst(a.publishedAt, b.publishedAt));
 
@@ -26,7 +32,7 @@ export default function Page() {
         label: "Systems",
         href: "/projects",
         count: counts.systems,
-        items: projects.map((p) => ({ id: slugify(p.name), title: p.name, href: "/projects", status: toStroke(p.status) })),
+        items: projects.map((p) => ({ id: slugify(p.name), title: p.name, href: systemHref(p.name), status: toStroke(p.status) })),
       },
       {
         id: "papers",
@@ -63,7 +69,7 @@ export default function Page() {
     ...papers.map((a): StatusRow => ({ name: a.title, href: `/articles/${a.slug}`, kind: "paper", status: toStroke(a.status), updated: a.publishedAt })),
     ...projects
       .filter((p) => p.startDate)
-      .map((p): StatusRow => ({ name: p.name, href: "/projects", kind: "system", status: toStroke(p.status), updated: p.startDate! })),
+      .map((p): StatusRow => ({ name: p.name, href: systemHref(p.name), kind: "system", status: toStroke(p.status), updated: p.startDate! })),
   ]
     .map((row) => ({ ...row, updated: row.updated.slice(0, 10) }))
     .sort((a, b) => newestFirst(a.updated, b.updated))
@@ -86,6 +92,12 @@ export default function Page() {
             >
               <span aria-hidden="true">$ </span>cd /about
             </a>
+            <a
+              href="/now"
+              className="font-mono text-sm text-[var(--dim)] transition-colors duration-150 hover:text-[var(--text)]"
+            >
+              <span aria-hidden="true">$ </span>cd /now
+            </a>
           </div>
         </div>
         <div className="md:col-span-6">
@@ -99,6 +111,15 @@ export default function Page() {
         </h2>
         <StatusTable rows={recent} />
       </section>
+
+      {github && github.activity.length > 0 && (
+        <section aria-labelledby="live-activity">
+          <h2 id="live-activity" className="mb-4 cmd">
+            <span aria-hidden="true">$ </span>watch github --live
+          </h2>
+          <GitHubFeed snapshot={github} limit={6} />
+        </section>
+      )}
 
       {featured && (
         <section aria-labelledby="featured-paper" className="grid gap-4 border-y border-[var(--line)] py-8 md:grid-cols-12 md:gap-8">
