@@ -22,9 +22,9 @@ import {
 } from "../utils";
 
 type CollectionPageProps = {
-  params: {
+  params: Promise<{
     collection: string;
-  };
+  }>;
 };
 
 function getStudyIndex(collectionId: string) {
@@ -71,7 +71,10 @@ export function generateStaticParams() {
   }));
 }
 
-export function generateMetadata({ params }: CollectionPageProps): Metadata {
+export async function generateMetadata(
+  props: CollectionPageProps,
+): Promise<Metadata> {
+  const params = await props.params;
   const collection = getCompendiumCollection(params.collection);
 
   if (!collection) {
@@ -98,9 +101,10 @@ export function generateMetadata({ params }: CollectionPageProps): Metadata {
   };
 }
 
-export default function CompendiumCollectionPage({
-  params,
-}: CollectionPageProps) {
+export default async function CompendiumCollectionPage(
+  props: CollectionPageProps,
+) {
+  const params = await props.params;
   const collection = getCompendiumCollection(params.collection);
 
   if (!collection) {

@@ -16,7 +16,8 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ tag: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const tag = decodeURIComponent(params.tag);
 
   return {
@@ -38,7 +39,8 @@ export async function generateMetadata({ params }): Promise<Metadata> {
   };
 }
 
-export default function TagPage({ params }) {
+export default async function TagPage(props: { params: Promise<{ tag: string }> }) {
+  const params = await props.params;
   const tag = decodeURIComponent(params.tag);
   const posts = getBlogPosts().filter((post) =>
     post.metadata.tags

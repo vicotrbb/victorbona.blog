@@ -12,9 +12,9 @@ function getContentType(path: string): string {
   return 'page'
 }
 
-export default function NotFound() {
+export default async function NotFound() {
   // Read the actual path from middleware headers
-  const headersList = headers()
+  const headersList = await headers()
   const path = headersList.get('x-url') || headersList.get('x-metrics-path') || '/not_found'
   const contentType = getContentType(path)
 

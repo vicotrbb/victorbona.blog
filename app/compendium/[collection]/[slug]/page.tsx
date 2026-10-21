@@ -21,10 +21,10 @@ import {
 } from "../../utils";
 
 type CompendiumNotePageProps = {
-  params: {
+  params: Promise<{
     collection: string;
     slug: string;
-  };
+  }>;
 };
 
 function getNoteUrl(collection: string, slug: string) {
@@ -40,9 +40,10 @@ export function generateStaticParams() {
   );
 }
 
-export function generateMetadata({
-  params,
-}: CompendiumNotePageProps): Metadata {
+export async function generateMetadata(
+  props: CompendiumNotePageProps,
+): Promise<Metadata> {
+  const params = await props.params;
   const note = getCompendiumNote(params.collection, params.slug);
   const collection = getCompendiumCollection(params.collection);
 
@@ -81,9 +82,10 @@ export function generateMetadata({
   };
 }
 
-export default function CompendiumNotePage({
-  params,
-}: CompendiumNotePageProps) {
+export default async function CompendiumNotePage(
+  props: CompendiumNotePageProps,
+) {
+  const params = await props.params;
   const note = getCompendiumNote(params.collection, params.slug);
   const collection = getCompendiumCollection(params.collection);
 

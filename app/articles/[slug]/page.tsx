@@ -12,9 +12,9 @@ import {
 } from "app/lib/seo";
 
 type ArticlePageProps = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 function formatDate(date: string): string {
@@ -37,9 +37,10 @@ export async function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({
-  params,
-}: ArticlePageProps): Promise<Metadata> {
+export async function generateMetadata(
+  props: ArticlePageProps,
+): Promise<Metadata> {
+  const params = await props.params;
   const article = getArticleBySlug(params.slug);
   if (!article) {
     return {};
@@ -72,7 +73,8 @@ export async function generateMetadata({
   };
 }
 
-export default function ArticlePage({ params }: ArticlePageProps) {
+export default async function ArticlePage(props: ArticlePageProps) {
+  const params = await props.params;
   const article = getArticleBySlug(params.slug);
 
   if (!article) {

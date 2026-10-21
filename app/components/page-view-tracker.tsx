@@ -6,8 +6,8 @@ import { pageViewsCounter, pageDurationHistogram } from '../lib/metrics'
  * Reads metrics metadata from headers set by middleware.
  * Must be rendered as part of the server-side rendering to count views.
  */
-export function PageViewTracker() {
-  const headersList = headers()
+export async function PageViewTracker() {
+  const headersList = await headers()
 
   // Read metrics metadata from middleware
   const path = headersList.get('x-metrics-path')
