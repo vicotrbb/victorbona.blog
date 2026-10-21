@@ -486,3 +486,37 @@ table {
     top: 1.5rem;
   }
 }
+
+/* Terminal and boot line: the only glow outside the home hero. */
+.terminal-glow {
+  text-shadow: 0 0 10px rgb(77 255 143 / 0.6);
+}
+
+/* The glowing prompt and lit caret mark the focused command line. */
+.terminal input:focus-visible {
+  outline: none;
+}
+
+.terminal::backdrop {
+  background: rgb(2 6 4 / 0.72);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .terminal[open] {
+    animation: terminal-open 180ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  @keyframes terminal-open {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .boot-line {
+    transition: opacity 400ms ease-out;
+  }
+}

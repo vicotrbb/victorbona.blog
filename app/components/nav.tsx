@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { addresses } from "app/lib/addresses";
 
 const isCurrent = (pathname: string, href: string) =>
@@ -11,6 +11,11 @@ const isCurrent = (pathname: string, href: string) =>
 export function Navbar() {
   const pathname = usePathname() ?? "/";
   const row = useRef<HTMLUListElement>(null);
+  // Server renders the Mac label; swap after mount so hydration matches.
+  const [shortcut, setShortcut] = useState("⌘K");
+  useEffect(() => {
+    if (!/Mac|iPhone|iPad/.test(navigator.platform)) setShortcut("Ctrl K");
+  }, []);
 
   // On narrow screens the address row scrolls; keep the current page in view.
   useEffect(() => {
@@ -61,9 +66,9 @@ export function Navbar() {
           type="button"
           data-terminal-open
           aria-label="Open terminal"
-          className="order-2 ml-auto border border-[var(--line)] px-2 py-1 font-mono text-xs text-[var(--dim)] transition-colors duration-150 hover:border-[var(--line-strong)] hover:text-[var(--text)] lg:order-3"
+          className="order-2 ml-auto inline-flex min-h-8 min-w-8 items-center justify-center border border-[var(--line)] px-2 py-1 font-mono text-xs text-[var(--dim)] transition-colors duration-150 hover:border-[var(--line-strong)] hover:text-[var(--text)] lg:order-3"
         >
-          <kbd>⌘K</kbd>
+          <kbd>{shortcut}</kbd>
         </button>
       </nav>
     </header>

@@ -3,6 +3,10 @@ import "./global.css";
 import type { Metadata } from "next";
 import { Martian_Mono, Schibsted_Grotesk } from "next/font/google";
 import { Navbar } from "./components/nav";
+import { Terminal } from "./components/Terminal";
+import { BootLine } from "./components/BootLine";
+import { getTerminalIndex } from "./lib/terminal-index";
+import { getSiteCounts } from "./lib/counts";
 import { Analytics } from "@vercel/analytics/react";
 import Footer from "./components/footer";
 import { baseUrl } from "./sitemap";
@@ -117,6 +121,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   const siteJsonLd = [getPersonJsonLd(), getWebsiteJsonLd(), getBlogJsonLd()];
+  const counts = getSiteCounts();
 
   return (
     <html lang="en" className={`${sans.variable} ${mono.variable}`}>
@@ -150,10 +155,12 @@ export default function RootLayout({
         </a>
         <PageViewTracker />
         <Navbar />
+        <BootLine systems={counts.systems} papers={counts.papers} />
         <main id="main" className="w-full flex-auto">
           {children}
         </main>
         <Footer />
+        <Terminal index={getTerminalIndex()} />
         <Analytics />
       </body>
     </html>
