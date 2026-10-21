@@ -1,0 +1,393 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-21T19:58:12.127629+00:00",
+  "title": "Design System: Victor Bona",
+  "extensions": {
+    "colorMeta": {
+      "bg": {
+        "role": "neutral",
+        "displayName": "Phosphor Glass",
+        "canonical": "#020604",
+        "tonalRamp": [
+          "oklch(15% 0.02 155)",
+          "oklch(26% 0.02 155)",
+          "oklch(38% 0.02 155)",
+          "oklch(50% 0.02 155)",
+          "oklch(62% 0.02 155)",
+          "oklch(74% 0.02 155)",
+          "oklch(85% 0.02 155)",
+          "oklch(95% 0.02 155)"
+        ]
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Dark Panel",
+        "canonical": "#08110c",
+        "tonalRamp": [
+          "oklch(15% 0.02 155)",
+          "oklch(26% 0.02 155)",
+          "oklch(38% 0.02 155)",
+          "oklch(50% 0.02 155)",
+          "oklch(62% 0.02 155)",
+          "oklch(74% 0.02 155)",
+          "oklch(85% 0.02 155)",
+          "oklch(95% 0.02 155)"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "#15241b",
+        "tonalRamp": [
+          "oklch(15% 0.03 155)",
+          "oklch(26% 0.03 155)",
+          "oklch(38% 0.03 155)",
+          "oklch(50% 0.03 155)",
+          "oklch(62% 0.03 155)",
+          "oklch(74% 0.03 155)",
+          "oklch(85% 0.03 155)",
+          "oklch(95% 0.03 155)"
+        ]
+      },
+      "line-strong": {
+        "role": "neutral",
+        "displayName": "Afterglow",
+        "canonical": "#1f5c3a",
+        "tonalRamp": [
+          "oklch(15% 0.08 155)",
+          "oklch(26% 0.08 155)",
+          "oklch(38% 0.08 155)",
+          "oklch(50% 0.08 155)",
+          "oklch(62% 0.08 155)",
+          "oklch(74% 0.08 155)",
+          "oklch(85% 0.08 155)",
+          "oklch(95% 0.08 155)"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Instrument Stroke",
+        "canonical": "#2a7a4c",
+        "tonalRamp": [
+          "oklch(15% 0.1 155)",
+          "oklch(26% 0.1 155)",
+          "oklch(38% 0.1 155)",
+          "oklch(50% 0.1 155)",
+          "oklch(62% 0.1 155)",
+          "oklch(74% 0.1 155)",
+          "oklch(85% 0.1 155)",
+          "oklch(95% 0.1 155)"
+        ]
+      },
+      "text": {
+        "role": "neutral",
+        "displayName": "Glass Text",
+        "canonical": "#d8e8de",
+        "tonalRamp": [
+          "oklch(15% 0.025 158)",
+          "oklch(26% 0.025 158)",
+          "oklch(38% 0.025 158)",
+          "oklch(50% 0.025 158)",
+          "oklch(62% 0.025 158)",
+          "oklch(74% 0.025 158)",
+          "oklch(85% 0.025 158)",
+          "oklch(95% 0.025 158)"
+        ]
+      },
+      "dim": {
+        "role": "neutral",
+        "displayName": "Dim Readout",
+        "canonical": "#6f8f7c",
+        "tonalRamp": [
+          "oklch(15% 0.04 158)",
+          "oklch(26% 0.04 158)",
+          "oklch(38% 0.04 158)",
+          "oklch(50% 0.04 158)",
+          "oklch(62% 0.04 158)",
+          "oklch(74% 0.04 158)",
+          "oklch(85% 0.04 158)",
+          "oklch(95% 0.04 158)"
+        ]
+      },
+      "lit": {
+        "role": "primary",
+        "displayName": "Phosphor",
+        "canonical": "#4dff8f",
+        "tonalRamp": [
+          "oklch(15% 0.2 152)",
+          "oklch(26% 0.2 152)",
+          "oklch(38% 0.2 152)",
+          "oklch(50% 0.2 152)",
+          "oklch(62% 0.2 152)",
+          "oklch(74% 0.2 152)",
+          "oklch(85% 0.2 152)",
+          "oklch(95% 0.2 152)"
+        ]
+      },
+      "warn": {
+        "role": "secondary",
+        "displayName": "Signal Amber",
+        "canonical": "#e8c45c",
+        "tonalRamp": [
+          "oklch(15% 0.13 90)",
+          "oklch(26% 0.13 90)",
+          "oklch(38% 0.13 90)",
+          "oklch(50% 0.13 90)",
+          "oklch(62% 0.13 90)",
+          "oklch(74% 0.13 90)",
+          "oklch(85% 0.13 90)",
+          "oklch(95% 0.13 90)"
+        ]
+      },
+      "syntax-mint": {
+        "role": "tertiary",
+        "displayName": "Syntax Mint",
+        "canonical": "#8fe8b4",
+        "tonalRamp": [
+          "oklch(15% 0.11 160)",
+          "oklch(26% 0.11 160)",
+          "oklch(38% 0.11 160)",
+          "oklch(50% 0.11 160)",
+          "oklch(62% 0.11 160)",
+          "oklch(74% 0.11 160)",
+          "oklch(85% 0.11 160)",
+          "oklch(95% 0.11 160)"
+        ]
+      },
+      "syntax-teal": {
+        "role": "tertiary",
+        "displayName": "Syntax Teal",
+        "canonical": "#6fd8c8",
+        "tonalRamp": [
+          "oklch(15% 0.11 180)",
+          "oklch(26% 0.11 180)",
+          "oklch(38% 0.11 180)",
+          "oklch(50% 0.11 180)",
+          "oklch(62% 0.11 180)",
+          "oklch(74% 0.11 180)",
+          "oklch(85% 0.11 180)",
+          "oklch(95% 0.11 180)"
+        ]
+      },
+      "syntax-sage": {
+        "role": "tertiary",
+        "displayName": "Syntax Sage",
+        "canonical": "#b4dcc4",
+        "tonalRamp": [
+          "oklch(15% 0.05 160)",
+          "oklch(26% 0.05 160)",
+          "oklch(38% 0.05 160)",
+          "oklch(50% 0.05 160)",
+          "oklch(62% 0.05 160)",
+          "oklch(74% 0.05 160)",
+          "oklch(85% 0.05 160)",
+          "oklch(95% 0.05 160)"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The home one-liner only."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Archive and article page titles; archives carry their page address inline in mono."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Row names, featured paper, contact panel heading."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Prose column at a 68ch measure."
+      },
+      "command": {
+        "displayName": "Command",
+        "purpose": "Section headings written as shell commands with a lit prompt."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Mono machine data: dates, counts, statuses, tags, nav codes. Tabular numerals."
+      }
+    },
+    "shadows": [
+      {
+        "name": "terminal-lift",
+        "value": "0 24px 64px -12px rgb(0 0 0 / 0.8)",
+        "purpose": "Terminal dialog only."
+      },
+      {
+        "name": "phosphor-bloom",
+        "value": "drop-shadow(0 0 3px rgb(77 255 143 / 0.9)) drop-shadow(0 0 10px rgb(77 255 143 / 0.45))",
+        "purpose": "Ring core, active orbit, hovered node, heartbeat pulse (home hero)."
+      },
+      {
+        "name": "prompt-glow",
+        "value": "0 0 10px rgb(77 255 143 / 0.6)",
+        "purpose": "text-shadow on terminal prompts; hero contact uses 0 0 14px at 0.55."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out-expo",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Ring isolation (240ms), terminal unroll (180ms clip-path), heartbeat pulse (3.2s loop)."
+      },
+      {
+        "name": "hover-color",
+        "value": "150ms ease",
+        "purpose": "Color and border transitions on links, nav and buttons."
+      },
+      {
+        "name": "boot-fade",
+        "value": "400ms ease-out",
+        "purpose": "First-visit boot line fade-out after a 1.1s type-on."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: no-preference",
+        "purpose": "Every animation and smooth scroll is gated behind this."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "compendium-grid",
+        "value": "64rem"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Contact Command (hero)",
+      "kind": "button",
+      "refersTo": "contact-hero",
+      "description": "Primary action; the only bordered, glowing button. Home hero only.",
+      "html": "<a class=\"ds-contact-hero\" href=\"#\"><span aria-hidden=\"true\">$</span> contact</a>",
+      "css": ".ds-contact-hero { display:inline-flex; gap:8px; align-items:baseline; font-family: var(--font-mono, 'Martian Mono'), ui-monospace, monospace; font-size:1.125rem; font-weight:600; color:var(--lit,#4dff8f); border:1px solid var(--lit,#4dff8f); padding:12px 20px; border-radius:0; text-decoration:none; text-shadow:0 0 14px rgb(77 255 143 / 0.55); transition:color 150ms, background-color 150ms; } .ds-contact-hero:hover { background:var(--lit,#4dff8f); color:#000; text-shadow:none; } .ds-contact-hero:focus-visible { outline:1px solid var(--lit,#4dff8f); outline-offset:3px; }"
+    },
+    {
+      "name": "Contact Command (inline)",
+      "kind": "button",
+      "refersTo": "contact-inline",
+      "description": "Contact in panels, footer and 404: lit command plus dim address.",
+      "html": "<a class=\"ds-contact-inline\" href=\"#\"><span aria-hidden=\"true\">$</span> contact <span class=\"ds-contact-addr\">victor.bona@hotmail.com</span></a>",
+      "css": ".ds-contact-inline { font-family: var(--font-mono, 'Martian Mono'), ui-monospace, monospace; font-size:0.875rem; font-weight:600; color:var(--lit,#4dff8f); text-decoration:none; text-underline-offset:4px; } .ds-contact-inline:hover { text-decoration:underline 1px; } .ds-contact-addr { font-weight:400; color:var(--dim,#6f8f7c); } .ds-contact-inline:focus-visible { outline:1px solid var(--lit,#4dff8f); outline-offset:3px; }"
+    },
+    {
+      "name": "Page Address Nav",
+      "kind": "nav",
+      "refersTo": "nav-address",
+      "description": "Teletext page addresses; current page gets a lit code and a phosphor underline.",
+      "html": "<nav class=\"ds-nav\"><a class=\"ds-nav-a ds-current\" href=\"#\"><span class=\"ds-code\">P100</span>Home</a><a class=\"ds-nav-a\" href=\"#\"><span class=\"ds-code\">P200</span>Profile</a><a class=\"ds-nav-a\" href=\"#\"><span class=\"ds-code\">P300</span>Papers</a><span class=\"ds-key\"><kbd>&#8984;K</kbd></span></nav>",
+      "css": ".ds-nav { display:flex; align-items:center; border-bottom:1px solid var(--line,#15241b); background:var(--bg,#020604); } .ds-nav-a { display:flex; gap:8px; align-items:baseline; padding:12px; margin-bottom:-1px; border-bottom:1px solid transparent; color:var(--dim,#6f8f7c); font-size:0.875rem; text-decoration:none; transition:color 150ms; } .ds-nav-a:hover { color:var(--text,#d8e8de); } .ds-nav-a:focus-visible { outline:1px solid var(--lit,#4dff8f); outline-offset:3px; } .ds-code { font-family: var(--font-mono, 'Martian Mono'), ui-monospace, monospace; font-size:0.75rem; } .ds-current { color:var(--text,#d8e8de); border-bottom-color:var(--lit,#4dff8f); } .ds-current .ds-code { color:var(--lit,#4dff8f); font-weight:700; } .ds-key { margin-left:auto; min-height:32px; min-width:32px; display:inline-flex; align-items:center; justify-content:center; border:1px solid var(--line,#15241b); padding:4px 8px; font-family: var(--font-mono, 'Martian Mono'), ui-monospace, monospace; font-size:0.75rem; color:var(--dim,#6f8f7c); }"
+    },
+    {
+      "name": "Command Heading",
+      "kind": "custom",
+      "refersTo": "command",
+      "description": "Section headings written as shell commands, prompt lit.",
+      "html": "<h2 class=\"ds-cmd\"><span aria-hidden=\"true\">$ </span>get work --sort-by=updated</h2>",
+      "css": ".ds-cmd { font-family: var(--font-mono, 'Martian Mono'), ui-monospace, monospace; font-size:1rem; line-height:1.5; font-weight:600; color:var(--text,#d8e8de); margin:0; } .ds-cmd > span:first-child { color:var(--lit,#4dff8f); font-weight:760; }"
+    },
+    {
+      "name": "Status Row",
+      "kind": "custom",
+      "refersTo": "status-table",
+      "description": "Ruled mono row with the stroke grammar: solid live, dashed maintained, dotted archived.",
+      "html": "<div class=\"ds-rows\"><div class=\"ds-row\"><a href=\"#\">Trace Sampling at the Collector Boundary</a><span class=\"ds-st\"><i class=\"ds-stroke ds-live\"></i><b class=\"ds-s-live\">live</b></span><time>2026-09-29</time></div><div class=\"ds-row\"><a href=\"#\">Purple Wolf</a><span class=\"ds-st\"><i class=\"ds-stroke ds-maint\"></i><b>maintained</b></span><time>2025-11-02</time></div><div class=\"ds-row\"><a href=\"#\">Old prototype</a><span class=\"ds-st\"><i class=\"ds-stroke ds-arch\"></i><b class=\"ds-s-arch\">archived</b></span><time>2023-04-10</time></div></div>",
+      "css": ".ds-row { display:grid; grid-template-columns:1fr auto auto; gap:16px; align-items:baseline; padding:12px 0; border-top:1px solid var(--line,#15241b); font-family: var(--font-mono, 'Martian Mono'), ui-monospace, monospace; font-size:0.875rem; color:var(--dim,#6f8f7c); } .ds-row a { font-family:var(--font-sans,'Schibsted Grotesk'), ui-sans-serif, sans-serif; font-size:1rem; color:var(--text,#d8e8de); text-decoration:none; text-underline-offset:4px; text-decoration-color:var(--lit,#4dff8f); } .ds-row a:hover { text-decoration-line:underline; } .ds-row a:focus-visible { outline:1px solid var(--lit,#4dff8f); outline-offset:3px; } .ds-st { display:flex; gap:8px; align-items:center; } .ds-st b { font-weight:400; color:var(--text,#d8e8de); } .ds-st b.ds-s-live { color:var(--lit,#4dff8f); } .ds-st b.ds-s-arch { color:var(--dim,#6f8f7c); } .ds-stroke { display:block; width:24px; border-top:1px solid; } .ds-live { border-color:var(--lit,#4dff8f); } .ds-maint { border-style:dashed; border-color:var(--line-strong,#1f5c3a); } .ds-arch { border-style:dotted; border-color:var(--line-strong,#1f5c3a); } .ds-row time { font-variant-numeric:tabular-nums; }"
+    },
+    {
+      "name": "Mono Tag",
+      "kind": "chip",
+      "refersTo": "mono-tag",
+      "description": "Hairline-boxed mono label for stacks and tech.",
+      "html": "<ul class=\"ds-tags\"><li>rust</li><li>kubernetes</li><li>nats</li></ul>",
+      "css": ".ds-tags { display:flex; flex-wrap:wrap; gap:6px; list-style:none; padding:0; margin:0; } .ds-tags li { border:1px solid var(--line,#15241b); padding:2px 6px; font-family: var(--font-mono, 'Martian Mono'), ui-monospace, monospace; font-size:0.75rem; color:var(--dim,#6f8f7c); border-radius:0; }"
+    },
+    {
+      "name": "Contact Panel",
+      "kind": "card",
+      "refersTo": "panel",
+      "description": "Tonal panel with an afterglow border; the only boxed section on home.",
+      "html": "<section class=\"ds-panel\"><h2>Building something distributed, or making AI hold up in production?</h2><p><span class=\"ds-lit\">$ contact</span> <span class=\"ds-dim\">victor.bona@hotmail.com</span></p></section>",
+      "css": ".ds-panel { background:var(--panel,#08110c); border:1px solid var(--line-strong,#1f5c3a); padding:40px; border-radius:0; } .ds-panel h2 { max-width:24ch; margin:0; font-size:1.875rem; font-weight:600; letter-spacing:-0.02em; color:var(--text,#d8e8de); } .ds-panel p { margin:24px 0 0; font-family: var(--font-mono, 'Martian Mono'), ui-monospace, monospace; font-size:0.875rem; } .ds-lit { color:var(--lit,#4dff8f); font-weight:600; } .ds-dim { color:var(--dim,#6f8f7c); }"
+    },
+    {
+      "name": "Terminal Command Line",
+      "kind": "input",
+      "refersTo": "terminal",
+      "description": "The terminal's input: glowing prompt and lit caret replace the focus outline.",
+      "html": "<div class=\"ds-term\"><div class=\"ds-term-bar\"><span>terminal</span><span>esc</span></div><label class=\"ds-term-line\"><span class=\"ds-prompt\" aria-hidden=\"true\">$</span><input placeholder=\"help\" aria-label=\"Command\"></label></div>",
+      "css": ".ds-term { background:var(--panel,#08110c); border:1px solid var(--line-strong,#1f5c3a); box-shadow:0 24px 64px -12px rgb(0 0 0 / 0.8); font-family: var(--font-mono, 'Martian Mono'), ui-monospace, monospace; font-size:0.875rem; color:var(--text,#d8e8de); max-width:42rem; } .ds-term-bar { display:flex; justify-content:space-between; border-bottom:1px solid var(--line,#15241b); padding:8px 16px; font-size:0.75rem; color:var(--dim,#6f8f7c); } .ds-term-line { display:flex; gap:8px; align-items:center; padding:4px 16px 16px; } .ds-prompt { color:var(--lit,#4dff8f); font-weight:700; text-shadow:0 0 10px rgb(77 255 143 / 0.6); } .ds-term-line input { flex:1; min-height:32px; background:transparent; border:0; outline:none; color:var(--text,#d8e8de); caret-color:var(--lit,#4dff8f); font:inherit; } .ds-term-line input::placeholder { color:var(--dim,#6f8f7c); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Control Plane, Phosphor Edition",
+    "overview": "**Creative North Star: \"The Control Plane, Phosphor Edition\"**\n\nThe site is an operator's console for one engineer. Victor is the leader node at the centre; systems, papers, writing and compendium run as tracks around him, each with a real count. The ground is green-black glass, panels are square and ruled with hairlines, and the only light on screen comes from things that are live. Nothing decorates except data: graduations, counts, statuses, dates and page addresses are the ornament.\n\nTwo speeds share one world. Decision surfaces (home, profile) read in seconds through a display one-liner, the ring instrument, and a lit `contact` command. Reading surfaces (posts, papers, compendium notes) drop to a calm sans column at a 68ch measure, with mono kept to metadata. Dark is the only theme.",
+    "keyCharacteristics": [
+      "Green-tinted near-black ground; phosphor green reserved for lit, live things.",
+      "Square corners and 1px hairline rules everywhere; depth comes from tone, not shadow.",
+      "Status is drawn by stroke: solid for live, dashed for maintained, dotted (gapped) for archived.",
+      "Mono for machine data and commands, a clean grotesk for prose and headings.",
+      "Teletext page addresses (P100 to P600) and a terminal (Cmd/Ctrl K) as navigation.",
+      "Glow belongs only to the home hero and the terminal prompt."
+    ],
+    "rules": [
+      {
+        "name": "The Lit Means Live Rule",
+        "body": "Phosphor marks only something live, current, actionable or focused. If it is not on, it is Glass Text or Dim Readout.",
+        "section": "colors"
+      },
+      {
+        "name": "The Amber Is A Fault Rule",
+        "body": "Signal Amber appears only for warnings, faults and unfilled placeholders, never for decoration or emphasis.",
+        "section": "colors"
+      },
+      {
+        "name": "The Machine Speaks Mono Rule",
+        "body": "Dates, counts, statuses, addresses, identifiers, DOIs and commands are mono with tabular numerals. Sentences, titles and headings are sans. Never mix within one element.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lit Is Heavier Rule",
+        "body": "Activation is shown by weight as well as color: the current nav code goes bold, the active ring label goes to 760.",
+        "section": "typography"
+      },
+      {
+        "name": "The Glow Is Rationed Rule",
+        "body": "Bloom and glow exist only in the home hero instrument, the hero contact command and the terminal prompt. Never behind body text, never on reading surfaces.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do reserve Phosphor for live, current, actionable or focused things.",
+      "Do draw status with the stroke grammar: solid live, dashed maintained, dotted archived.",
+      "Do write section headings and secondary actions as shell commands with a lit `$`.",
+      "Do keep corners at 0px and borders at 1px.",
+      "Do put dates, counts and identifiers in Martian Mono with tabular numerals.",
+      "Do use Instrument Stroke (not Afterglow) for any stroke that must be read as data.",
+      "Do gate every animation behind prefers-reduced-motion: no-preference."
+    ],
+    "donts": [
+      "Don't add glow or bloom outside the home hero and the terminal prompt.",
+      "Don't use Signal Amber for anything but warnings, faults and pending placeholders.",
+      "Don't add a light theme.",
+      "Don't separate content with cards or drop shadows; use rules and tonal panels.",
+      "Don't set prose, titles or headings in mono."
+    ]
+  }
+}
