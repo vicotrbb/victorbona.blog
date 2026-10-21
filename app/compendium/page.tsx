@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import {
   getBreadcrumbJsonLd,
   getItemListJsonLd,
+  ogImage,
   withDefaultOpenGraphImage,
   withDefaultTwitterImage,
 } from "app/lib/seo";
@@ -28,11 +29,13 @@ export const metadata: Metadata = {
     description,
     type: "website",
     url: `${baseUrl}/compendium`,
+    images: [ogImage(title, "P600 Compendium")],
   }),
   twitter: withDefaultTwitterImage({
     card: "summary_large_image",
     title: `${title} - Victor Bona`,
     description,
+    images: [ogImage(title, "P600 Compendium")],
   }),
 };
 

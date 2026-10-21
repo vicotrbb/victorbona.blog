@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import {
   getBreadcrumbJsonLd,
   getItemListJsonLd,
+  ogImage,
   withDefaultOpenGraphImage,
   withDefaultTwitterImage,
 } from "app/lib/seo";
@@ -92,11 +93,13 @@ export async function generateMetadata(
       description: collection.description,
       type: "website",
       url: `${baseUrl}${collection.route}`,
+      images: [ogImage(collection.title, "P600 Compendium")],
     }),
     twitter: withDefaultTwitterImage({
       card: "summary_large_image",
       title: `${collection.title} Compendium - Victor Bona`,
       description: collection.description,
+      images: [ogImage(collection.title, "P600 Compendium")],
     }),
   };
 }

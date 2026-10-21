@@ -6,6 +6,7 @@ import {
   getBreadcrumbJsonLd,
   getItemListJsonLd,
   getProjectJsonLd,
+  ogImage,
   withDefaultOpenGraphImage,
   withDefaultTwitterImage,
 } from "app/lib/seo";
@@ -20,11 +21,13 @@ export const metadata: Metadata = {
     title: "Projects - Victor Bona",
     description: "Explore my software projects and open source contributions.",
     url: `${baseUrl}/projects`,
+    images: [ogImage("Systems", "P400 Systems")],
   }),
   twitter: withDefaultTwitterImage({
     card: "summary_large_image",
     title: "Projects - Victor Bona",
     description: "Explore my software projects and open source contributions.",
+    images: [ogImage("Systems", "P400 Systems")],
   }),
 };
 

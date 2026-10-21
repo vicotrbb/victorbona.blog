@@ -6,6 +6,7 @@ import { isPending, profile } from "app/lib/profile";
 import {
   getBreadcrumbJsonLd,
   getProfilePageJsonLd,
+  ogImage,
   withDefaultOpenGraphImage,
   withDefaultTwitterImage,
 } from "app/lib/seo";
@@ -22,11 +23,13 @@ export const metadata: Metadata = {
     description,
     url: `${baseUrl}/about`,
     type: "profile",
+    images: [ogImage("Profile", "P200 Profile")],
   }),
   twitter: withDefaultTwitterImage({
     card: "summary_large_image",
     title: "Profile - Victor Bona",
     description,
+    images: [ogImage("Profile", "P200 Profile")],
   }),
 };
 

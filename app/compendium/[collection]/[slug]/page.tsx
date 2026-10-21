@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import {
   getBreadcrumbJsonLd,
   getCompendiumNoteJsonLd,
+  ogImage,
   withDefaultOpenGraphImage,
   withDefaultTwitterImage,
 } from "app/lib/seo";
@@ -73,12 +74,14 @@ export async function generateMetadata(
       type: "article",
       url,
       siteName: "Victor Bona Blog",
+      images: [ogImage(note.title, `P600 Compendium / ${collection.title}`)],
     }),
     twitter: withDefaultTwitterImage({
       card: "summary_large_image",
       title,
       description: note.excerpt,
       creator: "@BonaVictor",
+      images: [ogImage(note.title, `P600 Compendium / ${collection.title}`)],
     }),
   };
 }

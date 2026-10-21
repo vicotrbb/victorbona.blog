@@ -11,6 +11,12 @@ export const defaultOpenGraphImage = {
   alt: "Victor Bona monogram and site identity",
 };
 
+// Per-page card rendered by app/og/route.tsx; kicker is the page address, e.g. "P300 Paper".
+export function ogImage(title: string, kicker: string) {
+  const query = new URLSearchParams({ title, kicker }).toString();
+  return { url: `${baseUrl}/og?${query}`, width: 1200, height: 630, alt: title };
+}
+
 export const defaultTwitterImage = defaultOpenGraphImage.url;
 
 type OpenGraphMetadata = NonNullable<Metadata["openGraph"]>;
@@ -135,6 +141,7 @@ export function getBlogPostingJsonLd({
     metadata: {
       title: string;
       publishedAt: string;
+      updatedAt?: string;
       summary: string;
       image?: string;
     };
@@ -152,13 +159,11 @@ export function getBlogPostingJsonLd({
     "@id": `${url}#article`,
     headline: post.metadata.title,
     datePublished: post.metadata.publishedAt,
-    dateModified: post.metadata.publishedAt,
+    dateModified: post.metadata.updatedAt || post.metadata.publishedAt,
     description: post.metadata.summary,
     image: post.metadata.image
       ? absoluteUrl(post.metadata.image)
-      : `${baseUrl}/og?title=${encodeURIComponent(
-          post.metadata.title
-        )}&date=${post.metadata.publishedAt}`,
+      : ogImage(post.metadata.title, "P500 Writing").url,
     url,
     inLanguage: "en-US",
     author: { "@id": seoIds.person },

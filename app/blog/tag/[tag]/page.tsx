@@ -6,6 +6,7 @@ import { notFound } from "next/navigation";
 import {
   getBreadcrumbJsonLd,
   getItemListJsonLd,
+  ogImage,
   withDefaultOpenGraphImage,
   withDefaultTwitterImage,
 } from "app/lib/seo";
@@ -19,6 +20,8 @@ export async function generateStaticParams() {
 export async function generateMetadata(props: { params: Promise<{ tag: string }> }): Promise<Metadata> {
   const params = await props.params;
   const tag = decodeURIComponent(params.tag);
+  // Same encoding as the sitemap, whatever form the param arrived in.
+  const canonical = `${baseUrl}/blog/tag/${encodeURIComponent(tag)}`;
 
   return {
     title: `Posts tagged with "${tag}"`,
@@ -26,15 +29,17 @@ export async function generateMetadata(props: { params: Promise<{ tag: string }>
     openGraph: withDefaultOpenGraphImage({
       title: `Posts tagged with "${tag}"`,
       description: `Browse all articles about ${tag}`,
-      url: `${baseUrl}/blog/tag/${params.tag}`,
+      url: canonical,
+      images: [ogImage(`Writing / ${tag}`, "P500 Writing")],
     }),
     twitter: withDefaultTwitterImage({
       card: "summary_large_image",
       title: `Posts tagged with "${tag}"`,
       description: `Browse all articles about ${tag}`,
+      images: [ogImage(`Writing / ${tag}`, "P500 Writing")],
     }),
     alternates: {
-      canonical: `${baseUrl}/blog/tag/${params.tag}`,
+      canonical,
     },
   };
 }
@@ -56,7 +61,7 @@ export default async function TagPage(props: { params: Promise<{ tag: string }> 
     getBreadcrumbJsonLd([
       { name: "Home", item: baseUrl },
       { name: "Blog", item: `${baseUrl}/blog` },
-      { name: tag, item: `${baseUrl}/blog/tag/${params.tag}` },
+      { name: tag, item: `${baseUrl}/blog/tag/${encodeURIComponent(tag)}` },
     ]),
     getItemListJsonLd(
       `Posts tagged with ${tag}`,

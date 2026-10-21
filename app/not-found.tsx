@@ -1,5 +1,12 @@
 import { headers } from 'next/headers'
+import type { Metadata } from 'next'
 import { httpRequestsCounter } from './lib/metrics'
+import { ContactCommand } from './components/ContactCommand'
+
+export const metadata: Metadata = {
+  title: '404',
+  robots: { index: false },
+}
 
 /**
  * Derive content type from path pattern
@@ -26,12 +33,35 @@ export default async function NotFound() {
     content_type: contentType,
   })
 
+  const hint = 'ml-3 text-[var(--dim)]'
+  const command =
+    'text-[var(--text)] underline-offset-4 decoration-1 hover:underline'
+
   return (
-    <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        404 - Page Not Found
+    <section className="font-mono">
+      <h1 className="[overflow-wrap:anywhere] text-base font-normal leading-relaxed text-[var(--text)] sm:text-lg">
+        <span className="text-[var(--err)]">panic:</span> route not found: {path}
       </h1>
-      <p className="mb-4">The page you are looking for does not exist.</p>
+      <ol className="mt-8 space-y-3 border-l border-[var(--line)] pl-5 text-sm">
+        <li>
+          <a href="/" className={command}>
+            <span aria-hidden="true">$ </span>cd /
+          </a>
+          <span className={hint}># home</span>
+        </li>
+        <li>
+          <a href="/blog" className={command}>
+            <span aria-hidden="true">$ </span>cd /blog
+          </a>
+          <span className={hint}># writing</span>
+        </li>
+        <li className="text-[var(--dim)]">
+          <kbd className="text-[var(--text)]">:</kbd> opens the terminal
+        </li>
+      </ol>
+      <p className="mt-10 text-sm">
+        <ContactCommand variant="inline" />
+      </p>
     </section>
-  );
+  )
 }

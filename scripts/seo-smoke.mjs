@@ -149,4 +149,28 @@ assertIncludes("app/rss/route.ts", "escapeXml");
 assertIncludes("app/components/ControlPlane.tsx", "<ol");
 assertIncludes("app/components/ControlPlane.tsx", "prefers-reduced-motion");
 
+assertIncludes("app/rss/route.ts", 'xmlns:atom="http://www.w3.org/2005/Atom"');
+assertIncludes("app/rss/route.ts", 'rel="self"');
+assertIncludes("app/rss/route.ts", "getArticles");
+assertIncludes("app/blog/tag/[tag]/page.tsx", "encodeURIComponent");
+assertIncludes("app/lib/seo.ts", "export function ogImage(");
+for (const routeFile of [
+  "app/about/page.tsx",
+  "app/articles/page.tsx",
+  "app/articles/[slug]/page.tsx",
+  "app/projects/page.tsx",
+  "app/compendium/page.tsx",
+  "app/compendium/[collection]/page.tsx",
+  "app/compendium/[collection]/[slug]/page.tsx",
+  "app/blog/tag/[tag]/page.tsx",
+]) {
+  assertIncludes(routeFile, "ogImage(");
+}
+assertIncludes("app/blog/utils.ts", "updatedAt?: string");
+assertIncludes("app/lib/seo.ts", "post.metadata.updatedAt || post.metadata.publishedAt");
+assertNotIncludes("app/sitemap.ts", "new Date().toISOString()");
+assertIncludes("app/not-found.tsx", "httpRequestsCounter.inc(");
+assertIncludes("app/not-found.tsx", "route not found:");
+assertIncludes("app/not-found.tsx", "index: false");
+
 console.log("SEO smoke checks passed");

@@ -5,6 +5,7 @@ import { formatDistanceToNow, format, parseISO } from "date-fns";
 type Metadata = {
   title: string;
   publishedAt: string;
+  updatedAt?: string;
   summary: string;
   tags: string;
   image?: string;

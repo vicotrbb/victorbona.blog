@@ -10,6 +10,7 @@ import {
   absoluteUrl,
   getBreadcrumbJsonLd,
   getScholarlyArticleJsonLd,
+  ogImage,
   withDefaultOpenGraphImage,
   withDefaultTwitterImage,
 } from "app/lib/seo";
@@ -52,12 +53,14 @@ export async function generateMetadata(
       authors: article.authors,
       tags: article.tags,
       siteName: "Victor Bona Blog",
+      images: [ogImage(article.title, "P300 Paper")],
     }),
     twitter: withDefaultTwitterImage({
       card: "summary_large_image",
       title: article.title,
       description: article.abstract,
       creator: "@BonaVictor",
+      images: [ogImage(article.title, "P300 Paper")],
     }),
     alternates: {
       canonical: `${baseUrl}/articles/${article.slug}`,

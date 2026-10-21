@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import {
   getBreadcrumbJsonLd,
   getItemListJsonLd,
+  ogImage,
   withDefaultOpenGraphImage,
   withDefaultTwitterImage,
 } from "app/lib/seo";
@@ -19,11 +20,13 @@ export const metadata: Metadata = {
     title: "Articles & Papers - Victor Bona",
     description: "Academic papers and technical articles on software engineering, distributed systems, and modern web development.",
     url: `${baseUrl}/articles`,
+    images: [ogImage("Papers", "P300 Papers")],
   }),
   twitter: withDefaultTwitterImage({
     card: "summary_large_image",
     title: "Articles & Papers - Victor Bona",
     description: "Academic papers and technical articles on software engineering, distributed systems, and modern web development.",
+    images: [ogImage("Papers", "P300 Papers")],
   }),
 };
 

@@ -40,7 +40,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
     publishedAt: post.metadata.publishedAt,
     readingTime: readingTime.toString(),
     summary: post.metadata.summary,
-    tags: post.metadata.tags,
+    kicker: "P500 Writing",
   }).toString();
   const imageUrl = post.metadata.image
     ? absoluteUrl(post.metadata.image)
@@ -59,7 +59,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
       type: "article",
       url: `${baseUrl}/blog/${post.slug}`,
       publishedTime: post.metadata.publishedAt,
-      modifiedTime: post.metadata.publishedAt,
+      modifiedTime: post.metadata.updatedAt || post.metadata.publishedAt,
       authors: ["Victor Bona"],
       tags: tags,
       images: [
