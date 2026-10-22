@@ -6,22 +6,23 @@ import { getCompendiumNotes } from "app/compendium/utils";
 import type { IndexEntry } from "app/lib/terminal";
 
 // Search text stays short so the lazily fetched index stays small.
-const clip = (...parts: Array<string | undefined>) => parts.filter(Boolean).join(" ").slice(0, 280);
+// Readable text first: the search page shows the start of it; tags trail so they stay searchable.
+const clip = (...parts: Array<string | undefined>) => parts.filter(Boolean).map((s) => s!.slice(0, 240)).join(" ");
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 
 export function getTerminalIndex(): IndexEntry[] {
   const studies = caseStudyHrefs();
   return [
-    ...getBlogPosts().map((p): IndexEntry => ({ slug: p.slug, title: p.metadata.title, href: `/blog/${p.slug}`, kind: "post", text: clip(p.metadata.tags, p.metadata.summary) })),
-    ...articles.map((a): IndexEntry => ({ slug: a.slug, title: a.title, href: `/articles/${a.slug}`, kind: "paper", text: clip(a.tags.join(" "), a.abstract) })),
+    ...getBlogPosts().map((p): IndexEntry => ({ slug: p.slug, title: p.metadata.title, href: `/blog/${p.slug}`, kind: "post", text: clip(p.metadata.summary, p.metadata.tags) })),
+    ...articles.map((a): IndexEntry => ({ slug: a.slug, title: a.title, href: `/articles/${a.slug}`, kind: "paper", text: clip(a.abstract, a.tags.join(" ")) })),
     // Systems without a case study open the /projects list.
-    ...projects.map((p): IndexEntry => ({ slug: slugify(p.name), title: p.name, href: studies.get(p.name) ?? "/projects", kind: "system", text: clip(p.tags.join(" "), p.description) })),
+    ...projects.map((p): IndexEntry => ({ slug: slugify(p.name), title: p.name, href: studies.get(p.name) ?? "/projects", kind: "system", text: clip(p.description, p.tags.join(" ")) })),
     ...getCompendiumNotes().map((n): IndexEntry => ({
       slug: n.slug,
       title: n.title,
       href: `/compendium/${n.collection}/${n.slug}`,
       kind: "note",
-      text: clip(n.collection, n.excerpt),
+      text: clip(n.excerpt, n.collection),
     })),
   ];
 }

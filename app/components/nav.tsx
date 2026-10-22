@@ -35,7 +35,7 @@ export function Navbar() {
         >
           victor-bona
         </Link>
-        <ul ref={row} className="relative order-3 -mx-4 flex w-[calc(100%+2rem)] overflow-x-auto border-t border-[var(--line)] px-4 [scrollbar-width:none] sm:-mx-6 sm:w-[calc(100%+3rem)] sm:px-6 lg:order-2 lg:mx-0 lg:w-auto lg:flex-1 lg:border-t-0 lg:px-0">
+        <ul ref={row} className="relative order-3 -mx-4 flex w-[calc(100%+2rem)] overflow-x-auto border-t border-[var(--line)] px-4 [scrollbar-width:none] [mask-image:linear-gradient(to_right,transparent,#000_1rem,#000_calc(100%-1.5rem),transparent)] sm:-mx-6 sm:w-[calc(100%+3rem)] sm:px-6 lg:order-2 lg:mx-0 lg:w-auto lg:flex-1 lg:border-t-0 lg:px-0 lg:[mask-image:none]">
           {addresses.map(({ code, label, href }) => {
             const current = isCurrent(pathname, href);
             return (

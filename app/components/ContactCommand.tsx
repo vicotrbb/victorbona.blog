@@ -9,7 +9,7 @@ export function ContactCommand({ variant }: { variant: "hero" | "inline" }) {
   return (
     <a
       href={`mailto:${profile.email}`}
-      className={`inline-flex items-baseline gap-2 font-mono text-[var(--lit)] transition-colors duration-150 ${variants[variant]}`}
+      className={`inline-flex max-w-full flex-wrap items-baseline gap-x-2 font-mono text-[var(--lit)] transition-colors duration-150 ${variants[variant]}`}
     >
       <span aria-hidden="true">$</span>
       <span>contact</span>

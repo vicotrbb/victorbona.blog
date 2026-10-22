@@ -123,7 +123,7 @@ export default function AboutPage() {
             <Pending what="headshot" />
           </div>
         )}
-        <div>
+        <div className="min-w-0">
           <h1 className="text-[clamp(2.4rem,6vw,4rem)] font-semibold leading-[1.02] tracking-[-0.035em] text-[var(--text)]">
             {profile.name}
           </h1>
