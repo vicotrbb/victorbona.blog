@@ -15,5 +15,6 @@ export const addresses: Address[] = [
 export const extraPages: Array<{ label: string; href: string; aliases: string[] }> = [
   { label: "Now", href: "/now", aliases: ["now"] },
   { label: "Research", href: "/research", aliases: ["research", "cite"] },
+  { label: "Press", href: "/press", aliases: ["press", "media", "imprensa"] },
   { label: "Search", href: "/search", aliases: ["search"] },
 ];

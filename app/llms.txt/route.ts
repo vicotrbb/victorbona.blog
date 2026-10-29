@@ -166,6 +166,7 @@ export async function GET() {
   );
   lines.push(`- [Research by theme, with citations](${baseUrl}/research)`);
   lines.push(`- [Now: current work and live GitHub activity](${baseUrl}/now)`);
+  lines.push(`- [Press kit: bios (EN/PT), photos, interview topics, contact](${baseUrl}/press)`);
   lines.push("");
 
   lines.push("## Articles & Papers");

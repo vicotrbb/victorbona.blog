@@ -58,7 +58,7 @@ test("mail", () => {
 test("ls prints the addresses", () => {
   const r = runCommand("ls", index) as { kind: string; lines: string[] };
   assert.equal(r.kind, "print");
-  assert.equal(r.lines.length, 9);
+  assert.equal(r.lines.length, 10);
   assert.match(r.lines[0], /P100/);
 });
 

@@ -67,6 +67,8 @@ export default async function sitemap() {
     "/compendium": undefined,
     "/now": latestContent,
     "/research": latestArticle,
+    "/press": latestContent,
+    "/press/pt-br": latestContent,
     "/rss": latestContent,
     "/llms.txt": latestContent,
   };
