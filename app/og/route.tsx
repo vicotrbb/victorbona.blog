@@ -9,6 +9,9 @@ const colors = {
   text: "#d8e8de",
   dim: "#6f8f7c",
   lit: "#4dff8f",
+  line: "#0a1610",
+  lineStrong: "#1f5c3a",
+  watermark: "#0c1f14",
 };
 
 // Static TTF instances from Google Fonts (satori cannot read woff2 or variable fonts).
@@ -47,24 +50,50 @@ export async function GET(request: Request) {
 
   const [sans, sansBold, mono] = await fonts;
 
+  // Address code ("P300") becomes a faint watermark; non-address kickers like "press --kit" get none.
+  const code = kicker.match(/^P\d00/)?.[0];
+  const isHome = title === profile.name;
+
   return new ImageResponse(
     (
       <div
-        tw="flex h-full w-full flex-col px-20 py-16"
-        style={{ backgroundColor: colors.bg, color: colors.text, fontFamily: "Sans" }}
+        tw="relative flex h-full w-full flex-col px-20 py-14"
+        style={{
+          backgroundColor: colors.bg,
+          backgroundImage: `radial-gradient(circle at 92% 108%, rgba(77,255,143,0.16), transparent 45%), linear-gradient(${colors.line} 1px, transparent 1px), linear-gradient(90deg, ${colors.line} 1px, transparent 1px)`,
+          backgroundSize: "100% 100%, 48px 48px, 48px 48px",
+          color: colors.text,
+          fontFamily: "Sans",
+        }}
       >
-        <div tw="flex text-2xl" style={{ fontFamily: "Mono", color: colors.dim }}>
-          {kicker}
+        {code && (
+          <div
+            tw="absolute flex"
+            style={{ right: 56, top: 150, fontFamily: "Mono", fontSize: 220, color: colors.watermark, letterSpacing: "-0.04em" }}
+          >
+            {code}
+          </div>
+        )}
+
+        <div
+          tw="flex items-center justify-between pb-6 text-2xl"
+          style={{ fontFamily: "Mono", borderBottom: `1px solid ${colors.lineStrong}` }}
+        >
+          <div tw="flex items-center">
+            <div tw="flex" style={{ width: 14, height: 14, borderRadius: 7, backgroundColor: colors.lit, boxShadow: `0 0 16px ${colors.lit}` }} />
+            <span tw="ml-4">victor-bona</span>
+          </div>
+          <span style={{ color: colors.dim }}>{kicker}</span>
         </div>
 
-        <div tw="flex flex-1 flex-col justify-center">
+        <div tw="mb-8 flex flex-1 flex-col justify-center">
           <div
             tw="flex"
             style={{
               fontWeight: 600,
-              fontSize: title.length > 110 ? 50 : title.length > 60 ? 60 : 76,
-              lineHeight: 1.08,
-              letterSpacing: "-0.02em",
+              fontSize: title.length > 110 ? 50 : title.length > 60 ? 60 : 80,
+              lineHeight: 1.06,
+              letterSpacing: "-0.03em",
               maxWidth: 1000,
             }}
           >
@@ -85,11 +114,14 @@ export async function GET(request: Request) {
           )}
         </div>
 
-        <div tw="flex w-full" style={{ height: 2, backgroundColor: colors.lit }} />
-        <div tw="mt-6 flex items-baseline text-2xl">
-          <span style={{ fontWeight: 600 }}>{profile.name}</span>
-          <span tw="ml-5" style={{ color: colors.dim }}>
-            {profile.oneLiner}
+        <div tw="flex w-full" style={{ height: 2, backgroundColor: colors.lit, boxShadow: `0 0 18px ${colors.lit}` }} />
+        <div tw="mt-6 flex items-baseline justify-between text-2xl">
+          {/* The home card's title is already the name, so its footer carries the role instead. */}
+          <span style={isHome ? { color: colors.dim } : { fontWeight: 600 }}>
+            {isHome ? `${profile.timeline[0].role} @ ${profile.worksFor}` : profile.name}
+          </span>
+          <span tw="text-xl" style={{ fontFamily: "Mono", color: colors.dim }}>
+            blog.victorbona.dev
           </span>
         </div>
       </div>

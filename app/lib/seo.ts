@@ -4,11 +4,16 @@ import type { Metadata } from "next";
 import { personJsonLd, profile } from "app/lib/profile";
 import type { Project } from "app/projects/projects";
 
+// Site-wide fallback card, rendered by app/og/route.tsx like every per-page card.
 export const defaultOpenGraphImage = {
-  url: `${baseUrl}/logos/og-image.png`,
+  url: `${baseUrl}/og?${new URLSearchParams({
+    title: profile.name,
+    kicker: "P100 Home",
+    summary: "Papers, systems and writing on distributed systems, observability and financial infrastructure.",
+  })}`,
   width: 1200,
   height: 630,
-  alt: "Victor Bona monogram and site identity",
+  alt: `${profile.name}: ${profile.oneLiner}`,
 };
 
 // Per-page card rendered by app/og/route.tsx; kicker is the page address, e.g. "P300 Paper".
