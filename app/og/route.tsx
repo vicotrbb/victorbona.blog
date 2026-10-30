@@ -26,6 +26,15 @@ const fonts = Promise.all([
 // Public endpoint: clip free-text params so oversized queries cannot blow up the layout.
 const maxTextLength = 200;
 
+// satori ignores lineClamp, so cut long summaries at a word to stay within three lines.
+const maxSummaryLength = 180;
+
+function clipSummary(value: string | null) {
+  if (!value || value.length <= maxSummaryLength) return value;
+  const cut = value.slice(0, maxSummaryLength);
+  return `${cut.slice(0, cut.lastIndexOf(" ")).replace(/[\s,.;:]+$/, "")}…`;
+}
+
 function safeFormatDate(value: string | null) {
   if (!value) return null;
   try {
@@ -42,7 +51,7 @@ export async function GET(request: Request) {
   const kicker = param("kicker") || "P100 Home";
   const publishedAt = param("publishedAt");
   const readingTime = param("readingTime");
-  const summary = param("summary");
+  const summary = clipSummary(param("summary"));
   const meta = [
     safeFormatDate(publishedAt),
     readingTime && `${readingTime} min read`,
@@ -102,7 +111,7 @@ export async function GET(request: Request) {
           {summary && (
             <div
               tw="mt-6 flex text-3xl"
-              style={{ color: colors.dim, lineHeight: 1.3, maxWidth: 940, lineClamp: 2 }}
+              style={{ color: colors.dim, lineHeight: 1.3, maxWidth: 940 }}
             >
               {summary}
             </div>
