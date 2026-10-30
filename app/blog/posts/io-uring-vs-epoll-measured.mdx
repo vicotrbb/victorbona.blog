@@ -1,0 +1,231 @@
+---
+title: "io_uring vs epoll, Measured: What Completion I/O Actually Buys an HTTP Server"
+publishedAt: "2026-10-29"
+summary: "Same Rust HTTP server, same binary, two kernel I/O backends. I ran the campaigns on my homelab, caught my own machine lying by 2.7x, and found out what thread-per-core and completion I/O really cost and really pay."
+tags: "rust,io_uring,linux,performance,networking,architecture"
+---
+
+Every io_uring article I've read promises more or less the same thing: move your I/O to io_uring and you get 2x.
+
+I wanted that to be true. I'm building [Maximus](https://github.com/vicotrbb/maximus), a modular Rust HTTP server for Linux, and its whole architecture leans on completion I/O. One local executor per worker, no work stealing, handlers that don't need to be `Send`, and io_uring underneath. If the 2x was real, I'd get the architecture justified for free.
+
+So I measured it. And the very first thing the measurement told me was that I couldn't trust my own numbers.
+
+This post is about everything that happened between that moment and the numbers I actually believe today. What completion I/O changes in the shape of a server, what thread-per-core costs you, and what io_uring delivered against epoll when nothing else changed. Spoiler: it wasn't 2x. But what I found was more useful than 2x.
+
+## Short answer
+
+Same Maximus binary, only the kernel backend switched. With one or two workers, epoll spent **1.4 to 1.6x more CPU per request** than io_uring and delivered **0.64 to 0.73x of its throughput**. The gap got smaller at four workers and at 1024 connections. At a fixed, moderate load the latency was the same, but epoll still burned **1.29x the CPU** for every request. You can see why: io_uring made **0.016 syscalls per request**, epoll made **2.02**. The surprise was where the cost actually went. epoll executed only 5 to 12% more instructions, but needed 32 to 51% more cycles to do it.
+
+## Key takeaways
+
+- In this server, io_uring's biggest win is CPU efficiency, not raw speed. You only see more throughput when the server is the bottleneck.
+- epoll didn't lose because it ran more code. It lost because the same code ran at fewer instructions per cycle, around two syscalls per request.
+- Completion I/O changes who owns your buffers, and that pushes you toward thread-per-core. The performance choice and the architecture choice end up being the same decision.
+- Thread-per-core has real costs: load imbalance, CPU-heavy handlers stalling a whole worker, ecosystem friction, and environments where io_uring isn't even allowed.
+- Without an A/A control, a shared machine will lie to you. Mine showed a 2.7x difference between two identical runs.
+
+## Readiness versus completion
+
+You'll usually hear the difference between epoll and io_uring described as "fewer syscalls." That's true, but it's also the least interesting part.
+
+epoll is a **readiness** API. You ask the kernel to tell you when a socket can be read, and then you go and read it yourself.
+
+```text
+epoll (readiness)
+
+  app:    epoll_wait() ......... "fd 7 is readable"
+  app:    recv(fd 7, my_buf)     copy happens now, in my syscall
+  app:    ...build response...
+  app:    send(fd 7, resp)       another syscall
+```
+
+io_uring is a **completion** API. You hand the kernel a buffer plus an instruction, and later on the kernel tells you the work is done.
+
+```text
+io_uring (completion)
+
+  app:    submit [recv fd 7 into buf A] [send fd 9 from buf B] ...   one io_uring_enter for many ops
+  kernel: ...does the work while the app does other things...
+  app:    reap completions: "recv on fd 7 done, 74 bytes in buf A"
+```
+
+The syscall count comes straight from that shape. A single `io_uring_enter` can submit and reap a lot of operations across a lot of connections. In my runs it worked out to roughly one `io_uring_enter` for every 64 requests.
+
+Now look at the buffer, because that's where things get interesting. With epoll, `my_buf` is borrowed for one syscall and you get it back when the call returns. With io_uring, buffer A belongs to the kernel from the moment you submit until the completion shows up. You can't touch it, move it or free it in the meantime. And if the future that submitted the read gets dropped, the buffer still has to stay alive until the kernel is done with it.
+
+That single rule is why io_uring doesn't just plug into Rust's usual `AsyncRead`, where you lend the runtime a `&mut [u8]` for one poll. It's why Maximus uses Compio's owned buffers for plain TCP: the I/O call takes the buffer and hands it back together with the result. And it's the first domino in the whole architecture.
+
+## Why one executor per worker
+
+Once your buffers are owned by in-flight operations, the cheapest place for everything to live is right next to the ring that submitted them. So Maximus runs one local executor per worker, each one with its own io_uring instance, pinned to its own CPU.
+
+```rust
+use maximus::{routes, Request, Server};
+
+async fn index(_: Request) -> &'static str { "Hello, World!" }
+async fn user(_: Request, id: u64) -> String { id.to_string() }
+
+fn main() -> std::io::Result<()> {
+    let server = Server::new("127.0.0.1:8080".parse().unwrap())
+        .start(|| routes! { GET "/" => index, GET "/users/{id:u64}" => user })?;
+    let mut line = String::new();
+    std::io::stdin().read_line(&mut line)?;
+    server.shutdown()
+}
+```
+
+The closure you pass to `start` is a factory, and it runs once per worker. Every worker builds its own router and its own state, and nothing gets shared unless you ask for it. Handlers, futures and typed state can be `!Send`. Worker state lives in an `Rc`, and mutable local state can use `Cell` or `RefCell`. If you really need to share something across workers, you reach for `Arc` explicitly and pay for it where you can see it.
+
+Compare that with a work-stealing runtime like Tokio's default. Work stealing is a great default for general applications: an idle core grabs work from a busy one and the load evens out by itself. The price is that any task can jump to any thread at any await point, so everything it holds has to be `Send + 'static`, shared state needs atomics or locks, and the cache lines the task was using stay behind on the core it left.
+
+Let me be clear about what I measured here and what I didn't. The campaigns in this post compare io_uring against epoll **inside the same thread-per-core server**. They don't measure work stealing against thread-per-core. That comparison means different runtimes, different code paths and different dependency stacks, and it deserves its own controlled experiment. I'm not going to smuggle that argument in through a benchmark that wasn't designed for it.
+
+What thread-per-core does give you, by construction, is a server where every per-request cost stays local. Admission limits apply per worker. Affinity is set before the runtime and state are allocated, so memory gets first touched on the worker's own NUMA node. Each worker accepts on its own `SO_REUSEPORT` socket. No global accept queue, no cross-core handoff on the hot path.
+
+## What thread-per-core costs you
+
+This is the part io_uring articles usually skip, so I'll put it first.
+
+**Load imbalance is your problem now.** With `SO_REUSEPORT`, the kernel hashes incoming connections across the worker sockets. Hashing spreads connections, not load. One long-lived connection streaming heavy requests can pin a core while its neighbors sit idle, and no runtime is coming to save it, because nothing is allowed to migrate. That's why Maximus has an optional feature to attach an already loaded reuseport eBPF program: when the default hash is wrong for your traffic, you need a way to steer connections yourself.
+
+**A CPU-heavy handler blocks a whole worker.** In a work-stealing runtime, a slow handler hurts its own request and maybe a few neighbors. In thread-per-core, every connection on that worker waits behind it. Expensive computation has to be moved off the I/O workers on purpose.
+
+**The ecosystem doesn't fully speak completion I/O.** In Maximus, plain TCP uses Compio's owned buffers directly, but TLS and WebSocket still go through a futures I/O integration. The optional HTTP/3 stack pulls in Tokio utilities transitively, even though Maximus never starts a Tokio executor, and it needs a small vendored patch to the `h3` decoder. None of this is fatal. All of it is work a Tokio-based server never has to think about.
+
+**io_uring isn't always allowed.** The benchmark Pod for this post needed an unconfined seccomp profile, because a lot of default container profiles block io_uring syscalls. Some kernels and platforms turn io_uring off entirely. That's why Maximus has an `Auto` backend that can fall back to epoll, and why picking `IoUring` explicitly fails loudly instead of quietly degrading. A backend you can't count on in production is a backend you have to be able to live without.
+
+That last point is also what made this whole measurement possible. Since epoll is a real, supported backend in the same binary, I could compare the two with literally nothing else changed.
+
+## How I measured, and how the machine lied to me
+
+Here's the setup:
+
+- One `maximus-comparison` binary, built once. Three arms: `uring` (explicit io_uring), `epoll` (explicit epoll), and `uring_aa`, which is just the io_uring arm again.
+- Before any campaign, I checked the kernel side: the io_uring process held one io_uring instance per worker and no epoll descriptor, and the epoll process held the opposite.
+- A temporary Kubernetes Pod on `homelab-01`, one of the nodes from my [bare metal setup](/blog/why-i-decided-to-go-baremetal): an AMD Ryzen 7 5825U, 8 cores and 16 threads, kernel 6.18.
+- The repository's own benchmark runner: verified source hashes, response validation on every request, engine order rotated on every repeat, and `perf` counters attached to the server threads.
+
+The third arm is the one that matters. `uring` and `uring_aa` are the same binary with the same arguments, so any difference between them is noise, by definition. It's the measurement version of what I wrote about in [debugging storage incidents without lying to yourself](/blog/debugging-kubernetes-storage-incidents-without-lying-to-yourself): before you believe a signal, find out what your instruments say when nothing has changed.
+
+The first smoke run gave me this:
+
+| Arm | Requests/s | Cycles per request |
+| --- | --- | --- |
+| uring | 104,595 | 37,357 |
+| uring_aa | 38,310 | 85,106 |
+| epoll | 30,787 | 105,172 |
+
+Two identical configurations, 2.7x apart. If I had only run `uring` and `epoll`, I would have happily published "io_uring is 3.4x faster" with a straight face.
+
+So I went digging, and found two culprits. Neither of them was Maximus. First, two hyperthreads next to my load generator's cores were around 95% busy with another workload, so I moved the client to clean cores. The second one was sneakier. Through SMT, the server's cores were sharing physical cores with whatever else the node happened to be running at that moment. A per-CPU sampler running for the whole campaign made it obvious: cycles per request tracked how busy the server cores' sibling hyperthreads were, at r = +0.80 for io_uring and +0.89 for epoll. Clock frequency, which jumps around a lot on a 15W mobile chip, mattered way less.
+
+I wasn't going to evict a homelab full of other services just to get dedicated cores, so I made the noise visible instead:
+
+- Every cell ran with 6 to 8 interleaved repeats, so slow drift hit all arms equally.
+- A trial counts as clean when the sibling hyperthreads of its server cores were under 20% busy. The distribution made that cutoff easy to pick: 140 of 198 trials sat between 5 and 19%, and the rest trailed off from 20% all the way to 99%.
+- The filter dropped a similar number of trials from every arm (21, 18 and 19 out of 66 for io_uring, epoll and the A/A arm). That's what you'd expect from host noise, not from one backend misbehaving.
+- A difference only counts if its 95% bootstrap interval excludes 1.0 **and** it's bigger than the A/A spread.
+
+With the filter on, the A/A ratios landed between 0.94 and 1.05. Without it, every conclusion below points the same way, just with wider intervals. Both tables are in the [full benchmark report](https://github.com/vicotrbb/maximus/blob/main/benches/results/2026-10-29-uring-vs-epoll.md), together with the failed runs.
+
+## The numbers
+
+All runs are HTTP/1.1 plaintext over loopback, closed-loop `wrk` with 256 connections unless I say otherwise. Ratios are epoll divided by io_uring, from clean trials.
+
+| Workers | Path | io_uring req/s | epoll req/s | epoll / io_uring | CPU per request, epoll / io_uring | A/A |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | /plaintext | 104,787 | 74,912 | 0.715 | 1.47x | 1.05 |
+| 2 | /plaintext | 206,153 | 132,331 | 0.642 | 1.64x | 0.99 |
+| 4 | /plaintext | 294,449 | 257,621 | 0.875 | 1.42x | 1.00 |
+| 1 | /echo | 91,369 | 61,218 | 0.670 | 1.54x | 0.95 |
+| 2 | /echo | 177,619 | 122,856 | 0.692 | 1.52x | 0.98 |
+| 4 | /echo | 271,969 | 230,822 | 0.849 | 1.37x | 0.98 |
+
+With one or two workers, epoll gets you roughly two thirds of io_uring's throughput and spends about half again as much CPU per request. In absolute terms, with one worker a plaintext request cost 7.35 microseconds of server CPU on io_uring and 10.84 on epoll.
+
+At four workers the throughput gap shrinks to about 0.85x, but I don't trust that number as a measure of the gap. The load generator was using up to 2.7 of its 4 hyperthreads, on only 2 physical cores, so it was pretty close to being the bottleneck itself. The CPU per request ratio doesn't depend on the client keeping up, and it stayed at 1.37 to 1.42x. Treat the four-worker throughput as a lower bound.
+
+Then the connection sweep, at two workers:
+
+| Connections | io_uring req/s | epoll req/s | epoll / io_uring | Cycles per request, epoll / io_uring |
+| --- | --- | --- | --- | --- |
+| 16 | 195,592 | 143,269 | 0.732 | 1.44x |
+| 64 | 209,732 | 146,205 | 0.697 | 1.45x |
+| 256 | 206,153 | 132,331 | 0.642 | 1.51x |
+| 1024 | 141,218 | 117,125 | 0.829 | 1.19x |
+
+The advantage holds from 16 up to 256 connections, then shrinks at 1024, where both backends lose throughput and io_uring loses more. I'll flag that cell openly: after filtering, it stands on just two clean io_uring trials plus four from the A/A arm. It's a direction worth looking into, not a number worth quoting.
+
+## Fixed load: same latency, different bill
+
+Closed-loop benchmarks answer "how fast can it go." Most production servers aren't running at their limit, though, so the more useful question is "what does the same traffic cost me."
+
+I ran an open-loop test with k6 at a fixed 5,000 requests per second against one worker:
+
+| Metric at 5,000 req/s | io_uring | epoll |
+| --- | --- | --- |
+| p99 latency | 0.86 ms | 0.92 ms |
+| Server CPU per request | 18.52 µs | 23.98 µs |
+
+The p99 difference is within noise. Your users wouldn't notice anything. Your bill would: epoll needs **1.29x the CPU** for the same traffic, with a tight interval of 1.27 to 1.32 and an A/A ratio of 1.01.
+
+CPU per request is higher here than in the saturated runs for both backends, because a lightly loaded server pays more fixed overhead per wakeup and has fewer requests to spread it over. The ratio holds anyway.
+
+I also tried 10,000 and 20,000 requests per second. Both failed, and the runner rejected them, as it should: k6 dropped arrivals because the load generator couldn't keep up on its share of the machine. At 10,000 I checked that epoll failed the exact same way, while the server was using only 16 to 24% of a core. That's a limit of my client on that host, not something about either backend, so it stays in the report as a failed target and out of the conclusions.
+
+## Where the cycles went
+
+This was my favorite part of the whole exercise.
+
+Counting syscalls with `strace` on a single worker under load:
+
+| Backend | Syscalls per request | Main calls |
+| --- | --- | --- |
+| io_uring | 0.016 | io_uring_enter, about one per 64 requests |
+| epoll | 2.02 | one recvfrom and one sendto per request |
+
+That's about 125x. And under `strace`, which makes every syscall expensive, the io_uring server still pushed over a million requests in ten seconds, while the epoll server managed around 220,000. The tracer ended up proving the point by itself.
+
+The obvious story would be that epoll simply does a lot more work. The `perf` counters say no. On plaintext with one worker, epoll executed 45,458 instructions per request against io_uring's 41,920. Only 8% more. The echo path showed 5% more. But cycles per request were 54,147 against 38,204, which is 42% more.
+
+So io_uring ran at about 1.10 instructions per cycle and epoll at about 0.84. Most of epoll's extra cost isn't extra code, it's the same code running less efficiently. Cache misses per request were higher for epoll in every clean cell too, by 1.10 to 1.80x.
+
+Now, this next bit is my interpretation, not something I measured: I think this is what two syscalls per request look like on a modern CPU. A few thousand extra instructions to enter and leave the kernel, and then a long tail of disturbance on top. Pipeline flushes on mode switches, kernel code and data pushing the server's working set out of cache, TLB pressure, and you pay all of it again on every single request. io_uring doesn't make the kernel's work go away. It batches the transitions, so each one gets spread across dozens of requests.
+
+That would also explain why the gap was smaller at 1024 connections, and why it'll be smaller in real applications. The fixed I/O cost per request is the part io_uring shrinks. Anything that adds work per request, from TLS to JSON to an actual database call, dilutes it.
+
+## When to use which
+
+My conclusions, for this kind of server:
+
+| Your situation | Reach for |
+| --- | --- |
+| High request rates, small handlers, you pay for CPU | io_uring. The 1.3 to 1.6x CPU difference is real money at scale |
+| Moderate load, latency is what users feel | Either. At equal load, latency didn't move |
+| CPU-heavy handlers or uneven, long-lived connections | Think about thread-per-core before io_uring. Imbalance will cost you more than the syscalls save |
+| Locked-down containers, managed platforms, older kernels | epoll, or an automatic fallback. The fastest backend is useless where it can't run |
+| You're not sure | Measure your own handler mix with an A/A arm. Mine changed the answer by 2.7x before it settled |
+
+The same instinct I wrote about in [Over-Engineering: The enemy of good software](/blog/over-engineering-the-enemy-of-good-software) applies here. io_uring isn't free. It shapes your buffers, your runtime, your dependencies and where you can deploy. Those costs are worth paying when per-request CPU is your dominant cost. They're not worth paying because a benchmark headline said 2x.
+
+## What this does not show
+
+The limits matter as much as the numbers, so here they are, all in one place:
+
+- **Not a dedicated machine.** Burstable QoS on a shared homelab node, about 60 other pods, shared SMT siblings. The A/A arm and the sibling filter measure this noise, they don't remove it.
+- **A 15W mobile CPU** with aggressive boost behavior. Server cores ran anywhere between 3.0 and 4.2 GHz across clean trials. Cycles and instructions per request are the views that don't depend on clock speed.
+- **Loopback only.** No NIC, no real network interrupts, no NAPI polling. Real networks move cost into softirq processing, and both backends pay for that.
+- **HTTP/1.1 plaintext only.** I didn't measure TLS or HTTP/2, and TLS in Maximus goes through a different I/O integration, so the gap there may be different.
+- **Tiny handlers.** `/plaintext` and `/echo` are almost pure I/O. Real handlers dilute the I/O share of each request.
+- **Thin cells are labeled thin.** The 1024-connection result and the four-worker throughput carry caveats in the tables above.
+
+Every trial, every failed attempt, the sampler logs and the analysis scripts are kept with the [benchmark report](https://github.com/vicotrbb/maximus/blob/main/benches/results/2026-10-29-uring-vs-epoll.md), so you can check my filtering instead of taking my word for it.
+
+## The rule I took away
+
+> io_uring doesn't make your server faster. It makes each request cheaper. Speed is what you get when cheaper requests meet a server that was CPU bound.
+
+The 2x headline is the wrong way to look at it. What I measured was a server spending about a third less CPU on the same work, running the same code at a better IPC, simply because it stopped crossing into the kernel twice per request. Whether that turns into throughput, headroom or a smaller bill depends on where your bottleneck lives.
+
+And honestly, the most valuable tool in this whole exercise had nothing to do with the kernel. It was a third arm that ran the same thing twice, so the machine could show me how much it was lying before I believed anything it told me.
