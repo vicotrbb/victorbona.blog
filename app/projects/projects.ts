@@ -48,6 +48,38 @@ export const projects: Project[] = [
     },
   },
   {
+    name: "Cubebot",
+    description:
+      "A Kubernetes-native runtime for persistent, collaborative AI agents, with shared rooms, memories, and skills.",
+    longDescription:
+      "Cubebot is a Kubernetes-native home for persistent agents. A native Rust orchestrator handles identity, PostgreSQL, and agent lifecycle, and every agent runs its own tools inside a KVM guest launched by an in-house VMM. The current MVP runs locally with sign-in, agent management, an encrypted OpenAI connection, and one permanent conversation per agent, served through a TanStack Start console.",
+    repository: "https://github.com/vicotrbb/cubebot",
+    website: "https://cubebot.io",
+    tags: ["Rust", "Kubernetes", "AI Agents", "KVM", "PostgreSQL"],
+    status: "in-progress",
+    publiclyShared: true,
+    license: "Apache-2.0",
+    startDate: "2026-10-25",
+    tech: {
+      frontend: ["TanStack Start", "React", "TypeScript"],
+      backend: ["Rust", "KVM", "OpenAI"],
+      database: ["PostgreSQL"],
+      deployment: ["Kubernetes", "Docker"],
+    },
+  },
+  {
+    name: "Positron",
+    description:
+      "An observability database for native logs and traces, written in Rust.",
+    repository: "https://github.com/vicotrbb/positron",
+    website: "https://vicotrbb.github.io/positron/",
+    tags: ["Rust", "Observability", "Logs", "Traces", "Database"],
+    status: "in-progress",
+    publiclyShared: true,
+    license: "MIT",
+    startDate: "2026-07-26",
+  },
+  {
     name: "Purple Wolf",
     description:
       "A fast, low-memory Web Application Firewall for Traefik, shipped as a WASM plugin with signed releases, SBOMs, and Kubernetes packaging.",
@@ -135,18 +167,6 @@ export const projects: Project[] = [
       backend: ["Rust", "Axum", "Tower", "Tokio", "SQLx", "OpenTelemetry"],
       deployment: ["crates.io", "GitHub Pages"],
     },
-  },
-  {
-    name: "Positron",
-    description:
-      "An observability database for native logs and traces, written in Rust.",
-    repository: "https://github.com/vicotrbb/positron",
-    website: "https://vicotrbb.github.io/positron/",
-    tags: ["Rust", "Observability", "Logs", "Traces", "Database"],
-    status: "in-progress",
-    publiclyShared: true,
-    license: "MIT",
-    startDate: "2026-07-26",
   },
   {
     name: "Ferrite",
