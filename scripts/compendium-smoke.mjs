@@ -84,12 +84,14 @@ assertIncludes(
 );
 assertIncludes("scripts/import-compendium.mjs", 'id: "cpu-llm-inference"');
 assertIncludes("scripts/import-compendium.mjs", 'id: "rust"');
+assertIncludes("scripts/import-compendium.mjs", 'id: "virtualization"');
 assertIncludes("scripts/import-compendium.mjs", "stripSourceFrontmatter: true");
 assertIncludes("app/compendium/types.ts", '"kubernetes"');
 assertIncludes("app/compendium/types.ts", '"linux-systems-engineering"');
 assertIncludes("app/compendium/types.ts", '"nodejs-v8-runtime-engineering"');
 assertIncludes("app/compendium/types.ts", '"cpu-llm-inference"');
 assertIncludes("app/compendium/types.ts", '"rust"');
+assertIncludes("app/compendium/types.ts", '"virtualization"');
 assertIncludes("app/compendium/collections.ts", 'id: "kubernetes"');
 assertIncludes(
   "app/compendium/collections.ts",
@@ -101,11 +103,13 @@ assertIncludes(
 );
 assertIncludes("app/compendium/collections.ts", 'id: "cpu-llm-inference"');
 assertIncludes("app/compendium/collections.ts", 'id: "rust"');
+assertIncludes("app/compendium/collections.ts", 'id: "virtualization"');
 assertIncludes("app/compendium/page.tsx", "Kubernetes");
 assertIncludes("app/compendium/page.tsx", "Linux systems engineering");
 assertIncludes("app/compendium/page.tsx", "Node.js V8 runtime");
 assertIncludes("app/compendium/page.tsx", "CPU LLM inference");
 assertIncludes("app/compendium/page.tsx", "Rust");
+assertIncludes("app/compendium/page.tsx", "virtualization");
 assertNotIncludes("app/global.css", "color-scheme: light;");
 assertNotIncludes("app/global.css", "#111827");
 assertIncludes("app/compendium/components/MermaidDiagram.tsx", 'theme: "base"');
@@ -141,6 +145,10 @@ assertIncludes(
   "app/compendium/[collection]/page.tsx",
   'getCompendiumNote("rust", "rust")'
 );
+assertIncludes(
+  "app/compendium/[collection]/page.tsx",
+  'getCompendiumNote("virtualization", "virtualization")'
+);
 
 const report = readReport();
 const kubernetesCollection = report.collections.find(
@@ -175,6 +183,11 @@ assert(cpuLlmCollection, "import report should include CPU LLM Inference");
 assert.equal(cpuLlmCollection.noteCount, 11);
 assert(rustCollection, "import report should include Rust");
 assert.equal(rustCollection.noteCount, 18);
+const virtualizationCollection = report.collections.find(
+  (collection) => collection.id === "virtualization"
+);
+assert(virtualizationCollection, "import report should include Virtualization");
+assert.equal(virtualizationCollection.noteCount, 20);
 
 const kubernetesNotes = report.copiedNotes.filter(
   (note) => note.collection === "kubernetes"
@@ -200,7 +213,21 @@ assert.equal(
   rustNotes.reduce((total, note) => total + note.mermaidBlocks, 0),
   32
 );
+const virtualizationNotes = report.copiedNotes.filter(
+  (note) => note.collection === "virtualization"
+);
+assert.equal(virtualizationNotes.length, 20);
+assert.equal(
+  virtualizationNotes.reduce((total, note) => total + note.mermaidBlocks, 0),
+  52
+);
 assert.equal(report.unresolvedReferences.length, 0);
+assert.equal(
+  report.invalidHeadingReferences.filter((reference) =>
+    reference.from.startsWith("Knowledge base/Virtualization/")
+  ).length,
+  0
+);
 assert.equal(
   report.invalidHeadingReferences.filter((reference) =>
     reference.from.startsWith("Knowledge base/kubernetes/")
@@ -255,6 +282,14 @@ assert(
       link.href === "/compendium/rust/rust-mastery-roadmap"
   ),
   "Rust root note should link to the public mastery roadmap route"
+);
+assert(
+  report.convertedLinks.some(
+    (link) =>
+      link.from === "Knowledge base/Virtualization/Virtualization.md" &&
+      link.href === "/compendium/virtualization/virtualization-mastery-roadmap"
+  ),
+  "Virtualization root note should link to the public mastery roadmap route"
 );
 
 const kubernetesFiles = listFiles("app/compendium/content/kubernetes").filter(
@@ -312,6 +347,19 @@ assertIncludes(
   "[[bench]]"
 );
 
+const virtualizationFiles = listFiles(
+  "app/compendium/content/virtualization"
+).filter((file) => file.endsWith(".md"));
+assert.equal(virtualizationFiles.length, 20);
+assertIncludes(
+  "app/compendium/content/virtualization/virtualization.md",
+  'sourcePath: "Knowledge base/Virtualization/Virtualization.md"'
+);
+assertNotIncludes(
+  "app/compendium/content/virtualization/virtualization.md",
+  "aliases:"
+);
+
 for (const file of rustFiles) {
   assertNotIncludes(file, "\naliases:\n");
   assertNotIncludes(file, "\nrust-toolchain-verified:");
@@ -323,6 +371,7 @@ for (const file of [
   ...nodeRuntimeFiles,
   ...cpuLlmFiles,
   ...rustFiles,
+  ...virtualizationFiles,
 ]) {
   assertNoWikilinksOutsideFences(file);
   assertNotIncludes(file, emDash);

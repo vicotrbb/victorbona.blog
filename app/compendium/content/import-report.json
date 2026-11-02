@@ -41,6 +41,11 @@
       "id": "cpu-llm-inference",
       "title": "CPU LLM Inference Research",
       "noteCount": 11
+    },
+    {
+      "id": "virtualization",
+      "title": "Virtualization",
+      "noteCount": 20
     }
   ],
   "copiedNotes": [
@@ -1393,6 +1398,186 @@
       "outputPath": "app/compendium/content/cpu-llm-inference/testing-model-registry.md",
       "order": 11,
       "mermaidBlocks": 0
+    },
+    {
+      "title": "Virtualization Mastery Roadmap",
+      "collection": "virtualization",
+      "slug": "virtualization-mastery-roadmap",
+      "sourcePath": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "outputPath": "app/compendium/content/virtualization/virtualization-mastery-roadmap.md",
+      "order": 0,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Virtualization Mental Model and History",
+      "collection": "virtualization",
+      "slug": "virtualization-mental-model-and-history",
+      "sourcePath": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "outputPath": "app/compendium/content/virtualization/virtualization-mental-model-and-history.md",
+      "order": 1,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "x86-64 Architecture for Hypervisor Authors",
+      "collection": "virtualization",
+      "slug": "x86-64-architecture-for-hypervisor-authors",
+      "sourcePath": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "outputPath": "app/compendium/content/virtualization/x86-64-architecture-for-hypervisor-authors.md",
+      "order": 2,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Intel VT-x and AMD-V Hardware Virtualization",
+      "collection": "virtualization",
+      "slug": "intel-vt-x-and-amd-v-hardware-virtualization",
+      "sourcePath": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "outputPath": "app/compendium/content/virtualization/intel-vt-x-and-amd-v-hardware-virtualization.md",
+      "order": 3,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "KVM API and the vCPU Run Loop",
+      "collection": "virtualization",
+      "slug": "kvm-api-and-the-vcpu-run-loop",
+      "sourcePath": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "outputPath": "app/compendium/content/virtualization/kvm-api-and-the-vcpu-run-loop.md",
+      "order": 4,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Memory Virtualization: EPT, NPT, and Guest Memory",
+      "collection": "virtualization",
+      "slug": "memory-virtualization-ept-npt-and-guest-memory",
+      "sourcePath": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "outputPath": "app/compendium/content/virtualization/memory-virtualization-ept-npt-and-guest-memory.md",
+      "order": 5,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Interrupts, Timers, and Interrupt Controller Virtualization",
+      "collection": "virtualization",
+      "slug": "interrupts-timers-and-interrupt-controller-virtualization",
+      "sourcePath": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "outputPath": "app/compendium/content/virtualization/interrupts-timers-and-interrupt-controller-virtualization.md",
+      "order": 6,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Device Emulation: PIO, MMIO, and the Bus Model",
+      "collection": "virtualization",
+      "slug": "device-emulation-pio-mmio-and-the-bus-model",
+      "sourcePath": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "outputPath": "app/compendium/content/virtualization/device-emulation-pio-mmio-and-the-bus-model.md",
+      "order": 7,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Virtio Devices, Virtqueues, and vhost",
+      "collection": "virtualization",
+      "slug": "virtio-devices-virtqueues-and-vhost",
+      "sourcePath": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "outputPath": "app/compendium/content/virtualization/virtio-devices-virtqueues-and-vhost.md",
+      "order": 8,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Booting Guests: Firmware and the Linux Boot Protocol",
+      "collection": "virtualization",
+      "slug": "booting-guests-firmware-and-the-linux-boot-protocol",
+      "sourcePath": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "outputPath": "app/compendium/content/virtualization/booting-guests-firmware-and-the-linux-boot-protocol.md",
+      "order": 9,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Storage and Network Backends",
+      "collection": "virtualization",
+      "slug": "storage-and-network-backends",
+      "sourcePath": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "outputPath": "app/compendium/content/virtualization/storage-and-network-backends.md",
+      "order": 10,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Device Passthrough, VFIO, IOMMU, and Nested Virtualization",
+      "collection": "virtualization",
+      "slug": "device-passthrough-vfio-iommu-and-nested-virtualization",
+      "sourcePath": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "outputPath": "app/compendium/content/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization.md",
+      "order": 11,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Snapshots, Live Migration, and Dirty Page Tracking",
+      "collection": "virtualization",
+      "slug": "snapshots-live-migration-and-dirty-page-tracking",
+      "sourcePath": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "outputPath": "app/compendium/content/virtualization/snapshots-live-migration-and-dirty-page-tracking.md",
+      "order": 12,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Security, Isolation, and Attack Surface",
+      "collection": "virtualization",
+      "slug": "security-isolation-and-attack-surface",
+      "sourcePath": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "outputPath": "app/compendium/content/virtualization/security-isolation-and-attack-surface.md",
+      "order": 13,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Performance, Observability, and Debugging",
+      "collection": "virtualization",
+      "slug": "performance-observability-and-debugging",
+      "sourcePath": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "outputPath": "app/compendium/content/virtualization/performance-observability-and-debugging.md",
+      "order": 14,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "ARM64 Virtualization: EL2, VHE, and the GIC",
+      "collection": "virtualization",
+      "slug": "arm64-virtualization-el2-vhe-and-gic",
+      "sourcePath": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "outputPath": "app/compendium/content/virtualization/arm64-virtualization-el2-vhe-and-gic.md",
+      "order": 15,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "RISC-V Virtualization and the Hypervisor Extension",
+      "collection": "virtualization",
+      "slug": "risc-v-virtualization-and-the-hypervisor-extension",
+      "sourcePath": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "outputPath": "app/compendium/content/virtualization/risc-v-virtualization-and-the-hypervisor-extension.md",
+      "order": 16,
+      "mermaidBlocks": 3
+    },
+    {
+      "title": "Hypervisor Architectures Compared",
+      "collection": "virtualization",
+      "slug": "hypervisor-architectures-compared",
+      "sourcePath": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "outputPath": "app/compendium/content/virtualization/hypervisor-architectures-compared.md",
+      "order": 17,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Rust VMM Ecosystem and Project Templates",
+      "collection": "virtualization",
+      "slug": "rust-vmm-ecosystem-and-project-templates",
+      "sourcePath": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "outputPath": "app/compendium/content/virtualization/rust-vmm-ecosystem-and-project-templates.md",
+      "order": 18,
+      "mermaidBlocks": 2
+    },
+    {
+      "title": "Virtualization",
+      "collection": "virtualization",
+      "slug": "virtualization",
+      "sourcePath": "Knowledge base/Virtualization/Virtualization.md",
+      "outputPath": "app/compendium/content/virtualization/virtualization.md",
+      "order": 20,
+      "mermaidBlocks": 1
     }
   ],
   "convertedLinks": [
@@ -9333,6 +9518,2112 @@
       "to": "Knowledge base/Rust/00 Rust Mastery Roadmap.md",
       "href": "/compendium/rust/rust-mastery-roadmap",
       "label": "00 Rust Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "href": "/compendium/virtualization/virtualization-mental-model-and-history",
+      "label": "01 Virtualization Mental Model and History"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "href": "/compendium/virtualization/hypervisor-architectures-compared",
+      "label": "17 Hypervisor Architectures Compared"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "href": "/compendium/virtualization/rust-vmm-ecosystem-and-project-templates",
+      "label": "18 Rust VMM Ecosystem and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "href": "/compendium/linux-systems-engineering/kernel-architecture-modules-drivers-and-device-model",
+      "label": "13 Kernel Architecture Modules Drivers and Device Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "href": "/compendium/linux-systems-engineering/performance-engineering-perf-flamegraphs-and-capacity",
+      "label": "11 Performance Engineering perf Flamegraphs and Capacity"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "href": "/compendium/rust/systems-programming-networking-and-io",
+      "label": "13 Systems Programming Networking and IO"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "href": "/compendium/rust/ffi-embedded-webassembly-and-interop",
+      "label": "14 FFI Embedded WebAssembly and Interop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "href": "/compendium/virtualization/virtualization-mental-model-and-history",
+      "label": "01 Virtualization Mental Model and History"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "href": "/compendium/virtualization/hypervisor-architectures-compared",
+      "label": "17 Hypervisor Architectures Compared"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "href": "/compendium/virtualization/x86-64-architecture-for-hypervisor-authors",
+      "label": "02 x86-64 Architecture for Hypervisor Authors"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "href": "/compendium/virtualization/intel-vt-x-and-amd-v-hardware-virtualization",
+      "label": "03 Intel VT-x and AMD-V Hardware Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "href": "/compendium/virtualization/rust-vmm-ecosystem-and-project-templates",
+      "label": "18 Rust VMM Ecosystem and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "href": "/compendium/virtualization/x86-64-architecture-for-hypervisor-authors",
+      "label": "02 x86-64 Architecture for Hypervisor Authors"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "href": "/compendium/virtualization/storage-and-network-backends",
+      "label": "10 Storage and Network Backends"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "href": "/compendium/linux-systems-engineering/performance-engineering-perf-flamegraphs-and-capacity",
+      "label": "11 Performance Engineering perf Flamegraphs and Capacity"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "href": "/compendium/virtualization/hypervisor-architectures-compared",
+      "label": "17 Hypervisor Architectures Compared"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "href": "/compendium/virtualization/rust-vmm-ecosystem-and-project-templates",
+      "label": "18 Rust VMM Ecosystem and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "to": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "href": "/compendium/virtualization/hypervisor-architectures-compared",
+      "label": "17 Hypervisor Architectures Compared"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "href": "/compendium/virtualization/virtualization-mastery-roadmap",
+      "label": "00 Virtualization Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "href": "/compendium/virtualization/x86-64-architecture-for-hypervisor-authors",
+      "label": "02 x86-64 Architecture for Hypervisor Authors"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "href": "/compendium/virtualization/intel-vt-x-and-amd-v-hardware-virtualization",
+      "label": "03 Intel VT-x and AMD-V Hardware Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "href": "/compendium/virtualization/hypervisor-architectures-compared",
+      "label": "17 Hypervisor Architectures Compared"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "href": "/compendium/virtualization/intel-vt-x-and-amd-v-hardware-virtualization",
+      "label": "03 Intel VT-x and AMD-V Hardware Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "href": "/compendium/virtualization/virtualization-mental-model-and-history",
+      "label": "01 Virtualization Mental Model and History"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "href": "/compendium/virtualization/intel-vt-x-and-amd-v-hardware-virtualization",
+      "label": "03 Intel VT-x and AMD-V Hardware Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "to": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "href": "/compendium/virtualization/virtualization-mental-model-and-history",
+      "label": "01 Virtualization Mental Model and History"
+    },
+    {
+      "from": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "to": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "href": "/compendium/virtualization/x86-64-architecture-for-hypervisor-authors",
+      "label": "02 x86-64 Architecture for Hypervisor Authors"
+    },
+    {
+      "from": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "href": "/compendium/virtualization/intel-vt-x-and-amd-v-hardware-virtualization",
+      "label": "03 Intel VT-x and AMD-V Hardware Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "href": "/compendium/virtualization/rust-vmm-ecosystem-and-project-templates",
+      "label": "18 Rust VMM Ecosystem and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "href": "/compendium/virtualization/x86-64-architecture-for-hypervisor-authors",
+      "label": "02 x86-64 Architecture for Hypervisor Authors"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "href": "/compendium/virtualization/intel-vt-x-and-amd-v-hardware-virtualization",
+      "label": "03 Intel VT-x and AMD-V Hardware Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "href": "/compendium/virtualization/x86-64-architecture-for-hypervisor-authors",
+      "label": "02 x86-64 Architecture for Hypervisor Authors"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "href": "/compendium/virtualization/intel-vt-x-and-amd-v-hardware-virtualization",
+      "label": "03 Intel VT-x and AMD-V Hardware Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "href": "/compendium/linux-systems-engineering/kernel-architecture-modules-drivers-and-device-model",
+      "label": "13 Kernel Architecture Modules Drivers and Device Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "href": "/compendium/linux-systems-engineering/kernel-architecture-modules-drivers-and-device-model",
+      "label": "13 Kernel Architecture Modules Drivers and Device Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "href": "/compendium/virtualization/storage-and-network-backends",
+      "label": "10 Storage and Network Backends"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "href": "/compendium/virtualization/storage-and-network-backends",
+      "label": "10 Storage and Network Backends"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "href": "/compendium/virtualization/storage-and-network-backends",
+      "label": "10 Storage and Network Backends"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "href": "/compendium/virtualization/storage-and-network-backends",
+      "label": "10 Storage and Network Backends"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "href": "/compendium/virtualization/rust-vmm-ecosystem-and-project-templates",
+      "label": "18 Rust VMM Ecosystem and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/linux-systems-engineering/04 Filesystems VFS Block IO Page Cache and Storage.md",
+      "href": "/compendium/linux-systems-engineering/filesystems-vfs-block-io-page-cache-and-storage",
+      "label": "04 Filesystems VFS Block IO Page Cache and Storage"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/linux-systems-engineering/05 Linux Networking TCP IP Routing Firewalling and DNS.md",
+      "href": "/compendium/linux-systems-engineering/linux-networking-tcp-ip-routing-firewalling-and-dns",
+      "label": "05 Linux Networking TCP IP Routing Firewalling and DNS"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "href": "/compendium/rust/systems-programming-networking-and-io",
+      "label": "13 Systems Programming Networking and IO"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "href": "/compendium/virtualization/intel-vt-x-and-amd-v-hardware-virtualization",
+      "label": "03 Intel VT-x and AMD-V Hardware Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "href": "/compendium/linux-systems-engineering/kernel-architecture-modules-drivers-and-device-model",
+      "label": "13 Kernel Architecture Modules Drivers and Device Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "to": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "href": "/compendium/virtualization/storage-and-network-backends",
+      "label": "10 Storage and Network Backends"
+    },
+    {
+      "from": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "href": "/compendium/virtualization/hypervisor-architectures-compared",
+      "label": "17 Hypervisor Architectures Compared"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "href": "/compendium/virtualization/rust-vmm-ecosystem-and-project-templates",
+      "label": "18 Rust VMM Ecosystem and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/linux-systems-engineering/06 System Calls ABI libc and User Kernel Boundaries.md",
+      "href": "/compendium/linux-systems-engineering/system-calls-abi-libc-and-user-kernel-boundaries",
+      "label": "06 System Calls ABI libc and User Kernel Boundaries"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "href": "/compendium/virtualization/storage-and-network-backends",
+      "label": "10 Storage and Network Backends"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "href": "/compendium/linux-systems-engineering/performance-engineering-perf-flamegraphs-and-capacity",
+      "label": "11 Performance Engineering perf Flamegraphs and Capacity"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "label": "14 eBPF Fundamentals Verifier Maps Programs and Helpers"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/14 eBPF Fundamentals Verifier Maps Programs and Helpers.md",
+      "href": "/compendium/linux-systems-engineering/ebpf-fundamentals-verifier-maps-programs-and-helpers",
+      "label": "14 eBPF Fundamentals Verifier Maps Programs and Helpers"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "href": "/compendium/virtualization/storage-and-network-backends",
+      "label": "10 Storage and Network Backends"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "to": "Knowledge base/linux-systems-engineering/11 Performance Engineering perf Flamegraphs and Capacity.md",
+      "href": "/compendium/linux-systems-engineering/performance-engineering-perf-flamegraphs-and-capacity",
+      "label": "11 Performance Engineering perf Flamegraphs and Capacity"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "href": "/compendium/virtualization/x86-64-architecture-for-hypervisor-authors",
+      "label": "02 x86-64 Architecture for Hypervisor Authors"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "href": "/compendium/virtualization/intel-vt-x-and-amd-v-hardware-virtualization",
+      "label": "03 Intel VT-x and AMD-V Hardware Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "href": "/compendium/virtualization/rust-vmm-ecosystem-and-project-templates",
+      "label": "18 Rust VMM Ecosystem and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "to": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "href": "/compendium/virtualization/x86-64-architecture-for-hypervisor-authors",
+      "label": "02 x86-64 Architecture for Hypervisor Authors"
+    },
+    {
+      "from": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "to": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "href": "/compendium/virtualization/intel-vt-x-and-amd-v-hardware-virtualization",
+      "label": "03 Intel VT-x and AMD-V Hardware Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "to": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "href": "/compendium/virtualization/hypervisor-architectures-compared",
+      "label": "17 Hypervisor Architectures Compared"
+    },
+    {
+      "from": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "to": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "href": "/compendium/virtualization/rust-vmm-ecosystem-and-project-templates",
+      "label": "18 Rust VMM Ecosystem and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "to": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "href": "/compendium/virtualization/virtualization-mental-model-and-history",
+      "label": "01 Virtualization Mental Model and History"
+    },
+    {
+      "from": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "to": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "href": "/compendium/virtualization/rust-vmm-ecosystem-and-project-templates",
+      "label": "18 Rust VMM Ecosystem and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "href": "/compendium/virtualization/virtualization-mastery-roadmap",
+      "label": "00 Virtualization Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "href": "/compendium/virtualization/hypervisor-architectures-compared",
+      "label": "17 Hypervisor Architectures Compared"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Rust/07 Concurrency Parallelism and Synchronization.md",
+      "href": "/compendium/rust/concurrency-parallelism-and-synchronization",
+      "label": "07 Concurrency Parallelism and Synchronization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Rust/13 Systems Programming Networking and IO.md",
+      "href": "/compendium/rust/systems-programming-networking-and-io",
+      "label": "13 Systems Programming Networking and IO"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Rust/08 Async Rust Futures Tokio and Runtimes.md",
+      "href": "/compendium/rust/async-rust-futures-tokio-and-runtimes",
+      "label": "08 Async Rust Futures Tokio and Runtimes"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/00 Virtualization Mastery Roadmap.md",
+      "href": "/compendium/virtualization/virtualization-mastery-roadmap",
+      "label": "00 Virtualization Mastery Roadmap"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/01 Virtualization Mental Model and History.md",
+      "href": "/compendium/virtualization/virtualization-mental-model-and-history",
+      "label": "01 Virtualization Mental Model and History"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/02 x86-64 Architecture for Hypervisor Authors.md",
+      "href": "/compendium/virtualization/x86-64-architecture-for-hypervisor-authors",
+      "label": "02 x86-64 Architecture for Hypervisor Authors"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/03 Intel VT-x and AMD-V Hardware Virtualization.md",
+      "href": "/compendium/virtualization/intel-vt-x-and-amd-v-hardware-virtualization",
+      "label": "03 Intel VT-x and AMD-V Hardware Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/15 ARM64 Virtualization EL2 VHE and GIC.md",
+      "href": "/compendium/virtualization/arm64-virtualization-el2-vhe-and-gic",
+      "label": "15 ARM64 Virtualization EL2 VHE and GIC"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/16 RISC-V Virtualization and the Hypervisor Extension.md",
+      "href": "/compendium/virtualization/risc-v-virtualization-and-the-hypervisor-extension",
+      "label": "16 RISC-V Virtualization and the Hypervisor Extension"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/04 KVM API and the vCPU Run Loop.md",
+      "href": "/compendium/virtualization/kvm-api-and-the-vcpu-run-loop",
+      "label": "04 KVM API and the vCPU Run Loop"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/06 Interrupts Timers and Interrupt Controller Virtualization.md",
+      "href": "/compendium/virtualization/interrupts-timers-and-interrupt-controller-virtualization",
+      "label": "06 Interrupts Timers and Interrupt Controller Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/07 Device Emulation PIO MMIO and the Bus Model.md",
+      "href": "/compendium/virtualization/device-emulation-pio-mmio-and-the-bus-model",
+      "label": "07 Device Emulation PIO MMIO and the Bus Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/08 Virtio Devices Virtqueues and vhost.md",
+      "href": "/compendium/virtualization/virtio-devices-virtqueues-and-vhost",
+      "label": "08 Virtio Devices Virtqueues and vhost"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/10 Storage and Network Backends.md",
+      "href": "/compendium/virtualization/storage-and-network-backends",
+      "label": "10 Storage and Network Backends"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/11 Device Passthrough VFIO IOMMU and Nested Virtualization.md",
+      "href": "/compendium/virtualization/device-passthrough-vfio-iommu-and-nested-virtualization",
+      "label": "11 Device Passthrough VFIO IOMMU and Nested Virtualization"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/09 Booting Guests Firmware and the Linux Boot Protocol.md",
+      "href": "/compendium/virtualization/booting-guests-firmware-and-the-linux-boot-protocol",
+      "label": "09 Booting Guests Firmware and the Linux Boot Protocol"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/12 Snapshots Live Migration and Dirty Page Tracking.md",
+      "href": "/compendium/virtualization/snapshots-live-migration-and-dirty-page-tracking",
+      "label": "12 Snapshots Live Migration and Dirty Page Tracking"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/13 Security Isolation and Attack Surface.md",
+      "href": "/compendium/virtualization/security-isolation-and-attack-surface",
+      "label": "13 Security Isolation and Attack Surface"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/14 Performance Observability and Debugging.md",
+      "href": "/compendium/virtualization/performance-observability-and-debugging",
+      "label": "14 Performance Observability and Debugging"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/17 Hypervisor Architectures Compared.md",
+      "href": "/compendium/virtualization/hypervisor-architectures-compared",
+      "label": "17 Hypervisor Architectures Compared"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/18 Rust VMM Ecosystem and Project Templates.md",
+      "href": "/compendium/virtualization/rust-vmm-ecosystem-and-project-templates",
+      "label": "18 Rust VMM Ecosystem and Project Templates"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/linux-systems-engineering/01 Linux Mental Model User Space Kernel and Hardware.md",
+      "href": "/compendium/linux-systems-engineering/linux-mental-model-user-space-kernel-and-hardware",
+      "label": "01 Linux Mental Model User Space Kernel and Hardware"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/linux-systems-engineering/13 Kernel Architecture Modules Drivers and Device Model.md",
+      "href": "/compendium/linux-systems-engineering/kernel-architecture-modules-drivers-and-device-model",
+      "label": "13 Kernel Architecture Modules Drivers and Device Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/linux-systems-engineering/03 Memory Virtual Memory Paging Allocators and OOM.md",
+      "href": "/compendium/linux-systems-engineering/memory-virtual-memory-paging-allocators-and-oom",
+      "label": "03 Memory Virtual Memory Paging Allocators and OOM"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Virtualization/05 Memory Virtualization EPT NPT and Guest Memory.md",
+      "href": "/compendium/virtualization/memory-virtualization-ept-npt-and-guest-memory",
+      "label": "05 Memory Virtualization EPT NPT and Guest Memory"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/linux-systems-engineering/09 cgroups Namespaces Containers and Runtime Isolation.md",
+      "href": "/compendium/linux-systems-engineering/cgroups-namespaces-containers-and-runtime-isolation",
+      "label": "09 cgroups Namespaces Containers and Runtime Isolation"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Rust/09 Unsafe Rust and the Rust Memory Model.md",
+      "href": "/compendium/rust/unsafe-rust-and-the-rust-memory-model",
+      "label": "09 Unsafe Rust and the Rust Memory Model"
+    },
+    {
+      "from": "Knowledge base/Virtualization/Virtualization.md",
+      "to": "Knowledge base/Rust/14 FFI Embedded WebAssembly and Interop.md",
+      "href": "/compendium/rust/ffi-embedded-webassembly-and-interop",
+      "label": "14 FFI Embedded WebAssembly and Interop"
     }
   ],
   "externalReferences": [
@@ -10163,5 +12454,5 @@
       "fallbackHref": "/compendium/software-engineering/distributed-systems"
     }
   ],
-  "mermaidBlocks": 215
+  "mermaidBlocks": 267
 }

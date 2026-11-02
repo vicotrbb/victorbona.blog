@@ -55,6 +55,10 @@ function getStudyIndex(collectionId: string) {
     return getCompendiumNote("rust", "rust");
   }
 
+  if (collectionId === "virtualization") {
+    return getCompendiumNote("virtualization", "virtualization");
+  }
+
   return undefined;
 }
 

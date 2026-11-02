@@ -6,7 +6,8 @@ export type CompendiumCollectionId =
   | "linux-systems-engineering"
   | "nodejs-v8-runtime-engineering"
   | "rust"
-  | "cpu-llm-inference";
+  | "cpu-llm-inference"
+  | "virtualization";
 
 export type CompendiumFrontmatter = {
   title: string;

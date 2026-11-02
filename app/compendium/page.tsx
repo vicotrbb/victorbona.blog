@@ -16,7 +16,7 @@ import { getCompendiumImportReport, getCompendiumNotes } from "./utils";
 
 const title = "Compendium";
 const description =
-  "Indexed software engineering, data structures, design patterns, Kubernetes, Linux systems engineering, Node.js V8 runtime, Rust, and CPU LLM inference notes from Victor Bona's technical compendium.";
+  "Indexed software engineering, data structures, design patterns, Kubernetes, Linux systems engineering, Node.js V8 runtime, Rust, CPU LLM inference, and virtualization notes from Victor Bona's technical compendium.";
 
 export const metadata: Metadata = {
   title,
@@ -85,7 +85,8 @@ export default function CompendiumPage() {
         <p className="mt-4 max-w-[60ch] text-[var(--dim)]">
           Durable notes organized as an archive: software engineering, data
           structures, design patterns, Kubernetes, Linux systems engineering,
-          Node.js V8 runtime engineering, Rust, and CPU LLM inference.
+          Node.js V8 runtime engineering, Rust, CPU LLM inference, and
+          virtualization.
         </p>
       </header>
       <h2 className="mb-6 mt-10 cmd">

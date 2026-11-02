@@ -57,6 +57,13 @@ export const compendiumCollections: CompendiumCollection[] = [
       "Research notes on CPU-native LLM inference, memory budgets, quantization, SIMD kernels, runtime architecture, model compatibility, benchmarks, Rust implementation strategy, and testing ladders.",
     route: "/compendium/cpu-llm-inference",
   },
+  {
+    id: "virtualization",
+    title: "Virtualization",
+    description:
+      "Hypervisor engineering notes on CPU and memory virtualization, KVM, interrupts, device emulation, virtio, guest boot, passthrough, snapshots, security, and building a Rust VMM across x86-64, ARM64, and RISC-V.",
+    route: "/compendium/virtualization",
+  },
 ];
 
 export function isCompendiumCollectionId(

@@ -69,6 +69,14 @@ const collections = [
     stripTitlePrefix: /^Document\s+\d+:\s*/i,
     stripTrailingWhitespace: true,
   },
+  {
+    id: "virtualization",
+    title: "Virtualization",
+    sourceDir: path.join(vaultRoot, "Knowledge base", "Virtualization"),
+    titleFromFirstHeading: true,
+    slugFromFilename: true,
+    stripSourceFrontmatter: true,
+  },
 ];
 
 function slugify(value) {
