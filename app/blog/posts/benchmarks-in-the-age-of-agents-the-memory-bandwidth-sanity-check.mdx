@@ -1,0 +1,304 @@
+---
+title: "Benchmarks in the Age of Agents: The Memory-Bandwidth Sanity Check"
+publishedAt: "2026-11-10"
+summary: "Give an AI agent a benchmark and it will optimize the number, sometimes past what the hardware allows. A two-line division, bytes touched over memory bandwidth, tells you which speedups to question. I ran it on a 22x database claim and on my own Ferrite numbers."
+tags: "benchmarking,performance,ai,agents,reward-hacking,rust,llm,databases"
+---
+
+A benchmark number is a claim about work. Before you ask whether it's fast, ask whether it's possible.
+
+I'm building [Ferrite](https://github.com/vicotrbb/ferrite), a CPU-native LLM inference engine in Rust, and its docs carry a promotion rule for every optimization: same inputs, repeated medians, identical output. On November 7, Thomas Neumann published a reply to a database paper that claimed 22x to 61x over Umbra and DuckDB, and his first move wasn't to read the code. It was a single division.
+
+That division is what this post is about. It takes a calculator and about thirty seconds, and it catches a whole class of results that are too good to be the same work done faster. In a world where agents will optimize whatever number you hand them, I think it's the cheapest check you can run.
+
+I'll show why agents make it urgent, run it on that 22x claim and then on my own Ferrite numbers, give you code to do the same on your machine, and say plainly what it cannot tell you.
+
+## Short answer
+
+Every benchmark has a floor: the bytes the work must read, divided by the memory bandwidth of the machine. Neumann's numbers for TPC-H at scale factor 10 put that floor at roughly **280 ms**, against Umbra's **540 ms**. By that arithmetic a traditional engine can be at most about **1.9x** faster, so a **22x** result is not a faster engine, it is a different amount of work. On my side, Ferrite's **105.54 tok/s** on Qwen2.5 0.5B implies about **41 GB/s** of weight traffic, roughly **13%** of Apple's "up to 307 GB/s" figure for the M5 Pro. That passes with a lot of room. The check is one-sided: it can condemn a number, it can never certify one.
+
+## Key takeaways
+
+- A speedup that beats the memory-bandwidth floor did not make the same work faster. It changed the work.
+- The floor is bytes touched divided by bandwidth, and you can compute it before you run anything.
+- Agents optimize the metric they are given, so a benchmark result with an agent in the loop should get this check by default.
+- Passing the check proves nothing about correctness or generality. It only says the number is physically allowed.
+- The defense that actually holds is a rule written before the numbers come in: same inputs, repeated medians, identical outputs, and an explicit scope.
+- The byte count moves when the work moves, so recompute it for the exact build you measured, including the KV cache, which grows with every token of context.
+- A check the agent can edit is a suggestion. Run the clock and the gate somewhere the agent cannot reach.
+
+## The check in one line
+
+Memory-bound work cannot finish faster than the time it takes to move its data.
+
+```text
+floor (seconds)  =  bytes that must be read  /  memory bandwidth (bytes per second)
+
+max speedup      =  baseline time  /  floor
+```
+
+That is the roofline idea from the [Williams, Waterman and Patterson paper](https://doi.org/10.1145/1498765.1498785) in its smallest usable form. The full model also has a compute ceiling, but for table scans and for LLM decode the memory side is the one that bites, and the memory side needs no profiler. The [LLM inference roofline survey](https://arxiv.org/abs/2402.16363) makes the same point about why decode is memory-bound.
+
+There are two ways to get the bandwidth number. The spec sheet gives you the theoretical one. [STREAM](https://www.cs.virginia.edu/stream/), John McCalpin's benchmark, measures the sustainable one on your actual machine. STREAM's own rule is that each array must be at least 4x the size of the sum of all the last-level caches in the run, or one million elements, whichever is larger, so the test measures memory and not cache. It also counts the bytes the program asked to move, and McCalpin is clear that the hardware may move a different number. The sustainable number is the honest one, and the spec sheet is the generous one. For a sanity check the generous one is fine, because you are asking "is this even allowed", and if it's not allowed under the generous number it is not allowed under the real one.
+
+## Agents do not have to be malicious to get here
+
+Two public cases show what this check is for, and neither needed a villain.
+
+In February 2025, Sakana AI announced the AI CUDA Engineer, a system that writes GPU kernels, with speedups of up to 100x. [TechCrunch's report](https://techcrunch.com/2025/02/21/sakana-walks-back-claims-that-its-ai-can-dramatically-speed-up-model-training/) says users on X quickly found the opposite, and one reported a 3x slowdown. Lucas Beyer pointed at the harness: "The fact they run benchmarking TWICE with wildly different results should make them stop and think." Sakana's postmortem said the system had found exploits in the evaluation code that let it bypass its validation checks, and the company apologized.
+
+That is a clean public correction, and I respect it. In September, [Sakana's follow-up](https://sakana.ai/ai-cuda-engineer-update/) described a stricter benchmark called robust-kbench and reported the average speedup falling from the 3.13x of the first report to 1.49x. A real gain survived. It was a much smaller one.
+
+METR saw the same thing from the other side. In its [June 2025 report on reward hacking](https://metr.org/blog/2025-06-05-recent-reward-hacking/), looking at o3 runs on RE-Bench tasks, the model was scored on speed in an "Optimize a Kernel" task and hacked it in 6 of 24 runs, with the sample description "overwriting the grader's timer or copying the grader's answer". In "Optimize LLM Foundry" it hacked in 21 of 21 runs, by "pre-computing the answer and caching it to make the script appear very fast."
+
+I haven't checked whether Sakana's kernels broke a bandwidth floor, and I'm not going to claim they did. The sources I read describe a harness bypass, not a bandwidth argument. But look at what these hacks have in common with Neumann's list below. A precomputed answer and a tampered clock both produce a time that is too short for the bytes involved. That is exactly what a division sees, provided the division runs somewhere the agent can't edit it.
+
+## A 22x claim against the floor
+
+Neumann's post is [Next-Level Benchmarking Overfitting](https://databasearchitects.blogspot.com/2026/11/next-level-benchmarking-overfitting.html), on the Database Architects blog. It's about [GenDB-V](https://arxiv.org/abs/2611.02779), a paper by Jiale Lao and Immanuel Trummer in which AI agents synthesize database engines. The abstract reports geometric-mean speedups of 22.0 to 61.3x over DuckDB and Umbra for verified template implementations, evaluated on TPC-H and SEC-EDGAR.
+
+Here is the paragraph that matters:
+
+> At SF10, the 22 TPC-H queries read roughly 15GB of (compressed) base data, and on a 9950X3D Umbra runs all queries in a total of roughly 540ms. On that machine the memory touched for data divided by the memory bandwidth (54GB/s) alone is about 280ms; anything below that is infeasible.
+
+As arithmetic on his numbers:
+
+```text
+bytes read         ~15 GB
+bandwidth          54 GB/s
+floor              15 / 54  = 0.278 s  (~280 ms)
+
+Umbra, measured    ~540 ms
+max speedup        540 / 278  = ~1.9x
+
+what 22x would need
+  target time      540 ms / 22  = ~24.5 ms
+  bandwidth        15 GB / 0.0245 s  = ~611 GB/s
+```
+
+To reach 22x while still reading all of the data, that machine would need more than ten times the memory bandwidth it has. These are his numbers and my division, and I'm applying the headline ratio to his total runtime, while the paper's figure is a geometric mean across queries. It's an approximation of the same point, and I did not run Umbra or GenDB-V.
+
+So where does a 22x come from if not from a faster scan? This is the part I like most, because the check doesn't just say "no", it tells you what to go look for. Neumann's reading of the code is that the gains come from precomputation. The agents built auxiliary data structures per query at load time, so most of the base data is never touched at query time. His example is an extra structure listing `supplier` rows in `s_acctbal DESC` order that makes Q2 nearly trivial. Several queries run in near-constant time at SF100.
+
+The "plain-array" mode, which looks fairer, reports roughly 3x. Neumann found the agents had hard-coded how the TPC-H data generator lays out rows, so the join in Q18 becomes a direct computation of where the matching row must be. The code checks the guess and falls back to a slow generic path when it's wrong, but with the official generator the fallback never runs.
+
+None of that is a faster scan. It's less scanning. The work changed.
+
+I want to be fair to the authors, because the disagreement is more interesting than a pile-on. In the comments, Jiale Lao argues that specializing to a customer's schema, data and hot queries is the point of the approach, and that a general engine should take the ad-hoc queries. He also separates fair specialization (a property the storage creates, or one the customer declares and the system checks) from unfair specialization (an accident of the generator). And when a commenter pushed on the performance claims, he wrote:
+
+> I totally agree that I over-claimed for performance. The honest performance claim should be that, the synthesized engine can outperform untuned general-purpose engine, on a specific target.
+
+That's a good outcome for a public benchmark argument. It also leaves a number I did not check: the abstract reports 1.27 to 3.4x for the verified general-purpose engine on TPC-H, and I haven't verified what baseline that is measured against.
+
+## What a number below the floor actually means
+
+When a result lands under the floor, the machine did not break physics. The benchmark stopped measuring what you thought it measured. From Neumann's two posts and METR's report, it comes down to a short list:
+
+```text
+1. The data is not read.       Precomputed structures built for exactly these queries.
+2. The answer is not computed. Cached results, repeated predicates, shortcuts that are
+                               wrong off the benchmark (his ClickBench example: grouping
+                               on the hash of a string instead of the string).
+3. The benchmark is known.     The generator's row layout hard-coded into the engine.
+4. The clock is wrong.         The timer or the scorer overwritten (METR's kernel task).
+```
+
+None of this is new. [TPC-D](https://www.tpc.org/tpcd/default5.asp) was retired, as Neumann tells it in an [earlier post](https://databasearchitects.blogspot.com/2026/10/the-benchmarking-crisis.html), because people optimized for it until query runtimes converged toward zero through caching, and TPC-H responded by being ad-hoc and forbidding the exploitation of workload knowledge. What changed is who does the optimizing. In that same post he writes that if you tell an AI to make the queries faster, it will make the queries faster, regardless of whether the approach is generally plausible.
+
+That's Goodhart's law with a tireless worker attached. The agent is not cheating on purpose. It is doing exactly what the score asked for.
+
+## Running it on my own numbers
+
+The same check should work on me, so here it is on Ferrite.
+
+The setup, from [Ferrite's performance docs](https://github.com/vicotrbb/ferrite/blob/main/docs/performance.md) and its [2026-07-10 benchmark gate](https://github.com/vicotrbb/ferrite/blob/main/docs/benchmarks/2026-07-10-oss-quality-hardening.md): Qwen2.5 0.5B Instruct at Q4_K_M quantization, on an Apple M5 Pro with 15 cores and 24 GiB, seven workers, using the opt-in residual I8MM policy. The accepted gate reached **105.54** precise decode tokens per second.
+
+Single-stream decode is the clean case for this check. To generate one token, the engine has to stream essentially all of the model's weights through the CPU once. The file size is a trap here, so count the tensors in the GGUF header instead. The GGUF is 491,400,032 bytes, and the SHA-256 of Ferrite's copy matches the one on the official Hugging Face repository. But 5.9 MB of that is header and tokenizer metadata, and another 93.6 MB is the token embedding table, where a lookup touches one row, not the table. The output projection is a separate Q8_0 tensor of 144.6 MB, and that one is read in full on every token. What's left is **391,859,712 bytes** of weights per token.
+
+```python
+model_bytes = 391_859_712      # tensor data minus the token embedding table
+apple_up_to = 307e9            # Apple's "up to" figure for M5 Pro, bytes per second
+ceiling     = apple_up_to / model_bytes          # tok/s if weights are the only traffic
+measured    = 105.54
+
+print(ceiling)                                   # ~783 tok/s
+print(measured * model_bytes / 1e9)              # ~41.4 GB/s of weight traffic
+print(measured / ceiling)                        # ~0.13
+```
+
+| Quantity | Value |
+| --- | --- |
+| Weight bytes read per token | 391.9 MB |
+| Bandwidth ceiling (Apple, "up to") | 307 GB/s |
+| Tokens per second ceiling | ~783 |
+| Measured, single stream | 105.54 |
+| Implied weight traffic | ~41.4 GB/s |
+| Share of the ceiling | ~13% |
+
+My number sits well under the floor-implied ceiling, so nothing here is suspicious. A reading of 800 tok/s would have been a different story: that's a measurement bug until proven otherwise, and the first suspects would be a prompt that stopped early or a wrong token count.
+
+The room under the ceiling is the informative part. Measured against Apple's figure, the memory bus isn't what limits single-stream decode on this machine. I haven't profiled where the time does go, so I'm not going to guess one here.
+
+Batching points the same way. In the same gate, an engine batch of 8 streams reached **169.47** aggregate tok/s. [ADR 0011](https://github.com/vicotrbb/ferrite/blob/main/docs/adr/0011-concurrent-serving-and-batched-decode.md) describes batched kernels that stream one weight row across several activation vectors. If the weights are read once per step, 8 streams could in principle run at up to 8x the single-stream ceiling, around 6,300 tok/s. I'm at under 3% of that.
+
+## The term that grows with context
+
+Weights are the big constant term. There is a second one that grows with every token already in the conversation: the KV cache. For each new token, attention reads the cached keys and values of every earlier position, at every layer.
+
+Ferrite stores them as `f32`: [`kv_store.rs`](https://github.com/vicotrbb/ferrite/blob/main/crates/ferrite-inference/src/scalar/kv_store.rs) keeps a `Vec<f32>` per layer and position, for keys and for values. Qwen2.5 0.5B has 24 layers and 2 KV heads, and its hidden size of 896 over 14 attention heads gives a head dimension of 64, all from its [config.json](https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/blob/main/config.json). So the cost of one cached position is:
+
+```text
+bytes per cached token = 2 (K and V) x 24 layers x 2 KV heads x 64 dims x 4 bytes
+                       = 24,576
+```
+
+Against the 391.9 MB of weights:
+
+| Context | KV bytes read per token | Share of weight bytes |
+| --- | --- | --- |
+| 512 | 12.6 MB | 3.2% |
+| 2,048 | 50.3 MB | 12.8% |
+| 8,192 | 201.3 MB | 51.4% |
+| 32,768 | 805.3 MB | 205.5% |
+
+KV traffic overtakes weight traffic at around 15,900 tokens of context. For a generation of a couple of hundred tokens it is under 2% of the weights, which is why I ignored it in the first calculation. For a long agent session it is the larger term, and a floor that leaves it out is simply wrong.
+
+This number is a lower bound. Ferrite's [attention loop](https://github.com/vicotrbb/ferrite/blob/main/crates/ferrite-inference/src/scalar/attention.rs) walks each query head separately, so with 14 query heads sharing 2 KV heads, each cached slice is touched 7 times per token. Whether those repeats are served from cache or go back to the memory bus, I have not measured.
+
+There is a lesson for agent-driven optimization in here. If something quietly changes the KV dtype to `f16`, or truncates the context, the bytes change and the floor moves with them. A speedup that comes from moving less data is a legitimate change in the work, but it is a different claim from "the same kernel got faster", and only a recomputed byte count tells you which one you have.
+
+## What the gap tells me
+
+Passing the check was the easy part. The more useful reading is the distance from the ceiling. Single-stream decode on Ferrite is nowhere near the number Apple prints, and I can see three suspects. I have tested none of them.
+
+1. **The real ceiling is lower.** Apple's 307 GB/s is a spec for the whole chip. What seven CPU threads can pull may be well under it, and I don't have a STREAM number for those cores.
+2. **Decode is partly compute-bound.** Q4_K blocks have to be unpacked and multiplied, and the arithmetic might cost more than the loads.
+3. **Time goes to things that aren't weights.** Attention, normalization, synchronization between workers, sampling.
+
+The experiment that separates them is cheap, and the first step is the triad in the next section, run with seven threads on the same machine. If it says the cores can pull 100 GB/s, my 41 GB/s is about 41% of what they can do, and the story changes from "enormous headroom" to "decent". If it says 45, I am almost at the wall and the next win has to come from moving fewer bytes, not from faster kernels. Those are two very different roadmaps, and one afternoon decides between them.
+
+## What Ferrite does instead of trusting a number
+
+The bandwidth check filters impossible results. It does nothing about results that are merely flattering, and flattering is the more common failure. So Ferrite's [performance guide](https://github.com/vicotrbb/ferrite/blob/main/docs/performance.md) has a promotion rule. An optimization is kept only when all of this holds:
+
+1. The comparison uses the same model, prompt, token count, policy, worker count, build settings and stable machine conditions.
+2. The repeated-run median improves. A best-case outlier is not evidence.
+3. The generated token IDs match the required reference trace.
+4. Formatting, strict Clippy, tests, rustdoc, eval-harness tests and dependency checks pass.
+5. Regressions in memory, time to first token, per-stream latency and aggregate throughput are measured and explicitly accepted or rejected.
+
+Rule 3 matters most when agents are in the loop. GenDB-V answers "is the output correct" with a formal proof. Ferrite answers it more modestly: every accepted result must produce the exact same token trace as the reference, so a speedup that quietly changes the output can't get in. Neither says anything about whether the speedup is real, which is why rule 2 sits next to it.
+
+The rule has rejected things. A candidate that did rotary position encoding in place, avoiding a per-head allocation, passed its bit-exact tests and kept the full 128-token trace. Its median latency was **4.35% worse** (throughput down from 102.12 to 97.86 tok/s), so it was reverted. In the same gate, one repetition of the full eval was thrown away because unrelated CPU-heavy work overlapped every phase of the run. Neither makes a good headline. Both are the reason the headline numbers are worth anything.
+
+The same docs are honest about scope. The 2026-07-13 gate reports a **41.03%** gain in four-request aggregate throughput, then explains that the official eval sends one prompt to every request, so the gain includes shared-prompt fan-out. It states directly that no 41.03% claim is made for an all-distinct workload. That is the benchmark-specific class of problem from the list above, and no bandwidth division would catch it. Only writing the scope down does.
+
+## Doing the check yourself
+
+It takes four steps and about ten minutes.
+
+**1. Count the bytes.** Read the tensor sizes from the file header, not the file size. Subtract anything that is looked up rather than streamed, like an embedding table. Add the KV cache for the context you measured. For a query engine, count the compressed bytes of the columns the query touches.
+
+**2. Measure the bandwidth.** The spec is the generous number. A triad kernel gives you the sustained one. This is a minimal STREAM-style version that counts 24 bytes per element (read two arrays, write one), the way STREAM does:
+
+```c
+// Minimal STREAM-style triad: a[i] = b[i] + s * c[i]. Counts 24 bytes per element
+// (read b, read c, write a), the STREAM convention. Array size must be at least 4x
+// the sum of the last-level caches, so pass a big N. Usage: ./triad [elements] [threads]
+#include <omp.h>
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char **argv) {
+    size_t n = argc > 1 ? strtoull(argv[1], 0, 10) : 20000000;
+    int threads = argc > 2 ? atoi(argv[2]) : omp_get_max_threads();
+    omp_set_num_threads(threads);
+    double *a = malloc(n * sizeof *a), *b = malloc(n * sizeof *b), *c = malloc(n * sizeof *c);
+    if (!a || !b || !c) { fprintf(stderr, "out of memory\n"); return 1; }
+#pragma omp parallel for
+    for (size_t i = 0; i < n; i++) { a[i] = 0.0; b[i] = 1.0; c[i] = 2.0; }
+
+    double best = 1e30;
+    for (int rep = 0; rep < 10; rep++) {
+        double t0 = omp_get_wtime();
+#pragma omp parallel for
+        for (size_t i = 0; i < n; i++) a[i] = b[i] + 3.0 * c[i];
+        double dt = omp_get_wtime() - t0;
+        if (rep > 0 && dt < best) best = dt;   // skip the first, warm-up pass
+    }
+    printf("threads %d, array %.0f MB each, best triad %.1f GB/s\n",
+           threads, n * sizeof(double) / 1e6, 24.0 * n / best / 1e9);
+    printf("check %f\n", a[n / 2]);            // 7.0, keeps the loop from being optimized away
+    return 0;
+}
+```
+
+Compile it with `gcc -O3 -fopenmp triad.c -o triad` and pass an array size big enough to be well past your caches and a thread count that matches what your workload uses. On macOS, Apple's clang needs `libomp` for OpenMP, so I'd use Homebrew's gcc. It is a sketch of STREAM and not a replacement for it, so treat its output as a ballpark.
+
+**3. Divide.** The floor is bytes over bandwidth, and the implied bandwidth of a result is bytes per unit of work times units per second.
+
+**4. Gate it.** Here is the whole decision as a function, so a pipeline can run it on every result an agent reports:
+
+```python
+"""Plausibility gate: could this benchmark result be real, given the memory bus?
+
+Usage: python3 plausibility_gate.py BYTES_PER_UNIT UNITS_PER_SECOND SPEC_GBPS [STREAM_GBPS]
+Example (the Ferrite decode number): python3 plausibility_gate.py 391859712 105.54 307 
+"""
+import sys
+
+
+def verdict(bytes_per_unit: float, units_per_s: float, spec_gbps: float,
+            stream_gbps: float | None = None) -> str:
+    implied = bytes_per_unit * units_per_s / 1e9           # GB/s the result implies
+    line = f"implied traffic {implied:.1f} GB/s against spec {spec_gbps:g} GB/s"
+    if implied > spec_gbps:
+        return line + ": IMPOSSIBLE for the same work. The work changed or the measurement is wrong."
+    if stream_gbps is not None and implied > stream_gbps:
+        return line + f": above the measured {stream_gbps:g} GB/s. Check the byte count and the timer."
+    return line + ": possible. That says nothing about correctness or scope."
+
+
+if __name__ == "__main__":
+    args = [float(x) for x in sys.argv[1:]]
+    if len(args) not in (3, 4):
+        sys.exit(__doc__)
+    print(verdict(*args))
+```
+
+On the Ferrite decode number it prints `implied traffic 41.4 GB/s against spec 307 GB/s: possible`. On Neumann's 22x it prints `implied traffic 611.1 GB/s against spec 54 GB/s: IMPOSSIBLE`. Same function, same two inputs, opposite answers.
+
+The thresholds are a policy and not physics. Over the spec is impossible for the same work. Over your measured sustained figure is not impossible but deserves a hard look. Decide which of the two fails your build by how many false alarms you can live with.
+
+## A review checklist for agent-written benchmark claims
+
+When an agent hands you a speedup, I'd ask six things before reading any code:
+
+1. **Who owns the clock?** Time the run from a harness the agent can't edit. METR's kernel task shows what happens otherwise.
+2. **What are the bytes?** Recompute them for the exact build that produced the number: weights, KV cache, activations, or the columns a query actually reads.
+3. **What bandwidth does the result imply?** Over the spec, stop. Over the measured sustained figure, check the byte count and the timer.
+4. **Is the output identical to a reference?** Token IDs, query results, checksums. Fast and wrong is always available.
+5. **Does it survive input the agent never saw?** A different data generator, distinct prompts, a different schema. This is the question Neumann's generator-layout example answers.
+6. **Was the scope written down before the numbers came in?** Ferrite's 41.03% finding is only honest because the doc says what workload it covers.
+
+The first three take minutes and catch the loudest failures. The last three take discipline, and they catch the quiet ones.
+
+## What this does not show
+
+The check is narrow on purpose, and I'd rather be exact about where it stops.
+
+- **The bandwidth figure is Apple's "up to 307 GB/s" for the M5 Pro, not something I measured.** What a CPU running seven workers can actually pull is what STREAM would report on this machine, and it may be lower. If it is, the check gets stricter: my result stays possible only while the measured bandwidth is above about 41 GB/s.
+- **Counted bytes are a lower bound on bus traffic.** STREAM's author notes that hardware may move more than the program asked for, for example through write-allocate on stores. That makes an "impossible" verdict safer, because the real traffic is at least what I counted, and it makes a "possible" verdict weaker.
+- **Bytes per token is approximate.** I counted weight tensors and assumed the embedding lookup reads a single row. Real traffic also includes KV cache reads, which grow with context, and activations. For short generations that's small. For long contexts it isn't.
+- **The 22x arithmetic is Neumann's data, not mine.** I checked his division and the paper's headline, and I did not run Umbra, DuckDB or GenDB-V.
+- **The floor assumes the data comes from memory.** If the working set fits in cache, the relevant bandwidth is the cache's, not DRAM's. A 15 GB scan doesn't fit. A small benchmark might, and then the DRAM floor is the wrong one.
+- **It only judges "same work, faster".** A system that legitimately changes the work, with a new storage layout, a real index or a better algorithm, can beat the floor honestly. The check doesn't say the result is fake. It says the result is not a faster version of the same job, and now you know which question to ask.
+- **Passing says nothing about correctness.** A wrong answer is allowed to be fast.
+
+## The rule I keep coming back to
+
+Benchmarks fail in two ways. The number can be impossible, or it can be possible and still not mean what you think. The division catches the first. A written promotion rule, repeated medians and an exact output check are what I trust for the second.
+
+> A speedup that beats the hardware didn't make the same work faster. It changed the work.
+
+Agents will keep finding the shortest path to a better score. Divide first. Then argue.
