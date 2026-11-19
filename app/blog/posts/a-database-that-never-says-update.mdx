@@ -1,0 +1,176 @@
+---
+title: "A Database That Never Says Update"
+publishedAt: "2026-11-19"
+summary: "The digital twin stores every observation once and never overwrites it. Two clocks, valid time and known time, and three rules for corrections let a read answer what the twin knew on any day. This post separates the design from what I have measured, and says which parts are not yet checked in code."
+tags: "postgresql,append-only,data modeling,event sourcing,digital twin,data correction"
+---
+
+Most tables keep the latest version of the truth. Ours keeps a record of everything anyone ever told us, in the order we heard it.
+
+I work on [Tesar](https://tesar.ai) in my free time. Its digital twin is the place where we keep everything we know about an asset and its environment. Every entry is one observation: one value a source reported about one place at one time. A rain reading. A statistic extracted from a satellite image. A model's forecast for next week.
+
+Sources change their minds. A satellite scene is reprocessed and the number moves. A model is retrained and yesterday's forecast is reissued. A sensor is recalibrated. If the table holds only the latest value, each of those changes erases the answer to a question someone will ask later: what did we believe on the day we made that decision?
+
+So the design does not update anything. A correction is a new row. The read decides which row counts.
+
+This post explains that design: the two clocks, the origin of each value, and the three rules that decide what a read returns. It also says what I have measured, what is only designed, and what I have not checked in code.
+
+## Short answer
+
+The twin is append-only. Each observation carries two times: **valid time**, when the value describes, and **known time**, when the twin learned it. A correction never changes a row. It arrives as a new row, and a default read applies three rules: the latest known value wins for the same variable, place, time, source and parameters; a run can explicitly supersede an older run; and a measured value hides a derived or simulated one for the same time. The design is written down, and the phase 1 status is that the twin's core is running. Which of these rules are enforced in code I have not verified in this post. The measured numbers come from a laptop test of the SQL schema, and they are not measurements of the twin's own code.
+
+## Key takeaways
+
+- Store what a source reported, when it was reported, and do not overwrite it.
+- Keep two clocks: when a value describes, and when you learned it. Without the second one, you cannot answer what you knew on a given day.
+- A correction is a new row. The read decides which row is current, so the rule lives in one place.
+- Origin is part of the identity of a value. A measurement, a derivation and a simulation for the same time are three different things.
+- Append-only has a storage cost. Plan retention on day one, because the table will not shrink by itself.
+
+## Two clocks: when it happened and when we knew
+
+An observation has two times. `valid_from` is the moment the value describes. `valid_to` is optional, and it marks the end of a period. `known_at` is when the twin learned the value.
+
+The two clocks answer different questions. "What was the rainfall on the 3rd" uses valid time. "What did the twin say about the 3rd on the 4th" uses known time. Keeping both lets you ask what the twin knew on a given day, and compare a forecast with the measurement that arrived later.
+
+A small invented example shows the difference. It is an illustration of the rules, not a recorded event:
+
+```text
+Observation: rainfall at one place, for Tuesday
+
+  known_at (Mon 09:00)   valid_from = Tue   origin = simulated   value = 12 mm
+  known_at (Tue 23:10)   valid_from = Tue   origin = measured    value = 4 mm
+
+Question asked on Monday afternoon:   12 mm (the forecast was the best we had)
+Question asked on Wednesday:           4 mm (the measurement replaced it)
+Question asked on Wednesday, as of Monday: 12 mm
+```
+
+The third line is the one that matters for audits. Nothing was changed on Tuesday night. The measurement arrived as a new row, and a question asked as of Monday still returns what we believed then.
+
+## Origin: measured, derived, simulated
+
+Every run declares an origin, and every observation of the run carries it. The design has three values:
+
+| Origin | Meaning | Example |
+|---|---|---|
+| `measured` | Reported by a sensor or provider about a time already past | A satellite scene, a rain reading, a drone photo |
+| `derived` | Computed from other observations about a time at or before it was produced | NDVI for a segment, a crack width extracted from a photo |
+| `simulated` | Produced before the time it describes, or for a what-if | A weather ensemble, a forecast, a scenario |
+
+Origin is part of what makes a value unique. The same variable, place and time can hold a measurement and a forecast at once, and they are different things. The design also limits which origins each kind of source may declare. A sensor cannot claim a simulation, and the twin is meant to reject a run whose origin its source does not allow.
+
+The design also puts a check on time. A `measured` or `derived` observation must not describe a time after the moment it was known. A value cannot be known before it describes a past event, unless it is simulated.
+
+## Three rules instead of updates
+
+A default read, the one a person or a dashboard gets, applies three rules.
+
+**Rule 1: latest wins.** For the same variable, place, time, source and parameters, the observation with the latest `known_at` is current. A reprocessed scene or a newer model version replaces the old value simply by arriving. No update is needed.
+
+**Rule 2: a run supersedes a run.** Sometimes a rerun must hide values it no longer produces, and a row-by-row replacement cannot express that. The new run names the old one in `supersedes_run_id`, and every observation of the old run is hidden.
+
+**Rule 3: real data first.** For the same variable, place and time, a `measured` value hides `derived` and `simulated` values, and a `derived` value hides `simulated` ones. An estimate is read only where nothing was measured.
+
+Rule 1 handles most corrections. Rule 2 handles a rerun that changes the set of values it produces. Rule 3 keeps an estimate from standing in for a measurement that exists. All three respect as-of: a question asked as of a date before a correction arrived ignores it.
+
+A default read also leaves out any run that has a scenario. A what-if is a world that may not happen, so you must name its run to see it.
+
+Here is the core of rule 1, as a sketch of the pattern. It covers only the latest-wins part. The real read also applies rules 2 and 3 and the scenario filter, and I have not shown those here:
+
+```sql
+-- Sketch: latest known value per variable, place and time, as of a date.
+SELECT DISTINCT ON (variable_id, place_id, valid_from)
+       variable_id, place_id, valid_from, value_number, known_at
+FROM observation
+WHERE known_at <= $1          -- as-of: ignore corrections that arrived later
+ORDER BY variable_id, place_id, valid_from, known_at DESC;
+```
+
+## What the database enforces, and what the code must
+
+The design pushes some rules into the database itself, so a bad row cannot be written even by a buggy program:
+
+- Origin is limited to the three values above.
+- For `measured` and `derived` observations, `valid_from` cannot be after `known_at`.
+- Exactly one value column is filled, matching the variable's type.
+- The twin's database role may insert and select, and may delete only from its outbox. Nothing else may update or delete an observation.
+
+The three correction rules are not database constraints. They are read logic, and they must be implemented in the code that serves reads. This is the part I have not verified here. Phase 1 is closed and the core is running, according to the phase 1 announcement. I have not checked which of these rules the running code enforces, or whether the tests cover them. Treat the design in this post as what we intended. Check the code before you copy any of it.
+
+## What I measured, and what I did not
+
+On 2026-11-06, I ran a SQL schema test on a laptop: Postgres 17 with PostGIS in a container, 32 million observations, 50,000 places, 40 variables, a warm cache and one connection. It ran against the schema in this design, without the application around it. So it tests the table and its indexes, not the twin's Rust code.
+
+| Test | Result |
+|---|---|
+| Writes with the unique index, in place order or random order | About 80,000 rows per second |
+| Storage per observation, table plus index | 133 to 148 bytes; about 300 bytes for one wide table with the footprint on every row |
+| One place, one variable, full series | Under 3 ms |
+| 1,000 places in an area, one variable, all passes | 11 to 28 ms |
+| Latest value for each of 50,000 places | About 0.5 s |
+| One variable across the whole network, variable first in the index | 0.3 s; 7 s with place first |
+| Every variable of one place without naming them | 3 s; 83 ms when named |
+| An area read as of a past date, with `known_at` outside the index | About 5 times slower |
+
+Those are measurements of that one setup. The storage projections are not measurements. I projected them from the sizes above: per-segment satellite statistics at about 45 GB per year for each source, and 10,000 sensors reading once a minute at about 740 GB per year.
+
+The same test did not measure cold-cache reads, concurrent load, the three correction rules, partitioning by origin, or any table above 32 million rows. Those numbers are not here because I do not have them.
+
+The 127k writes per second figure from the phase 1 benchmark comes from a different machine and a different size. I do not compare it with the laptop figure above.
+
+## Why not keep the latest row and a history table?
+
+The usual alternative is two tables. One holds the current value for each place and variable, and a second keeps history. Updates change the first table and copy the old value into the second. Most applications start there, and it is a reasonable design for a product that only needs the current state.
+
+We did not choose it. The design does not use it, and these are the reasons I would give for that choice.
+
+First, the questions we care about include "as of" questions. A history table can answer them, but only if every change writes a copy in the same transaction, and every reader remembers to use the copy. The rule is then in the writers, and a missed copy is a lost answer.
+
+Second, a current table is a second source of truth. When a reprocessed scene disagrees with the value in the current table, someone must decide which one wins, in the code path that writes it. The three rules in this post make that decision once, in the read, where everyone sees it.
+
+Third, the costs are not symmetric. The append-only table costs disk, which is cheap to add. A lost history costs an answer that cannot be recovered. I would rather pay for storage than for a question I cannot answer later.
+
+The trade-off is real, and the design pays for it. Reads must apply the rules, the table grows, and a naive query can be slow. The sections below and the laptop test show where those costs land.
+
+## How one correction flows through the twin
+
+A reprocessed satellite scene is the clearest case. This is an illustration of the flow, not a recorded event: suppose the pipeline reads a scene again with a better correction, and the rain estimate for one area changes.
+
+The pipeline does not touch the old rows. It starts a new run for its reprocessing, with its own key, so a retry of the same job returns the same run and writes nothing twice. It appends the new values under that run. Each new observation has the same variable, place and valid time as the old one, a new `known_at`, and the same origin. The old rows stay where they are.
+
+On the next read, rule 1 applies. For that variable, place and time, the observation with the latest `known_at` is current. The new value wins, and the old one is still there for any question asked as of an earlier date.
+
+If the reprocessing also drops some values the old run produced, the new run names the old one in `supersedes_run_id`, and rule 2 hides everything the old run wrote. If a measurement of the same time arrives from a sensor, rule 3 hides the derived value, whatever its `known_at`.
+
+Nothing in that flow is an update. Each step adds a fact: a run was started, values were reported, and a run replaced another. The current state is a view of those facts, and you can rebuild that view for any day.
+
+## Where the rules are easy to get wrong
+
+The rules are simple to state and easy to break in practice, so it helps to name the traps.
+
+A reader that forgets `known_at` in its filter reads the latest row even when it arrived after the date the question is about. That is an answer from the future, and it looks correct.
+
+A writer that reuses a run key for different parameters silently merges two computations. The design gives each parameter set its own hash for that reason, so two runs with different parameters coexist, and a what-if does not replace the baseline.
+
+A reader that ignores origin takes a forecast for a measurement whenever the measurement is missing from the query. Rule 3 exists to stop that, and it only works if the reader applies it.
+
+None of these is a database error. Each one returns a plausible answer. That is why the rules sit in the read path, and why the read path needs tests that check old answers stay old.
+
+## Why the table only grows
+
+The cost of never updating is disk. Every correction adds rows, and every reprocessed value keeps its old row. The design has two answers to that.
+
+Forecasts expire. Simulated partitions are dropped after 90 days, which is a partition drop, not a row-by-row delete. Expiry of measured data is a separate and approved operation, and an observation is removed only by that approved expiry.
+
+Reads must also be disciplined. A read names its variables. Asking for every variable of a place without naming them scans the whole table, and the laptop test shows that cost, about 3 s against 83 ms when named.
+
+## Is this event sourcing?
+
+The phase 1 announcement called it event sourcing. The idea is close, but not the same thing. Event sourcing usually rebuilds state by replaying a log of events. The twin does not replay anything to answer a question. It keeps the rows, and the read applies the rules. So I call it an append-only store with correction rules, which is what the design describes.
+
+## The rule I keep coming back to
+
+> Store what was reported, when it was reported, and let the read decide what is current.
+
+An update deletes the history you will want later. The question you cannot answer, what did we know then, is the one that matters in an audit, a dispute or a bad forecast. Keeping the rows costs disk. Losing them costs the answer.
