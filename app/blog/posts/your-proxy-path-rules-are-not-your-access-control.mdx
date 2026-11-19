@@ -13,12 +13,12 @@ This post is about that gap. The short version is that a path rule in a proxy is
 
 ## Short answer
 
-The public meetings host now answers **only the meeting routes**, enforced in two places inside Cubebot: the orchestrator refuses every API path on that host except the public meeting API, and the web server answers everything except a short list of meeting paths with a plain **404**. Plain HTTP is redirected to HTTPS with a **308**. The chart also narrows the ingress paths to `Prefix` matches. The ingress change is the cosmetic layer. The application checks are the ones I rely on, and their tests pass in the repository. I have not yet tested the behavior behind the real Cloudflare tunnel, and I say so below.
+The public meetings host now answers **only the meeting routes**, enforced in two places inside Cubebot: the orchestrator refuses every API path on that host except the public meeting API, and the web server answers everything except a short list of meeting paths with a plain **404**. Plain HTTP is redirected to HTTPS with a **308**. The chart now uses `Prefix` for every ingress path, which widens four single-file routes. The web allowlist refuses the extra paths. The ingress change is the cosmetic layer. The application checks are the ones I rely on. The unit tests pass. The PostgreSQL integration test passed when run with `--ignored`, per the pull request. I have not yet tested the behavior behind the real Cloudflare tunnel, and I say so below.
 
 ## Key takeaways
 
 - A proxy's path matching can be looser than its configuration suggests. Test what it actually forwards, not what you wrote.
-- Defense in depth only helps if the inner layer enforces the boundary alone. Cubebot's inner layer does not trust the Host header to be correct, because it checks both the `Host` header and the URI authority.
+- Defense in depth only helps if the inner layer enforces the boundary alone. Cubebot's inner layer does not rely on the Host header alone, because it checks both the `Host` header and the URI authority.
 - Use an allowlist for a public host. A denylist misses the routes you forgot.
 - Redirect plain HTTP at the application too, not only at the edge. Otherwise the edge is the only thing that knows the host should be HTTPS.
 - Write down what you did not test. A passing unit test does not prove the deployed path.
@@ -96,11 +96,11 @@ export function meetingsAnswer(request: Request, host: string) {
 
 The regular expression is anchored at both ends with `^` and `$`. That is the detail the proxy got wrong. A pattern like `/m` without anchors matches too much. Here, `/meetings/x` does not match `/m\/.+`, because the slash after `m` is required and the pattern starts at the beginning of the path.
 
-The HTTP check reads `x-forwarded-proto`, which the tunnel sets. That header is only trustworthy because the tunnel is the only way in. If someone exposes the web server directly, a client can send any value. I list that as an assumption, not a guarantee.
+The HTTP check reads `x-forwarded-proto`. I believe the tunnel sets it, but the tunnel's configuration is not in the repository, so I have not confirmed that. That header is only trustworthy because the tunnel is the only way in. If someone exposes the web server directly, a client can send any value. I list that as an assumption, not a guarantee.
 
 ## The ingress, narrowed
 
-The chart also changes. Every path in the meetings Ingress is now `Prefix`, and the paths are listed one by one. Before, four single files used `Exact`, and the tunnel controller I was using supported only `Prefix`. It skipped the whole Ingress instead of rejecting one rule. That is a bad failure mode: one unsupported rule quietly removed every route.
+The chart also changes. Every path in the meetings Ingress is now `Prefix`, and the paths are listed one by one. Before, four single files used `Exact`. I believe the tunnel controller I was using supported only `Prefix`, and that it skipped the whole Ingress instead of rejecting one rule. I have not confirmed that from the controller's source or logs, so treat it as my reading of the symptom. If it is right, one unsupported rule quietly removed every route.
 
 The change is small, but it is the kind of problem worth writing down. A controller that skips an invalid rule without a loud error will make your public routes disappear, and the symptom looks like a network outage.
 
@@ -112,7 +112,7 @@ The repository has tests for the orchestrator guard. One of them is named `the_m
 
 Those are real checks, and I trust them for what they cover. They do not cover the deployed path. The pull request says so directly: the change was not checked against a real deployment behind the Cloudflare tunnel.
 
-It also says one thing I did not expect and do not like. Files under the web app's public folder, such as the service worker, are served before the middleware runs. On the meetings host, they still answer, and plain HTTP to them is not redirected. The authors treat them as public static files, and that is a reasonable position. It is still a place where the rule "only meeting routes" is not absolute.
+It also says one thing I did not expect and do not like. Files under the web app's public folder, such as the service worker, are served before the middleware runs. I have not checked that against a running server. On the meetings host, they still answer, and plain HTTP to them is not redirected. The authors treat them as public static files, and that is a reasonable position. It is still a place where the rule "only meeting routes" is not absolute.
 
 ## What this does not show
 
@@ -132,7 +132,7 @@ Take the console's API. Imagine the orchestrator has routes for agents, conversa
 
 An allowlist fails the other way. The public host serves only what you named, and a new route is refused until someone decides it should be public. The cost is that a legitimate new public route breaks until someone adds it to the list. That failure is loud and easy to fix. A leaked private route is quiet and hard to notice.
 
-The worked example makes the trade concrete. The meetings allowlist has three kinds of entry: the meeting page under `/m/`, a few static asset folders, and one public API prefix. Adding a fourth public route means editing a single line, which a reviewer sees in the diff. Adding a private route needs no edit at all, because it is refused by default.
+The worked example makes the trade concrete. The meetings allowlist has four kinds of entry: the meeting page under `/m/`, a few static asset folders, single files such as the favicon, and one public API prefix. A new route under the API prefix needs no change in the orchestrator. A new public route anywhere else means editing the regex in `start.ts` and the path list in the meetings Ingress, and a reviewer sees both edits in one diff. Adding a private route needs no edit at all, because it is refused by default.
 
 There is a cost to the allowlist that I should name. It is one more list to keep correct, and a list that is maintained by hand drifts. The repository's tests cover the meetings host rules, and a test is the right place to catch a route added in the wrong place. A comment that says "remember to update the list" will not do that.
 
