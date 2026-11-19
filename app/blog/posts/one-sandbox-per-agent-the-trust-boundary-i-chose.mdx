@@ -89,11 +89,11 @@ This is the part I most want readers to take away. A container runtime is a vali
 
 ## Why a VM boundary, and what it costs
 
-I chose a KVM guest as the preferred runtime because hostile code is better contained by a virtual machine than by containers that share a kernel and a pod network. That is the standard argument, and it is why I moved the sandbox into a VM-class boundary. Later I moved the VMM from a Kubernetes RuntimeClass into Cubebot's own virtual machine monitor, which keeps the boundary under the platform's control instead of depending on the cluster's runtime setup.
+A KVM guest is the stronger runtime, because hostile code is better contained by a virtual machine than by containers that share a kernel and a pod network. Each installation declares its runtime, and nothing defaults to a stronger one than it is. That is the standard argument, and it is why I moved the sandbox into a VM-class boundary. Later I moved the VMM from a Kubernetes RuntimeClass into Cubebot's own virtual machine monitor, which keeps the boundary under the platform's control instead of depending on the cluster's runtime setup.
 
 The cost is operational. A `kvm` installation needs nodes that expose `/dev/kvm` to the sandbox pod. Some managed clusters do not offer nested virtualization, and those clusters cannot run the KVM path. For them, the installation runs the `container` runtime and declares the weaker boundary. The decision does not hide that trade. It makes the trade a declared setting that people can see.
 
-The design also removes parts of the old machinery. The tool runner, the network initializer, the in-pod egress baseline and the two-container recovery checks become removal candidates once the sandbox path is qualified. I have not removed them yet. Removing them is where the simplification becomes real, and I want to see the sandbox path pass its validation before I delete anything.
+The design also removes parts of the old machinery. The tool runner, the network initializer, the in-pod egress baseline and the two-container recovery checks are the pieces the VMM amendment records as removed. Removing them is where the simplification becomes real. A search of the code finds no remaining implementation of them. Whether the sandbox path has passed its validation is a separate question, and this post does not answer it.
 
 ## What I gave up
 
