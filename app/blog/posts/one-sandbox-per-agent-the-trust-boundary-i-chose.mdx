@@ -1,0 +1,156 @@
+---
+title: "One Sandbox per Agent: The Trust Boundary I Chose for Cubebot"
+publishedAt: "2026-11-20"
+summary: "Cubebot gives each agent one sandbox and one long-lived credential instead of per-turn grants. Here is why I made that trade, what it costs, and what it does not protect against."
+tags: "ai-agents,security,kubernetes,sandboxing,cubebot"
+---
+
+An AI agent that can run commands, install software and drive a browser is a program that executes code written by a model, from inputs nobody fully controls. The question is not whether that code will do something you did not intend. It will, eventually. The question is how far the damage can travel before something stops it.
+
+For Cubebot, the runtime I am building for persistent, collaborative agents, I had to answer that question early. The answer went into an architecture decision record, and the decision changed the shape of the code more than any single feature did. This post explains the decision, the first design it replaced, and the costs I accepted. It is a design record, not a benchmark. I have no measured results to show for it yet, and I say so where it matters.
+
+## Short answer
+
+Each running agent gets **one sandbox**, and that sandbox is the trust boundary. The agent's loop, its tools, its terminal, its browser and any software it installs all run inside that sandbox. The sandbox receives **one agent-scoped credential for its whole lifetime**, plus the provider credentials that agent is allowed to use. There are no per-turn grants, no per-tool leases and no renewal windows. The orchestrator keeps the ledger of what happened and routes messages, but it does not run the agent's turns. The price is that a compromised sandbox can spend that agent's budget and act as that agent until someone revokes its credential. I think that trade is right for this system, and the rest of this post explains why.
+
+## Key takeaways
+
+- The sandbox edge is the only boundary I claim. Isolation between the agent's own runtime and the tools it runs inside the same sandbox is not promised.
+- Per-turn authority inside a sandbox protects against very little, because any credential inside the sandbox is reachable by code the agent runs there.
+- A VM boundary contains hostile code better than containers that share a kernel and a pod network. I accept the operational cost of KVM where the cluster supports it.
+- Budgets are checked from ledger usage reports, not enforced on every call. That is a weaker control, and the design says so.
+- Revocation has to work. If rotating an agent's credential is hard, the one-credential model becomes a liability instead of a simplification.
+
+## The first design, and why I replaced it
+
+The first implementation split one agent's work across the orchestrator and two containers in one pod. The runtime ran the agent's loop. A separate tool container ran commands and tools. The orchestrator sat in the middle as the authority for almost everything.
+
+Before each turn, the orchestrator granted that turn its inference access. Each tool invocation needed a lease from the orchestrator. The authority windows were short, so they had to be renewed. On paper, this looked careful. Every action was checked by something outside the agent.
+
+In practice it had three problems.
+
+The first was complexity that did not buy security. The runtime and the tool runner shared a pod network. To keep their credentials apart, I needed UID-aware kernel filtering, a privileged network initializer and a root supervisor. Each of those is a component that has to be correct, and each one widened the surface I had to reason about.
+
+The second was that the protocol cost landed in the wrong place. Every new agent capability had to cross the grant and lease machinery. Most of the engineering effort went into the control plane, and the agent itself got less attention than it should have.
+
+The third was the most important. Splitting authority inside the sandbox does not separate anything the agent can reach. If the agent runs code, that code can read whatever credential the sandbox holds. Per-turn grants inside the sandbox looked like containment, but the agent could still use any credential it could read. The only real containment was the edge of the sandbox itself.
+
+So I asked a narrower question: what would bound the damage if one agent's sandbox were hostile? The answer was that the damage should stop at that agent.
+
+## The model I chose
+
+The agent owns its execution. It owns its loop, its context assembly and compaction, its memory behavior, its tools and its recovery journal. It decides when to call a model, which tool to run, what to remember and what to retrieve. The orchestrator does not do any of that.
+
+The orchestrator is a **ledger and a switchboard**. As a ledger, it durably records what humans and recovery need: agent definitions, conversations, messages, results, memory records, usage and audit. As a switchboard, it authenticates agents and people, routes messages and work, enforces who may see what, owns provider credential refresh, and starts and stops sandboxes. It does not run turns, schedule lanes, authorize individual tool calls or decide memory policy.
+
+Here is the usage path as the design describes it:
+
+```text
+person --message--> orchestrator (ledger + switchboard)
+                      | records the message, checks the sender's content access
+                      | wakes or notifies the agent
+                      v
+                agent sandbox  (one per agent, one credential for its lifetime)
+                +--------------------------------------------------+
+                | runtime loop --- calls the provider directly      |
+                |      |                                            |
+                |      +-- terminal, browser, local MCP servers     |
+                |      +-- software the agent installs              |
+                +--------------------------------------------------+
+                      | results, memory changes, usage
+                      v  (idempotent writes)
+                orchestrator ledger
+```
+
+The agent pulls the message, works through its own loop for as long as it needs, calls the provider directly, and runs commands or a browser inside its sandbox. It writes results, memory changes and usage back to the ledger through idempotent operations. Stopping the agent stops the sandbox.
+
+Two details matter here. Agents never connect to PostgreSQL. All platform state goes through the orchestrator's interface. And provider inference stays direct: the agent talks to the model provider itself. Both choices were in place before this decision and remain in force.
+
+## One credential, not a stream of grants
+
+Each sandbox receives one agent-scoped credential for its lifetime, plus the provider credentials that agent is eligible for. That is the whole authority model inside the boundary.
+
+It sounds weaker than it is, and in one important way it is weaker. A credential that lives for the sandbox's lifetime stays valid after a bad moment. That is why revocation is part of the design, not an afterthought. Revoking that credential, or stopping the sandbox, is the lever that cuts an agent off. If revocation does not work quickly and reliably, the model fails.
+
+The model also means I can no longer describe a compromised sandbox as having a small blast radius in the abstract. It has the blast radius of one agent. That is a real, bounded radius, and it is the one I am willing to defend. A compromised sandbox can spend that agent's provider budget and act as that agent until the credential is revoked. The design is meant to keep the damage to that one agent, because each agent has its own credential and its own sandbox. I have not yet tested that claim against an actual compromise.
+
+## What the boundary is, precisely
+
+The sandbox edge is the trust boundary, and I want to be exact about what that means. Inside the sandbox, the runtime, the terminal, the browser, any local MCP servers and any software the agent installs all run together. There is no promised isolation between the runtime and those tools.
+
+The runtime can be a KVM guest or a container, and the installation declares which one it uses:
+
+| Runtime | What the boundary is | What the system claims |
+|---|---|---|
+| `kvm` guest (`cubebot-sandbox`) | A virtual machine with its own kernel | A VM-class boundary |
+| Agent image as a `container` | A container sharing the host kernel | A container, never reported as a VM |
+
+This is the part I most want readers to take away. A container runtime is a valid choice, and Cubebot still supports it for installations that need it. But the system reports it as a container. It does not pretend that a container is a VM.
+
+## Why a VM boundary, and what it costs
+
+A KVM guest is the stronger runtime, because hostile code is better contained by a virtual machine than by containers that share a kernel and a pod network. Each installation declares its runtime, and nothing defaults to a stronger one than it is. That is the standard argument, and it is why I moved the sandbox into a VM-class boundary. Later I moved the VMM from a Kubernetes RuntimeClass into Cubebot's own virtual machine monitor, which keeps the boundary under the platform's control instead of depending on the cluster's runtime setup.
+
+The cost is operational. A `kvm` installation needs nodes that expose `/dev/kvm` to the sandbox pod. Some managed clusters do not offer nested virtualization, and those clusters cannot run the KVM path. For them, the installation runs the `container` runtime and declares the weaker boundary. The decision does not hide that trade. It makes the trade a declared setting that people can see.
+
+The design also removes parts of the old machinery. The tool runner, the network initializer, the in-pod egress baseline and the two-container recovery checks are the pieces the VMM amendment records as removed. Removing them is where the simplification becomes real. A search of the code finds no remaining implementation of them. Whether the sandbox path has passed its validation is a separate question, and this post does not answer it.
+
+## What I gave up
+
+Three things, stated plainly.
+
+**Per-action control by the orchestrator.** In the old design, the orchestrator could refuse a tool call before it ran. In the new one, it cannot. The agent decides what to run. I do not treat that as a feature. It is a loss of control that I accepted because the old control was not a real boundary.
+
+**Fine-grained budget enforcement.** Budget limits are checked from usage reports in the ledger, not on every model call. An agent can overspend between checks. If a budget has to be a hard limit, the mechanism needs more work, and I have not done that work.
+
+**Short-lived credentials.** Agents hold their provider keys for longer. That is only acceptable if rotation and revocation actually work. I count that as an open risk until it is tested end to end.
+
+## What the sandbox does not protect against
+
+A boundary is only useful if you know where it stops, so here is where this design does not help.
+
+The workspace is shared across the agent's work, and workspace content is untrusted input. The design says not to load executable runtime code from the writable agent workspace. A file the agent writes can still mislead the agent later, and the sandbox edge does nothing about that.
+
+Restarts are not free either. A runtime restart does not prove that a command stopped, and a tool failure does not prove that an external action failed. Recovery has to reconcile active tool calls and runtime records before it replays any work. Persistent files survive according to the workspace contract, but process and browser state are not promised to survive sandbox replacement.
+
+Finally, the design does not limit what happens to a credential once it has left the sandbox. A stolen agent credential works until someone revokes it, wherever it is used. The boundary limits what code inside the sandbox can do. It does not limit what a credential can do after it leaves.
+
+## Alternatives I rejected
+
+I considered three other designs.
+
+**Keep per-turn grants inside a VM sandbox.** This keeps the protocol cost without a matching security gain. The VM makes the edge stronger, but any grant inside the VM is still readable by code inside the VM.
+
+**Run without a sandbox and rely on containers.** This leaves hostile tool code sharing a kernel with the platform. I now offer it only as the declared `container` runtime, with the weaker boundary stated.
+
+**Proxy all inference through the orchestrator.** This would give the orchestrator a view of every model call, which is attractive for budgets. The design kept inference direct instead. I would need a separate measurement before saying which option is cheaper to run, and I do not have one.
+
+## When to use which
+
+If you are building a system where agents run hostile or unvetted code, put each agent in its own VM-class boundary, give it one credential you can revoke, and make the orchestrator a ledger rather than a referee. If your cluster cannot provide a VM boundary, use containers and say so in the configuration, so nobody mistakes the setup for something stronger.
+
+If you need hard per-call budgets or per-action approval, this design is not enough on its own. Those controls have to be built, and they will add back some of the protocol I removed.
+
+## What I have not measured
+
+This is a design record. It describes decisions, their rationale and their consequences. It does not report a benchmark, a latency figure or an incident. I have not measured how long sandbox startup takes, how much the VM boundary costs in throughput, or how fast revocation propagates in practice. Those numbers are the next thing to produce, and I will not quote any until I have them.
+
+## What would change my mind
+
+I would move away from this design if one of three things turned out to be true.
+
+The first is that revocation is slow or unreliable in practice. The model depends on cutting off one credential quickly, so a revocation that takes minutes to reach a running sandbox changes the risk calculation.
+
+The second is that the KVM path cannot run on the clusters people actually use. If most installations end up on the `container` runtime, the honest default is the weaker boundary, and the design should say that first.
+
+The third is that a real agent needs fine-grained authority that cannot live in one credential. Some tasks may need access that differs by action. If that becomes common, the per-turn machinery I removed may come back in a smaller form.
+
+None of these is true today, as far as I know. They are the tests I plan to run before I trust the design further.
+
+## The rule I keep coming back to
+
+> Put the boundary where the damage stops, not where the code is easiest to inspect.
+
+The first design put checks around every step inside the sandbox. It felt safe, and it protected very little, because the sandbox still held the credentials. The second design draws one line at the edge of the agent and makes that line strong. Everything inside it is the agent's to run, and everything outside it is the platform's to keep honest.
+
+That line is the one I chose, and it is the one I will test the hardest.
