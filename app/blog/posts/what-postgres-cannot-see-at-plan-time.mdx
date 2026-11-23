@@ -1,0 +1,260 @@
+---
+title: "What Postgres Cannot See at Plan Time: One Query, Four Slow Reads"
+publishedAt: "2026-11-23"
+summary: "A digital twin reads through one SQL statement with optional filters. Four times it ran far slower than it should, and each time the planner was missing something while it planned: the values, a constant, a foldable bound, or the cost of compiling. Measured at 32 and 100 million rows."
+tags: "digital twin,postgresql,postgis,performance,partitioning,benchmarks"
+---
+
+One read in my benchmark took 2.5 seconds. A few executions later the same read, with the same arguments, against the same data, took 267.
+
+Nothing had changed in the SQL, the indexes or the table. What had changed was how much Postgres knew about the query at the moment it planned it.
+
+The query belongs to a digital twin I have been building on plain Postgres. Every value it knows, a sensor reading, a satellite statistic or a forecast, is one row in one append-only table. Nothing is ever updated, so a set of correction rules decides at read time which rows are current. Until now I had only measured the schema by itself. The full read path, through the service and through those rules, had never been timed.
+
+This post is that measurement. I ran the real service at 32 and then 100 million rows, read the plans, and found four reads that were far slower than they had any reason to be. None of them was missing an index. In all four, the planner was missing a piece of information while it planned.
+
+## Short answer
+
+The twin reads through one fixed SQL statement, and a filter the caller did not use is bound as null or as an empty array. That only works while Postgres plans the statement with the values in front of it. Kept prepared, the statement got a generic plan and one read went from **2.5 s to 267 s**. An area collected in a subquery could not be folded, so a 1,000-place read scanned all 50,000 places: **406 ms against 35 ms**. Time bounds built with a stable function pruned no partition, so planning alone cost **515 ms at 1,452 partitions, against 0.6 ms**. And JIT compiled for about **310 ms** on every wide read. At 100 million rows, in a small VM on a laptop, the service wrote about 127,000 rows a second and read 1,000 places in an area in 166 ms. The widest read is still too slow, and I say where.
+
+## Key takeaways
+
+- A filter written as `$n is null or ...` is free only if the planner can decide the null test while it plans.
+- A statement kept prepared can switch to a generic plan after five executions. A query with optional filters should be planned with its values every time.
+- A subquery in place of a constant is enough to turn an index scan into a scan of the whole table.
+- `timestamptz + interval` is stable, not immutable. A partition bound built from it prunes late, or not at all.
+- JIT decides from the estimated cost of the plan. It knows nothing about how long compiling will take.
+- Correctness tests see none of this. Every one of these reads returned the right rows.
+
+## One statement, every filter
+
+A read of the twin can filter by variables, owners, an area, a list of places, a time range, an as-of date and a few more things. The service does not assemble SQL for each combination. It sends one fixed text, and a filter the caller did not use is bound as null or as an empty array. This is the shape it had when the benchmark started:
+
+```sql
+-- A sketch of the shape, not the full statement.
+select ...
+from place p
+join observation o on o.place_id = p.id
+where o.variable_id = any($1)
+  and ($2 is null or st_intersects(p.footprint, $2))   -- area
+  and (cardinality($3) = 0 or p.id = any($3))          -- places
+  and ($4 is null or o.valid_from >= $4)               -- from
+  and ($5 is null or o.valid_from < $5)                -- to
+```
+
+One text means one statement to test, and no SQL built from strings. It also carries a quiet assumption.
+
+When `$3` is an empty array, `cardinality($3) = 0` is true, the whole `or` is true, and the planner deletes the line. When `$3` holds ids, the test is false, the `or` collapses to `p.id = any($3)`, and that becomes an index condition. Either way, the planner simplifies the filter before it chooses a plan.
+
+That simplification happens only if the planner can evaluate the test while planning. Three of the four problems below are the same failure: something stood between the planner and a value.
+
+## 1. The statement lost its values
+
+The service is written in Rust and talks to Postgres through sqlx, which prepares each statement once per connection and keeps it. Many drivers do the same, and for most queries it is the right default.
+
+Postgres can plan a prepared statement in two ways. A custom plan is made for the values of one execution. A generic plan is made once, for any values. The documented rule is that the first five executions get custom plans. Then Postgres builds a generic plan, and keeps using it unless its estimated cost is clearly higher than the average of the custom ones.
+
+For this statement a generic plan is the worst case. It has to be correct for every possible binding, so no optional filter can be removed and none can become an index condition. A one-filter version of the query, reproduced on a table of 50,000 places, shows the two shapes:
+
+```text
+-- planned with its values
+Index Only Scan using place_pkey on place p
+  Index Cond: (id = ANY ('{1,2,3}'::bigint[]))
+
+-- generic
+Seq Scan on place p
+  Filter: ((cardinality($1) = 0) OR (id = ANY ($1)))
+```
+
+Postgres chose the generic plan, which by its own rule means the estimate looked acceptable. The clock disagreed. In the benchmark, one variable read across the whole network went from 2.5 s to 267 s, and an area read as of a past date from 0.15 s to 3.0 s.
+
+The fix is one line. The statement is never kept prepared, so it is planned with its values on every call:
+
+```rust
+// Never kept prepared: a plan made once would keep every filter, used or not.
+sqlx::query(QUERY).persistent(false)
+```
+
+Setting `plan_cache_mode = force_custom_plan` reaches the same result from the server side. A test now runs the read six times on one connection and checks that `pg_prepared_statements` holds nothing with its text.
+
+The price is that every read is planned from scratch. Planning time is now part of the latency of every read, which matters in the third fix.
+
+## 2. A subquery where a constant used to be
+
+At first a read took one area, bound as a single value. Then reads had to accept several areas, each as WKT text, and the natural way to write that was to collect them in SQL:
+
+```sql
+-- first version: one area, bound as a value
+st_geomfromwkb($2, 4326) as area
+
+-- then: several areas, collected from an array
+(select st_collect(st_geomfromtext(w, 4326)) from unnest($2::text[]) w) as area
+
+-- used the same way in both
+and (area is null or st_intersects(p.footprint, area))
+```
+
+The results did not change, and every test passed. Inside Postgres, the read of 1,000 places in an area now took 406 ms.
+
+The plan shows why. These two are reproduced on a table of 50,000 points with a GiST index, on Postgres 17:
+
+```text
+-- the area as a bound value
+Bitmap Heap Scan on place p (actual rows=1000 loops=1)
+  ->  Bitmap Index Scan on place_footprint (actual rows=1000 loops=1)
+        Index Cond: (footprint && '0103000020E6...'::geometry)
+
+-- the area as a subquery
+Seq Scan on place p (actual rows=1000 loops=1)
+  Filter: (((InitPlan 1).col1 IS NULL) OR st_intersects(footprint, (InitPlan 2).col1))
+  Rows Removed by Filter: 49000
+```
+
+It is tempting to blame the subquery, and that is not quite right. Without the `is null or` in front, the same subquery drives the spatial index. The problem is the null test.
+
+With a bound value, the planner computes the geometry while planning, sees that it is not null, drops the first arm of the `or`, and is left with a plain `st_intersects` that the index can answer. With a subquery, the area only exists once the query runs. The planner cannot decide the test, so it has to keep the `or`. An `or` with one arm that no index can answer becomes a row filter over the whole table.
+
+This is the broad phase from [Fast Spatial Queries Without Losing Correctness](/blog/fast-spatial-queries-without-losing-correctness) disappearing without a sound. The answer stays exact, because the exact predicate still runs. It just runs against every place.
+
+The fix keeps the area a single bound value. The service joins the areas into one WKT text before binding it, a single area as it is and several as one `GEOMETRYCOLLECTION`, and the SQL is back to `st_geomfromtext($2, 4326)`. The same read took 35 ms, through the spatial index.
+
+The benchmark caught this one before any test did. A correctness test could not have, because the answer was right.
+
+## 3. Time bounds the planner could not fold
+
+Observations are partitioned by origin (measured, derived or simulated), then by month. A read with a time range should plan and touch only the months it reaches.
+
+Times travel to the database as microseconds since the epoch and are turned into timestamps in SQL. The bounds were written like this:
+
+```sql
+-- before: a stable expression, behind "is null or"
+with a as (
+  select timestamptz 'epoch' + $4 * interval '1 microsecond' as from_
+)
+...
+  and (a.from_ is null or o.valid_from >= a.from_)
+```
+
+`timestamptz + interval` is a stable function, not an immutable one. Adding a day or a month to a `timestamptz` depends on the session's time zone, so Postgres will not compute it while planning, even when the interval is in microseconds and the parameter is known.
+
+How much that costs depends on what surrounds the expression:
+
+- **A stable bound compared directly** is pruned when the executor starts. The plan says `Subplans Removed`, the partitions are skipped, but the planner has already planned every one of them.
+- **A stable bound behind `is null or`** is not pruned at all. The planner cannot decide the null test, keeps the `or`, and an `or` like that cannot prune. Every partition is planned and every partition is scanned.
+- **An immutable bound** is folded into a literal timestamp before the planner looks at the partitions. The months outside the range never enter the plan.
+
+Mine was the second case. A ranged read had never skipped a month.
+
+```sql
+-- after: every part immutable, compared directly
+  and o.valid_from >= coalesce(
+        (timestamp 'epoch' + $4 * interval '1 microsecond') at time zone 'UTC',
+        '-infinity')
+```
+
+`timestamp + interval` is immutable, and so is `at time zone` with a constant zone. The `coalesce` to `-infinity` replaces the null test, so an unused bound still folds into a constant.
+
+I measured the planning time of a 30-day read on scratch databases with more and more months:
+
+| Monthly partitions | Planning, before | Planning, after |
+| --- | --- | --- |
+| 72 | 3.3 ms | 0.6 ms |
+| 372 | 35 ms | 0.6 ms |
+| 1,452 | 515 ms | 0.6 ms |
+
+With three origins, those are roughly two, ten and forty years of months. The last row is a size the twin does not have today. I measured it to see how the cost grows as history gets backfilled. It matters because, after the first fix, every read pays its planning time on every call.
+
+Pruning while planning has a second effect. A read that never plans a month never locks it. A test now takes an exclusive lock on an old month and proves that a read of last week returns anyway, while a read of every month waits.
+
+The benchmark could not have found this problem. None of its reads carries a time range, and its data spans a few months. I found it while fixing how monthly partitions get created, and it was older than the bug I was there to fix.
+
+## 4. JIT compiled for longer than it saved
+
+Postgres can compile parts of a query with LLVM before running it. JIT is on by default, and the decision is a threshold: when the estimated cost of the whole plan passes `jit_above_cost`, 100,000 by default, the expressions of the query are compiled. Past 500,000, inlining and optimization passes are added.
+
+That decision sees the estimated cost of running the query. It does not see the cost of compiling it, which grows with the number of expressions in the plan and not with the rows.
+
+The twin's read is one statement with several joins, a `distinct on`, window functions and a long select list. The wide reads, the ones that move tens or hundreds of thousands of rows through it, crossed the threshold. The plans at 32 million rows showed JIT compiling for about 310 ms on every one of them.
+
+I turned it off for the twin's reads and raised `work_mem` from 4 MB to 32 MB in the same commit, because the same plans showed the sorts of the correction rules spilling to disk. That was two changes at once, so the before and after belongs to the pair: inside Postgres, the latest value for each of 50,000 places went from 1.6 s to 0.94 s, and one variable across the whole network from 1.89 s to 1.34 s. The 310 ms is JIT's own figure from the plans.
+
+The scope matters as much as the setting. A read runs in its own read-only transaction, and the settings are set for that transaction alone:
+
+```sql
+begin read only;
+select set_config('jit', 'off', true),        -- true: for this transaction only
+       set_config('work_mem', '32MB', true),
+       set_config('statement_timeout', $1, true);
+-- the read
+commit;
+```
+
+My first version set them on the connection. That does not survive a transaction pooler, which hands the server connection to another client after every transaction, so a session setting can be missing where it is needed and present where it is not. A test checks that `jit` and `work_mem` are no longer in effect once the read commits.
+
+I did not compare JIT on and off across every kind of query. A long analytical query with heavy expressions may well repay its compilation, which is why the setting is scoped to these reads and not changed for the server.
+
+## One more thing the planner could not see
+
+A smaller finding belongs to the same family. Every read joins a small table that holds one row per run of a producer. On a fresh database that table stayed under autovacuum's default threshold of 50 changed rows, so it was never analyzed, and the planner planned every read without statistics on it. An area read ended up reading 17 times the rows it returned.
+
+```sql
+alter table run set (autovacuum_analyze_threshold = 1);
+```
+
+A big table gets its statistics without help. A small table that every query joins may never get them.
+
+## The same reads at 100 million rows
+
+With every fix but the third in place, I ran the benchmark at two sizes on the same day. It loads 50,000 places and 40 variables, one day of values per pass, through the service's own write call, in batches of 10,000, and then times each read through the service's read call, with the correction rules on.
+
+The machine is an Apple M5 Pro laptop with 24 GB. Postgres 17.6 with PostGIS 3.5 runs in Docker, inside a VM with 3 CPUs and 3.9 GiB of memory. Release build, warm cache. The 32 million column is the second of two runs, and the 100 million column is a single run.
+
+| Test | 32 million rows | 100 million rows |
+| --- | --- | --- |
+| Writes, with the unique index | 132,283 and 179,812 rows a second, in two runs | 126,857 rows a second |
+| One place, one variable, full series | 2.8 ms, p95 3.8 ms | 3.4 ms, p95 4.7 ms |
+| 1,000 places in an area, one variable | 59 ms, p95 74 ms | 166 ms, p95 189 ms |
+| The same area read, as of a past date | 36 ms, p95 44 ms | 201 ms, p95 347 ms |
+| Latest of 5 variables over the 1,000 places under one shape | 108 ms, p95 114 ms | 323 ms, p95 328 ms |
+| Every variable of one place, all 40 named | 4.4 ms, p95 5.6 ms | 10.1 ms, p95 11.1 ms |
+| Latest value for each of 50,000 places | 951 ms, p95 960 ms | 3.1 s, p95 3.7 s |
+| One variable across the whole network | 2.4 s, p95 2.5 s | 8.2 s, p95 10.0 s |
+| An append of 10,000 rows, idle | 47 ms, p95 64 ms | 45 ms, p95 87 ms |
+| The same append under 16 concurrent area reads | 150 ms, p95 253 ms | 200 ms, p95 251 ms |
+| Storage per observation, indexes included | 175 bytes | 174 bytes |
+
+Three things stand out.
+
+**The appends did not move.** A batch of 10,000 rows takes about 45 ms on an idle database at both sizes, and three to four times that while 16 readers keep the read connections busy. Reads and writes have separate connection pools, so readers can slow a write down but cannot starve it of a connection.
+
+**The reads grew about as their answers did.** None of these reads has a time range, so each one returns every pass of the data: 3.1 times as many rows at 100 million. Most of them took about 3 times longer, and the as-of read 5.5 times. The single series, 50 rows against 16, went from 2.8 ms to 3.4 ms. This benchmark cannot separate a larger table from a larger answer, because here both grow together. A read with a time range would hold its answer still, and none of these has one.
+
+**The full read path has a price, and now it has a number.** An earlier test measured the schema alone, with plain SQL and no rules, at 32 million rows: 0.3 s for one variable across the network, about 0.5 s for the latest value of 50,000 places, and 11 to 28 ms for 1,000 places in an area. Through the service and the correction rules, the same reads take 2.4 s, 0.95 s and 59 ms. This was the part of the design I trusted least until it was benchmarked. That caution was deserved.
+
+## What is still slow
+
+The network-wide read is not acceptable. At 100 million rows it takes 8.2 s to return 2.5 million rows, and its slowest run reached 10.0 s, which is where the service cuts a statement. The benchmark runs with a longer deadline, so it finished here. Under the service's own limit it would have been cut.
+
+The latest value for each of 50,000 places takes 3.1 s. That is too slow as well.
+
+Neither one is a planner problem. Both move hundreds of thousands of rows through the rules, and no setting makes that cheap. I tried `random_page_cost = 1.1` and index-ordered scans, and neither gained anything. The answer was already in the design: wide questions belong on rollups, appended as ordinary derived observations, and not on raw rows.
+
+A read for the latest value has no lower time bound, so it still plans every month that holds data: about 3 ms at 18 months, about 35 ms at ten years. The third fix does nothing for it.
+
+## What this does not show
+
+- **This is not the billion-row run.** The real test for this store is a billion rows, cold and under concurrent load. At 174 bytes a row it needs about 174 GB before any write-ahead log, and a machine that is not my laptop. It is still ahead.
+- **The cache was warm.** Every read ran once before it was timed. Cold reads are not in this table.
+- **A p95 here is the slowest run.** Each read ran 20 times, the two widest 5 times, and each append 10 times. With that few samples, the 95th percentile is simply the worst one.
+- **Writes are noisy on this machine.** Two runs at 32 million rows, on the same day, gave 132,283 and 179,812 rows a second. I read the write rate as "well above 100,000," not as a figure with six digits.
+- **The data is synthetic.** A uniform grid of points, one value per place, variable and day, every value the same. Real sources arrive in bursts and cluster in space.
+- **The fixes were measured at different sizes.** The generic plan, the area subquery and JIT were found at 32 million rows. The planning times come from scratch databases. The 100 million row run came after the first, second and fourth fixes and one day before the third. A run of the benchmark before and after the third showed no difference beyond its own noise.
+- **Two plan excerpts are reproductions.** The index and filter shapes in the first two fixes come from a small table built to show the mechanism, not from the benchmark's own logs.
+
+## The rule I keep coming back to
+
+> An optional filter is free only while the planner can see that it is unused.
+
+One statement with every filter is still the design. It comes with a condition I had not written down: the statement has to be planned with its values, every value has to reach the planner as a constant, and every expression around it has to be immutable.
+
+Each of these reads was correct. Each had the index it needed. What was missing was never in the table. It was in what Postgres could know before it ran a single row, and the only place that shows up is the plan.
